@@ -29,7 +29,7 @@
     <header class="bg-white py-4 shadow-lg sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
             <h1 class="text-2xl font-extrabold text-red-600 tracking-wider">BAROKAH FOOD</h1>
-            <a href="#penawaran" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition">
+            <a href="#order-form" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition">
                 <i class="fas fa-shopping-cart"></i> Order Promo Sekarang!
             </a>
         </div>
@@ -61,7 +61,7 @@
                     >
                 </div>
                 
-                <a href="#penawaran" class="cta-button inline-block mt-6 bg-red-600 hover:bg-red-700 text-white font-bold text-2xl py-4 px-12 rounded-full transition">
+                <a href="#order-form" class="cta-button inline-block mt-6 bg-red-600 hover:bg-red-700 text-white font-bold text-2xl py-4 px-12 rounded-full transition">
                     [KLIK DI SINI] Saya Mau Stok Protein Cerdas Anak Sekarang!
                 </a>
             </div>
@@ -226,31 +226,62 @@
             </div>
         </section>
 
-        <section class="py-16 bg-red-600 text-white text-center" id="penawaran">
-            <div class="max-w-4xl mx-auto px-6">
-                <h3 class="text-4xl font-extrabold mb-4">PROMO TERBATAS HARI INI SAJA!</h3>
-                <p class="text-xl mb-6">Amankan stok lauk premium Anda sebelum harga kembali normal!</p>
+        <section id="order-form" class="py-16 bg-red-600 text-white">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h3 class="text-4xl font-extrabold mb-4">🛒 KLAIM PROMO GROSIR HARI INI!</h3>
+                <p class="text-xl mb-8">Dapatkan Abon BAROKAH dengan harga termurah saat Anda beli banyak. Hitungan diskon otomatis!</p>
 
                 <div id="countdown-timer" class="bg-yellow-400 text-red-800 inline-block px-8 py-3 rounded-xl font-extrabold text-3xl shadow-lg mb-8">
                     Waktu Tersisa: Menghitung...
                 </div>
 
-                <div class="text-2xl font-bold mb-3">
-                    Harga Normal: <span class="line-through opacity-70">Rp 45.000</span>
-                </div>
-                <div class="text-5xl font-extrabold mb-6">
-                    Hanya: Rp 34.999,-
-                </div>
-                
-                <p class="text-lg font-semibold mb-8">
-                    <span class="text-yellow-400 font-extrabold">BONUS EKSKLUSIF:</span> GRATIS Ongkir untuk Jawa Bali! (Syarat & Ketentuan Berlaku)
-                </p>
+                <form id="mainOrderForm" class="bg-white p-8 rounded-2xl shadow-xl space-y-6 text-left text-gray-800">
 
-                <a href="https://wa.me/6285725046201?text=Halo%20BAROKAH%20FOOD!%20Saya%20mau%20klaim%20Promo%20Abon%20Sapi%20Tumbuk%20Harga%20Rp%2034.999" target="_blank" class="cta-button inline-block bg-red-900 hover:bg-red-800 text-white font-bold text-3xl py-5 px-16 rounded-full transition">
-                    [PESAN SEKARANG] Jamin Stok Protein Otak Cerdas Anak Anda!
-                </a>
-                <p class="text-sm mt-3 italic">Jangan biarkan masa emas pertumbuhan anak terlewat. Amankan lauk premium Anda sebelum promo berakhir!</p>
-                
+                    <div>
+                        <label for="nama" class="block font-semibold mb-2 text-lg">Nama Pemesan <span class="text-red-500">*</span></label>
+                        <input type="text" id="nama" placeholder="Contoh: Budi Santoso" required
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300">
+                    </div>
+
+                    <div>
+                        <label for="varian" class="block font-semibold mb-2 text-lg">Pilih Varian Produk <span class="text-red-500">*</span></label>
+                        <select id="varian" required
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300">
+                            <option value="0|Pilih Varian">-- Pilih Varian --</option>
+                            <option value="34999|Abon Sapi 100gr (Original)">Abon Sapi 100gr (Original) - Rp 34.999</option>
+                            <option value="36999|Abon Sapi 100gr (Pedas)">Abon Sapi 100gr (Pedas) - Rp 36.999</option>
+                            <option value="12900|Abon Sapi 10gr (Original)">Abon Sapi 10gr (Original) - Rp 12.900</option>
+                            <option value="13900|Abon Sapi 10gr (Pedas)">Abon Sapi 10gr (Pedas) - Rp 13.900</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="jumlah" class="block font-semibold mb-2 text-lg">Jumlah Pesanan <span class="text-red-500">*</span></label>
+                        <input type="number" id="jumlah" min="1" value="1" placeholder="Contoh: 3" required
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300" oninput="hitungTotal()">
+
+                        <div id="promoDetail" class="mt-4 p-3 bg-red-100 border border-red-300 text-red-700 rounded-lg text-sm font-medium hidden">
+                            </div>
+                        <p class="mt-3 text-sm text-gray-500">
+                            <i class="fas fa-tags mr-1"></i> **PROMO GROSIR:** Beli 3 diskon 10%, Beli 6 diskon 15%, Beli 10 diskon 20%!
+                        </p>
+                    </div>
+                    
+                    <div class="pt-4 border-t-2 border-red-200">
+                        <p class="font-bold text-xl">Total Harga: <span id="totalHarga" class="text-3xl text-red-600">Rp 0</span></p>
+                    </div>
+
+                    <div>
+                        <label for="catatan" class="block font-semibold mb-2 text-lg">Catatan (Opsional)</label>
+                        <textarea id="catatan" rows="3" placeholder="Contoh: Kirim ke alamat kantor / Mohon dikemas aman"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300"></textarea>
+                    </div>
+
+                    <button type="button" onclick="kirimWhatsApp()"
+                        class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-full text-xl transition cta-button">
+                        Kirim Pesanan ke WhatsApp Sekarang! 🚀
+                    </button>
+                </form>
             </div>
         </section>
     </main>
@@ -258,7 +289,7 @@
     <footer class="bg-gray-800 text-white py-6">
         <div class="max-w-6xl mx-auto px-4 text-center text-sm">
             <p>&copy; 2025 BAROKAH HALALAN FOOD. Hak Cipta Dilindungi.</p>
-            <div class="mt-2 space-x-4">
+            <div class="mt-2 space-space-x-4">
                 <a href="#" class="hover:text-red-400">Kebijakan Privasi</a>
                 <a href="#" class="hover:text-red-400">Syarat & Ketentuan</a>
             </div>
@@ -266,10 +297,98 @@
     </footer>
 
     <script>
-        function startTimer() {
-            const DURATION_SECONDS = 60 * 60 * 2; // 2 jam
+        // --- DATA HARGA DAN PROMO ---
+        const PROMO = [
+            { min: 10, diskon: 0.20 }, // Beli 10 diskon 20%
+            { min: 6, diskon: 0.15 },  // Beli 6 diskon 15%
+            { min: 3, diskon: 0.10 }   // Beli 3 diskon 10%
+        ];
+        const NOMOR_WA = "6285725046201";
 
+        // --- FUNGSI FORMAT MATA UANG ---
+        const formatRupiah = (angka) => {
+            return new Intl.NumberFormat("id-ID", {
+                style: "currency",
+                currency: "IDR",
+                minimumFractionDigits: 0
+            }).format(angka);
+        };
+
+        // --- FUNGSI HITUNG TOTAL HARGA DINAMIS ---
+        function hitungTotal() {
+            const varianSelect = document.getElementById("varian");
+            const jumlahInput = document.getElementById("jumlah");
+            const totalHargaSpan = document.getElementById("totalHarga");
+            const promoDetailDiv = document.getElementById("promoDetail");
+
+            // Ambil data harga dasar dan nama varian
+            const [hargaDasarStr, namaVarian] = varianSelect.value.split('|');
+            const hargaDasar = parseInt(hargaDasarStr) || 0;
+            const jumlah = parseInt(jumlahInput.value) || 0;
+
+            if (hargaDasar === 0 || jumlah === 0) {
+                totalHargaSpan.textContent = formatRupiah(0);
+                promoDetailDiv.classList.add('hidden');
+                return;
+            }
+
+            let hargaTotal = hargaDasar * jumlah;
+            let diskonDiambil = 0;
+            let promoDiterapkan = "Tidak ada promo grosir diambil.";
+
+            // Cek Promo Grosir
+            for (const promo of PROMO) {
+                if (jumlah >= promo.min) {
+                    diskonDiambil = promo.diskon;
+                    promoDiterapkan = `Diskon Grosir ${promo.diskon * 100}% (Beli minimal ${promo.min} pcs)`;
+                    break;
+                }
+            }
+
+            const potonganHarga = hargaTotal * diskonDiambil;
+            const hargaFinal = hargaTotal - potonganHarga;
+
+            // Update Tampilan
+            totalHargaSpan.textContent = formatRupiah(hargaFinal);
+
+            // Tampilkan Detail Promo
+            promoDetailDiv.innerHTML = `
+                <p>Harga Normal (${jumlah}x): ${formatRupiah(hargaTotal)}</p>
+                <p>Promo Diambil: ${promoDiterapkan}</p>
+                <p>Potongan Harga: ${formatRupiah(potonganHarga)}</p>
+            `;
+            promoDetailDiv.classList.remove('hidden');
+        }
+
+        // --- FUNGSI KIRIM KE WHATSAPP ---
+        function kirimWhatsApp() {
+            const nama = document.getElementById("nama").value.trim();
+            const varianSelect = document.getElementById("varian");
+            const jumlah = document.getElementById("jumlah").value;
+            const catatan = document.getElementById("catatan").value.trim();
+            const totalHarga = document.getElementById("totalHarga").textContent;
+
+            const [hargaDasarStr, namaVarian] = varianSelect.value.split('|');
+            const hargaDasar = parseInt(hargaDasarStr) || 0;
+            
+            if (!nama || hargaDasar === 0 || !jumlah || jumlah < 1) {
+                alert("Mohon isi Nama, pilih Varian, dan tentukan Jumlah pesanan!");
+                return;
+            }
+
+            // Dapatkan detail promo yang telah dihitung
+            const promoText = document.getElementById("promoDetail").innerText.replace(/\n/g, '%0A');
+
+            const pesan = `Halo Barokah Halalan Food!%0A%0ASaya ingin klaim promo abon sapi:%0A%0A👤 Nama: ${nama}%0A📦 Varian: ${namaVarian}%0A🔢 Jumlah: ${jumlah} pcs%0A%0A--- Rincian Promo ---%0A${promoText}%0A%0A💰 Total Bayar: ${totalHarga}%0A📝 Catatan: ${catatan || '-'}%0A%0AMohon diproses dan konfirmasi totalnya ya! Terima kasih.`;
+            
+            window.open(`https://wa.me/${NOMOR_WA}?text=${pesan}`, "_blank");
+        }
+        
+        // --- FUNGSI TIMER LAMA ANDA ---
+        function startTimer() {
+            const DURATION_SECONDS = 60 * 60 * 2; 
             let expiryTime = localStorage.getItem('promoExpiryTime');
+
             if (!expiryTime) {
                 expiryTime = new Date().getTime() + (DURATION_SECONDS * 1000);
                 localStorage.setItem('promoExpiryTime', expiryTime);
@@ -280,11 +399,9 @@
             function updateTimer() {
                 const now = new Date().getTime();
                 const distance = expiryTime - now;
-
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
                 const formattedTime = `Waktu Tersisa: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
                 
                 display.innerHTML = formattedTime;
@@ -299,11 +416,15 @@
             updateTimer(); 
         }
 
-        window.onload = startTimer;
+        // --- INISIASI SAAT LOAD HALAMAN ---
+        window.onload = function() {
+            startTimer();
+            // Attach hitungTotal ke event perubahan di form
+            document.getElementById("varian").addEventListener("change", hitungTotal);
+            document.getElementById("jumlah").addEventListener("input", hitungTotal);
+            hitungTotal(); // Panggil pertama kali untuk inisiasi Rp 0
+        };
     </script>
 
 </body>
-
-
 </html>
-
