@@ -312,11 +312,10 @@
         { min: 10, diskon: 0.10 }, // 10 PACK
         { min: 6, diskon: 0.081 }, // 6 PACK
         { min: 3, diskon: 0.071 }  // 3 PACK
-        // Dihapus: min: 10, diskon: 0.10 karena bentrok dengan harga pack 10 pcs.
     ];
 
     const HARGA_SACHET_SATUAN = 4990; 
-    const HARGA_SACHET_PACK = 37900; 
+    const HARGA_SACHET_PACK = 37900;  
     const PCS_PER_PACK = 10;
     const NOMOR_WA = "6285725046201";
 
@@ -337,9 +336,11 @@
         const totalHargaSpan = document.getElementById("totalHarga");
         const promoDetailDiv = document.getElementById("promoDetail");
 
+        // Memecah value: HARGA|NAMA VARIAN|TIPE VARIAN
         const parts = varianSelect.value.split('|');
         const hargaDasar = parseInt(parts[0]) || 0;
-        const typeVarian = parts[2];
+        // Penanganan jika parts[2] tidak ada, default ke reguler
+        const typeVarian = parts[2] || 'reguler'; 
         const jumlah = parseInt(jumlahInput.value) || 0;
 
         if (hargaDasar === 0 || jumlah === 0) {
@@ -355,7 +356,7 @@
         promoDiterapkan = "Tidak ada promo grosir diambil.";
         
         if (typeVarian === 'sachet') {
-            // *** LOGIKA HARGA SACHET (10GR) ***
+            // *** LOGIKA SACHET ***
             const jumlahPack = Math.floor(jumlah / PCS_PER_PACK);
             const sisaSatuan = jumlah % PCS_PER_PACK;
             
@@ -375,7 +376,7 @@
             }
 
             // Cek diskon grosir untuk pembelian PACK (hanya jika minimal 3 Pack)
-            if (unitDasarPromo >= PROMO_REGULER[PROMO_REGULER.length - 1].min) { // Cek apakah minimal 3 Pack terpenuhi
+            if (unitDasarPromo >= PROMO_REGULER[PROMO_REGULER.length - 1].min) { 
                 for (const promo of PROMO_REGULER) {
                     if (unitDasarPromo >= promo.min) {
                         diskonDiambil = promo.diskon; 
@@ -391,7 +392,7 @@
 
 
         } else { 
-            // --- LOGIKA HARGA REGULER (100GR) (TETAP) ---
+            // --- LOGIKA HARGA REGULER (100GR) ---
             hargaTotal = hargaDasar * jumlah;
             unitDasarPromo = jumlah; 
             
@@ -427,17 +428,19 @@
         const catatan = document.getElementById("catatan").value.trim();
         const totalHarga = document.getElementById("totalHarga").textContent;
 
-        const [hargaDasarStr, namaVarian] = varianSelect.value.split('|');
+        const [hargaDasarStr] = varianSelect.value.split('|');
         const hargaDasar = parseInt(hargaDasarStr) || 0;
         
         if (!nama || !alamat || hargaDasar === 0 || !jumlah || jumlah < 1) {
             alert("Mohon isi Nama, Alamat, pilih Varian, dan tentukan Jumlah pesanan dengan benar!");
             return;
         }
+        
+        const namaVarianTampil = varianSelect.options[varianSelect.selectedIndex].text.split(' - ')[0]; // Ambil nama varian dari teks option
 
         const promoText = document.getElementById("promoDetail").innerText.replace(/\n/g, '%0A');
 
-        const pesan = `Halo Barokah Halalan Food!%0A%0ASaya ingin klaim promo abon sapi:%0A%0A👤 Nama: ${nama}%0A🏠 Alamat: ${alamat}%0A%0A📦 Varian: ${namaVarian}%0A🔢 Jumlah: ${jumlah} pcs%0A%0A--- Rincian Promo ---%0A${promoText}%0A%0A💰 Total Bayar: ${totalHarga}%0A📝 Catatan: ${catatan || '-'}%0A%0AMohon diproses dan konfirmasi totalnya ya! Terima kasih.`;
+        const pesan = `Halo Barokah Halalan Food!%0A%0ASaya ingin klaim promo abon sapi:%0A%0A👤 Nama: ${nama}%0A🏠 Alamat: ${alamat}%0A%0A📦 Varian: ${namaVarianTampil}%0A🔢 Jumlah: ${jumlah} pcs%0A%0A--- Rincian Promo ---%0A${promoText}%0A%0A💰 Total Bayar: ${totalHarga}%0A📝 Catatan: ${catatan || '-'}%0A%0AMohon diproses dan konfirmasi totalnya ya! Terima kasih.`;
         
         window.open(`https://wa.me/${NOMOR_WA}?text=${pesan}`, "_blank");
     }
@@ -481,10 +484,10 @@
         hitungTotal(); 
     };
 </script>
-
+    
 </body>
-
 </html>
+
 
 
 
