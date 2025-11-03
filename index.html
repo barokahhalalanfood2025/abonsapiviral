@@ -305,7 +305,6 @@
 
     <script>
     // --- DATA HARGA DAN PROMO FINAL AKHIR ---
-    // CATATAN: Diskon Grosir HANYA diterapkan untuk pembelian minimal 3 PACK (30 pcs)
     const PROMO_REGULER = [ 
         { min: 50, diskon: 0.22 }, // 50 PACK
         { min: 25, diskon: 0.15 }, // 25 PACK
@@ -329,18 +328,19 @@
         }).format(bulat);
     };
 
-    // --- FUNGSI HITUNG TOTAL HARGA DINAMIS (KOREKSI FINAL) ---
+    // --- FUNGSI HITUNG TOTAL HARGA DINAMIS (KOREKSI LOGIKA AKHIR) ---
     function hitungTotal() {
         const varianSelect = document.getElementById("varian");
         const jumlahInput = document.getElementById("jumlah");
         const totalHargaSpan = document.getElementById("totalHarga");
         const promoDetailDiv = document.getElementById("promoDetail");
 
-        // Memecah value: HARGA|NAMA VARIAN|TIPE VARIAN
+        // MEMBACA DATA DARI VALUE. KARENA KITA TIDAK MENAMBAH typeVarian di HTML
+        // KITA AKAN TENTUKAN TIPE DARI NAMA VARIANT (Abon Sapi 10gr)
         const parts = varianSelect.value.split('|');
         const hargaDasar = parseInt(parts[0]) || 0;
-        // Penanganan jika parts[2] tidak ada, default ke reguler
-        const typeVarian = parts[2] || 'reguler'; 
+        const namaVarianFull = varianSelect.options[varianSelect.selectedIndex].text;
+        const isSachet = namaVarianFull.includes('10gr'); // <-- Logika penentu tipe varian
         const jumlah = parseInt(jumlahInput.value) || 0;
 
         if (hargaDasar === 0 || jumlah === 0) {
@@ -355,12 +355,12 @@
         potonganHarga = 0;
         promoDiterapkan = "Tidak ada promo grosir diambil.";
         
-        if (typeVarian === 'sachet') {
-            // *** LOGIKA SACHET ***
+        if (isSachet) { // Lakukan logika sachet
+            // *** LOGIKA HARGA SACHET (10GR) ***
             const jumlahPack = Math.floor(jumlah / PCS_PER_PACK);
             const sisaSatuan = jumlah % PCS_PER_PACK;
             
-            // HARGA TOTAL: (Jumlah Pack x HARGA PACK) + (Sisa Satuan x Harga Ecer)
+            // HARGA TOTAL: (Jumlah Pack x HARGA PACK 37900) + (Sisa Satuan x HARGA SATUAN 4990)
             const hargaPackTotal = jumlahPack * HARGA_SACHET_PACK; 
             const hargaSatuanSisa = sisaSatuan * HARGA_SACHET_SATUAN; 
             hargaTotal = hargaPackTotal + hargaSatuanSisa;
@@ -372,7 +372,8 @@
                 promoDiterapkan = `Promo Pack (${PCS_PER_PACK} sachet = ${formatRupiah(HARGA_SACHET_PACK)}). Total ${jumlahPack} Pack.`;
             } else {
                  promoDiterapkan = "Harga Satuan Ecer Normal.";
-                 hargaTotal = jumlah * HARGA_SACHET_SATUAN; // Jika < 10 pcs, harga total = harga ecer
+                 // Jika < 10 pcs, harga total dihitung dari harga ecer
+                 hargaTotal = jumlah * HARGA_SACHET_SATUAN; 
             }
 
             // Cek diskon grosir untuk pembelian PACK (hanya jika minimal 3 Pack)
@@ -487,6 +488,7 @@
     
 </body>
 </html>
+
 
 
 
