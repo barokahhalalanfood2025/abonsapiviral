@@ -251,13 +251,15 @@
     <div>
         <label for="varian" class="block font-semibold mb-2 text-lg">Pilih Varian Produk <span class="text-red-500">*</span></label>
         <select id="varian" required
-            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300">
-            <option value="0|Pilih Varian">-- Pilih Varian --</option>
-            <option value="34999|Abon Sapi 100gr (Original)">Abon Sapi 100gr (Original) - Rp 35.999</option>
-            <option value="36999|Abon Sapi 100gr (Pedas)">Abon Sapi 100gr (Pedas) - Rp 35.999</option>
-            <option value="12900|Abon Sapi 10gr (Original)">Abon Sapi 10gr (Original) - Rp 4.990</option>
-            <option value="13900|Abon Sapi 10gr (Pedas)">Abon Sapi 10gr (Pedas) - Rp 4.990</option>
-        </select>
+    class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300">
+    <option value="0|Pilih Varian">-- Pilih Varian --</option>
+    
+    <option value="35999|Abon Sapi 100gr (Original)|type:reguler">Abon Sapi 100gr (Original) - Rp 35.999</option>
+    <option value="35999|Abon Sapi 100gr (Pedas)|type:reguler">Abon Sapi 100gr (Pedas) - Rp 35.999</option>
+    
+    <option value="4990|Abon Sapi 10gr (Original)|type:sachet">Abon Sapi 10gr (Original) - Rp 4.990 (Harga Satuan)</option>
+    <option value="4990|Abon Sapi 10gr (Pedas)">Abon Sapi 10gr (Pedas) - Rp 4.990 (Harga Satuan)</option>
+</select>
     </div>
     
     <div>
@@ -302,141 +304,177 @@
     </footer>
 
     <script>
-        // --- DATA HARGA DAN PROMO ---
-        const PROMO = [
-            { min: 50, diskon: 0.22 }, // Beli 50 diskon 22%
-            { min: 25, diskon: 0.15 }, // Beli 25 diskon 15%
-            { min: 10, diskon: 0.10 }, // Beli 10 diskon 10%
-            { min: 6, diskon: 0.081 }, // Beli 6 diskon 8.1%
-            { min: 3, diskon: 0.071 }  // Beli 3 diskon 7.1%
-        ];
-        const NOMOR_WA = "6285725046201";
+    // --- DATA HARGA DAN PROMO BARU ---
+    const PROMO_REGULER = [ // Diskon berdasarkan jumlah unit (untuk 100gr) DAN jumlah Pack (untuk 10gr)
+        { min: 50, diskon: 0.22 }, // Beli 50 diskon 22%
+        { min: 25, diskon: 0.15 }, // Beli 25 diskon 15%
+        { min: 10, diskon: 0.10 }, // Beli 10 diskon 10%
+        { min: 6, diskon: 0.081 }, // Beli 6 diskon 8.1%
+        { min: 3, diskon: 0.071 }  // Beli 3 diskon 7.1%
+    ];
 
-        // --- FUNGSI FORMAT MATA UANG ---
-        const formatRupiah = (angka) => {
-            return new Intl.NumberFormat("id-ID", {
-                style: "currency",
-                currency: "IDR",
-                minimumFractionDigits: 0
-            }).format(angka);
-        };
+    const HARGA_SACHET_PACK = 37900; // Harga 10 sachet per pack
+    const PCS_PER_PACK = 10;
+    const NOMOR_WA = "6285725046201";
 
-        // --- FUNGSI HITUNG TOTAL HARGA DINAMIS ---
-        function hitungTotal() {
-            const varianSelect = document.getElementById("varian");
-            const jumlahInput = document.getElementById("jumlah");
-            const totalHargaSpan = document.getElementById("totalHarga");
-            const promoDetailDiv = document.getElementById("promoDetail");
+    // --- FUNGSI FORMAT MATA UANG ---
+    const formatRupiah = (angka) => {
+        // Pembulatan ke integer terdekat
+        const bulat = Math.round(angka); 
+        
+        return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR",
+            minimumFractionDigits: 0
+        }).format(bulat);
+    };
 
-            // Ambil data harga dasar dan nama varian
-            const [hargaDasarStr, namaVarian] = varianSelect.value.split('|');
-            const hargaDasar = parseInt(hargaDasarStr) || 0;
-            const jumlah = parseInt(jumlahInput.value) || 0;
+    // --- FUNGSI HITUNG TOTAL HARGA DINAMIS (REVISI FINAL) ---
+    function hitungTotal() {
+        const varianSelect = document.getElementById("varian");
+        const jumlahInput = document.getElementById("jumlah");
+        const totalHargaSpan = document.getElementById("totalHarga");
+        const promoDetailDiv = document.getElementById("promoDetail");
+        
+        // Mengambil data: Harga|Nama Varian|Tipe Varian (sachet/reguler)
+        const [hargaDasarStr, namaVarian, typeVarian] = varianSelect.value.split('|');
+        const hargaDasar = parseInt(hargaDasarStr) || 0;
+        const jumlah = parseInt(jumlahInput.value) || 0;
 
-            if (hargaDasar === 0 || jumlah === 0) {
-                totalHargaSpan.textContent = formatRupiah(0);
-                promoDetailDiv.classList.add('hidden');
-                return;
+        if (hargaDasar === 0 || jumlah === 0) {
+            totalHargaSpan.textContent = formatRupiah(0);
+            promoDetailDiv.classList.add('hidden');
+            return;
+        }
+
+        let hargaTotal, diskonDiambil, hargaFinal, promoDiterapkan, potonganHarga, unitDasarPromo;
+        
+        diskonDiambil = 0;
+        potonganHarga = 0;
+        promoDiterapkan = "Tidak ada promo grosir diambil.";
+        hargaFinal = 0;
+        
+        // Cek Tipe Varian
+        if (typeVarian === 'sachet') {
+            // --- LOGIKA HARGA SACHET (10GR) ---
+            const jumlahPack = Math.floor(jumlah / PCS_PER_PACK);
+            const sisaSatuan = jumlah % PCS_PER_PACK;
+            
+            // Harga total dihitung dengan harga pack untuk kelipatan 10 dan harga satuan untuk sisanya
+            const hargaPackTotal = jumlahPack * HARGA_SACHET_PACK;
+            const hargaSatuanSisa = sisaSatuan * hargaDasar;
+            hargaTotal = hargaPackTotal + hargaSatuanSisa;
+            
+            unitDasarPromo = jumlahPack; // Promo grosir dihitung berdasarkan jumlah pack
+            promoDiterapkan = `Promo Pack (${PCS_PER_PACK} sachet = ${formatRupiah(HARGA_SACHET_PACK)}). Total ${jumlahPack} Pack.`;
+
+            // Cek promo grosir untuk Pack
+            for (const promo of PROMO_REGULER) {
+                if (unitDasarPromo >= promo.min) {
+                    diskonDiambil = promo.diskon; 
+                    // Potongan dihitung dari total harga Pack saja
+                    potonganHarga = hargaPackTotal * diskonDiambil;
+                    
+                    promoDiterapkan += ` Ditambah Diskon Grosir ${promo.diskon * 100}% untuk Pembelian Pack.`;
+                    break; 
+                }
             }
+            
+            hargaFinal = hargaTotal - potonganHarga;
 
-            let hargaTotal = hargaDasar * jumlah;
-            let diskonDiambil = 0;
-            let promoDiterapkan = "Tidak ada promo grosir diambil.";
-
-            // Cek Promo Grosir
-            for (const promo of PROMO) {
-                if (jumlah >= promo.min) {
+        } else { 
+            // --- LOGIKA HARGA REGULER (100GR) ---
+            hargaTotal = hargaDasar * jumlah;
+            unitDasarPromo = jumlah; // Promo grosir dihitung berdasarkan jumlah unit
+            
+            for (const promo of PROMO_REGULER) {
+                if (unitDasarPromo >= promo.min) {
                     diskonDiambil = promo.diskon;
                     promoDiterapkan = `Diskon Grosir ${promo.diskon * 100}% (Beli minimal ${promo.min} pcs)`;
+                    potonganHarga = hargaTotal * diskonDiambil;
                     break;
                 }
             }
-
-            const potonganHarga = hargaTotal * diskonDiambil;
-            const hargaFinal = hargaTotal - potonganHarga;
-
-            // Update Tampilan
-            totalHargaSpan.textContent = formatRupiah(hargaFinal);
-
-            // Tampilkan Detail Promo
-            promoDetailDiv.innerHTML = `
-                <p>Harga Normal (${jumlah}x): ${formatRupiah(hargaTotal)}</p>
-                <p>Promo Diambil: ${promoDiterapkan}</p>
-                <p>Potongan Harga: ${formatRupiah(potonganHarga)}</p>
-            `;
-            promoDetailDiv.classList.remove('hidden');
+            hargaFinal = hargaTotal - potonganHarga;
         }
 
-// --- FUNGSI KIRIM KE WHATSAPP YANG DIPERBARUI ---
-function kirimWhatsApp() {
-    const nama = document.getElementById("nama").value.trim();
-    const alamat = document.getElementById("alamat").value.trim(); // <--- BARU: Ambil Alamat
-    const varianSelect = document.getElementById("varian");
-    const jumlah = document.getElementById("jumlah").value;
-    const catatan = document.getElementById("catatan").value.trim();
-    const totalHarga = document.getElementById("totalHarga").textContent;
+        // Update Tampilan
+        totalHargaSpan.textContent = formatRupiah(hargaFinal);
 
-    const [hargaDasarStr, namaVarian] = varianSelect.value.split('|');
-    const hargaDasar = parseInt(hargaDasarStr) || 0;
-    
-    // VALIDASI BARU: Pastikan semua field wajib terisi
-    if (!nama || !alamat || hargaDasar === 0 || !jumlah || jumlah < 1) {
-        alert("Mohon isi Nama, Alamat, pilih Varian, dan tentukan Jumlah pesanan dengan benar!");
-        return;
+        // Tampilkan Detail Promo
+        promoDetailDiv.innerHTML = `
+            <p>Harga Total Sebelum Diskon: ${formatRupiah(hargaTotal)}</p>
+            <p>Promo Diambil: ${promoDiterapkan}</p>
+            <p>Potongan Harga: ${formatRupiah(potonganHarga)}</p>
+        `;
+        promoDetailDiv.classList.remove('hidden');
     }
 
-    // Dapatkan detail promo yang telah dihitung
-    const promoText = document.getElementById("promoDetail").innerText.replace(/\n/g, '%0A');
+    // --- FUNGSI KIRIM KE WHATSAPP (TETAP) ---
+    function kirimWhatsApp() {
+        const nama = document.getElementById("nama").value.trim();
+        const alamat = document.getElementById("alamat").value.trim();
+        const varianSelect = document.getElementById("varian");
+        const jumlah = document.getElementById("jumlah").value;
+        const catatan = document.getElementById("catatan").value.trim();
+        const totalHarga = document.getElementById("totalHarga").textContent;
 
-    // PESAN WHATSAPP DISISIPKAN ALAMAT
-    const pesan = `Halo Barokah Halalan Food!%0A%0ASaya ingin klaim promo abon sapi:%0A%0A👤 Nama: ${nama}%0A🏠 Alamat: ${alamat}%0A%0A📦 Varian: ${namaVarian}%0A🔢 Jumlah: ${jumlah} pcs%0A%0A--- Rincian Promo ---%0A${promoText}%0A%0A💰 Total Bayar: ${totalHarga}%0A📝 Catatan: ${catatan || '-'}%0A%0AMohon diproses dan konfirmasi totalnya ya! Terima kasih.`;
-    
-    window.open(`https://wa.me/${NOMOR_WA}?text=${pesan}`, "_blank");
-}
-// END of FUNGSI KIRIM KE WHATSAPP YANG DIPERBARUI
+        const [hargaDasarStr, namaVarian] = varianSelect.value.split('|');
+        const hargaDasar = parseInt(hargaDasarStr) || 0;
         
-        // --- FUNGSI TIMER LAMA ANDA ---
-        function startTimer() {
-            const DURATION_SECONDS = 60 * 60 * 2; 
-            let expiryTime = localStorage.getItem('promoExpiryTime');
-
-            if (!expiryTime) {
-                expiryTime = new Date().getTime() + (DURATION_SECONDS * 1000);
-                localStorage.setItem('promoExpiryTime', expiryTime);
-            }
-            
-            const display = document.getElementById('countdown-timer');
-
-            function updateTimer() {
-                const now = new Date().getTime();
-                const distance = expiryTime - now;
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                const formattedTime = `Waktu Tersisa: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                
-                display.innerHTML = formattedTime;
-
-                if (distance < 0) {
-                    clearInterval(timerInterval);
-                    display.innerHTML = "WAKTU PROMO HABIS!";
-                }
-            }
-
-            const timerInterval = setInterval(updateTimer, 1000);
-            updateTimer(); 
+        if (!nama || !alamat || hargaDasar === 0 || !jumlah || jumlah < 1) {
+            alert("Mohon isi Nama, Alamat, pilih Varian, dan tentukan Jumlah pesanan dengan benar!");
+            return;
         }
 
-        // --- INISIASI SAAT LOAD HALAMAN ---
-        window.onload = function() {
-            startTimer();
-            // Attach hitungTotal ke event perubahan di form
-            document.getElementById("varian").addEventListener("change", hitungTotal);
-            document.getElementById("jumlah").addEventListener("input", hitungTotal);
-            hitungTotal(); // Panggil pertama kali untuk inisiasi Rp 0
-        };
-    </script>
+        const promoText = document.getElementById("promoDetail").innerText.replace(/\n/g, '%0A');
+
+        const pesan = `Halo Barokah Halalan Food!%0A%0ASaya ingin klaim promo abon sapi:%0A%0A👤 Nama: ${nama}%0A🏠 Alamat: ${alamat}%0A%0A📦 Varian: ${namaVarian}%0A🔢 Jumlah: ${jumlah} pcs%0A%0A--- Rincian Promo ---%0A${promoText}%0A%0A💰 Total Bayar: ${totalHarga}%0A📝 Catatan: ${catatan || '-'}%0A%0AMohon diproses dan konfirmasi totalnya ya! Terima kasih.`;
+        
+        window.open(`https://wa.me/${NOMOR_WA}?text=${pesan}`, "_blank");
+    }
+    
+    // --- FUNGSI TIMER LAMA ANDA (TETAP) ---
+    function startTimer() {
+        const DURATION_SECONDS = 60 * 60 * 2; 
+        let expiryTime = localStorage.getItem('promoExpiryTime');
+        if (!expiryTime) {
+            expiryTime = new Date().getTime() + (DURATION_SECONDS * 1000);
+            localStorage.setItem('promoExpiryTime', expiryTime);
+        }
+        
+        const display = document.getElementById('countdown-timer');
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = expiryTime - now;
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const formattedTime = `Waktu Tersisa: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            display.innerHTML = formattedTime;
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                display.innerHTML = "WAKTU PROMO HABIS!";
+            }
+        }
+
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer(); 
+    }
+
+    // --- INISIASI SAAT LOAD HALAMAN ---
+    window.onload = function() {
+        startTimer();
+        document.getElementById("varian").addEventListener("change", hitungTotal);
+        document.getElementById("jumlah").addEventListener("input", hitungTotal);
+        hitungTotal(); 
+    };
+</script>
 
 </body>
 
 </html>
+
