@@ -304,111 +304,118 @@
     </footer>
 
     <script>
-    // --- DATA HARGA DAN PROMO BARU ---
-    const PROMO_REGULER = [ // Diskon berdasarkan jumlah unit (untuk 100gr) DAN jumlah Pack (untuk 10gr)
-        { min: 50, diskon: 0.22 }, // Beli 50 diskon 22%
-        { min: 25, diskon: 0.15 }, // Beli 25 diskon 15%
-        { min: 10, diskon: 0.10 }, // Beli 10 diskon 10%
-        { min: 6, diskon: 0.081 }, // Beli 6 diskon 8.1%
-        { min: 3, diskon: 0.071 }  // Beli 3 diskon 7.1%
-    ];
+// --- DATA HARGA DAN PROMO BARU ---
+const PROMO_REGULER = [ // Diskon berdasarkan jumlah unit/pack
+    { min: 50, diskon: 0.22 }, // Beli 50 diskon 22%
+    { min: 25, diskon: 0.15 }, // Beli 25 diskon 15%
+    { min: 10, diskon: 0.10 }, // Beli 10 diskon 10%
+    { min: 6, diskon: 0.081 }, // Beli 6 diskon 8.1%
+    { min: 3, diskon: 0.071 }  // Beli 3 diskon 7.1%
+];
 
-    const HARGA_SACHET_PACK = 37900; // Harga 10 sachet per pack
-    const PCS_PER_PACK = 10;
-    const NOMOR_WA = "6285725046201";
+const HARGA_SACHET_SATUAN = 4990; // Harga ecer 1 pc
+const HARGA_SACHET_PACK = 37900;  // Harga 10 sachet per pack
+const PCS_PER_PACK = 10;
+const NOMOR_WA = "6285725046201";
 
-    // --- FUNGSI FORMAT MATA UANG ---
-    const formatRupiah = (angka) => {
-        // Pembulatan ke integer terdekat
-        const bulat = Math.round(angka); 
-        
-        return new Intl.NumberFormat("id-ID", {
-            style: "currency",
-            currency: "IDR",
-            minimumFractionDigits: 0
-        }).format(bulat);
-    };
+// --- FUNGSI FORMAT MATA UANG (TETAP) ---
+const formatRupiah = (angka) => {
+    const bulat = Math.round(angka); 
+    return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0
+    }).format(bulat);
+};
 
-    // --- FUNGSI HITUNG TOTAL HARGA DINAMIS (REVISI FINAL) ---
-    function hitungTotal() {
-        const varianSelect = document.getElementById("varian");
-        const jumlahInput = document.getElementById("jumlah");
-        const totalHargaSpan = document.getElementById("totalHarga");
-        const promoDetailDiv = document.getElementById("promoDetail");
-        
-        // Mengambil data: Harga|Nama Varian|Tipe Varian (sachet/reguler)
-        const [hargaDasarStr, namaVarian, typeVarian] = varianSelect.value.split('|');
-        const hargaDasar = parseInt(hargaDasarStr) || 0;
-        const jumlah = parseInt(jumlahInput.value) || 0;
+// --- FUNGSI HITUNG TOTAL HARGA DINAMIS (KOREKSI LOGIKA SACHET) ---
+function hitungTotal() {
+    const varianSelect = document.getElementById("varian");
+    const jumlahInput = document.getElementById("jumlah");
+    const totalHargaSpan = document.getElementById("totalHarga");
+    const promoDetailDiv = document.getElementById("promoDetail");
 
-        if (hargaDasar === 0 || jumlah === 0) {
-            totalHargaSpan.textContent = formatRupiah(0);
-            promoDetailDiv.classList.add('hidden');
-            return;
-        }
+    // Ambil data harga dasar, nama varian, dan TIPE VARIAN
+    const [hargaDasarStr, namaVarian, typeVarian] = varianSelect.value.split('|');
+    const hargaDasar = parseInt(hargaDasarStr) || 0;
+    const jumlah = parseInt(jumlahInput.value) || 0;
 
-        let hargaTotal, diskonDiambil, hargaFinal, promoDiterapkan, potonganHarga, unitDasarPromo;
-        
-        diskonDiambil = 0;
-        potonganHarga = 0;
-        promoDiterapkan = "Tidak ada promo grosir diambil.";
-        hargaFinal = 0;
-        
-        // Cek Tipe Varian
-        if (typeVarian === 'sachet') {
-            // --- LOGIKA HARGA SACHET (10GR) ---
-            const jumlahPack = Math.floor(jumlah / PCS_PER_PACK);
-            const sisaSatuan = jumlah % PCS_PER_PACK;
-            
-            // Harga total dihitung dengan harga pack untuk kelipatan 10 dan harga satuan untuk sisanya
-            const hargaPackTotal = jumlahPack * HARGA_SACHET_PACK;
-            const hargaSatuanSisa = sisaSatuan * hargaDasar;
-            hargaTotal = hargaPackTotal + hargaSatuanSisa;
-            
-            unitDasarPromo = jumlahPack; // Promo grosir dihitung berdasarkan jumlah pack
-            promoDiterapkan = `Promo Pack (${PCS_PER_PACK} sachet = ${formatRupiah(HARGA_SACHET_PACK)}). Total ${jumlahPack} Pack.`;
-
-            // Cek promo grosir untuk Pack
-            for (const promo of PROMO_REGULER) {
-                if (unitDasarPromo >= promo.min) {
-                    diskonDiambil = promo.diskon; 
-                    // Potongan dihitung dari total harga Pack saja
-                    potonganHarga = hargaPackTotal * diskonDiambil;
-                    
-                    promoDiterapkan += ` Ditambah Diskon Grosir ${promo.diskon * 100}% untuk Pembelian Pack.`;
-                    break; 
-                }
-            }
-            
-            hargaFinal = hargaTotal - potonganHarga;
-
-        } else { 
-            // --- LOGIKA HARGA REGULER (100GR) ---
-            hargaTotal = hargaDasar * jumlah;
-            unitDasarPromo = jumlah; // Promo grosir dihitung berdasarkan jumlah unit
-            
-            for (const promo of PROMO_REGULER) {
-                if (unitDasarPromo >= promo.min) {
-                    diskonDiambil = promo.diskon;
-                    promoDiterapkan = `Diskon Grosir ${promo.diskon * 100}% (Beli minimal ${promo.min} pcs)`;
-                    potonganHarga = hargaTotal * diskonDiambil;
-                    break;
-                }
-            }
-            hargaFinal = hargaTotal - potonganHarga;
-        }
-
-        // Update Tampilan
-        totalHargaSpan.textContent = formatRupiah(hargaFinal);
-
-        // Tampilkan Detail Promo
-        promoDetailDiv.innerHTML = `
-            <p>Harga Total Sebelum Diskon: ${formatRupiah(hargaTotal)}</p>
-            <p>Promo Diambil: ${promoDiterapkan}</p>
-            <p>Potongan Harga: ${formatRupiah(potonganHarga)}</p>
-        `;
-        promoDetailDiv.classList.remove('hidden');
+    if (hargaDasar === 0 || jumlah === 0) {
+        totalHargaSpan.textContent = formatRupiah(0);
+        promoDetailDiv.classList.add('hidden');
+        return;
     }
+
+    let hargaTotal, diskonDiambil, hargaFinal, promoDiterapkan, potonganHarga, unitDasarPromo;
+    
+    diskonDiambil = 0;
+    potonganHarga = 0;
+    promoDiterapkan = "Tidak ada promo grosir diambil.";
+    hargaFinal = 0;
+    
+    if (typeVarian === 'sachet') {
+        // --- LOGIKA KOREKSI HARGA SACHET (10GR) ---
+        const jumlahPack = Math.floor(jumlah / PCS_PER_PACK);
+        const sisaSatuan = jumlah % PCS_PER_PACK;
+        
+        // 1. Hitung harga total dengan harga PACK untuk kelipatan 10
+        const hargaPackTotal = jumlahPack * HARGA_SACHET_PACK; 
+        // 2. Tambahkan sisa satuan (harga ecer)
+        const hargaSatuanSisa = sisaSatuan * HARGA_SACHET_SATUAN; 
+        
+        hargaTotal = hargaPackTotal + hargaSatuanSisa; // Harga total sebelum diskon grosir pack
+
+        unitDasarPromo = jumlahPack; // Promo grosir selanjutnya dihitung berdasarkan jumlah PACK
+        
+        if (jumlahPack > 0) {
+            promoDiterapkan = `Promo Pack (${PCS_PER_PACK} sachet = ${formatRupiah(HARGA_SACHET_PACK)}). Total ${jumlahPack} Pack.`;
+        } else {
+             promoDiterapkan = "Harga Satuan Ecer.";
+        }
+
+        // Cek diskon grosir untuk pembelian PACK (minimal 3 pack)
+        for (const promo of PROMO_REGULER) {
+            if (unitDasarPromo >= promo.min) {
+                diskonDiambil = promo.diskon; 
+                // Potongan HANYA dihitung dari total harga PACK yang diskon (hargaPackTotal)
+                potonganHarga = hargaPackTotal * diskonDiambil;
+                
+                promoDiterapkan += ` Ditambah Diskon Grosir ${promo.diskon * 100}% untuk Pembelian Pack.`;
+                break; 
+            }
+        }
+        
+        hargaFinal = hargaTotal - potonganHarga;
+
+
+    } else { 
+        // --- LOGIKA HARGA REGULER (100GR) (TETAP) ---
+        hargaTotal = hargaDasar * jumlah;
+        unitDasarPromo = jumlah; 
+        
+        for (const promo of PROMO_REGULER) {
+            if (unitDasarPromo >= promo.min) {
+                diskonDiambil = promo.diskon;
+                promoDiterapkan = `Diskon Grosir ${promo.diskon * 100}% (Beli minimal ${promo.min} pcs)`;
+                potonganHarga = hargaTotal * diskonDiambil;
+                break;
+            }
+        }
+        hargaFinal = hargaTotal - potonganHarga;
+    }
+
+    // Update Tampilan
+    totalHargaSpan.textContent = formatRupiah(hargaFinal);
+
+    // Tampilkan Detail Promo
+    promoDetailDiv.innerHTML = `
+        <p>Harga Total Sebelum Potongan: ${formatRupiah(hargaTotal)}</p>
+        <p>Promo Diambil: ${promoDiterapkan}</p>
+        <p>Potongan Harga: ${formatRupiah(potonganHarga)}</p>
+    `;
+    promoDetailDiv.classList.remove('hidden');
+}
+// END OF hitungTotal()
 
     // --- FUNGSI KIRIM KE WHATSAPP (TETAP) ---
     function kirimWhatsApp() {
@@ -477,4 +484,5 @@
 </body>
 
 </html>
+
 
