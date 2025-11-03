@@ -28,7 +28,7 @@
 
     <header class="bg-white py-4 shadow-lg sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 flex justify-between items-center">
-            <h1 class="text-2xl font-extrabold text-red-600 tracking-wider">BAROKAH FOOD</h1>
+            <h1 class="text-2xl font-extrabold text-red-600 tracking-wider">BAROKAH HALALAN FOOD</h1>
             <a href="#order-form" class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-green-700 transition">
                 <i class="fas fa-shopping-cart"></i> Order Promo Sekarang!
             </a>
@@ -48,9 +48,9 @@
                 </p>
 
                 <div class="flex flex-wrap justify-center space-x-4 md:space-x-6 mt-6 mb-8 text-sm md:text-lg font-semibold text-green-700">
-                    <span class="flex items-center m-1"><i class="fas fa-check-circle mr-2 text-green-600"></i> HALAL MUI</span>
-                    <span class="flex items-center m-1"><i class="fas fa-check-circle mr-2 text-green-600"></i> BPOM RI</span>
-                    <span class="flex items-center m-1"><i class="fas fa-check-circle mr-2 text-green-600"></i> TANPA MSG & PENGAWET (AMAN MPASI)</span>
+                    <span class="flex items-center m-1"><i class="fas fa-check-circle mr-2 text-green-600"></i> 100% DAGING TANPA CAMPURAN</span>
+                    <span class="flex items-center m-1"><i class="fas fa-check-circle mr-2 text-green-600"></i> TANPA PENGAWET</span>
+                    <span class="flex items-center m-1"><i class="fas fa-check-circle mr-2 text-green-600"></i> TANPA MSG</span>
                 </div>
 
                 <div class="h-80 w-full max-w-2xl mx-auto rounded-xl shadow-2xl overflow-hidden mb-4">
@@ -237,51 +237,56 @@
 
                 <form id="mainOrderForm" class="bg-white p-8 rounded-2xl shadow-xl space-y-6 text-left text-gray-800">
 
-                    <div>
-                        <label for="nama" class="block font-semibold mb-2 text-lg">Nama Pemesan <span class="text-red-500">*</span></label>
-                        <input type="text" id="nama" placeholder="Contoh: Budi Santoso" required
-                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300">
-                    </div>
+    <div>
+        <label for="nama" class="block font-semibold mb-2 text-lg">Nama Pemesan <span class="text-red-500">*</span></label>
+        <input type="text" id="nama" placeholder="Contoh: Budi Santoso" required
+            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300">
+    </div>
 
-                    <div>
-                        <label for="varian" class="block font-semibold mb-2 text-lg">Pilih Varian Produk <span class="text-red-500">*</span></label>
-                        <select id="varian" required
-                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300">
-                            <option value="0|Pilih Varian">-- Pilih Varian --</option>
-                            <option value="34999|Abon Sapi 100gr (Original)">Abon Sapi 100gr (Original) - Rp 34.999</option>
-                            <option value="36999|Abon Sapi 100gr (Pedas)">Abon Sapi 100gr (Pedas) - Rp 36.999</option>
-                            <option value="12900|Abon Sapi 10gr (Original)">Abon Sapi 10gr (Original) - Rp 12.900</option>
-                            <option value="13900|Abon Sapi 10gr (Pedas)">Abon Sapi 10gr (Pedas) - Rp 13.900</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <label for="jumlah" class="block font-semibold mb-2 text-lg">Jumlah Pesanan <span class="text-red-500">*</span></label>
-                        <input type="number" id="jumlah" min="1" value="1" placeholder="Contoh: 3" required
-                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300" oninput="hitungTotal()">
+    <div>
+        <label for="alamat" class="block font-semibold mb-2 text-lg">Alamat Lengkap (Untuk Pengiriman) <span class="text-red-500">*</span></label>
+        <textarea id="alamat" rows="3" placeholder="Jalan/Blok, No. Rumah, RT/RW, Kelurahan, Kecamatan, Kota/Kabupaten, Kode Pos" required
+            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300"></textarea>
+    </div>
+    <div>
+        <label for="varian" class="block font-semibold mb-2 text-lg">Pilih Varian Produk <span class="text-red-500">*</span></label>
+        <select id="varian" required
+            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300">
+            <option value="0|Pilih Varian">-- Pilih Varian --</option>
+            <option value="34999|Abon Sapi 100gr (Original)">Abon Sapi 100gr (Original) - Rp 35.999</option>
+            <option value="36999|Abon Sapi 100gr (Pedas)">Abon Sapi 100gr (Pedas) - Rp 35.999</option>
+            <option value="12900|Abon Sapi 10gr (Original)">Abon Sapi 10gr (Original) - Rp 4.990</option>
+            <option value="13900|Abon Sapi 10gr (Pedas)">Abon Sapi 10gr (Pedas) - Rp 4.990</option>
+        </select>
+    </div>
+    
+    <div>
+        <label for="jumlah" class="block font-semibold mb-2 text-lg">Jumlah Pesanan <span class="text-red-500">*</span></label>
+        <input type="number" id="jumlah" min="1" value="1" placeholder="Contoh: 3" required
+            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300" oninput="hitungTotal()">
 
-                        <div id="promoDetail" class="mt-4 p-3 bg-red-100 border border-red-300 text-red-700 rounded-lg text-sm font-medium hidden">
-                            </div>
-                        <p class="mt-3 text-sm text-gray-500">
-                            <i class="fas fa-tags mr-1"></i> **PROMO GROSIR:** Beli 3 diskon 10%, Beli 6 diskon 15%, Beli 10 diskon 20%!
-                        </p>
-                    </div>
-                    
-                    <div class="pt-4 border-t-2 border-red-200">
-                        <p class="font-bold text-xl">Total Harga: <span id="totalHarga" class="text-3xl text-red-600">Rp 0</span></p>
-                    </div>
+        <div id="promoDetail" class="mt-4 p-3 bg-red-100 border border-red-300 text-red-700 rounded-lg text-sm font-medium hidden">
+            </div>
+        <p class="mt-3 text-sm text-gray-500">
+            <i class="fas fa-tags mr-1"></i> **PROMO GROSIR:** Beli 3 diskon 7.1%, Beli 6 diskon 8.1%, Beli 10 diskon 10%!
+        </p>
+    </div>
+    
+    <div class="pt-4 border-t-2 border-red-200">
+        <p class="font-bold text-xl">Total Harga: <span id="totalHarga" class="text-3xl text-red-600">Rp 0</span></p>
+    </div>
 
-                    <div>
-                        <label for="catatan" class="block font-semibold mb-2 text-lg">Catatan (Opsional)</label>
-                        <textarea id="catatan" rows="3" placeholder="Contoh: Kirim ke alamat kantor / Mohon dikemas aman"
-                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300"></textarea>
-                    </div>
+    <div>
+        <label for="catatan" class="block font-semibold mb-2 text-lg">Catatan (Opsional)</label>
+        <textarea id="catatan" rows="3" placeholder="Contoh: Kirim ke alamat kantor / Mohon dikemas aman"
+            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300"></textarea>
+    </div>
 
-                    <button type="button" onclick="kirimWhatsApp()"
-                        class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-full text-xl transition cta-button">
-                        Kirim Pesanan ke WhatsApp Sekarang! 🚀
-                    </button>
-                </form>
+    <button type="button" onclick="kirimWhatsApp()"
+        class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-full text-xl transition cta-button">
+        Kirim Pesanan ke WhatsApp Sekarang! 🚀
+    </button>
+</form>
             </div>
         </section>
     </main>
@@ -299,9 +304,11 @@
     <script>
         // --- DATA HARGA DAN PROMO ---
         const PROMO = [
-            { min: 10, diskon: 0.20 }, // Beli 10 diskon 20%
-            { min: 6, diskon: 0.15 },  // Beli 6 diskon 15%
-            { min: 3, diskon: 0.10 }   // Beli 3 diskon 10%
+            { min: 50, diskon: 0.22 }, // Beli 50 diskon 22%
+            { min: 25, diskon: 0.15 }, // Beli 25 diskon 15%
+            { min: 10, diskon: 0.10 }, // Beli 10 diskon 10%
+            { min: 6, diskon: 0.081 }, // Beli 6 diskon 8.1%
+            { min: 3, diskon: 0.071 }  // Beli 3 diskon 7.1%
         ];
         const NOMOR_WA = "6285725046201";
 
@@ -360,29 +367,33 @@
             promoDetailDiv.classList.remove('hidden');
         }
 
-        // --- FUNGSI KIRIM KE WHATSAPP ---
-        function kirimWhatsApp() {
-            const nama = document.getElementById("nama").value.trim();
-            const varianSelect = document.getElementById("varian");
-            const jumlah = document.getElementById("jumlah").value;
-            const catatan = document.getElementById("catatan").value.trim();
-            const totalHarga = document.getElementById("totalHarga").textContent;
+// --- FUNGSI KIRIM KE WHATSAPP YANG DIPERBARUI ---
+function kirimWhatsApp() {
+    const nama = document.getElementById("nama").value.trim();
+    const alamat = document.getElementById("alamat").value.trim(); // <--- BARU: Ambil Alamat
+    const varianSelect = document.getElementById("varian");
+    const jumlah = document.getElementById("jumlah").value;
+    const catatan = document.getElementById("catatan").value.trim();
+    const totalHarga = document.getElementById("totalHarga").textContent;
 
-            const [hargaDasarStr, namaVarian] = varianSelect.value.split('|');
-            const hargaDasar = parseInt(hargaDasarStr) || 0;
-            
-            if (!nama || hargaDasar === 0 || !jumlah || jumlah < 1) {
-                alert("Mohon isi Nama, pilih Varian, dan tentukan Jumlah pesanan!");
-                return;
-            }
+    const [hargaDasarStr, namaVarian] = varianSelect.value.split('|');
+    const hargaDasar = parseInt(hargaDasarStr) || 0;
+    
+    // VALIDASI BARU: Pastikan semua field wajib terisi
+    if (!nama || !alamat || hargaDasar === 0 || !jumlah || jumlah < 1) {
+        alert("Mohon isi Nama, Alamat, pilih Varian, dan tentukan Jumlah pesanan dengan benar!");
+        return;
+    }
 
-            // Dapatkan detail promo yang telah dihitung
-            const promoText = document.getElementById("promoDetail").innerText.replace(/\n/g, '%0A');
+    // Dapatkan detail promo yang telah dihitung
+    const promoText = document.getElementById("promoDetail").innerText.replace(/\n/g, '%0A');
 
-            const pesan = `Halo Barokah Halalan Food!%0A%0ASaya ingin klaim promo abon sapi:%0A%0A👤 Nama: ${nama}%0A📦 Varian: ${namaVarian}%0A🔢 Jumlah: ${jumlah} pcs%0A%0A--- Rincian Promo ---%0A${promoText}%0A%0A💰 Total Bayar: ${totalHarga}%0A📝 Catatan: ${catatan || '-'}%0A%0AMohon diproses dan konfirmasi totalnya ya! Terima kasih.`;
-            
-            window.open(`https://wa.me/${NOMOR_WA}?text=${pesan}`, "_blank");
-        }
+    // PESAN WHATSAPP DISISIPKAN ALAMAT
+    const pesan = `Halo Barokah Halalan Food!%0A%0ASaya ingin klaim promo abon sapi:%0A%0A👤 Nama: ${nama}%0A🏠 Alamat: ${alamat}%0A%0A📦 Varian: ${namaVarian}%0A🔢 Jumlah: ${jumlah} pcs%0A%0A--- Rincian Promo ---%0A${promoText}%0A%0A💰 Total Bayar: ${totalHarga}%0A📝 Catatan: ${catatan || '-'}%0A%0AMohon diproses dan konfirmasi totalnya ya! Terima kasih.`;
+    
+    window.open(`https://wa.me/${NOMOR_WA}?text=${pesan}`, "_blank");
+}
+// END of FUNGSI KIRIM KE WHATSAPP YANG DIPERBARUI
         
         // --- FUNGSI TIMER LAMA ANDA ---
         function startTimer() {
@@ -427,4 +438,5 @@
     </script>
 
 </body>
+
 </html>
