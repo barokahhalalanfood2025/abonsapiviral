@@ -440,7 +440,7 @@ src="https://www.facebook.com/tr?id=24972788405714339&ev=PageView&noscript=1"
         </div>
     </footer>
 
-    <script>
+   <script>
     // --- DATA HARGA DAN PROMO FINAL AKHIR ---
     const PROMO_REGULER = [ 
         { min: 50, diskon: 0.22 }, // 50 PACK
@@ -456,43 +456,42 @@ src="https://www.facebook.com/tr?id=24972788405714339&ev=PageView&noscript=1"
     const NOMOR_WA = "6285725046201";
 
     // --- FUNGSI FORMAT MATA UANG ---
-const formatRupiah = (angka) => {
-    const bulat = Math.round(angka); 
-    return new Intl.NumberFormat("id-ID", {
-        style: "currency",
-        currency: "IDR",
-        minimumFractionDigits: 0
-    }).format(bulat);
-};
+    const formatRupiah = (angka) => {
+        const bulat = Math.round(angka); 
+        return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR",
+            minimumFractionDigits: 0
+        }).format(bulat);
+    };
 
-// --- FUNGSI BARU UNTUK MEMILIH VARIAN DAN SCROLL (SISIPKAN DI SINI) ---
-function selectVariantAndScroll(variantValue) {
-    // 1. Set nilai dropdown di form pemesanan
-    document.getElementById('varian').value = variantValue;
-    
-    // 2. Memicu perhitungan ulang harga secara otomatis
-    hitungTotal(); // Ini penting agar harga langsung update!
-    
-    // 3. Scroll ke form pemesanan
-    document.getElementById('order-form').scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start' 
-    });
-}
+    // --- FUNGSI BARU UNTUK MEMILIH VARIAN DAN SCROLL ---
+    function selectVariantAndScroll(variantValue) {
+        // 1. Set nilai dropdown di form pemesanan
+        document.getElementById('varian').value = variantValue;
+        
+        // 2. Memicu perhitungan ulang harga secara otomatis
+        hitungTotal(); // Panggil fungsi hitungTotal
+        
+        // 3. Scroll ke form pemesanan
+        document.getElementById('order-form').scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start' 
+        });
+    }
 
-    // --- FUNGSI HITUNG TOTAL HARGA DINAMIS (KOREKSI LOGIKA AKHIR) ---
+    // --- FUNGSI HITUNG TOTAL HARGA DINAMIS (KOREKSI DEFINISI FUNGSI) ---
+    // MENGGUNAKAN 'function' BUKAN 'const' agar bisa di-HOIST (dikenali oleh fungsi lain)
     function hitungTotal() {
         const varianSelect = document.getElementById("varian");
         const jumlahInput = document.getElementById("jumlah");
         const totalHargaSpan = document.getElementById("totalHarga");
         const promoDetailDiv = document.getElementById("promoDetail");
 
-        // MEMBACA DATA DARI VALUE. KARENA KITA TIDAK MENAMBAH typeVarian di HTML
-        // KITA AKAN TENTUKAN TIPE DARI NAMA VARIANT (Abon Sapi 10gr)
         const parts = varianSelect.value.split('|');
         const hargaDasar = parseInt(parts[0]) || 0;
         const namaVarianFull = varianSelect.options[varianSelect.selectedIndex].text;
-        const isSachet = namaVarianFull.includes('10gr'); // <-- Logika penentu tipe varian
+        const isSachet = namaVarianFull.includes('10gr'); 
         const jumlah = parseInt(jumlahInput.value) || 0;
 
         if (hargaDasar === 0 || jumlah === 0) {
@@ -507,28 +506,23 @@ function selectVariantAndScroll(variantValue) {
         potonganHarga = 0;
         promoDiterapkan = "Tidak ada promo grosir diambil.";
         
-        if (isSachet) { // Lakukan logika sachet
-            // *** LOGIKA HARGA SACHET (10GR) ***
+        if (isSachet) { 
             const jumlahPack = Math.floor(jumlah / PCS_PER_PACK);
             const sisaSatuan = jumlah % PCS_PER_PACK;
             
-            // HARGA TOTAL: (Jumlah Pack x HARGA PACK 37900) + (Sisa Satuan x HARGA SATUAN 4990)
             const hargaPackTotal = jumlahPack * HARGA_SACHET_PACK; 
             const hargaSatuanSisa = sisaSatuan * HARGA_SACHET_SATUAN; 
             hargaTotal = hargaPackTotal + hargaSatuanSisa;
             
-            unitDasarPromo = jumlahPack; // Promo grosir dihitung berdasarkan jumlah PACK
+            unitDasarPromo = jumlahPack; 
             
-            // Tampilan dasar promo
             if (jumlahPack > 0) {
                 promoDiterapkan = `Promo Pack (${PCS_PER_PACK} sachet = ${formatRupiah(HARGA_SACHET_PACK)}). Total ${jumlahPack} Pack.`;
             } else {
                  promoDiterapkan = "Harga Satuan Ecer Normal.";
-                 // Jika < 10 pcs, harga total dihitung dari harga ecer
                  hargaTotal = jumlah * HARGA_SACHET_SATUAN; 
             }
 
-            // Cek diskon grosir untuk pembelian PACK (hanya jika minimal 3 Pack)
             if (unitDasarPromo >= PROMO_REGULER[PROMO_REGULER.length - 1].min) { 
                 for (const promo of PROMO_REGULER) {
                     if (unitDasarPromo >= promo.min) {
@@ -543,9 +537,7 @@ function selectVariantAndScroll(variantValue) {
             
             hargaFinal = hargaTotal - potonganHarga;
 
-
         } else { 
-            // --- LOGIKA HARGA REGULER (100GR) ---
             hargaTotal = hargaDasar * jumlah;
             unitDasarPromo = jumlah; 
             
@@ -560,10 +552,8 @@ function selectVariantAndScroll(variantValue) {
             hargaFinal = hargaTotal - potonganHarga;
         }
 
-        // Update Tampilan
         totalHargaSpan.textContent = formatRupiah(hargaFinal);
 
-        // Tampilkan Detail Promo
         promoDetailDiv.innerHTML = `
             <p>Harga Total Sebelum Potongan: ${formatRupiah(hargaTotal)}</p>
             <p>Promo Diambil: ${promoDiterapkan}</p>
@@ -572,50 +562,45 @@ function selectVariantAndScroll(variantValue) {
         promoDetailDiv.classList.remove('hidden');
     }
 
-   // --- FUNGSI KIRIM KE WHATSAPP (DIPERBARUI DENGAN PIXEL TRACKING) ---
-function kirimWhatsApp() {
-    const nama = document.getElementById("nama").value.trim();
-    const alamat = document.getElementById("alamat").value.trim();
-    const varianSelect = document.getElementById("varian");
-    const jumlah = document.getElementById("jumlah").value;
-    const catatan = document.getElementById("catatan").value.trim();
-    const totalHarga = document.getElementById("totalHarga").textContent; // Format Rupiah (Rp 37.900)
+    // --- FUNGSI KIRIM KE WHATSAPP (DENGAN PIXEL TRACKING) ---
+    function kirimWhatsApp() {
+        const nama = document.getElementById("nama").value.trim();
+        const alamat = document.getElementById("alamat").value.trim();
+        const varianSelect = document.getElementById("varian");
+        const jumlah = document.getElementById("jumlah").value;
+        const catatan = document.getElementById("catatan").value.trim();
+        const totalHarga = document.getElementById("totalHarga").textContent; 
 
-    const [hargaDasarStr] = varianSelect.value.split('|');
-    const hargaDasar = parseInt(hargaDasarStr) || 0;
-    
-    if (!nama || !alamat || hargaDasar === 0 || !jumlah || jumlah < 1) {
-        alert("Mohon isi Nama, Alamat, pilih Varian, dan tentukan Jumlah pesanan dengan benar!");
-        return;
+        const [hargaDasarStr] = varianSelect.value.split('|');
+        const hargaDasar = parseInt(hargaDasarStr) || 0;
+        
+        if (!nama || !alamat || hargaDasar === 0 || !jumlah || jumlah < 1) {
+            alert("Mohon isi Nama, Alamat, pilih Varian, dan tentukan Jumlah pesanan dengan benar!");
+            return;
+        }
+        
+        const numericTotal = parseInt(totalHarga.replace(/[^\d]/g, ''));
+        const namaVarianTampil = varianSelect.options[varianSelect.selectedIndex].text.split(' - ')[0]; 
+        const promoText = document.getElementById("promoDetail").innerText.replace(/\n/g, '%0A');
+
+        // --- TRACKING PIXEL: MENYISIPKAN EVENT PURCHASE ---
+        if (typeof fbq === 'function') {
+            fbq('track', 'Purchase', {
+                value: numericTotal, 
+                currency: 'IDR',
+                content_name: 'Abon Sapi Promosi',
+                num_items: jumlah,
+                content_category: namaVarianTampil
+            });
+        }
+        // --- AKHIR TRACKING PIXEL ---
+
+        const pesan = `Halo Barokah Halalan Food!%0A%0ASaya ingin klaim promo abon sapi:%0A%0A👤 Nama: ${nama}%0A🏠 Alamat: ${alamat}%0A%0A📦 Varian: ${namaVarianTampil}%0A🔢 Jumlah: ${jumlah} pcs%0A%0A--- Rincian Promo ---%0A${promoText}%0A%0A💰 Total Bayar: ${totalHarga}%0A📝 Catatan: ${catatan || '-'}%0A%0AMohon diproses dan konfirmasi totalnya ya! Terima kasih.`;
+        
+        window.open(`https://wa.me/${NOMOR_WA}?text=${pesan}`, "_blank");
     }
     
-    // 1. Ambil Nilai Numerik Total Bayar (penting untuk Pixel Value)
-    // Ambil teks total harga dan hapus karakter non-angka untuk mendapatkan nilai numerik.
-    const numericTotal = parseInt(totalHarga.replace(/[^\d]/g, ''));
-    
-    const namaVarianTampil = varianSelect.options[varianSelect.selectedIndex].text.split(' - ')[0]; 
-    const promoText = document.getElementById("promoDetail").innerText.replace(/\n/g, '%0A');
-
-    // --- TRACKING PIXEL: MENYISIPKAN EVENT PURCHASE ---
-    if (typeof fbq === 'function') {
-        fbq('track', 'Purchase', {
-            // Gunakan nilai numerik tanpa format Rupiah untuk value
-            value: numericTotal, 
-            currency: 'IDR',
-            content_name: 'Abon Sapi Promosi',
-            num_items: jumlah,
-            content_category: namaVarianTampil
-        });
-    }
-    // --- AKHIR TRACKING PIXEL ---
-
-    // 2. PESAN WHATSAPP
-    const pesan = `Halo Barokah Halalan Food!%0A%0ASaya ingin klaim promo abon sapi:%0A%0A👤 Nama: ${nama}%0A🏠 Alamat: ${alamat}%0A%0A📦 Varian: ${namaVarianTampil}%0A🔢 Jumlah: ${jumlah} pcs%0A%0A--- Rincian Promo ---%0A${promoText}%0A%0A💰 Total Bayar: ${totalHarga}%0A📝 Catatan: ${catatan || '-'}%0A%0AMohon diproses dan konfirmasi totalnya ya! Terima kasih.`;
-    
-    window.open(`https://wa.me/${NOMOR_WA}?text=${pesan}`, "_blank");
-}
-    
-    // --- FUNGSI TIMER LAMA ANDA (TETAP) ---
+    // --- FUNGSI TIMER LAMA ANDA ---
     function startTimer() {
         const DURATION_SECONDS = 60 * 60 * 2; 
         let expiryTime = localStorage.getItem('promoExpiryTime');
@@ -657,6 +642,7 @@ function kirimWhatsApp() {
     
 </body>
 </html>
+
 
 
 
