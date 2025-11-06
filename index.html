@@ -660,31 +660,47 @@
             promoDetailDiv.classList.remove('hidden');
         }
 
-        // --- FUNGSI KIRIM KE WHATSAPP (DENGAN PIXEL TRACKING) ---
-        function kirimWhatsApp() {
-            const nama = document.getElementById("nama").value.trim();
-            const alamat = document.getElementById("alamat").value.trim();
-            const varianSelect = document.getElementById("varian");
-            const jumlah = document.getElementById("jumlah").value;
-            const catatan = document.getElementById("catatan").value.trim();
-            const totalHarga = document.getElementById("totalHarga").textContent; 
+       // --- FUNGSI KIRIM KE WHATSAPP (DENGAN PIXEL TRACKING) ---
+    function kirimWhatsApp() {
+        const nama = document.getElementById("nama").value.trim();
+        const alamat = document.getElementById("alamat").value.trim();
+        const varianSelect = document.getElementById("varian");
+        const jumlah = document.getElementById("jumlah").value;
+        const catatan = document.getElementById("catatan").value.trim();
+        const totalHarga = document.getElementById("totalHarga").textContent; 
 
-            const [hargaDasarStr] = varianSelect.value.split('|');
-            const hargaDasar = parseInt(hargaDasarStr) || 0;
-            
-            if (!nama || !alamat || hargaDasar === 0 || !jumlah || jumlah < 1) {
-                alert("Mohon isi Nama, Alamat, pilih Varian, dan tentukan Jumlah pesanan dengan benar!");
-                return;
-            }
-            
-            const numericTotal = parseInt(totalHarga.replace(/[^\d]/g, ''));
-            const namaVarianTampil = varianSelect.options[varianSelect.selectedIndex].text.split(' - ')[0]; 
-            const promoText = document.getElementById("promoDetail").innerText.replace(/\n/g, '%0A');
-
-            const pesan = `Halo Barokah Halalan Food!%0A%0ASaya ingin klaim promo abon sapi:%0A%0A👤 Nama: ${nama}%0A🏠 Alamat: ${alamat}%0A%0A📦 Varian: ${namaVarianTampil}%0A🔢 Jumlah: ${jumlah} pcs%0A%0A--- Rincian Promo ---%0A${promoText}%0A%0A💰 Total Bayar: ${totalHarga}%0A📝 Catatan: ${catatan || '-'}%0A%0AMohon diproses dan konfirmasi totalnya ya! Terima kasih.`;
-            
-            window.open(`https://wa.me/${NOMOR_WA}?text=${pesan}`, "_blank");
+        const [hargaDasarStr] = varianSelect.value.split('|');
+        const hargaDasar = parseInt(hargaDasarStr) || 0;
+        
+        if (!nama || !alamat || hargaDasar === 0 || !jumlah || jumlah < 1) {
+            alert("Mohon isi Nama, Alamat, pilih Varian, dan tentukan Jumlah pesanan dengan benar!");
+            return;
         }
+        
+        const numericTotal = parseInt(totalHarga.replace(/[^\d]/g, ''));
+        const namaVarianTampil = varianSelect.options[varianSelect.selectedIndex].text.split(' - ')[0]; 
+        const promoText = document.getElementById("promoDetail").innerText.replace(/\n/g, '%0A');
+
+        // ===================================================================
+        // ==== (SISIPKAN KODE PIXEL DI SINI) ====
+        // ===================================================================
+        // --- TRACKING PIXEL: MENYISIPKAN EVENT PURCHASE ---
+        if (typeof fbq === 'function') {
+            fbq('track', 'Purchase', {
+                value: numericTotal, 
+                currency: 'IDR',
+                content_name: 'Abon Sapi Promosi',
+                num_items: jumlah,
+                content_category: namaVarianTampil
+            });
+        }
+        // --- AKHIR TRACKING PIXEL ---
+        // ===================================================================
+
+        const pesan = `Halo Barokah Halalan Food!%0A%0ASaya ingin klaim promo abon sapi:%0A%0A👤 Nama: ${nama}%0A🏠 Alamat: ${alamat}%0A%0A📦 Varian: ${namaVarianTampil}%0A🔢 Jumlah: ${jumlah} pcs%0A%0A--- Rincian Promo ---%0A${promoText}%0A%0A💰 Total Bayar: ${totalHarga}%0A📝 Catatan: ${catatan || '-'}%0A%0AMohon diproses dan konfirmasi totalnya ya! Terima kasih.`;
+        
+        window.open(`https://wa.me/${NOMOR_WA}?text=${pesan}`, "_blank");
+    }
         
         // --- FUNGSI TIMER LAMA ANDA ---
         function startTimer() {
@@ -728,6 +744,7 @@
     
 </body>
 </html>
+
 
 
 
