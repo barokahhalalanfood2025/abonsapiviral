@@ -681,18 +681,6 @@
             const namaVarianTampil = varianSelect.options[varianSelect.selectedIndex].text.split(' - ')[0]; 
             const promoText = document.getElementById("promoDetail").innerText.replace(/\n/g, '%0A');
 
-            // --- TRACKING PIXEL: MENYISIPKAN EVENT PURCHASE ---
-            if (typeof fbq === 'function') {
-                fbq('track', 'Purchase', {
-                    value: numericTotal, 
-                    currency: 'IDR',
-                    content_name: 'Abon Sapi Promosi',
-                    num_items: jumlah,
-                    content_category: namaVarianTampil
-                });
-            }
-            // --- AKHIR TRACKING PIXEL ---
-
             const pesan = `Halo Barokah Halalan Food!%0A%0ASaya ingin klaim promo abon sapi:%0A%0A👤 Nama: ${nama}%0A🏠 Alamat: ${alamat}%0A%0A📦 Varian: ${namaVarianTampil}%0A🔢 Jumlah: ${jumlah} pcs%0A%0A--- Rincian Promo ---%0A${promoText}%0A%0A💰 Total Bayar: ${totalHarga}%0A📝 Catatan: ${catatan || '-'}%0A%0AMohon diproses dan konfirmasi totalnya ya! Terima kasih.`;
             
             window.open(`https://wa.me/${NOMOR_WA}?text=${pesan}`, "_blank");
@@ -740,6 +728,7 @@
     
 </body>
 </html>
+
 
 
 
