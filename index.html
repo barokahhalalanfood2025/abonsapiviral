@@ -686,17 +686,18 @@
         const promoText = document.getElementById("promoDetail").innerText.replace(/\n/g, '%0A');
 
         // ===================================================================
-        // ==== (SISIPKAN KODE PIXEL DI SINI) ====
-        // --- TRACKING PIXEL: MENYISIPKAN EVENT PURCHASE ---
-        if (typeof fbq === 'function') {
-            fbq('track', 'Purchase', {
-                value: numericTotal, 
-                currency: 'IDR',
-                content_name: 'Abon Sapi Promosi',
-                num_items: jumlah,
-                content_category: namaVarianTampil
-            });
-        }
+       // ===================================================================
+// ==== (KODE BARU: GANTI KE EVENT "LEAD") ====
+// ===================================================================
+// --- TRACKING PIXEL: MENYISIPKAN EVENT LEAD (PROSPEK) ---
+if (typeof fbq === 'function') {
+    fbq('track', 'Lead', {
+        value: numericTotal, 
+        currency: 'IDR',
+        content_name: 'Abon Sapi - Klik WA',
+        content_category: namaVarianTampil
+    });
+}
         // --- AKHIR TRACKING PIXEL ---
         // ===================================================================
 
@@ -747,6 +748,7 @@
     
 </body>
 </html>
+
 
 
 
