@@ -528,148 +528,154 @@
     </footer>
 
     <script>
-        // --- DATA HARGA DAN PROMO BARU (PROMO 3 PCS DIHAPUS, DIGANTI PROMO 100K) ---
-        const PROMO_REGULER = [ 
-            { min: 50, diskon: 0.22 }, 
-            { min: 25, diskon: 0.15 }, 
-            { min: 10, diskon: 0.10 }, 
-            { min: 6, diskon: 0.081 }
-        ];
+    // --- DATA HARGA DAN PROMO BARU (PROMO 3 PCS DIHAPUS, DIGANTI PROMO 100K) ---
+    const PROMO_REGULER = [ 
+        { min: 50, diskon: 0.22 }, 
+        { min: 25, diskon: 0.15 }, 
+        { min: 10, diskon: 0.10 }, 
+        { min: 6, diskon: 0.081 }
+    ];
 
-        const PROMO_SPESIAL_100K_HARGA = 100000; // Harga promo 3 pcs 100gr
-        const PROMO_SPESIAL_100K_VARIAN = '35999|Abon Sapi 100gr (Original)|type:reguler'; // Varian default untuk promo 100k
+    const PROMO_SPESIAL_100K_HARGA = 100000; // Harga promo 3 pcs 100gr
+    const PROMO_SPESIAL_100K_VARIAN = '35999|Abon Sapi 100gr (Original)|type:reguler'; // Varian default untuk promo 100k
 
-        const HARGA_SACHET_SATUAN = 4990; 
-        const HARGA_SACHET_PACK = 37900;  
-        const PCS_PER_PACK = 10;
-        const NOMOR_WA = "6285725046201";
+    const HARGA_SACHET_SATUAN = 4990; 
+    const HARGA_SACHET_PACK = 37900;  
+    const PCS_PER_PACK = 10;
+    const NOMOR_WA = "6285725046201";
 
-        // --- FUNGSI FORMAT MATA UANG ---
-        const formatRupiah = (angka) => {
-            const bulat = Math.round(angka); 
-            return new Intl.NumberFormat("id-ID", {
-                style: "currency",
-                currency: "IDR",
-                minimumFractionDigits: 0
-            }).format(bulat);
-        };
+    // --- FUNGSI FORMAT MATA UANG ---
+    const formatRupiah = (angka) => {
+        const bulat = Math.round(angka); 
+        return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR",
+            minimumFractionDigits: 0
+        }).format(bulat);
+    };
 
-        // --- FUNGSI BARU UNTUK PROMO 100K (DIPANGGIL DARI KLIK PROVOKATIF) ---
-        function setPromoBeli3() {
-            document.getElementById('varian').value = PROMO_SPESIAL_100K_VARIAN;
-            document.getElementById('jumlah').value = 3;
-            hitungTotal(); 
-            document.getElementById('order-form').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start' 
-            });
+    // --- FUNGSI BARU UNTUK PROMO 100K (DIPANGGIL DARI KLIK PROVOKATIF) ---
+    function setPromoBeli3() {
+        document.getElementById('varian').value = PROMO_SPESIAL_100K_VARIAN;
+        document.getElementById('jumlah').value = 3;
+        hitungTotal(); 
+        document.getElementById('order-form').scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start' 
+        });
+    }
+
+    // --- FUNGSI PILIH VARIAN & SCROLL (DIPANGGIL DARI KLIK KARTU VARIAN) ---
+    function selectVariantAndScroll(variantValue) {
+        document.getElementById('varian').value = variantValue;
+        hitungTotal(); 
+        document.getElementById('order-form').scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start' 
+        });
+    }
+
+    // --- FUNGSI HITUNG TOTAL (KOREKSI FINAL LOGIKA SACHET) ---
+    function hitungTotal() {
+        const varianSelect = document.getElementById("varian");
+        const jumlahInput = document.getElementById("jumlah");
+        const totalHargaSpan = document.getElementById("totalHarga");
+        const promoDetailDiv = document.getElementById("promoDetail");
+
+        const parts = varianSelect.value.split('|');
+        const hargaDasar = parseInt(parts[0]) || 0;
+        const namaVarianFull = varianSelect.options[varianSelect.selectedIndex].text;
+        const isSachet = namaVarianFull.includes('10gr Sachet'); 
+        const isReguler = namaVarianFull.includes('100gr'); 
+        const jumlah = parseInt(jumlahInput.value) || 0;
+
+        if (hargaDasar === 0 || jumlah === 0) {
+            totalHargaSpan.textContent = formatRupiah(0);
+            promoDetailDiv.classList.add('hidden');
+            return;
         }
 
-        // --- FUNGSI PILIH VARIAN & SCROLL (DIPANGGIL DARI KLIK KARTU VARIAN) ---
-        function selectVariantAndScroll(variantValue) {
-            document.getElementById('varian').value = variantValue;
-            hitungTotal(); 
-            document.getElementById('order-form').scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start' 
-            });
-        }
-
-        // --- FUNGSI HITUNG TOTAL (LOGIKA PROMO 100K DITAMBAHKAN) ---
-        function hitungTotal() {
-            const varianSelect = document.getElementById("varian");
-            const jumlahInput = document.getElementById("jumlah");
-            const totalHargaSpan = document.getElementById("totalHarga");
-            const promoDetailDiv = document.getElementById("promoDetail");
-
-            const parts = varianSelect.value.split('|');
-            const hargaDasar = parseInt(parts[0]) || 0;
-            const namaVarianFull = varianSelect.options[varianSelect.selectedIndex].text;
-            const isSachet = namaVarianFull.includes('10gr Sachet'); // Perbarui untuk mencocokkan '10gr Sachet'
-            const isReguler = namaVarianFull.includes('100gr'); // <-- Cek Tipe Reguler
-            const jumlah = parseInt(jumlahInput.value) || 0;
-
-            if (hargaDasar === 0 || jumlah === 0) {
-                totalHargaSpan.textContent = formatRupiah(0);
-                promoDetailDiv.classList.add('hidden');
-                return;
+        let hargaTotal, diskonDiambil, hargaFinal, promoDiterapkan, potonganHarga, unitDasarPromo;
+        
+        diskonDiambil = 0;
+        potonganHarga = 0;
+        promoDiterapkan = "Tidak ada promo grosir diambil.";
+        
+        if (isSachet) { 
+            // --- LOGIKA SACHET (10GR) ---
+            const jumlahPack = Math.floor(jumlah / PCS_PER_PACK);
+            const sisaSatuan = jumlah % PCS_PER_PACK;
+            
+            // **PERBAIKAN 1: Definisikan hargaPackTotal DI SINI**
+            const hargaPackTotal = jumlahPack * HARGA_SACHET_PACK; 
+            const hargaSatuanSisa = sisaSatuan * HARGA_SACHET_SATUAN; 
+            hargaTotal = hargaPackTotal + hargaSatuanSisa;
+            
+            unitDasarPromo = jumlahPack; 
+            
+            if (jumlahPack > 0) {
+                promoDiterapkan = `Promo Pack (${PCS_PER_PACK} sachet = ${formatRupiah(HARGA_SACHET_PACK)}). Total ${jumlahPack} Pack.`;
+            } else {
+                 promoDiterapkan = "Harga Satuan Ecer Normal.";
+                 // **PERBAIKAN 2: Pastikan hargaTotal benar untuk 1-9 pcs**
+                 hargaTotal = jumlah * HARGA_SACHET_SATUAN; 
             }
 
-            let hargaTotal, diskonDiambil, hargaFinal, promoDiterapkan, potonganHarga, unitDasarPromo;
-            
-            diskonDiambil = 0;
-            potonganHarga = 0;
-            promoDiterapkan = "Tidak ada promo grosir diambil.";
-            
-            if (isSachet) { 
-                // --- LOGIKA SACHET (10GR) ---
-                const jumlahPack = Math.floor(jumlah / PCS_PER_PACK);
-                const sisaSatuan = jumlah % PCS_PER_PACK;
-                
-                // Harga total dihitung dari pack dan sisa satuan
-                hargaTotal = (jumlahPack * HARGA_SACHET_PACK) + (sisaSatuan * HARGA_SACHET_SATUAN);
-                
-                unitDasarPromo = jumlahPack; 
-                
-                if (jumlahPack > 0) {
-                    promoDiterapkan = `Promo Pack (${PCS_PER_PACK} sachet = ${formatRupiah(HARGA_SACHET_PACK)}). Total ${jumlahPack} Pack.`;
-                } else {
-                     promoDiterapkan = "Harga Satuan Ecer Normal.";
-                }
-
-                // Cek diskon grosir untuk pembelian PACK (minimal 6 Pack)
+            // Cek diskon grosir untuk pembelian PACK (minimal 6 Pack)
+            if (unitDasarPromo >= PROMO_REGULER[PROMO_REGULER.length - 1].min) { // Cek 'min: 6'
                 for (const promo of PROMO_REGULER) {
                     if (unitDasarPromo >= promo.min) {
                         diskonDiambil = promo.diskon; 
+                        
+                        // **PERBAIKAN 3: Gunakan variabel yang sudah didefinisikan**
                         potonganHarga = hargaPackTotal * diskonDiambil; // Diskon hanya dari harga Pack
                         
                         promoDiterapkan += ` Ditambah Diskon Grosir ${promo.diskon * 100}% untuk Pembelian Pack.`;
                         break; 
                     }
                 }
-                
-                hargaFinal = hargaTotal - potonganHarga;
-
-            } else if (isReguler) { 
-                // --- LOGIKA REGULER (100GR) ---
-                hargaTotal = hargaDasar * jumlah;
-                unitDasarPromo = jumlah; 
-
-                // LOGIKA BARU: Cek Promo Spesial 3 Pcs = 100rb
-                if (jumlah === 3) {
-                    hargaFinal = PROMO_SPESIAL_100K_HARGA;
-                    promoDiterapkan = "PROMO SPESIAL: Beli 3 Cukup Rp 100.000!";
-                    potonganHarga = hargaTotal - hargaFinal;
-                
-                } else {
-                    // JIKA BUKAN 3, cek promo grosir reguler (mulai dari 6)
-                    for (const promo of PROMO_REGULER) {
-                        if (unitDasarPromo >= promo.min) {
-                            diskonDiambil = promo.diskon;
-                            promoDiterapkan = `Diskon Grosir ${promo.diskon * 100}% (Beli minimal ${promo.min} pcs)`;
-                            potonganHarga = hargaTotal * diskonDiambil;
-                            break;
-                        }
-                    }
-                    hargaFinal = hargaTotal - potonganHarga;
-                }
-            } else {
-                 // Fallback jika tipe tidak terdeteksi
-                 hargaTotal = hargaDasar * jumlah;
-                 hargaFinal = hargaTotal;
             }
+            
+            hargaFinal = hargaTotal - potonganHarga;
 
-            totalHargaSpan.textContent = formatRupiah(hargaFinal);
+        } else if (isReguler) { 
+            // --- LOGIKA REGULER (100GR) (Sudah Benar) ---
+            hargaTotal = hargaDasar * jumlah;
+            unitDasarPromo = jumlah; 
 
-            promoDetailDiv.innerHTML = `
-                <p>Harga Total Sebelum Potongan: ${formatRupiah(hargaTotal)}</p>
-                <p>Promo Diambil: ${promoDiterapkan}</p>
-                <p>Potongan Harga: ${formatRupiah(potonganHarga)}</p>
-            `;
-            promoDetailDiv.classList.remove('hidden');
+            if (jumlah === 3) {
+                hargaFinal = PROMO_SPESIAL_100K_HARGA;
+                promoDiterapkan = "PROMO SPESIAL: Beli 3 Cukup Rp 100.000!";
+                potonganHarga = hargaTotal - hargaFinal;
+            
+            } else {
+                for (const promo of PROMO_REGULER) {
+                    if (unitDasarPromo >= promo.min) {
+                        diskonDiambil = promo.diskon;
+                        promoDiterapkan = `Diskon Grosir ${promo.diskon * 100}% (Beli minimal ${promo.min} pcs)`;
+                        potonganHarga = hargaTotal * diskonDiambil;
+                        break;
+                    }
+                }
+                hargaFinal = hargaTotal - potonganHarga;
+            }
+        } else {
+             // Fallback jika tipe tidak terdeteksi
+             hargaTotal = hargaDasar * jumlah;
+             hargaFinal = hargaTotal;
         }
 
-       // --- FUNGSI KIRIM KE WHATSAPP (DENGAN PIXEL TRACKING) ---
+        totalHargaSpan.textContent = formatRupiah(hargaFinal);
+
+        promoDetailDiv.innerHTML = `
+            <p>Harga Total Sebelum Potongan: ${formatRupiah(hargaTotal)}</p>
+            <p>Promo Diambil: ${promoDiterapkan}</p>
+            <p>Potongan Harga: ${formatRupiah(potonganHarga)}</p>
+        `;
+        promoDetailDiv.classList.remove('hidden');
+    }
+
+    // --- FUNGSI KIRIM KE WHATSAPP (DENGAN PIXEL TRACKING 'LEAD') ---
     function kirimWhatsApp() {
         const nama = document.getElementById("nama").value.trim();
         const alamat = document.getElementById("alamat").value.trim();
@@ -691,18 +697,17 @@
         const promoText = document.getElementById("promoDetail").innerText.replace(/\n/g, '%0A');
 
         // ===================================================================
-       // ===================================================================
-// ==== (KODE BARU: GANTI KE EVENT "LEAD") ====
-// ===================================================================
-// --- TRACKING PIXEL: MENYISIPKAN EVENT LEAD (PROSPEK) ---
-if (typeof fbq === 'function') {
-    fbq('track', 'Lead', {
-        value: numericTotal, 
-        currency: 'IDR',
-        content_name: 'Abon Sapi - Klik WA',
-        content_category: namaVarianTampil
-    });
-}
+        // ==== (KODE BARU: GANTI KE EVENT "LEAD") ====
+        // ===================================================================
+        // --- TRACKING PIXEL: MENYISIPKAN EVENT LEAD (PROSPEK) ---
+        if (typeof fbq === 'function') {
+            fbq('track', 'Lead', {
+                value: numericTotal, 
+                currency: 'IDR',
+                content_name: 'Abon Sapi - Klik WA',
+                content_category: namaVarianTampil
+            });
+        }
         // --- AKHIR TRACKING PIXEL ---
         // ===================================================================
 
@@ -711,48 +716,49 @@ if (typeof fbq === 'function') {
         window.open(`https://wa.me/${NOMOR_WA}?text=${pesan}`, "_blank");
     }
         
-        // --- FUNGSI TIMER LAMA ANDA ---
-        function startTimer() {
-            const DURATION_SECONDS = 60 * 60 * 2; 
-            let expiryTime = localStorage.getItem('promoExpiryTime');
-            if (!expiryTime) {
-                expiryTime = new Date().getTime() + (DURATION_SECONDS * 1000);
-                localStorage.setItem('promoExpiryTime', expiryTime);
-            }
+    // --- FUNGSI TIMER LAMA ANDA ---
+    function startTimer() {
+        const DURATION_SECONDS = 60 * 60 * 2; 
+        let expiryTime = localStorage.getItem('promoExpiryTime');
+        if (!expiryTime) {
+            expiryTime = new Date().getTime() + (DURATION_SECONDS * 1000);
+            localStorage.setItem('promoExpiryTime', expiryTime);
+        }
+        
+        const display = document.getElementById('countdown-timer');
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = expiryTime - now;
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            const formattedTime = `Waktu Tersisa: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
             
-            const display = document.getElementById('countdown-timer');
+            display.innerHTML = formattedTime;
 
-            function updateTimer() {
-                const now = new Date().getTime();
-                const distance = expiryTime - now;
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                const formattedTime = `Waktu Tersisa: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                
-                display.innerHTML = formattedTime;
-
-                if (distance < 0) {
-                    clearInterval(timerInterval);
-                    display.innerHTML = "WAKTU PROMO HABIS!";
-                }
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                display.innerHTML = "WAKTU PROMO HABIS!";
             }
-
-            const timerInterval = setInterval(updateTimer, 1000);
-            updateTimer(); 
         }
 
-        // --- INISIASI SAAT LOAD HALAMAN (TETAP) ---
-        window.onload = function() {
-            startTimer();
-            document.getElementById("varian").addEventListener("change", hitungTotal);
-            document.getElementById("jumlah").addEventListener("input", hitungTotal);
-            hitungTotal(); 
-        };
-    </script>
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer(); 
+    }
+
+    // --- INISIASI SAAT LOAD HALAMAN (TETAP) ---
+    window.onload = function() {
+        startTimer();
+        document.getElementById("varian").addEventListener("change", hitungTotal);
+        document.getElementById("jumlah").addEventListener("input", hitungTotal);
+        hitungTotal(); 
+    };
+</script>
     
 </body>
 </html>
+
 
 
 
