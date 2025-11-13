@@ -498,20 +498,29 @@
                     <div class="pt-4 border-t-2 border-red-200">
                         <p class="font-bold text-xl">Total Harga: <span id="totalHarga" class="text-3xl text-red-600">Rp 0</span></p>
                     </div>
-                    <div>
-                        <label for="catatan" class="block font-semibold mb-2 text-lg">Catatan (Opsional)</label>
-                        <textarea id="catatan" rows="3" placeholder="Contoh: Kirim ke alamat kantor / Mohon dikemas aman"
-                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300"></textarea>
-                    </div>
-                    <div id="tombol-wa-kustom" 
-    onclick="kirimWhatsApp()"
-    data-fb-analytics-ignore="true" 
-    class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-full text-xl transition cta-button text-center cursor-pointer"
-    role="button"
-    aria-label="Kirim Pesanan ke WhatsApp"
->
-    Kirim Pesanan ke WhatsApp Sekarang! 🚀
-</div>
+                  <div>
+                    <label for="catatan" class="block font-semibold mb-2 text-lg">Catatan (Opsional)</label>
+                    <textarea id="catatan" rows="3" placeholder="Contoh: Kirim ke alamat kantor / Mohon dikemas aman"
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring focus:ring-red-300"></textarea>
+                </div>
+
+                <div class="my-4 p-4 bg-green-50 border-l-4 border-green-500 rounded-lg text-green-800">
+                    <p class="font-bold flex items-center">
+                        <i class="fas fa-shipping-fast mr-3"></i> 100% AMAN! BISA COD (Bayar di Tempat)
+                    </p>
+                    <p class="text-sm mt-1">
+                        *Total harga produk akan dihitung otomatis. Biaya Ongkir & Admin COD akan dikonfirmasi oleh Admin kami di WhatsApp.
+                    </p>
+                </div>
+                <div id="tombol-wa-kustom" 
+                    onclick="kirimWhatsApp()"
+                    data-fb-analytics-ignore="true" 
+                    class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-full text-xl transition cta-button text-center cursor-pointer"
+                    role="button"
+                    aria-label="Kirim Pesanan ke WhatsApp"
+                >
+                    Kirim Pesanan ke WhatsApp Sekarang! 🚀
+                </div>
                 </form>
             </div>
         </section>
@@ -758,6 +767,7 @@
     
 </body>
 </html>
+
 
 
 
