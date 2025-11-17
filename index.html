@@ -683,14 +683,27 @@
         updateTimer(); 
     }
 
-    // --- INISIASI SAAT LOAD HALAMAN (TETAP) ---
-    window.onload = function() {
-        startTimer();
-        document.getElementById("varian").addEventListener("change", hitungTotal);
-        document.getElementById("jumlah").addEventListener("input", hitungTotal);
-        hitungTotal(); 
-    };
-</script>
+    // --- INISIASI SAAT DOM CONTENT LOADED (PERBAIKAN ERROR NULL) ---
+        // Mengganti window.onload dengan DOMContentLoaded untuk memastikan elemen form sudah tersedia
+        document.addEventListener("DOMContentLoaded", function() {
+            startTimer();
+            
+            // Memastikan elemen ada sebelum melampirkan listener
+            const varian = document.getElementById("varian");
+            const jumlah = document.getElementById("jumlah");
+
+            if (varian && jumlah) {
+                varian.addEventListener("change", hitungTotal);
+                jumlah.addEventListener("input", hitungTotal);
+                hitungTotal(); 
+            } 
+        });
+        // --- AKHIR INISIASI ---
+        
+        // ... (Pastikan tidak ada deklarasi window.onload yang lama di bawah ini) ...
+    </script> 
+    </body>
+</html>
 
 
 
