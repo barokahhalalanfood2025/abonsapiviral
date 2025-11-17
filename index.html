@@ -30,15 +30,28 @@
     <meta name="twitter:image" content="https://promo.barokahhalalanfood.com/social-preview.jpg">
     
     <style>
-        .cta-button {
-            box-shadow: 0 4px 15px rgba(255, 99, 71, 0.6);
-            transition: all 0.3s ease;
-        }
-        .cta-button:hover {
-            box-shadow: 0 6px 20px rgba(255, 99, 71, 0.8);
-            transform: translateY(-2px);
-        }
-    </style>
+    /* FIX ACCESSIBILITY: Warna Kontras (Sudah diperbaiki di langkah sebelumnya) */
+    .cta-button {
+        box-shadow: 0 4px 15px rgba(255, 99, 71, 0.6);
+        transition: all 0.3s ease;
+    }
+    .cta-button:hover {
+        box-shadow: 0 6px 20px rgba(255, 99, 71, 0.8);
+        transform: translateY(-2px);
+    }
+    
+    /* FIX FONT DISPLAY: Tambahkan perintah SWAP untuk Font Awesome */
+    @font-face {
+        font-family: "Font Awesome 5 Brands";
+        font-display: swap; 
+    }
+    @font-face {
+        font-family: "Font Awesome 5 Free";
+        font-display: swap; 
+    }
+    /* Catatan: Tidak perlu Font Awesome 6, 500 & 900 adalah yang utama */
+
+</style>
 </head>
 
 <body class="bg-gray-50 font-sans">
@@ -87,12 +100,12 @@
 
                 <div class="h-80 w-full max-w-2xl mx-auto rounded-xl shadow-2xl overflow-hidden mb-4">
                     <img 
-                        src="abon-ditabur-di-atas-nasi.webp" 
-                        alt="Foto Abon Sapi BAROKAH ditabur di atas nasi panas, lauk premium 5 detik."
-                        width="1200" 
-                        height="1053" 
-                        class="w-full h-full object-cover" 
-                    >
+    src="abon-ditabur-di-atas-nasi.webp" 
+    alt="Foto Abon Sapi BAROKAH ditabur di atas nasi panas, lauk premium 5 detik."
+    width="1200" 
+    height="1053" 
+    class="w-full h-full object-cover" 
+    fetchpriority="high"  >
                 </div>
                 
                 <a href="#order-form" class="cta-button inline-block mt-6 bg-red-600 hover:bg-red-700 text-white font-bold text-2xl py-4 px-12 rounded-full transition">
@@ -829,6 +842,7 @@
     </script> 
     </body>
 </html>
+
 
 
 
