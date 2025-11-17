@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://promo.barokahhalalanfood.com/sitemap.xml
