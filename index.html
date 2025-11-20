@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://*.tiktok.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:;">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' https:; 
+        script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://*.tiktok.com https://googleads.g.doubleclick.net https://www.googleadservices.com; 
+        style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; 
+        font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; 
+        img-src 'self' data: https: https://googleads.g.doubleclick.net https://www.googleadservices.com;
+        connect-src 'self' https: https://googleads.g.doubleclick.net https://www.googleadservices.com https://analytics.google.com;
+    ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -596,3 +603,4 @@
     </script>
 </body>
 </html>
+
