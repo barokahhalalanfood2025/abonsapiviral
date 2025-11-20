@@ -1,12 +1,12 @@
-/* === 1. RESET & VARIABEL === */
+/* === 1. RESET & VARIABEL GLOBAL === */
 :root {
-    /* Warna Merah & Hijau Dipertajam untuk Kontras */
+    /* WARNA (Kontras Tinggi) */
     --red-50: #fef2f2;
     --red-100: #fee2e2;
     --red-200: #fecaca;
     --red-500: #ef4444;
     --red-600: #dc2626;
-    --red-700: #b91c1c; /* Merah Gelap untuk Teks */
+    --red-700: #b91c1c; /* Merah Gelap untuk Teks Utama */
     --red-800: #991b1b;
     
     --green-50: #f0fdf4;
@@ -15,6 +15,7 @@
     --green-600: #16a34a;
     --green-700: #15803d;
     --green-800: #166534; /* Hijau Gelap untuk Teks */
+    --green-900: #14532d;
 
     --blue-50: #eff6ff;
     --blue-500: #3b82f6;
@@ -26,7 +27,7 @@
     --gray-50: #f9fafb;
     --gray-100: #f3f4f6;
     --gray-200: #e5e7eb;
-    --gray-300: #d1d5db; /* Abu terang untuk teks footer */
+    --gray-300: #d1d5db; /* Abu Terang (untuk teks di background gelap/footer) */
     --gray-400: #9ca3af;
     --gray-600: #4b5563;
     --gray-700: #374151;
@@ -39,6 +40,13 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* === FIX UNTUK BEST PRACTICE (DEPRECATED API) === */
+/* Mencegah browser mengubah ukuran font heading secara otomatis di dalam section */
+h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
 
 body {
     font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -111,14 +119,14 @@ header {
 
 .hero-title {
     font-size: 2.25rem;
-    color: var(--red-700); /* Kontras tinggi */
+    color: var(--red-700);
     margin-bottom: 1rem;
 }
 @media (min-width: 768px) { .hero-title { font-size: 3rem; } }
 
 .hero-desc {
     font-size: 1.25rem;
-    color: var(--gray-700); /* Abu gelap agar terbaca */
+    color: var(--gray-700);
     font-weight: 500;
     max-width: 36rem;
     margin: 0.75rem auto;
@@ -131,7 +139,7 @@ header {
     justify-content: center;
     gap: 1rem;
     margin: 1.5rem 0 2rem;
-    color: var(--green-800); /* Hijau digelapkan untuk kontras */
+    color: var(--green-800);
     font-weight: 600;
     font-size: 0.875rem;
 }
@@ -177,9 +185,9 @@ header {
     font-size: 1.875rem;
     font-weight: 800;
     margin-bottom: 2rem;
-    color: var(--gray-900); /* Hitam pekat untuk judul */
+    color: var(--gray-900);
 }
-.section-title.red { color: var(--red-800); } /* Merah gelap untuk kontras */
+.section-title.red { color: var(--red-800); }
 
 .grid-3 {
     display: grid;
@@ -351,10 +359,10 @@ header {
 }
 .wa-btn-full:hover { background: var(--green-700); }
 
-/* === 8. FOOTER (PERBAIKAN KONTRAS) === */
+/* === 8. FOOTER === */
 footer {
     background: var(--gray-900);
-    color: var(--gray-100); /* Teks Default Putih Terang */
+    color: var(--gray-100);
     padding: 3rem 0;
 }
 
@@ -376,15 +384,19 @@ footer {
 }
 @media (min-width: 768px) { .social-icons { justify-content: flex-start; } }
 
-.social-icons a { color: var(--gray-300); } /* Ikon Abu Terang */
+.social-icons a { color: var(--gray-300); }
 .social-icons a:hover { color: var(--white); }
+.social-icons a:hover.fa-instagram { color: #ec4899; }
+.social-icons a:hover.fa-facebook { color: #3b82f6; }
+.social-icons a:hover.fa-tiktok { color: #fff; }
+.social-icons a:hover.fa-youtube { color: #ef4444; }
 
 .footer-links li { margin-bottom: 0.5rem; }
 .footer-links a { 
     display: flex; 
     align-items: center; 
     justify-content: center; 
-    color: var(--gray-300); /* Link Abu Terang */
+    color: var(--gray-300);
 }
 @media (min-width: 768px) { .footer-links a { justify-content: flex-start; } }
 .footer-links a:hover { color: var(--white); text-decoration: underline; }
@@ -395,8 +407,7 @@ footer {
     border-top: 1px solid var(--gray-700);
     text-align: center;
     font-size: 0.875rem;
-    color: var(--gray-300); /* Perbaikan: Abu Terang agar terbaca di background gelap */
+    color: var(--gray-300);
 }
-
-.footer-bottom a { color: var(--gray-300); } /* Link bawah juga Abu Terang */
+.footer-bottom a { color: var(--gray-300); }
 .footer-bottom a:hover { color: var(--white); }
