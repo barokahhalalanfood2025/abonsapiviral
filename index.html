@@ -8,8 +8,8 @@
         script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://*.tiktok.com https://googleads.g.doubleclick.net https://www.googleadservices.com; 
         style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; 
         font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; 
-        img-src 'self' data: https: https://googleads.g.doubleclick.net https://www.googleadservices.com;
-        connect-src 'self' https: https://googleads.g.doubleclick.net https://www.googleadservices.com https://analytics.google.com;
+        img-src 'self' data: https: https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.facebook.com;
+        connect-src 'self' https: https://googleads.g.doubleclick.net https://www.googleadservices.com https://analytics.google.com https://connect.facebook.net;
     ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,13 +20,11 @@
     <meta name="facebook-domain-verification" content="di94yzdinnazm60ywer87215y3dhpf" />
 
     <meta property="og:title" content="ABON SAPI TINGGI PROTEIN | Mencegah Stunting, Investasi Otak Cerdas Anak - BAROKAH FOOD">
-    <meta property="og:description" content="Abon Sapi Tumbuk BAROKAH: Protein Tinggi Murni Tanpa MSG. Solusi Lauk 5 Detik untuk Mencegah Risiko Stunting dan mendukung perkembangan otak cerdas anak.">
+    <meta property="og:description" content="Abon Sapi Tumbuk BAROKAH: Protein Tinggi Murni Tanpa MSG. Solusi Lauk 5 Detik untuk Mencegah Risiko Stunting.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://promo.barokahhalalanfood.com/">
     <meta property="og:image" content="https://promo.barokahhalalanfood.com/social-preview.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-
+    
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ABON SAPI TINGGI PROTEIN | Mencegah Stunting, Investasi Otak Cerdas Anak - BAROKAH FOOD">
     <meta name="twitter:description" content="Abon Sapi Tumbuk BAROKAH: Protein Tinggi Murni Tanpa MSG. Solusi Lauk 5 Detik untuk Mencegah Risiko Stunting.">
@@ -36,7 +34,9 @@
     
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://www.googletagmanager.com">
-    
+    <link rel="preconnect" href="https://connect.facebook.net">
+
+    <link rel="preload" href="style.css" as="style">
     <link rel="stylesheet" href="style.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
@@ -451,7 +451,7 @@
     </footer>
 
     <script>
-        // --- JAVASCRIPT LOGIC (TIDAK BERUBAH) ---
+        // --- JAVASCRIPT LOGIC ---
         const PROMO_REGULER = [{ min: 50, diskon: 0.22 }, { min: 25, diskon: 0.15 }, { min: 10, diskon: 0.10 }, { min: 6, diskon: 0.081 }];
         const PROMO_SPESIAL_100K_HARGA = 100000;
         const PROMO_SPESIAL_100K_VARIAN = '35999|Abon Sapi 100gr (Original)|type:reguler';
