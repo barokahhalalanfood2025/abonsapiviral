@@ -1,12 +1,30 @@
-/* === 1. RESET & VARIABEL GLOBAL === */
+/* === 1. FONT DISPLAY FIX (MENGATASI REKOMENDASI PAGE SPEED) === */
+/* Memaksa browser menampilkan teks/area kosong dulu sebelum ikon siap (Swap) */
+@font-face {
+    font-family: 'Font Awesome 6 Free';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Font Awesome 6 Brands';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2) format('woff2');
+}
+
+/* === 2. RESET & VARIABEL GLOBAL === */
 :root {
-    /* WARNA (Kontras Tinggi) */
+    /* Warna Kontras Tinggi */
     --red-50: #fef2f2;
     --red-100: #fee2e2;
     --red-200: #fecaca;
     --red-500: #ef4444;
     --red-600: #dc2626;
-    --red-700: #b91c1c; /* Merah Gelap untuk Teks Utama */
+    --red-700: #b91c1c;
     --red-800: #991b1b;
     
     --green-50: #f0fdf4;
@@ -14,7 +32,7 @@
     --green-500: #22c55e;
     --green-600: #16a34a;
     --green-700: #15803d;
-    --green-800: #166534; /* Hijau Gelap untuk Teks */
+    --green-800: #166534;
     --green-900: #14532d;
 
     --blue-50: #eff6ff;
@@ -27,7 +45,7 @@
     --gray-50: #f9fafb;
     --gray-100: #f3f4f6;
     --gray-200: #e5e7eb;
-    --gray-300: #d1d5db; /* Abu Terang (untuk teks di background gelap/footer) */
+    --gray-300: #d1d5db;
     --gray-400: #9ca3af;
     --gray-600: #4b5563;
     --gray-700: #374151;
@@ -41,8 +59,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* === FIX UNTUK BEST PRACTICE (DEPRECATED API) === */
-/* Mencegah browser mengubah ukuran font heading secara otomatis di dalam section */
+/* Mencegah browser mengubah ukuran font heading secara otomatis (Deprecated API fix) */
 h1, h2, h3, h4, h5, h6 {
     font-size: inherit;
     font-weight: inherit;
@@ -71,7 +88,7 @@ ul { list-style: none; }
 .font-extrabold { font-weight: 800; }
 .hidden { display: none; }
 
-/* === 2. HEADER === */
+/* === 3. HEADER === */
 header {
     background: var(--white);
     padding: 1rem 0;
@@ -109,7 +126,7 @@ header {
 }
 .header-btn:hover { background: var(--green-900); }
 
-/* === 3. HERO SECTION === */
+/* === 4. HERO SECTION === */
 .hero-section {
     background-color: var(--red-50);
     padding: 4rem 0;
@@ -177,7 +194,7 @@ header {
     box-shadow: 0 6px 20px rgba(255, 99, 71, 0.8);
 }
 
-/* === 4. SECTIONS UMUM === */
+/* === 5. SECTIONS UMUM === */
 .section-white { background: var(--white); padding: 4rem 0; }
 .section-red-light { background: var(--red-100); padding: 4rem 0; }
 
@@ -219,7 +236,6 @@ header {
     box-shadow: var(--shadow-lg);
 }
 
-/* Comparison */
 .comparison-container {
     background: var(--gray-200);
     border-radius: 0.75rem;
@@ -237,11 +253,10 @@ header {
 .comp-item:first-child { border-right: 1px solid #9ca3af; }
 .comp-item img { border-radius: 0.375rem; width: 100%; height: auto; }
 
-/* Features */
 .feature-list li { display: flex; gap: 1rem; margin-bottom: 2rem; align-items: flex-start; }
 .feature-list i { font-size: 1.5rem; color: var(--red-700); margin-top: 0.25rem; }
 
-/* === 5. PRODUK === */
+/* === 6. PRODUK === */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -284,7 +299,7 @@ header {
 @media (min-width: 768px) { .product-img-box { height: 8rem; } }
 .product-img-box img { width: 100%; height: 100%; object-fit: cover; }
 
-/* === 6. TESTIMONI === */
+/* === 7. TESTIMONI & ORDER === */
 .testi-card {
     padding: 1rem;
     background: var(--yellow-50);
@@ -294,7 +309,6 @@ header {
     overflow: hidden;
 }
 
-/* === 7. ORDER FORM === */
 .section-order { background: var(--red-700); color: var(--white); padding: 4rem 0; }
 
 .countdown-box {
