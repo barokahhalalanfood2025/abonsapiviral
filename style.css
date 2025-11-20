@@ -336,16 +336,56 @@ header {
 
 /* === FOOTER === */
 footer {
-    background-color: #111827;
-    color: #f3f4f6;
+    background-color: #111827; /* Gray 900 */
+    color: #f3f4f6; /* Gray 100 */
     padding: 3rem 0;
 }
+
 .footer-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
+    margin-bottom: 2rem;
 }
+
 @media (min-width: 768px) {
     .footer-grid { grid-template-columns: repeat(3, 1fr); }
+    .footer-links, .social-icons { text-align: left; }
 }
-.social-icons a { margin-right: 1rem; font-size: 1.5rem; color: white;}
+
+/* Link Social Media */
+.social-icons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .social-icons { justify-content: flex-start; }
+}
+
+.social-icons a {
+    font-size: 1.8rem;
+    color: #9ca3af; /* Gray 400 (default) */
+    transition: color 0.3s ease;
+}
+
+/* Warna khusus saat Hover (sesuai brand) */
+.social-ig:hover { color: #ec4899 !important; } /* Pink Instagram */
+.social-fb:hover { color: #3b82f6 !important; } /* Biru Facebook */
+.social-tt:hover { color: #ffffff !important; } /* Putih TikTok (agar terlihat di background gelap) */
+.social-yt:hover { color: #ef4444 !important; } /* Merah YouTube */
+
+/* Link Footer Lainnya */
+.footer-link-list li { margin-bottom: 0.5rem; }
+.footer-link-list a {
+    color: #d1d5db;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (min-width: 768px) {
+    .footer-link-list a { justify-content: flex-start; }
+}
+.footer-link-list a:hover { color: white; }
