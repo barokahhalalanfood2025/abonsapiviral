@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self' https:; 
-        script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://*.tiktok.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://static.cloudflareinsights.com; 
-        style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; 
-        font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; 
-        img-src 'self' data: https: https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.facebook.com;
-        connect-src 'self' https: https://googleads.g.doubleclick.net https://www.googleadservices.com https://analytics.google.com https://connect.facebook.net https://cloudflareinsights.com;
-    ">
+   <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self' https:; 
+    script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://*.tiktok.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://static.cloudflareinsights.com; 
+    style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; 
+    font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; 
+    img-src 'self' data: https: https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.facebook.com; 
+    connect-src 'self' https://googleads.g.doubleclick.net https://www.googleadservices.com https://analytics.google.com https://connect.facebook.net https://cloudflareinsights.com;
+    frame-src 'self' https://www.google.com https://maps.google.com http://googleusercontent.com;
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -455,6 +456,26 @@
                 </div>
             </div>
         </div>
+        <div class="socials" style="margin-top:1.5rem;">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+
+            <div style="margin: 2rem auto; max-width: 100%; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <iframe 
+                    src="https://googleusercontent.com/maps.google.com/15" 
+                    width="100%" 
+                    height="300" 
+                    style="border:0; display:block;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Lokasi Barokah Halalan Food">
+                </iframe>
+            </div>
+            <p style="font-size:0.8rem; margin-top:2rem; border-top:1px solid #374151; padding-top:1rem;">&copy; 2025 Barokah Halalan Food</p>
+        </div>
 
         <div class="footer-bottom container">
             <p>© 2025 BAROKAH HALALAN FOOD. Hak Cipta Dilindungi.</p>
@@ -624,6 +645,7 @@
     </script>
 </body>
 </html>
+
 
 
 
