@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://cloudflareinsights.com; frame-src 'self' https://www.google.com http://googleusercontent.com https://maps.google.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://cloudflareinsights.com; frame-src 'self' http://googleusercontent.com https://www.googletagmanager.com;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="facebook-domain-verification" content="di94yzdinnazm60ywer87215y3dhpf" />
@@ -11,6 +11,14 @@
     <title>ABON SAPI TINGGI PROTEIN | Mencegah Stunting - BAROKAH FOOD</title>
     <meta name="description" content="Abon Sapi Tumbuk BAROKAH: Solusi Lauk 5 Detik untuk Mencegah Stunting dan Anak GTM. Non-MSG.">
     
+    <meta property="og:site_name" content="Barokah Halalan Food">
+    <meta property="og:title" content="ABON SAPI TINGGI PROTEIN | Solusi Anak GTM">
+    <meta property="og:description" content="Abon Sapi Tumbuk Premium Non-MSG. Halal & Thoyyib.">
+    <meta property="og:image" content="https://promo.barokahhalalanfood.com/social-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+
     <link rel="preload" as="image" href="hero.webp">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
@@ -25,7 +33,7 @@
         .fa-check-circle:before{content:"\f058"} .fa-shopping-cart:before{content:"\f07a"} .fa-utensils:before{content:"\f2e7"} .fa-brain:before{content:"\f5dc"} .fa-leaf:before{content:"\f06c"} .fa-whatsapp:before{content:"\f232"} .fa-instagram:before{content:"\f16d"} .fa-facebook:before{content:"\f09a"} .fa-tiktok:before{content:"\e07b"} .fa-youtube:before{content:"\f167"} .fa-store:before{content:"\f54e"} .fa-file-invoice:before{content:"\f570"} .fa-map-marker-alt:before{content:"\f3c5"} .fa-exclamation-triangle:before{content:"\f071"} .fa-microscope:before{content:"\f610"} .fa-drumstick-bite:before{content:"\f6d7"} .fa-mortar-pestle:before{content:"\f5a7"} .fa-fire:before{content:"\f06d"} .fa-shipping-fast:before{content:"\f48b"}
 
         /* GLOBAL */
-        :root { --red-600: #dc2626; --red-700: #b91c1c; --red-800: #991b1b; --green-600: #16a34a; --green-800: #166534; --gray-50: #f9fafb; --gray-800: #1f2937; --white: #ffffff; }
+        :root { --red-600: #dc2626; --red-700: #b91c1c; --red-800: #991b1b; --green-600: #16a34a; --green-800: #14532d; --gray-50: #f9fafb; --gray-800: #1f2937; --white: #ffffff; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: system-ui, -apple-system, sans-serif; background: var(--gray-50); color: var(--gray-800); line-height: 1.5; }
         img { max-width: 100%; height: auto; display: block; }
@@ -51,7 +59,7 @@
         .cta-button { display: inline-block; background: var(--red-600); color: white; padding: 1rem 2rem; border-radius: 99px; font-weight: 700; font-size: 1.2rem; box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4); width: 100%; max-width: 400px; }
         .cta-button:hover { background: var(--red-700); transform: translateY(-2px); }
 
-        /* SECTIONS */
+        /* CONTENT */
         .section-white { padding: 3rem 0; background: white; }
         .section-red { padding: 3rem 0; background: #fee2e2; }
         .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 2rem; color: #1f2937; }
@@ -60,12 +68,14 @@
         .card i { font-size: 2rem; color: var(--red-600); margin-bottom: 1rem; }
         .card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
         .card-quote { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #fca5a5; font-style: italic; font-size: 0.9rem; color: #4b5563; }
+
         .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1.5rem; margin: 2rem auto; max-width: 800px; text-align: left; }
         .info-box h3 { color: #1e40af; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+
         .comparison { display: flex; gap: 1rem; margin-bottom: 2rem; justify-content: center; }
         .comp-item { flex: 1; max-width: 300px; text-align: center; background: white; padding: 0.5rem; border-radius: 0.5rem; }
-        .comp-label-red { color: var(--red-700); font-weight: bold; margin-top: 0.5rem; }
-        .comp-label-green { color: var(--green-600); font-weight: bold; margin-top: 0.5rem; }
+        .comp-label-red { color: var(--red-700); font-weight: bold; margin-top: 0.5rem; } 
+        .comp-label-green { color: #14532d; font-weight: bold; margin-top: 0.5rem; } /* FIX CONTRAST */
         .feature-list li { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: start; text-align: left; }
         .feature-list i { font-size: 1.5rem; color: var(--red-600); margin-top: 0.2rem; }
 
@@ -78,12 +88,12 @@
         .badge-try { background: #b45309; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: bold; display: inline-block; margin-bottom: 0.5rem; }
         .badge-save { background: var(--green-800); color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: bold; display: inline-block; margin-bottom: 0.5rem; }
 
-        /* FORM */
+        /* ORDER FORM */
         .order-section { background: var(--red-600); color: white; padding: 4rem 0; }
         .form-box { background: white; color: #1f2937; padding: 2rem; border-radius: 1rem; max-width: 600px; margin: 0 auto; text-align: left; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
         label.form-label { display: block; font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; color: #1f2937; }
-        input.form-input, select.form-select, textarea.form-textarea { display: block; width: 100%; padding: 0.75rem; border: 1px solid #d1d5db; border-radius: 0.5rem; margin-bottom: 1rem; font-size: 1rem; font-family: inherit; box-sizing: border-box; color: #1f2937; }
-        .btn-wa { background: #16a34a; color: white; width: 100%; padding: 1rem; border-radius: 99px; font-weight: 700; font-size: 1.2rem; text-align: center; cursor: pointer; transition: 0.3s; }
+        input.form-input, select.form-select, textarea.form-textarea { display: block; width: 100%; padding: 0.75rem; border: 1px solid #9ca3af; border-radius: 0.5rem; margin-bottom: 1.2rem; font-size: 1rem; font-family: inherit; box-sizing: border-box; color: #1f2937; }
+        .btn-wa { background: #16a34a; color: white; width: 100%; padding: 1rem; border-radius: 99px; font-weight: 700; font-size: 1.2rem; text-align: center; cursor: pointer; transition: 0.3s; border: none; }
         .btn-wa:hover { background: #15803d; }
         
         /* PRICING */
@@ -91,13 +101,13 @@
         .pricing-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
         .pricing-table th, .pricing-table td { padding: 0.75rem; border-bottom: 1px solid #fecaca; text-align: left; }
 
-        /* FOOTER (ALAMAT LENGKAP & RAPI) */
+        /* FOOTER */
         footer { background: #111827; color: #9ca3af; padding: 4rem 0 2rem; text-align: left; }
         .footer-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
         @media (min-width: 768px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; align-items: start; } }
         .footer-title { color: #ffffff; font-weight: 800; font-size: 1.2rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
         .footer-links li { margin-bottom: 1rem; }
-        .footer-links a { display: flex; align-items: center; gap: 0.75rem; color: #d1d5db; text-decoration: none; transition:0.3s; }
+        .footer-links a { display: flex; align-items: center; gap: 0.75rem; color: #d1d5db; text-decoration: none; transition: 0.3s; }
         .footer-links a:hover { color: white; transform: translateX(5px); }
         .social-icons { display: flex; justify-content: flex-start; gap: 1.5rem; font-size: 1.5rem; }
         .footer-bottom { border-top: 1px solid #374151; margin-top: 3rem; padding-top: 1.5rem; display: flex; flex-direction: column; align-items: center; font-size: 0.85rem; text-align: center; }
@@ -175,8 +185,8 @@
             <div class="container">
                 <h2 class="section-title text-center" style="color:#b91c1c;">Berikan 'Bahan Bakar' Terbaik!</h2>
                 <div class="comparison">
-                    <div class="comp-item"><img src="anak-cemberut-lauk-hambar.webp" alt="Sebelum" loading="lazy"><div class="comp-label-red">SEBELUM</div></div>
-                    <div class="comp-item"><img src="anak-ceria-karena-abon.webp" alt="Sesudah" loading="lazy"><div class="comp-label-green">SESUDAH</div></div>
+                    <div class="comp-item"><img src="anak-cemberut-lauk-hambar.webp" alt="Sebelum" width="300" height="400" loading="lazy"><div class="comp-label-red">SEBELUM</div></div>
+                    <div class="comp-item"><img src="anak-ceria-karena-abon.webp" alt="Sesudah" width="300" height="400" loading="lazy"><div class="comp-label-green">SESUDAH</div></div>
                 </div>
                 <ul class="feature-list">
                     <li><i class="fas fa-drumstick-bite"></i><div><strong>BERHENTI MAKAN ABON 'OPLOSAN'!</strong><p>Banyak abon murah dicampur kacang/tepung. Abon BAROKAH menjamin 100% DAGING SAPI MURNI.</p></div></li>
@@ -191,19 +201,19 @@
                 <h2 class="section-title">Pilih Paket Hemat Bunda</h2>
                 <div class="product-grid">
                     <div class="p-card" onclick="selectVariant('4990|Abon Sapi 10gr Sachet (Original)|type:sachet')">
-                        <div><span class="badge-best">BEST SELLER</span><img src="kemasan-abon-10gr-tas.webp" alt="Sachet Ori" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">10gr Sachet (Ori)</h3></div>
+                        <div><span class="badge-best">BEST SELLER</span><img src="kemasan-abon-10gr-tas.webp" alt="Sachet Ori" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">10gr Sachet (Ori)</h3></div>
                         <div><p style="color:#dc2626; font-weight:bold;">Rp 4.990</p><p style="font-size:0.8rem; color:#166534;">Pack (10pcs): Rp 37.900</p></div>
                     </div>
                     <div class="p-card" onclick="selectVariant('4990|Abon Sapi 10gr Sachet (Pedas)|type:sachet')">
-                        <div><span class="badge-try">COBAIN</span><img src="kemasan-abon-10gr-mie.webp" alt="Sachet Pedas" loading="lazy"><h3 class="font-bold">10gr Sachet (Pedas)</h3></div>
+                        <div><span class="badge-try">COBAIN</span><img src="kemasan-abon-10gr-mie.webp" alt="Sachet Pedas" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">10gr Sachet (Pedas)</h3></div>
                         <div><p style="color:#dc2626; font-weight:bold;">Rp 4.990</p><p style="font-size:0.8rem; color:#166534;">Pack (10pcs): Rp 37.900</p></div>
                     </div>
                      <div class="p-card" onclick="selectVariant('35999|Abon Sapi 100gr (Original)|type:reguler')">
-                        <div><span class="badge-save">HEMAT</span><img src="kemasan-abon-100gr-sblh.webp" alt="100gr Ori" loading="lazy"><h3 class="font-bold">100gr (Original)</h3></div>
+                        <div><span class="badge-save">HEMAT</span><img src="kemasan-abon-100gr-sblh.webp" alt="100gr Ori" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">100gr (Original)</h3></div>
                         <div><p style="color:#dc2626; font-weight:bold;">Rp 35.999</p><p style="font-size:0.8rem; color:#166534;">Promo: 3 pcs Rp 100rb</p></div>
                     </div>
                      <div class="p-card" onclick="selectVariant('35999|Abon Sapi 100gr (Pedas)|type:reguler')">
-                        <div><span class="badge-save">HEMAT</span><img src="kemasan-abon-100gr-dapur.webp" alt="100gr Pedas" loading="lazy"><h3 class="font-bold">100gr (Pedas)</h3></div>
+                        <div><span class="badge-save">HEMAT</span><img src="kemasan-abon-100gr-dapur.webp" alt="100gr Pedas" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">100gr (Pedas)</h3></div>
                         <div><p style="color:#dc2626; font-weight:bold;">Rp 35.999</p><p style="font-size:0.8rem; color:#166534;">Promo: 3 pcs Rp 100rb</p></div>
                     </div>
                 </div>
@@ -214,12 +224,12 @@
             <div class="container text-center">
                 <h2 class="section-title">Ribuan Keluarga Sudah Merasakan Manfaatnya!</h2>
                 <div class="grid-3">
-                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-1.webp" loading="lazy" alt="Testimoni 1"><p style="text-align:right; font-size:0.8rem;">— Indah, Rantau Prapat</p></div>
-                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-2.webp" loading="lazy" alt="Testimoni 2"><p style="text-align:right; font-size:0.8rem;">— Agustinus, Jakarta</p></div>
-                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-3.webp" loading="lazy" alt="Testimoni 3"><p style="text-align:right; font-size:0.8rem;">— Pipiet, Surabaya</p></div>
-                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-4.webp" loading="lazy" alt="Testimoni 4"><p style="text-align:right; font-size:0.8rem;">— Julie Afia, Malang</p></div>
-                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-5.webp" loading="lazy" alt="Testimoni 5"><p style="text-align:right; font-size:0.8rem;">— dr Ayu, Malang</p></div>
-                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-6.webp" loading="lazy" alt="Testimoni 6"><p style="text-align:right; font-size:0.8rem;">— Sugeng Hendro, Malang</p></div>
+                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-1.webp" width="300" height="400" loading="lazy" alt="Testimoni 1"><p style="text-align:right; font-size:0.8rem;">— Indah, Rantau Prapat</p></div>
+                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-2.webp" width="300" height="400" loading="lazy" alt="Testimoni 2"><p style="text-align:right; font-size:0.8rem;">— Agustinus, Jakarta</p></div>
+                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-3.webp" width="300" height="400" loading="lazy" alt="Testimoni 3"><p style="text-align:right; font-size:0.8rem;">— Pipiet, Surabaya</p></div>
+                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-4.webp" width="300" height="400" loading="lazy" alt="Testimoni 4"><p style="text-align:right; font-size:0.8rem;">— Julie Afia, Malang</p></div>
+                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-5.webp" width="300" height="400" loading="lazy" alt="Testimoni 5"><p style="text-align:right; font-size:0.8rem;">— dr Ayu, Malang</p></div>
+                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-6.webp" width="300" height="400" loading="lazy" alt="Testimoni 6"><p style="text-align:right; font-size:0.8rem;">— Sugeng Hendro, Malang</p></div>
                 </div>
                 <div class="info-box" style="background:#ecfdf5; border-color:#10b981; margin-top:2rem;">
                     <h3 style="color:#047857;"><i class="fas fa-check-circle"></i> GARANSI 100% UANG KEMBALI</h3>
@@ -246,7 +256,7 @@
 
                 <div class="form-box">
                     <form id="mainOrderForm">
-                        <label class="form-label" for="nama">Nama Anda:</label>
+                        <label class="form-label">Nama Anda:</label>
                         <input type="text" id="nama" class="form-input" placeholder="Contoh: Bunda Ani" required aria-label="Nama Lengkap">
                         
                         <label class="form-label">Alamat Lengkap:</label>
@@ -287,24 +297,19 @@
                         <img src="Logo-Barokah.webp" alt="Logo" width="40" height="40">
                         <h3 class="footer-title" style="margin-bottom:0;">BAROKAH HALALAN FOOD</h3>
                     </div>
-                    <p style="font-size:0.9rem; line-height:1.6; margin-bottom:1.5rem;">
-                        Produsen Abon Sapi Tumbuk Premium (100% Daging Murni). Solusi gizi praktis untuk keluarga.
-                    </p>
-                    <p style="font-size:0.9rem; color:#9ca3af; margin-bottom:0.5rem;">
-                        Jl. Brigjend Abd Manan Wijaya Gg. Gereja GKJW, Gesingan, Pujon Lor, Kec. Pujon, Kabupaten Malang, Jawa Timur 65391
-                    </p>
+                    <p style="font-size:0.9rem; line-height:1.6; margin-bottom:1.5rem;">Jl. Brigjend Abd Manan Wijaya Gg. Gereja GKJW, Malang.<br><span style="color:#4ade80;">(Produsen Abon Sapi & Pempek)</span></p>
                     <div style="width:100%; height:200px; border-radius:0.5rem; overflow:hidden; border:1px solid #374151;">
-                        <iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=-7.8466774,112.4737437&hl=es&z=14&output=embed" title="Peta Lokasi"></iframe>
+                        <iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=-7.8466774,112.4737437&hl=es;z=14&output=embed" title="Peta Lokasi Barokah Food"></iframe>
                     </div>
                     <a href="https://maps.google.com/maps?q=-7.8466774,112.4737437" target="_blank" style="display:inline-block; margin-top:0.5rem; font-size:0.85rem; color:#4ade80; text-decoration:underline;">Buka di Google Maps Aplikasi</a>
                 </div>
                 <div>
                     <h3 class="footer-title">Belanja Di Sini</h3>
                     <ul class="footer-links">
-                        <li><a href="https://wa.me/6285725046201" target="_blank"><i class="fab fa-whatsapp" style="color:#4ade80; font-size:1.2rem;"></i><span>Pesan via WhatsApp</span></a></li>
-                        <li><a href="#order-form"><i class="fas fa-file-invoice" style="color:#f87171; font-size:1.2rem;"></i><span>Promo Paket Hemat</span></a></li>
-                        <li><a href="https://tokopedia.com/barokah-halalan-food" target="_blank"><i class="fas fa-store" style="color:#4ade80; font-size:1.1rem;"></i><span>Tokopedia Official</span></a></li>
-                        <li><a href="https://shopee.co.id/baariklanaashop2025" target="_blank"><i class="fas fa-store" style="color:#fb923c; font-size:1.1rem;"></i><span>Shopee Official</span></a></li>
+                        <li><a href="https://wa.me/6285725046201" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp" style="color:#4ade80; font-size:1.2rem;"></i><span>Pesan via WhatsApp</span></a></li>
+                        <li><a href="#order-form" aria-label="Promo"><i class="fas fa-file-invoice" style="color:#f87171; font-size:1.2rem;"></i><span>Promo Paket Hemat</span></a></li>
+                        <li><a href="https://tokopedia.com/barokah-halalan-food" target="_blank" aria-label="Tokopedia"><i class="fas fa-store" style="color:#4ade80; font-size:1.1rem;"></i><span>Tokopedia Official</span></a></li>
+                        <li><a href="https://shopee.co.id/baariklanaashop2025" target="_blank" aria-label="Shopee"><i class="fas fa-store" style="color:#fb923c; font-size:1.1rem;"></i><span>Shopee Official</span></a></li>
                     </ul>
                 </div>
                 <div>
@@ -358,13 +363,11 @@
             let finalPrice = total;
             let promoHtml = "";
             
-            // 1. PROMO 3 PCS 100RB
             if (type === 'reguler' && jumlah === 3) { 
                 finalPrice = PROMO_100K_HARGA; 
                 let hemat = total - finalPrice;
                 promoHtml = `<p>Harga Normal: ${formatRupiah(total)}</p><p style="color:#16a34a; font-weight:bold;">Promo Paket 3pcs: ${formatRupiah(finalPrice)}</p><p style="font-size:0.9rem;">Anda Hemat: ${formatRupiah(hemat)}</p>`;
             } 
-            // 2. DISKON GROSIR TIERING
             else if (type === 'reguler' && jumlah >= 6) {
                  for (let i = 0; i < PROMO_REGULER.length; i++) {
                     if (jumlah >= PROMO_REGULER[i].min) {
@@ -376,7 +379,6 @@
                     }
                 }
             }
-            // 3. SACHET PACK
             else if (type === 'sachet') { 
                 let packs = Math.floor(jumlah / 10);
                 let remainder = jumlah % 10;
