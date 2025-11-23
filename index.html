@@ -9,7 +9,7 @@
         font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; 
         img-src 'self' data: https:; 
         connect-src 'self' https://cloudflareinsights.com; 
-        frame-src 'self' https://www.googletagmanager.com https://www.google.com http://googleusercontent.com https://googleusercontent.com http://maps.google.com https://maps.google.com;
+        frame-src 'self' https://www.google.com http://googleusercontent.com https://googleusercontent.com https://maps.google.com https://www.googletagmanager.com;
     ">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -25,9 +25,14 @@
     <meta property="og:image" content="https://promo.barokahhalalanfood.com/social-preview.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://promo.barokahhalalanfood.com/">
     <meta property="og:type" content="website">
 
-    <link rel="preload" as="image" href="hero.webp" fetchpriority="high">
+    <script type="application/ld+json">
+    { "@context": "https://schema.org/", "@type": "Product", "name": "Abon Sapi Tumbuk Barokah", "image": "https://promo.barokahhalalanfood.com/hero.webp", "description": "Abon Sapi Murni Non-MSG.", "brand": { "@type": "Brand", "name": "Barokah Halalan Food" }, "offers": { "@type": "Offer", "priceCurrency": "IDR", "price": "35999", "availability": "https://schema.org/InStock" } }
+    </script>
+
+    <link rel="preload" as="image" href="hero.webp">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
     <link rel="apple-touch-icon" href="apple-icon-180x180.png">
@@ -43,7 +48,7 @@
         /* GLOBAL */
         :root { --red-600: #dc2626; --red-700: #b91c1c; --red-800: #991b1b; --green-600: #16a34a; --green-800: #14532d; --gray-50: #f9fafb; --gray-800: #1f2937; --white: #ffffff; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: system-ui, -apple-system, sans-serif; background: var(--gray-50); color: var(--gray-800); line-height: 1.5; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--gray-50); color: var(--gray-800); line-height: 1.6; margin: 0; }
         img { max-width: 100%; height: auto; display: block; }
         a { text-decoration: none; transition: 0.3s; }
         ul { list-style: none; padding: 0; margin: 0; }
@@ -67,7 +72,7 @@
         .cta-button { display: inline-block; background: var(--red-600); color: white; padding: 1rem 2rem; border-radius: 99px; font-weight: 700; font-size: 1.2rem; box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4); width: 100%; max-width: 400px; }
         .cta-button:hover { background: var(--red-700); transform: translateY(-2px); }
 
-        /* CONTENT */
+        /* CONTENT SECTIONS */
         .section-white { padding: 3rem 0; background: white; }
         .section-red { padding: 3rem 0; background: #fee2e2; }
         .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 2rem; color: #1f2937; }
@@ -110,7 +115,7 @@
         .pricing-table th, .pricing-table td { padding: 0.75rem; border-bottom: 1px solid #fecaca; text-align: left; }
 
         /* FOOTER */
-        footer { background: #111827; color: #9ca3af; padding: 4rem 0 2rem; text-align: left; }
+        footer { background: #111827; color: #d1d5db; padding: 4rem 0 2rem; text-align: left; }
         .footer-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
         @media (min-width: 768px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; align-items: start; } }
         .footer-title { color: #ffffff; font-weight: 800; font-size: 1.2rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
@@ -141,7 +146,7 @@
         <div class="container header-flex">
             <div class="logo-area">
                 <img src="Logo-Barokah.webp" alt="Logo" width="32" height="32">
-                <h2 class="font-extrabold">BAROKAH FOOD</h2>
+                <h2 class="font-extrabold">BAROKAH HALALAN FOOD</h2>
             </div>
             <a href="#order-form" class="btn-top"><i class="fas fa-shopping-cart"></i> Pesan Promo</a>
         </div>
@@ -150,115 +155,87 @@
     <main>
         <section class="hero">
             <div class="container text-center">
-                <h1 class="font-extrabold">ABON SAPI TUMBUK PREMIUM<br>SOLUSI LAUK ANAK GTM</h1>
-                <p>100% Daging Sapi Murni, Tanpa MSG, Tanpa Pengawet. Investasi gizi terbaik untuk cegah stunting.</p>
+                <h1 class="font-extrabold">ABON SAPI TUMBUK BAROKAH:<br>BUKAN SEKADAR LAUK, TAPI INVESTASI OTAK CERDAS!</h1>
+                <p style="font-size:1.2rem; color:#1f2937;">
+                    <span style="color:var(--red-800); font-weight:bold;">JANGAN LALAI!</span> Protein Daging Sapi Murni Adalah <strong>Perisai Utama</strong> Anak Anda. Bantu <strong>Mencegah Risiko Stunting</strong> dan Gizi Buruk Akibat Kurangnya Asupan Protein Hewani!
+                </p>
                 <div class="badges">
-                    <span><i class="fas fa-check-circle"></i> 100% DAGING MURNI</span>
-                    <span><i class="fas fa-check-circle"></i> NON MSG</span>
-                    <span><i class="fas fa-check-circle"></i> HALAL THOYYIB</span>
+                    <span><i class="fas fa-check-circle"></i> 100% DAGING TANPA CAMPURAN</span>
+                    <span><i class="fas fa-check-circle"></i> TANPA PENGAWET</span>
+                    <span><i class="fas fa-check-circle"></i> TANPA MSG</span>
                 </div>
-                <div style="max-width:600px; margin:0 auto 2rem;">
-                    <img src="hero.webp" alt="Abon Sapi Barokah" width="600" height="450" style="border-radius:1rem; box-shadow:0 10px 20px rgba(0,0,0,0.1);" fetchpriority="high">
+                <div style="max-width:700px; margin:0 auto 2rem;">
+                    <img src="hero.webp" alt="Abon Sapi Barokah" width="700" height="500" style="border-radius:1rem; box-shadow:0 20px 40px rgba(0,0,0,0.2);" fetchpriority="high">
                 </div>
-                <a href="#order-form" class="cta-button">AMBIL PROMO SEKARANG!</a>
+                <a href="#order-form" class="cta-button">[KLIK DI SINI] Saya Mau Stok Protein Cerdas Anak Sekarang!</a>
             </div>
         </section>
 
         <section class="section-white">
             <div class="container text-center">
-                <h2 class="section-title">Anda Sudah Yakin Gizi Anak Cukup?</h2>
-                <p style="font-size:1.2rem; margin-bottom:3rem; color:#dc2626; font-weight:bold;">Hati-Hati! Mencegah Stunting JAUH Lebih Mudah Daripada Mengobati.</p>
+                <h2 class="section-title">Anda Sudah Yakin Gizi Anak Cukup? Hati-Hati, Ancaman Gizi Buruk Mengintai!</h2>
+                <p style="font-size:1.3rem; margin-bottom:3rem; color:#dc2626; font-weight:bold;">Mencegah Stunting JAUH Lebih Mudah Daripada Mengobati. Jangan Tunda Asupan Protein Hewani Terbaik!</p>
                 <div class="grid-3">
                     <div class="card">
-                        <div><i class="fas fa-utensils" style="font-size:2rem; color:#dc2626; margin-bottom:1rem;"></i><h3 class="font-bold">Anak Susah Makan?</h3><p>Jangan biarkan ia kekurangan protein vital di masa emasnya!</p></div>
-                        <div class="card-quote">"Makanan monoton penyebab GTM." <br>— IDAI</div>
+                        <div><i class="fas fa-utensils"></i><h3 class="font-bold">Anak Susah Makan & Sering Menolak Lauk?</h3><p>Ini bisa jadi tanda bosan lauk. Jangan biarkan ia kekurangan <strong>protein vital</strong> di masa emasnya!</p></div>
+                        <div class="card-quote">"Pemberian makanan yang monoton dan tidak bervariasi adalah salah satu penyebab utama kesulitan makan (GTM) pada anak." <br>— IDAI</div>
                     </div>
                     <div class="card">
-                        <div><i class="fas fa-brain" style="font-size:2rem; color:#dc2626; margin-bottom:1rem;"></i><h3 class="font-bold">Sulit Fokus Belajar?</h3><p>Otak butuh nutrisi premium (Zinc & Zat Besi) dari daging sapi murni.</p></div>
-                        <div class="card-quote">"Kekurangan Zat Besi ganggu kognitif permanen." <br>— Kemenkes RI</div>
+                        <div><i class="fas fa-brain"></i><h3 class="font-bold">Sulit Fokus Belajar? Perkembangan Bicara Lambat?</h3><p>Otak butuh nutrisi premium (Zinc & Zat Besi) dari daging sapi murni. Kurangi risiko pertumbuhan kognitif terhambat!</p></div>
+                        <div class="card-quote">"Kekurangan Zat Besi (Iron Deficiency) pada masa balita dapat menyebabkan gangguan perkembangan kognitif permanen." <br>— Kemenkes RI</div>
                     </div>
                     <div class="card">
-                        <div><i class="fas fa-exclamation-triangle" style="font-size:2rem; color:#dc2626; margin-bottom:1rem;"></i><h3 class="font-bold">Takut MSG?</h3><p>Barokah Food menjamin Tanpa MSG. Hindari bahan kimia berbahaya.</p></div>
-                        <div class="card-quote">"Pilih Clean Label untuk gizi alami."</div>
+                        <div><i class="fas fa-exclamation-triangle"></i><h3 class="font-bold">Khawatir Lauk Instan Mengandung "Racun" MSG?</h3><p>BAROKAH menjamin Tanpa MSG. Hindari potensi bahan kimia yang mengganggu perkembangan sel otak anak.</p></div>
+                        <div class="card-quote">"Konsumen cerdas kini memilih produk Clean Label (bebas aditif) untuk gizi alami terbaik."</div>
                     </div>
                 </div>
                 <div class="info-box">
-                    <h3><i class="fas fa-microscope"></i> FAKTA GIZI WAJIB TAHU:</h3>
-                    <p>Penelitian global membuktikan bahwa asupan <strong>Protein Hewani</strong> dari Daging Sapi sangat krusial di 1000 Hari Pertama Kehidupan untuk <strong>mencegah stunting</strong> dan memaksimalkan kecerdasan otak.</p>
+                    <h3><i class="fas fa-microscope"></i> FAKTA GIZI YANG WAJIB BUNDA TAHU:</h3>
+                    <p>Penelitian global (termasuk anjuran Kemenkes) membuktikan bahwa asupan <strong>Protein Hewani</strong> dari Daging Sapi sangat krusial di 1000 Hari Pertama Kehidupan (Masa Emas).</p>
+                    <p style="margin-top:1rem; color:#374151;">Daging sapi kaya akan <strong>Zat Besi</strong> dan <strong>Zinc</strong> yang esensial untuk <strong>mencegah anemia dan stunting</strong>, serta <strong>memaksimalkan koneksi sel otak (kecerdasan kognitif)</strong>.</p>
                 </div>
+                <p style="font-size:1.5rem; font-weight:bold; color:#1f2937; margin-top:2rem;">CUKUP SUDAH! Jadikan Abon BAROKAH Solusi 5 Detik Protein Terlengkap Anda.</p>
             </div>
         </section>
 
         <section class="section-red">
             <div class="container">
-                <h2 class="section-title text-center" style="color:#b91c1c;">Berikan 'Bahan Bakar' Terbaik!</h2>
+                <h2 class="section-title text-center" style="color:#b91c1c;">Berikan 'Bahan Bakar' Terbaik untuk Otak Juara Si Kecil!</h2>
                 <div class="comparison">
                     <div class="comp-item"><img src="anak-cemberut-lauk-hambar.webp" alt="Sebelum" width="300" height="400" loading="lazy"><div class="comp-label-red">SEBELUM</div></div>
                     <div class="comp-item"><img src="anak-ceria-karena-abon.webp" alt="Sesudah" width="300" height="400" loading="lazy"><div class="comp-label-green">SESUDAH</div></div>
                 </div>
                 <ul class="feature-list">
-                    <li><i class="fas fa-drumstick-bite"></i><div><strong>BERHENTI MAKAN ABON 'OPLOSAN'!</strong><p>Banyak abon murah dicampur kacang/tepung. Abon BAROKAH menjamin 100% DAGING SAPI MURNI.</p></div></li>
-                    <li><i class="fas fa-mortar-pestle"></i><div><strong>DITUMBUK, BUKAN DIGILING!</strong><p>Kami setia pada proses tradisional DITUMBUK menjaga serat daging tetap utuh.</p></div></li>
-                    <li><i class="fas fa-leaf"></i><div><strong>DIGORENG MINYAK KELAPA BARU (VCO)</strong><p>Lebih sehat, rendah kolesterol jahat, dan tanpa jelantah.</p></div></li>
+                    <li><i class="fas fa-drumstick-bite"></i><div><strong>BERHENTI MAKAN ABON 'OPLOSAN'!</strong><p>Banyak abon murah dicampur kacang, bawang, atau ampas agar berat. Abon BAROKAH menjamin <strong>100% DAGING SAPI MURNI</strong> tanpa filler. Ya, kami sedikit lebih mahal, karena Anda membayar untuk <strong>GIZI PROTEIN OTAK</strong>.</p></div></li>
+                    <li><i class="fas fa-mortar-pestle"></i><div><strong>RASAKAN BEDANYA: DITUMBUK, BUKAN DIGILING!</strong><p>Mesin giling modern menghancurkan sari dan tekstur asli daging. Kami setia pada proses tradisional <strong>DITUMBUK</strong>—menjaga cita rasa umami alami dan serat daging tetap utuh.</p></div></li>
+                    <li><i class="fas fa-leaf"></i><div><strong>DIGORENG MINYAK KELAPA BARU (VCO)</strong><p>Kami tidak berkompromi dengan kesehatan. Abon BAROKAH digoreng bersih menggunakan <strong>Minyak Kelapa Murni (VCO)</strong>, bukan minyak bekas/jelantah.</p></div></li>
                 </ul>
             </div>
         </section>
 
         <section class="section-white" style="background:#f9fafb;">
             <div class="container text-center">
-                <h2 class="section-title">Pilih Paket Hemat Bunda</h2>
+                <h2 class="section-title">Pilih Varian Abon Sapi BAROKAH Favorit Anda!</h2>
+                <p style="margin-bottom:2rem;">Tersedia dalam kemasan praktis yang siap menemani setiap momen makan Anda.</p>
                 <div class="product-grid">
-                <div class="p-card" onclick="selectVariant('4990|Abon Sapi 10gr Sachet (Original)|type:sachet')">
-                    <div>
-                        <span class="badge-best">BEST SELLER</span>
-                        <img src="kemasan-abon-10gr-tas.webp" alt="Sachet Ori" width="300" height="300" loading="lazy">
-                        <h3 class="font-bold" style="margin-top:0.5rem;">10gr Sachet (Ori)</h3>
-                        <p class="desc" style="font-size:0.85rem; color:#4b5563; margin-bottom:0.5rem;">Porsi Pas Sekali Makan. Bekal Anti Ribet!</p>
+                    <div class="p-card" onclick="selectVariant('4990|Abon Sapi 10gr Sachet (Original)|type:sachet')">
+                        <div><span class="badge-best">BEST SELLER!</span><img src="kemasan-abon-10gr-tas.webp" alt="Sachet Ori" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">10gr Sachet - Original</h3><p style="font-size:0.9rem;">Porsi Pas untuk Lauk Anak Sekali Makan.</p></div>
+                        <div style="border-top:1px solid #e5e7eb; margin-top:1rem; padding-top:1rem;"><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 4.990</p><p style="font-size:0.8rem; color:#166534;">Pack (10pcs): Rp 37.900</p></div>
                     </div>
-                    <div style="border-top:1px solid #e5e7eb; padding-top:0.5rem;">
-                        <p style="color:#dc2626; font-weight:bold;">Ecer: Rp 4.990</p>
-                        <p style="font-size:0.8rem; color:#166534;">Pack (10pcs): Rp 37.900</p>
+                    <div class="p-card" onclick="selectVariant('4990|Abon Sapi 10gr Sachet (Pedas)|type:sachet')">
+                        <div><span class="badge-try">COBAIN!</span><img src="kemasan-abon-10gr-mie.webp" alt="Sachet Pedas" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">10gr Sachet - Pedas</h3><p style="font-size:0.9rem;">Booster Pedas Instan, Bikin Mie Kuah Auto Juara!</p></div>
+                        <div style="border-top:1px solid #e5e7eb; margin-top:1rem; padding-top:1rem;"><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 4.990</p><p style="font-size:0.8rem; color:#166534;">Pack (10pcs): Rp 37.900</p></div>
                     </div>
-                </div>
-
-                <div class="p-card" onclick="selectVariant('4990|Abon Sapi 10gr Sachet (Pedas)|type:sachet')">
-                    <div>
-                        <span class="badge-try">COBAIN</span>
-                        <img src="kemasan-abon-10gr-mie.webp" alt="Sachet Pedas" width="300" height="300" loading="lazy">
-                        <h3 class="font-bold" style="margin-top:0.5rem;">10gr Sachet (Pedas)</h3>
-                        <p class="desc" style="font-size:0.85rem; color:#4b5563; margin-bottom:0.5rem;">Booster Pedas Instan. Bikin Mie Kuah Juara!</p>
+                     <div class="p-card" onclick="selectVariant('35999|Abon Sapi 100gr (Original)|type:reguler')">
+                        <div><span class="badge-save">PILIHAN HEMAT!</span><img src="kemasan-abon-100gr-sblh.webp" alt="100gr Ori" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">100gr - Original</h3><p style="font-size:0.9rem;">Stok Aman Dapur! Porsi besar untuk keluarga.</p></div>
+                        <div style="border-top:1px solid #e5e7eb; margin-top:1rem; padding-top:1rem;"><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 35.999</p><p style="font-size:0.8rem; color:#166534;">Promo: 3 pcs Rp 100rb!</p></div>
                     </div>
-                    <div style="border-top:1px solid #e5e7eb; padding-top:0.5rem;">
-                        <p style="color:#dc2626; font-weight:bold;">Ecer: Rp 4.990</p>
-                        <p style="font-size:0.8rem; color:#166534;">Pack (10pcs): Rp 37.900</p>
+                     <div class="p-card" onclick="selectVariant('35999|Abon Sapi 100gr (Pedas)|type:reguler')">
+                        <div><span class="badge-save">KOMPLIT!</span><img src="kemasan-abon-100gr-dapur.webp" alt="100gr Pedas" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">100gr - Pedas</h3><p style="font-size:0.9rem;">Level Up Masakan. Gurih Pedasnya Menggugah Selera.</p></div>
+                        <div style="border-top:1px solid #e5e7eb; margin-top:1rem; padding-top:1rem;"><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 35.999</p><p style="font-size:0.8rem; color:#166534;">Promo: 3 pcs Rp 100rb!</p></div>
                     </div>
                 </div>
-
-                 <div class="p-card" onclick="selectVariant('35999|Abon Sapi 100gr (Original)|type:reguler')">
-                    <div>
-                        <span class="badge-save">HEMAT</span>
-                        <img src="kemasan-abon-100gr-sblh.webp" alt="100gr Ori" width="300" height="300" loading="lazy">
-                        <h3 class="font-bold" style="margin-top:0.5rem;">100gr (Original)</h3>
-                        <p class="desc" style="font-size:0.85rem; color:#4b5563; margin-bottom:0.5rem;">Stok Aman Dapur! Porsi besar untuk keluarga.</p>
-                    </div>
-                    <div style="border-top:1px solid #e5e7eb; padding-top:0.5rem;">
-                        <p style="color:#dc2626; font-weight:bold;">Ecer: Rp 35.999</p>
-                        <p style="font-size:0.8rem; color:#166534;">Promo: 3 pcs Rp 100rb!</p>
-                    </div>
-                </div>
-
-                 <div class="p-card" onclick="selectVariant('35999|Abon Sapi 100gr (Pedas)|type:reguler')">
-                    <div>
-                        <span class="badge-save">HEMAT</span>
-                        <img src="kemasan-abon-100gr-dapur.webp" alt="100gr Pedas" width="300" height="300" loading="lazy">
-                        <h3 class="font-bold" style="margin-top:0.5rem;">100gr (Pedas)</h3>
-                        <p class="desc" style="font-size:0.85rem; color:#4b5563; margin-bottom:0.5rem;">Level Up Masakan. Gurih Pedas Menggugah Selera.</p>
-                    </div>
-                    <div style="border-top:1px solid #e5e7eb; padding-top:0.5rem;">
-                        <p style="color:#dc2626; font-weight:bold;">Ecer: Rp 35.999</p>
-                        <p style="font-size:0.8rem; color:#166534;">Promo: 3 pcs Rp 100rb!</p>
-                    </div>
-                </div>
+                <p style="font-size:1.5rem; font-weight:bold; color:#dc2626; margin-top:3rem;">Pilih Eceran, Pack, atau langsung <span style="text-decoration:underline;">KLAIM PROMO SPESIAL 100RB</span> Anda Sebelum Kehabisan!</p>
             </div>
         </section>
 
@@ -274,57 +251,67 @@
                     <div class="card" style="border:0; background:#fefce8;"><img src="Testi-6.webp" width="300" height="400" loading="lazy" alt="Testimoni 6"><p style="text-align:right; font-size:0.8rem;">— Sugeng Hendro, Malang</p></div>
                 </div>
                 <div class="info-box" style="background:#ecfdf5; border-color:#10b981; margin-top:2rem;">
-                    <h3 style="color:#047857;"><i class="fas fa-check-circle"></i> GARANSI 100% UANG KEMBALI</h3>
-                    <p>Jika produk rusak atau tidak sesuai, kami ganti baru atau uang kembali utuh. Belanja bebas risiko!</p>
+                    <h3 style="color:#047857;"><i class="fas fa-check-circle"></i> 100% Bebas Risiko! GARANSI GANTI BARU atau UANG KEMBALI!</h3>
+                    <p>Kami sangat yakin dengan kualitas Abon Sapi Tumbuk BAROKAH. Jika Anda tidak puas dengan kualitas rasa, atau menerima produk dalam kondisi rusak/apek, kami akan <strong>Ganti Baru Tanpa Ribet,</strong> atau <strong>Uang Anda Kami Kembalikan Utuh 100%</strong>.</p>
                 </div>
             </div>
         </section>
 
         <section id="order-form" class="order-section">
             <div class="container text-center">
-                <h2 class="font-extrabold" style="font-size:2rem; margin-bottom:2rem;">🛒 FORMULIR PEMESANAN</h2>
+                <h2 class="font-extrabold" style="font-size:2.5rem; margin-bottom:1rem;">🛒 KLAIM PROMO GROSIR HARI INI!</h2>
+                <p style="font-size:1.2rem; margin-bottom:2rem;">Pesan promo spesial di bawah, atau cek harga grosir (Reseller) kami.</p>
                 
                 <div id="grosir" class="pricing-box">
-                    <h3 class="font-bold" style="font-size:1.2rem; margin-bottom:1rem;">Daftar Harga Grosir (Reseller)</h3>
+                    <h3 class="font-bold" style="font-size:1.5rem; margin-bottom:1rem;">Daftar Harga Grosir (Reseller)</h3>
+                    <p style="font-size:0.9rem; color:#4b5563; margin-bottom:1rem;">(Berlaku untuk Pack 100gr ATAU kelipatan 10 Sachet)</p>
                     <table class="pricing-table">
-                        <thead><tr><th>Tier</th><th>Min. Beli</th><th>Diskon</th></tr></thead>
+                        <thead><tr><th>Tier Reseller</th><th>Jumlah Pembelian (Pack)</th><th>Diskon</th></tr></thead>
                         <tbody>
-                            <tr><td>Bronze</td><td>6 Pack</td><td>8.1%</td></tr>
-                            <tr><td>Silver</td><td>10 Pack</td><td>10%</td></tr>
-                            <tr><td>Gold</td><td>25 Pack</td><td>15%</td></tr>
+                            <tr><td>Tier Bronze</td><td>6 Pack</td><td>8.1%</td></tr>
+                            <tr><td>Tier Silver</td><td>10 Pack</td><td>10%</td></tr>
+                            <tr><td>Tier Gold</td><td>25 Pack</td><td>15%</td></tr>
+                            <tr><td>Tier Platinum</td><td>50 Pack</td><td>22%</td></tr>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="form-box">
                     <form id="mainOrderForm">
-                        <label class="form-label">Nama Anda:</label>
-                        <input type="text" id="nama" class="form-input" placeholder="Contoh: Bunda Ani" required aria-label="Nama Lengkap">
+                        <label class="form-label">Nama Pemesan <span style="color:red">*</span></label>
+                        <input type="text" id="nama" class="form-input" placeholder="Contoh: Budi Santoso" required aria-label="Nama Lengkap">
                         
-                        <label class="form-label">Alamat Lengkap:</label>
-                        <textarea id="alamat" class="form-textarea" rows="2" placeholder="Jalan, RT/RW, Kecamatan, Kota" required aria-label="Alamat Lengkap"></textarea>
+                        <label class="form-label">Alamat Lengkap (Untuk Pengiriman) <span style="color:red">*</span></label>
+                        <textarea id="alamat" class="form-textarea" rows="3" placeholder="Jalan/Blok, No. Rumah, RT/RW, Kelurahan, Kecamatan, Kota/Kabupaten, Kode Pos" required aria-label="Alamat Lengkap"></textarea>
                         
-                        <label class="form-label">Pilih Produk:</label>
+                        <label class="form-label">Pilih Varian Produk <span style="color:red">*</span></label>
                         <select id="varian" class="form-select" aria-label="Pilih Produk" onchange="hitungTotal()">
                             <option value="0">-- Pilih Varian --</option>
                             <option value="35999|Abon Sapi 100gr (Original)|type:reguler">Abon Sapi 100gr (Original) - Rp 35.999</option>
                             <option value="35999|Abon Sapi 100gr (Pedas)|type:reguler">Abon Sapi 100gr (Pedas) - Rp 35.999</option>
-                            <option value="4990|Abon Sapi 10gr Sachet (Original)|type:sachet">Abon Sapi 10gr Sachet (Original) - Rp 4.990</option>
-                            <option value="4990|Abon Sapi 10gr Sachet (Pedas)|type:sachet">Abon Sapi 10gr Sachet (Pedas) - Rp 4.990</option>
+                            <option value="4990|Abon Sapi 10gr Sachet (Original)|type:sachet">Abon Sapi 10gr Sachet (Original) - Rp 4.990 (Satuan)</option>
+                            <option value="4990|Abon Sapi 10gr Sachet (Pedas)|type:sachet">Abon Sapi 10gr Sachet (Pedas) - Rp 4.990 (Satuan)</option>
                         </select>
+                        <p style="font-size:0.85rem; color:#4b5563; margin-top:-1rem; margin-bottom:1rem;">*Pembelian sachet kelipatan 10 akan otomatis mendapatkan harga Pack (Rp 37.900/10 sachet).</p>
 
-                        <label class="form-label">Jumlah:</label>
+                        <label class="form-label">Jumlah Pesanan <span style="color:red">*</span></label>
                         <input type="number" id="jumlah" class="form-input" value="1" min="1" aria-label="Jumlah Pesanan" oninput="hitungTotal()">
 
-                        <div id="promoDetail" style="background:#fee2e2; color:#b91c1c; padding:1rem; margin-bottom:1rem; border-radius:0.5rem; text-align:left;" class="hidden"></div>
-                        <p style="font-size:1.2rem; font-weight:bold; margin-bottom:1rem;">Total Estimasi: <span id="totalHarga" style="color:#dc2626;">Rp 0</span></p>
-
-                        <div style="background:#f0fdf4; border-left:4px solid #16a34a; padding:1rem; margin-bottom:1.5rem; text-align:left; border-radius:0.5rem;">
-                            <p style="color:#15803d; font-weight:bold; display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-shipping-fast"></i> 100% AMAN! BISA COD</p>
-                            <p style="font-size:0.9rem; color:#166534; margin-top:0.3rem;">*Bayar di tempat saat barang sampai. Ongkir dihitung admin.</p>
+                        <div id="promoDetail" style="background:#fee2e2; color:#b91c1c; padding:1rem; margin-bottom:1rem; border-radius:0.5rem; text-align:left; border:1px solid #fecaca;" class="hidden"></div>
+                        
+                        <div style="border-top:2px solid #fecaca; padding-top:1rem; margin-bottom:1rem;">
+                            <p style="font-size:1.3rem; font-weight:bold; color:#1f2937;">Total Harga: <span id="totalHarga" style="color:#dc2626; font-size:2rem;">Rp 0</span></p>
                         </div>
 
-                        <div onclick="kirimWhatsApp()" class="btn-wa">Kirim Pesanan via WhatsApp 🚀</div>
+                        <label class="form-label">Catatan (Opsional)</label>
+                        <textarea id="catatan" rows="2" class="form-textarea" placeholder="Contoh: Kirim ke alamat kantor / Mohon dikemas aman"></textarea>
+
+                        <div style="background:#f0fdf4; border-left:4px solid #16a34a; padding:1rem; margin-bottom:1.5rem; text-align:left; border-radius:0.5rem;">
+                            <p style="color:#15803d; font-weight:bold; display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-shipping-fast"></i> 100% AMAN! BISA COD (Bayar di Tempat)</p>
+                            <p style="font-size:0.9rem; color:#166534; margin-top:0.3rem;">*Total harga produk akan dihitung otomatis. Biaya Ongkir & Admin COD akan dikonfirmasi oleh Admin kami di WhatsApp.</p>
+                        </div>
+
+                        <div onclick="kirimWhatsApp()" class="btn-wa">Kirim Pesanan ke WhatsApp Sekarang! 🚀</div>
                     </form>
                 </div>
             </div>
@@ -340,9 +327,8 @@
                         <h3 class="footer-title" style="margin-bottom:0;">BAROKAH HALALAN FOOD</h3>
                     </div>
                     <p style="font-size:0.9rem; line-height:1.6; margin-bottom:1.5rem;">Jl. Brigjend Abd Manan Wijaya Gg. Gereja GKJW, Malang.<br><span style="color:#4ade80;">(Produsen Abon Sapi & Pempek)</span></p>
-                    
                     <div style="width:100%; height:200px; border-radius:0.5rem; overflow:hidden; border:1px solid #374151;">
-                        <iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=-7.8466774,112.4737437&hl=es&z=14&output=embed" title="Peta Lokasi Barokah Food"></iframe>
+                        <iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=-7.8466774,112.4737437&hl=es&z=14&output=embed" title="Peta Lokasi"></iframe>
                     </div>
                     <a href="https://maps.google.com/maps?q=-7.8466774,112.4737437" target="_blank" style="display:inline-block; margin-top:0.5rem; font-size:0.85rem; color:#4ade80; text-decoration:underline;">Buka di Google Maps Aplikasi</a>
                 </div>
@@ -406,11 +392,11 @@
             let finalPrice = total;
             let promoHtml = "";
             
-            // 1. PROMO 3 PCS 100RB
+            // 1. PROMO 3 PCS 100RB (Detail Rincian)
             if (type === 'reguler' && jumlah === 3) { 
                 finalPrice = PROMO_100K_HARGA; 
                 let hemat = total - finalPrice;
-                promoHtml = `<p>Harga Normal: ${formatRupiah(total)}</p><p style="color:#16a34a; font-weight:bold;">Promo Paket 3pcs: ${formatRupiah(finalPrice)}</p><p style="font-size:0.9rem;">Anda Hemat: ${formatRupiah(hemat)}</p>`;
+                promoHtml = `<p>Harga Normal: <s style="color:#991b1b">${formatRupiah(total)}</s></p><p style="color:#16a34a; font-weight:bold;">Promo Paket 3pcs: ${formatRupiah(finalPrice)}</p><p style="font-size:0.9rem; color:#ea580c;">(Anda Hemat: ${formatRupiah(hemat)})</p>`;
             } 
             // 2. DISKON GROSIR
             else if (type === 'reguler' && jumlah >= 6) {
@@ -433,7 +419,7 @@
                     let remainderPrice = remainder * hargaSatuan;
                     finalPrice = packPriceTotal + remainderPrice;
                     let hemat = total - finalPrice;
-                    promoHtml = `<p>Rincian: ${packs} Pack Hemat + ${remainder} Eceran</p><p style="color:#16a34a; font-weight:bold;">Harga Paket: ${formatRupiah(finalPrice)}</p><p style="font-size:0.9rem;">Anda Hemat: ${formatRupiah(hemat)}</p>`;
+                    promoHtml = `<p>Rincian: ${packs} Pack Hemat + ${remainder} Eceran</p><p style="color:#16a34a; font-weight:bold;">Harga Paket: ${formatRupiah(finalPrice)}</p><p style="font-size:0.9rem;">(Anda Hemat: ${formatRupiah(hemat)})</p>`;
                 } 
             }
             
@@ -449,13 +435,25 @@
             let jumlah = document.getElementById('jumlah').value;
             let total = document.getElementById('totalHarga').innerText;
             let promoInfo = document.getElementById('promoDetail').innerText.replace(/\n/g, ' | ');
+            let catatan = document.getElementById('catatan').value;
             
             if(nama == "" || alamat == "" || varian.value == "0") { alert("Mohon lengkapi Nama, Alamat, dan Produk!"); return; }
             if(typeof fbq === 'function') fbq('track', 'Lead');
             
-            let text = `Halo Barokah Food!%0A%0ASaya pesan promo:%0A👤 Nama: ${nama}%0A🏠 Alamat: ${alamat}%0A📦 Produk: ${produk}%0A🔢 Jumlah: ${jumlah}%0A💰 Total Estimasi: ${total}%0A🏷️ Rincian: ${promoInfo}`;
+            let text = `Halo Barokah Food!%0A%0ASaya pesan promo:%0A👤 Nama: ${nama}%0A🏠 Alamat: ${alamat}%0A📦 Produk: ${produk}%0A🔢 Jumlah: ${jumlah}%0A💰 Total Estimasi: ${total}%0A🏷️ Rincian: ${promoInfo}%0A📝 Catatan: ${catatan}`;
             window.open(`https://wa.me/${WA_NUMBER}?text=${text}`, '_blank');
         }
+        
+        // LAZY LOAD GTM
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-TBFQQ3LK');
+            }, 3500);
+        });
     </script>
 </body>
 </html>
