@@ -2,13 +2,12 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://cloudflareinsights.com; frame-src 'self' http://googleusercontent.com https://www.google.com;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Katalog Produk Lengkap | BAROKAH HALALAN FOOD</title>
+    <meta name="description" content="Katalog lengkap produk Barokah Halalan Food. Abon Sapi Tumbuk, Pempek Palembang Asli, dan Paket Kemitraan Reseller.">
     
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://cloudflareinsights.com;">
-
-    <title>Katalog Harga Abon Sapi | BAROKAH FOOD</title>
-    <meta name="description" content="Daftar harga dan skema grosir Abon Sapi Tumbuk Barokah. Cek paket hemat dan tiering reseller di sini.">
-
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
     <link rel="apple-touch-icon" href="apple-icon-180x180.png">
@@ -17,64 +16,92 @@
         /* FONT AWESOME */
         @font-face { font-family: 'Font Awesome 6 Free'; font-style: normal; font-weight: 900; font-display: swap; src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2) format('woff2'); }
         @font-face { font-family: 'Font Awesome 6 Brands'; font-style: normal; font-weight: 400; font-display: swap; src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2) format('woff2'); }
-        .fa, .fas, .fab { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; -webkit-font-smoothing: antialiased; }
+        .fa, .fas, .fab { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; }
         .fas { font-family: 'Font Awesome 6 Free'; font-weight: 900; } .fab { font-family: 'Font Awesome 6 Brands'; font-weight: 400; }
-        .fa-check-circle:before{content:"\f058"} .fa-arrow-right:before{content:"\f061"} .fa-home:before{content:"\f015"} .fa-tags:before{content:"\f02c"}
+        .fa-whatsapp:before{content:"\f232"} .fa-arrow-right:before{content:"\f061"} .fa-shopping-cart:before{content:"\f07a"} .fa-store:before{content:"\f54e"} .fa-home:before{content:"\f015"} .fa-tags:before{content:"\f02c"}
 
         /* GLOBAL */
-        :root { --red-600: #dc2626; --red-700: #b91c1c; --green-600: #16a34a; --gray-50: #f9fafb; --gray-800: #1f2937; --white: #ffffff; }
+        :root { --red-600: #dc2626; --red-700: #b91c1c; --green-600: #16a34a; --gray-100: #f3f4f6; --text-dark: #1f2937; --white: #ffffff; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: system-ui, -apple-system, sans-serif; background: var(--gray-50); color: var(--gray-800); line-height: 1.5; margin: 0; }
-        img { max-width: 100%; height: auto; display: block; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: var(--gray-100); color: var(--text-dark); line-height: 1.6; }
         a { text-decoration: none; transition: 0.3s; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
         .text-center { text-align: center; }
-        .font-bold { font-weight: 700; }
+        img { max-width: 100%; height: auto; display: block; }
 
         /* HEADER */
         header { background: var(--white); padding: 1rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 50; }
         .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-        .logo h1 { font-size: 1.2rem; font-weight: 800; color: var(--red-600); margin: 0; }
-        .btn-back { color: var(--gray-800); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+        .logo h1 { font-size: 1.2rem; font-weight: 800; color: var(--red-600); margin: 0; text-transform: uppercase; }
+        .btn-back { color: var(--text-dark); font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
         .btn-back:hover { color: var(--red-600); }
 
-        /* HERO */
-        .hero { background: #fef2f2; padding: 3rem 0; text-align: center; margin-bottom: 2rem; }
-        .hero h2 { font-size: 2rem; color: var(--red-700); margin-bottom: 0.5rem; line-height: 1.2; }
-        .hero p { font-size: 1.1rem; color: #374151; max-width: 600px; margin: 0 auto; }
+        /* HERO CATALOG */
+        .cat-hero { background: white; padding: 3rem 0; text-align: center; margin-bottom: 2rem; }
+        .cat-hero h2 { font-size: 2rem; margin-bottom: 0.5rem; color: var(--text-dark); font-weight: 800; }
+        .cat-hero p { color: #6b7280; max-width: 600px; margin: 0 auto; }
 
-        /* PRICING TABLE (SKEMA TIER) */
-        .pricing-section { margin-bottom: 3rem; }
-        .pricing-box { background: white; border: 1px solid #fecaca; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        /* PRICING TABLE (RATA TENGAH & TIDAK MELEBAR) */
+        .pricing-section { margin-bottom: 4rem; }
+        .pricing-box { 
+            background: white; 
+            border: 1px solid #fecaca; 
+            border-radius: 1rem; 
+            overflow: hidden; 
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            /* Fix Rata Tengah Desktop */
+            max-width: 800px; 
+            margin: 0 auto; 
+        }
         .pricing-header { background: var(--red-600); color: white; padding: 1rem; text-align: center; }
         .pricing-header h3 { margin: 0; font-size: 1.25rem; }
         .pricing-table { width: 100%; border-collapse: collapse; text-align: left; }
         .pricing-table th { background: #fef2f2; color: var(--red-700); padding: 1rem; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; }
-        .pricing-table td { padding: 1rem; border-bottom: 1px solid #f3f4f6; color: var(--gray-800); }
+        .pricing-table td { padding: 1rem; border-bottom: 1px solid #f3f4f6; color: var(--text-dark); }
         .pricing-table tr:last-child td { border-bottom: none; }
         .discount-badge { background: var(--green-600); color: white; padding: 0.25rem 0.5rem; border-radius: 4px; font-weight: bold; font-size: 0.85rem; }
 
-        /* PRODUCT GRID */
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; padding-bottom: 4rem; }
-        .prod-card { background: white; border: 1px solid #e5e7eb; border-radius: 1rem; padding: 1.5rem; transition: 0.3s; display: flex; flex-direction: column; text-align: left; }
+        /* PRODUCT GRID (2 KOLOM) */
+        .grid-products { 
+            display: grid; 
+            grid-template-columns: 1fr; /* Mobile 1 Kolom */
+            gap: 2rem; 
+            padding-bottom: 4rem; 
+            max-width: 900px; /* Batasi lebar total grid */
+            margin: 0 auto; /* Tengah */
+        }
+        /* Tablet & Desktop: 2 Kolom */
+        @media(min-width: 768px) { 
+            .grid-products { 
+                grid-template-columns: repeat(2, 1fr); 
+            } 
+        }
+
+        .prod-card { background: white; border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); transition: 0.3s; border: 1px solid #e5e7eb; display: flex; flex-direction: column; }
         .prod-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); border-color: var(--red-600); }
-        .prod-img { width: 100%; border-radius: 0.5rem; margin-bottom: 1rem; }
-        .prod-tag { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 99px; font-size: 0.75rem; font-weight: bold; margin-bottom: 0.5rem; }
-        .tag-red { background: #fee2e2; color: var(--red-600); }
-        .tag-yellow { background: #fef9c3; color: #b45309; }
-        .tag-green { background: #dcfce7; color: var(--green-600); }
         
-        .prod-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
-        .prod-desc { font-size: 0.85rem; color: #6b7280; margin-bottom: 1rem; flex-grow: 1; }
-        .price-area { border-top: 1px solid #f3f4f6; padding-top: 1rem; margin-top: auto; }
-        .price-main { font-size: 1.25rem; font-weight: 800; color: var(--red-600); display: block; }
-        .price-sub { font-size: 0.85rem; color: var(--green-600); font-weight: 600; }
+        .prod-img-box { height: 280px; width: 100%; background: #f9fafb; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+        .prod-img-box img { width: 100%; height: 100%; object-fit: cover; }
         
-        .btn-order { display: block; width: 100%; background: var(--red-600); color: white; text-align: center; padding: 0.8rem; border-radius: 0.5rem; font-weight: 700; margin-top: 1rem; }
-        .btn-order:hover { background: var(--red-700); }
+        .prod-info { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .badge { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 99px; font-size: 0.75rem; font-weight: bold; margin-bottom: 0.5rem; width: fit-content; }
+        .bg-red { background: #fee2e2; color: var(--red-600); }
+        .bg-green { background: #dcfce7; color: var(--green-600); }
+        .bg-yellow { background: #fef9c3; color: #b45309; }
+        
+        .prod-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .prod-desc { font-size: 0.95rem; color: #6b7280; margin-bottom: 1.5rem; flex-grow: 1; }
+        .price { font-size: 1.2rem; font-weight: 800; color: var(--red-600); margin-bottom: 1rem; display: block; }
+        
+        /* BUTTONS */
+        .btn-action { display: block; width: 100%; padding: 0.8rem; text-align: center; border-radius: 0.5rem; font-weight: 700; margin-top: auto; }
+        .btn-buy { background: var(--red-600); color: white; }
+        .btn-buy:hover { background: #b91c1c; }
+        .btn-wa { background: var(--green-600); color: white; }
+        .btn-wa:hover { background: #14532d; }
 
         /* FOOTER */
-        footer { background: #111827; color: #9ca3af; padding: 2rem 0; text-align: center; font-size: 0.85rem; margin-top: auto; }
+        footer { background: #111827; color: #9ca3af; padding: 3rem 0; text-align: center; margin-top: auto; }
     </style>
 </head>
 <body>
@@ -82,15 +109,15 @@
     <header>
         <div class="container nav-flex">
             <a href="index.html" class="btn-back"><i class="fas fa-home"></i> Kembali ke Promo</a>
-            <div class="logo"><h1>BAROKAH FOOD</h1></div>
+            <div class="logo"><h1>BAROKAH HALALAN FOOD</h1></div>
         </div>
     </header>
 
     <main>
-        <section class="hero">
+        <section class="cat-hero">
             <div class="container">
-                <h2>Katalog Harga & Grosir</h2>
-                <p>Spesialis Abon Sapi Tumbuk Premium. Pilihan tepat untuk stok di rumah atau peluang usaha reseller.</p>
+                <h2>Katalog Produk & Harga</h2>
+                <p>Pilihan makanan sehat, halal, dan praktis untuk keluarga Anda. Tersedia harga eceran dan grosir.</p>
             </div>
         </section>
 
@@ -112,22 +139,22 @@
                             <tr>
                                 <td><strong>Tier Bronze</strong></td>
                                 <td>6 Pack</td>
-                                <td><span class="discount-badge">Diskon 8.1%</span></td>
+                                <td><span class="discount-badge" style="background:#15803d; color:white; padding:2px 6px; border-radius:4px; font-size:0.8rem;">Diskon 8.1%</span></td>
                             </tr>
                             <tr>
                                 <td><strong>Tier Silver</strong></td>
                                 <td>10 Pack</td>
-                                <td><span class="discount-badge">Diskon 10%</span></td>
+                                <td><span class="discount-badge" style="background:#15803d; color:white; padding:2px 6px; border-radius:4px; font-size:0.8rem;">Diskon 10%</span></td>
                             </tr>
                             <tr>
                                 <td><strong>Tier Gold</strong></td>
                                 <td>25 Pack</td>
-                                <td><span class="discount-badge">Diskon 15%</span></td>
+                                <td><span class="discount-badge" style="background:#15803d; color:white; padding:2px 6px; border-radius:4px; font-size:0.8rem;">Diskon 15%</span></td>
                             </tr>
                             <tr>
                                 <td><strong>Tier Platinum</strong></td>
                                 <td>50 Pack</td>
-                                <td><span class="discount-badge">Diskon 22%</span></td>
+                                <td><span class="discount-badge" style="background:#15803d; color:white; padding:2px 6px; border-radius:4px; font-size:0.8rem;">Diskon 22%</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -137,54 +164,66 @@
                 </div>
             </section>
 
-            <div class="product-grid">
+            <div class="grid-products">
                 
                 <div class="prod-card">
-                    <span class="prod-tag tag-red">BEST SELLER</span>
-                    <img src="kemasan-abon-10gr-tas.webp" alt="Abon Sapi Sachet Ori" class="prod-img">
-                    <h3 class="prod-title">Abon Sachet 10gr (Original)</h3>
-                    <p class="prod-desc">Kemasan sekali makan praktis. Rasa manis gurih disukai anak-anak.</p>
-                    <div class="price-area">
-                        <span class="price-main">Rp 4.990</span>
-                        <span class="price-sub">Pack (10pcs): Rp 37.900</span>
+                    <div class="prod-img-box">
+                        <img src="kemasan-abon-100gr-sblh.webp" alt="Abon Sapi 100gr">
                     </div>
-                    <a href="index.html#order-form" class="btn-order">Pesan Sekarang</a>
+                    <div class="prod-info">
+                        <span class="badge bg-red">BEST SELLER</span>
+                        <h3 class="prod-title">Abon Sapi Tumbuk (100gr)</h3>
+                        <p class="prod-desc">Kemasan keluarga (Pouch). Serat daging sapi murni, awet dan higienis.</p>
+                        <span class="price">Rp 35.999</span>
+                        <a href="index.html#order-form" class="btn-action btn-buy">
+                            Beli Promo (3pcs 100rb) <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="prod-card">
-                    <span class="prod-tag tag-yellow">COBAIN</span>
-                    <img src="kemasan-abon-10gr-mie.webp" alt="Abon Sapi Sachet Pedas" class="prod-img">
-                    <h3 class="prod-title">Abon Sachet 10gr (Pedas)</h3>
-                    <p class="prod-desc">Booster pedas instan. Cocok untuk taburan mie atau bubur.</p>
-                    <div class="price-area">
-                        <span class="price-main">Rp 4.990</span>
-                        <span class="price-sub">Pack (10pcs): Rp 37.900</span>
+                    <div class="prod-img-box">
+                        <img src="kemasan-abon-100gr-dapur.webp" alt="Abon Sapi 100gr Pedas">
                     </div>
-                    <a href="index.html#order-form" class="btn-order">Pesan Sekarang</a>
+                    <div class="prod-info">
+                        <span class="badge bg-green">HEMAT</span>
+                        <h3 class="prod-title">Abon Tumbuk 100gr (Pedas)</h3>
+                        <p class="prod-desc">Rasa pedas nendang dengan rempah alami. Tanpa MSG. Favorit Ayah!</p>
+                        <span class="price">Rp 35.999</span>
+                        <a href="index.html#order-form" class="btn-action btn-buy">
+                            Beli Promo (3pcs 100rb) <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="prod-card">
-                    <span class="prod-tag tag-green">HEMAT</span>
-                    <img src="kemasan-abon-100gr-sblh.webp" alt="Abon Sapi 100gr Ori" class="prod-img">
-                    <h3 class="prod-title">Abon Tumbuk 100gr (Original)</h3>
-                    <p class="prod-desc">Kemasan keluarga (Pouch). Serat daging asli, awet dan higienis.</p>
-                    <div class="price-area">
-                        <span class="price-main">Rp 35.999</span>
-                        <span class="price-sub">Promo: 3 Pcs Rp 100rb</span>
+                    <div class="prod-img-box">
+                        <img src="kemasan-abon-10gr-tas.webp" alt="Abon Sapi Sachet Ori">
                     </div>
-                    <a href="index.html#order-form" class="btn-order">Pesan Sekarang</a>
+                    <div class="prod-info">
+                        <span class="badge bg-red">PRAKTIS</span>
+                        <h3 class="prod-title">Abon Sachet 10gr (Original)</h3>
+                        <p class="prod-desc">Kemasan sekali makan praktis. Solusi bekal sekolah & traveling.</p>
+                        <span class="price">Rp 4.990 / pcs</span>
+                        <a href="index.html#order-form" class="btn-action btn-buy">
+                            Beli Paket Hemat <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="prod-card">
-                    <span class="prod-tag tag-green">HEMAT</span>
-                    <img src="kemasan-abon-100gr-dapur.webp" alt="Abon Sapi 100gr Pedas" class="prod-img">
-                    <h3 class="prod-title">Abon Tumbuk 100gr (Pedas)</h3>
-                    <p class="prod-desc">Rasa pedas nendang dengan rempah alami. Tanpa MSG.</p>
-                    <div class="price-area">
-                        <span class="price-main">Rp 35.999</span>
-                        <span class="price-sub">Promo: 3 Pcs Rp 100rb</span>
+                    <div class="prod-img-box">
+                        <img src="kemasan-abon-10gr-mie.webp" alt="Abon Sapi Sachet Pedas">
                     </div>
-                    <a href="index.html#order-form" class="btn-order">Pesan Sekarang</a>
+                    <div class="prod-info">
+                        <span class="badge bg-yellow">COBAIN</span>
+                        <h3 class="prod-title">Abon Sachet 10gr (Pedas)</h3>
+                        <p class="prod-desc">Booster pedas instan. Cocok untuk taburan mie kuah atau bubur.</p>
+                        <span class="price">Rp 4.990 / pcs</span>
+                        <a href="index.html#order-form" class="btn-action btn-buy">
+                            Beli Paket Hemat <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
 
             </div>
@@ -193,7 +232,7 @@
 
     <footer>
         <div class="container">
-            <p>© 2025 BAROKAH HALALAN FOOD. All rights reserved.</p>
+            <p>&copy; 2025 BAROKAH HALALAN FOOD. All rights reserved.</p>
         </div>
     </footer>
 
