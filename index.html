@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self' https:; 
-        script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://static.cloudflareinsights.com; 
-        style-src 'self' 'unsafe-inline'; 
-        font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; 
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googletagmanager.com https://*.google-analytics.com https://*.google.com https://*.gstatic.com https://static.cloudflareinsights.com; 
+        style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; 
+        font-src 'self' data: https://cdnjs.cloudflare.com https://fonts.gstatic.com; 
         img-src 'self' data: https:; 
-        connect-src 'self' https://cloudflareinsights.com; 
-        frame-src 'self' https://www.google.com http://googleusercontent.com https://googleusercontent.com https://maps.google.com https://www.googletagmanager.com;
+        connect-src 'self' https: https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.g.doubleclick.net https://cloudflareinsights.com; 
+        frame-src 'self' https:;
     ">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -159,16 +159,13 @@
         .footer-bottom { border-top: 1px solid #374151; margin-top: 3rem; padding-top: 1.5rem; display: flex; flex-direction: column; align-items: center; font-size: 0.85rem; text-align: center; }
         @media (min-width: 768px) { .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; } }
     </style>
+    
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            setTimeout(function() {
-                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                })(window,document,'script','dataLayer','GTM-TBFQQ3LK');
-            }, 3500);
-        });
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-TBFQQ3LK');
     </script>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBFQQ3LK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </head>
@@ -512,6 +509,7 @@
     </script>
 </body>
 </html>
+
 
 
 
