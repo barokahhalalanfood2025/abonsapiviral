@@ -411,94 +411,171 @@
     </footer>
 
     <script>
-        const PROMO_REGULER = [{ min: 50, diskon: 0.22 }, { min: 25, diskon: 0.15 }, { min: 10, diskon: 0.10 }, { min: 6, diskon: 0.081 }];
-        const PROMO_100K_HARGA = 100000; 
-        const SACHET_PACK_PRICE = 37900; 
-        const WA_NUMBER = "6285725046201";
+    // DATA KONFIGURASI HARGA
+    // Diskon diurutkan dari pembelian terbanyak agar logika loop berjalan benar
+    const PROMO_REGULER = [
+        { min: 50, diskon: 0.22 }, // Platinum
+        { min: 25, diskon: 0.15 }, // Gold
+        { min: 10, diskon: 0.10 }, // Silver
+        { min: 6, diskon: 0.081 }  // Bronze
+    ];
+    const PROMO_100K_HARGA = 100000; 
+    const SACHET_PACK_PRICE = 37900; 
+    const WA_NUMBER = "6285725046201";
 
-        function formatRupiah(angka) { return "Rp " + Math.round(angka).toLocaleString('id-ID'); }
+    // Format Rupiah
+    function formatRupiah(angka) { 
+        return "Rp " + Math.round(angka).toLocaleString('id-ID'); 
+    }
+    
+    // Fungsi Pilih Varian dari Card Produk
+    function selectVariant(val) { 
+        let dropdown = document.getElementById('varian');
+        dropdown.value = val; 
         
-        function selectVariant(val) { 
-            document.getElementById('varian').value = val; 
+        // Cek apakah dropdown berubah (jika value valid)
+        if(dropdown.value === val) {
             hitungTotal(); 
             document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' }); 
         }
+    }
+    
+    // FUNGSI UTAMA HITUNG TOTAL
+    function hitungTotal() {
+        let varian = document.getElementById('varian').value;
+        let jumlahEl = document.getElementById('jumlah');
+        let jumlah = parseInt(jumlahEl.value) || 1;
+        let detail = document.getElementById('promoDetail');
+        let totalDisplay = document.getElementById('totalHarga');
         
-        function hitungTotal() {
-            let varian = document.getElementById('varian').value;
-            let jumlahEl = document.getElementById('jumlah');
-            let jumlah = parseInt(jumlahEl.value) || 1;
-            let detail = document.getElementById('promoDetail');
-            let totalDisplay = document.getElementById('totalHarga');
-            
-            if (varian == "0") { 
-                totalDisplay.innerText = "Rp 0"; 
-                detail.classList.add('hidden'); 
-                return; 
-            }
+        // Reset jika belum pilih varian
+        if (varian == "0") { 
+            totalDisplay.innerText = "Rp 0"; 
+            detail.classList.add('hidden'); 
+            detail.innerText = ""; // Bersihkan text tersembunyi
+            return; 
+        }
 
-            let parts = varian.split('|');
-            let hargaSatuan = parseInt(parts[0]);
-            let type = parts[2].split(':')[1];
-            let total = hargaSatuan * jumlah;
-            let finalPrice = total;
-            let promoHtml = "";
-            
-            // 1. PROMO 3 PCS 100RB (Detail Rincian)
-            if (type === 'reguler' && jumlah === 3) { 
+        // Ambil data dari value option (Harga|Nama|Type)
+        let parts = varian.split('|');
+        if (parts.length < 3) return; // Safety check agar tidak error
+
+        let hargaSatuan = parseInt(parts[0]);
+        let type = parts[2].split(':')[1]; // reguler atau sachet
+        let total = hargaSatuan * jumlah;
+        let finalPrice = total;
+        let promoHtml = "";
+        
+        // LOGIKA 1: PROMO ABON REGULER (100gr)
+        if (type === 'reguler') {
+            // A. Promo Spesial 3 Pcs = 100rb
+            if (jumlah === 3) { 
                 finalPrice = PROMO_100K_HARGA; 
                 let hemat = total - finalPrice;
-                promoHtml = `<p>Harga Normal: <s style="color:#991b1b">${formatRupiah(total)}</s></p><p style="color:#16a34a; font-weight:bold;">Promo Paket 3pcs: ${formatRupiah(finalPrice)}</p><p style="font-size:0.9rem; color:#ea580c;">(Anda Hemat: ${formatRupiah(hemat)})</p>`;
+                promoHtml = `<p>Harga Normal: <s style="color:#991b1b">${formatRupiah(total)}</s></p>
+                             <p style="color:#16a34a; font-weight:bold;">✨ Promo Paket 3pcs: ${formatRupiah(finalPrice)}</p>
+                             <p style="font-size:0.9rem; color:#ea580c;">(Anda Hemat: ${formatRupiah(hemat)})</p>`;
             } 
-            // 2. DISKON GROSIR
-            else if (type === 'reguler' && jumlah >= 6) {
+            // B. Promo Grosir (Jumlah >= 6)
+            else if (jumlah >= 6) {
                  for (let i = 0; i < PROMO_REGULER.length; i++) {
                     if (jumlah >= PROMO_REGULER[i].min) {
                         let diskon = PROMO_REGULER[i].diskon;
                         let potongan = total * diskon;
                         finalPrice = total - potongan;
-                        promoHtml = `<p>Harga Normal: ${formatRupiah(total)}</p><p style="color:#16a34a; font-weight:bold;">Diskon Grosir ${(diskon*100).toFixed(1)}%: -${formatRupiah(potongan)}</p><p style="font-size:0.9rem;">Total Bayar: ${formatRupiah(finalPrice)}</p>`;
-                        break;
+                        promoHtml = `<p>Harga Normal: ${formatRupiah(total)}</p>
+                                     <p style="color:#16a34a; font-weight:bold;">Grosir Hemat ${(diskon*100).toFixed(1)}%: -${formatRupiah(potongan)}</p>
+                                     <p style="font-size:0.9rem;">Total Bayar: ${formatRupiah(finalPrice)}</p>`;
+                        break; // Stop loop setelah ketemu diskon terbesar yang cocok
                     }
                 }
             }
-            // 3. SACHET
-            else if (type === 'sachet') { 
-                let packs = Math.floor(jumlah / 10);
-                let remainder = jumlah % 10;
-                if (packs > 0) { 
-                    let packPriceTotal = packs * SACHET_PACK_PRICE;
-                    let remainderPrice = remainder * hargaSatuan;
-                    finalPrice = packPriceTotal + remainderPrice;
-                    let hemat = total - finalPrice;
-                    promoHtml = `<p>Rincian: ${packs} Pack Hemat + ${remainder} Eceran</p><p style="color:#16a34a; font-weight:bold;">Harga Paket: ${formatRupiah(finalPrice)}</p><p style="font-size:0.9rem;">(Anda Hemat: ${formatRupiah(hemat)})</p>`;
-                } 
-            }
-            
-            totalDisplay.innerText = formatRupiah(finalPrice); 
-            if (promoHtml) { detail.innerHTML = promoHtml; detail.classList.remove('hidden'); } else { detail.classList.add('hidden'); }
         }
         
-        function kirimWhatsApp() {
-            let nama = document.getElementById('nama').value;
-            let alamat = document.getElementById('alamat').value;
-            let varian = document.getElementById('varian');
-            let produk = varian.options[varian.selectedIndex].text;
-            let jumlah = document.getElementById('jumlah').value;
-            let total = document.getElementById('totalHarga').innerText;
-            let promoInfo = document.getElementById('promoDetail').innerText.replace(/\n/g, ' | ');
-            let catatan = document.getElementById('catatan').value;
+        // LOGIKA 2: PROMO ABON SACHET (10gr)
+        else if (type === 'sachet') { 
+            let packs = Math.floor(jumlah / 10); // Jumlah per 10 bungkus
+            let remainder = jumlah % 10;         // Sisa satuan
             
-            if(nama == "" || alamat == "" || varian.value == "0") { alert("Mohon lengkapi Nama, Alamat, dan Produk!"); return; }
-            if(typeof fbq === 'function') fbq('track', 'Lead');
-            
-            let text = `Halo Barokah Food!%0A%0ASaya pesan promo:%0A👤 Nama: ${nama}%0A🏠 Alamat: ${alamat}%0A📦 Produk: ${produk}%0A🔢 Jumlah: ${jumlah}%0A💰 Total Estimasi: ${total}%0A🏷️ Rincian: ${promoInfo}%0A📝 Catatan: ${catatan}`;
-            window.open(`https://wa.me/${WA_NUMBER}?text=${text}`, '_blank');
+            if (packs > 0) { 
+                let packPriceTotal = packs * SACHET_PACK_PRICE;
+                let remainderPrice = remainder * hargaSatuan;
+                finalPrice = packPriceTotal + remainderPrice;
+                let hemat = total - finalPrice;
+                
+                promoHtml = `<p>📦 Rincian: ${packs} Pack Hemat + ${remainder} Eceran</p>
+                             <p style="color:#16a34a; font-weight:bold;">Total Harga Paket: ${formatRupiah(finalPrice)}</p>
+                             <p style="font-size:0.9rem; color:#ea580c;">(Anda Hemat: ${formatRupiah(hemat)})</p>`;
+            } 
         }
         
-    </script>
+        // TAMPILKAN HASIL
+        totalDisplay.innerText = formatRupiah(finalPrice); 
+        
+        if (promoHtml) { 
+            detail.innerHTML = promoHtml; 
+            detail.classList.remove('hidden'); 
+        } else { 
+            // Jika tidak ada promo (beli 1, 2, 4, 5 reguler)
+            detail.innerHTML = ""; // Kosongkan agar tidak terbawa ke WA
+            detail.classList.add('hidden'); 
+        }
+    }
+    
+    // FUNGSI KIRIM WHATSAPP
+    function kirimWhatsApp() {
+        let nama = document.getElementById('nama').value;
+        let alamat = document.getElementById('alamat').value;
+        let varian = document.getElementById('varian');
+        let produk = varian.options[varian.selectedIndex].text;
+        let jumlah = document.getElementById('jumlah').value;
+        let total = document.getElementById('totalHarga').innerText;
+        
+        // Ambil text promo (bersihkan enter dan tag HTML)
+        let promoDetailEl = document.getElementById('promoDetail');
+        let promoInfo = "";
+        if (!promoDetailEl.classList.contains('hidden')) {
+            promoInfo = promoDetailEl.innerText.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+        }
+        
+        let catatan = document.getElementById('catatan').value;
+        
+        // Validasi Form
+        if(nama == "" || alamat == "" || varian.value == "0") { 
+            alert("Mohon lengkapi Nama, Alamat, dan Produk agar kami bisa memproses pesanan!"); 
+            return; 
+        }
+
+        // Facebook Pixel Event
+        if(typeof fbq === 'function') fbq('track', 'Lead');
+        
+        // Format Pesan WA (Menggunakan Template Literal yang rapi)
+        let text = `*Halo Admin Barokah Food!* 👋%0A` +
+                   `Saya mau pesan promo di website:%0A%0A` +
+                   `👤 *Nama:* ${nama}%0A` +
+                   `🏠 *Alamat:* ${alamat}%0A` +
+                   `📦 *Produk:* ${produk}%0A` +
+                   `🔢 *Jumlah:* ${jumlah} pcs%0A` +
+                   `💰 *Total:* ${total}%0A`;
+
+        // Hanya tambahkan rincian jika ada promo
+        if(promoInfo !== "") {
+            text += `🏷️ *Info Promo:* ${promoInfo}%0A`;
+        }
+
+        if(catatan !== "") {
+            text += `📝 *Catatan:* ${catatan}%0A`;
+        }
+        
+        text += `%0A_Mohon dibantu total ongkirnya ya kak. Terima kasih!_`;
+
+        window.open(`https://wa.me/${WA_NUMBER}?text=${text}`, '_blank');
+    }
+    
+</script>
 </body>
 </html>
+
 
 
 
