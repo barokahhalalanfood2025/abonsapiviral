@@ -229,8 +229,9 @@
         
         <div class="badges">
             <span><i class="fas fa-check-circle"></i> 100% DAGING TANPA CAMPURAN</span>
-            <span><i class="fas fa-check-circle"></i> TANPA PENGAWET</span>
-            <span><i class="fas fa-check-circle"></i> TANPA MSG</span>
+            <span><i class="fas fa-check-circle"></i> TANPA MSG & PENGAWET</span>
+            <span><i class="fas fa-check-circle"></i> MINYAK KELAPA</span>
+            <span><i class="fas fa-check-circle"></i> GULA AREN ASLI</span>
         </div>
 
         <div style="max-width:700px; margin:0 auto 1.5rem;">
@@ -473,7 +474,6 @@
 
     <script>
     // DATA KONFIGURASI HARGA
-    // Diskon diurutkan dari pembelian terbanyak agar logika loop berjalan benar
     const PROMO_REGULER = [
         { min: 50, diskon: 0.22 }, // Platinum
         { min: 25, diskon: 0.15 }, // Gold
@@ -482,6 +482,7 @@
     ];
     const PROMO_100K_HARGA = 100000; 
     const SACHET_PACK_PRICE = 37900; 
+    const SACHET_3PACK_PROMO = 107000; // Harga Promo 3 Pack
     const WA_NUMBER = "6285725046201";
 
     // Format Rupiah
@@ -493,8 +494,6 @@
     function selectVariant(val) { 
         let dropdown = document.getElementById('varian');
         dropdown.value = val; 
-        
-        // Cek apakah dropdown berubah (jika value valid)
         if(dropdown.value === val) {
             hitungTotal(); 
             document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' }); 
@@ -509,27 +508,24 @@
         let detail = document.getElementById('promoDetail');
         let totalDisplay = document.getElementById('totalHarga');
         
-        // Reset jika belum pilih varian
         if (varian == "0") { 
             totalDisplay.innerText = "Rp 0"; 
             detail.classList.add('hidden'); 
-            detail.innerText = ""; // Bersihkan text tersembunyi
+            detail.innerText = ""; 
             return; 
         }
 
-        // Ambil data dari value option (Harga|Nama|Type)
         let parts = varian.split('|');
-        if (parts.length < 3) return; // Safety check agar tidak error
+        if (parts.length < 3) return; 
 
         let hargaSatuan = parseInt(parts[0]);
-        let type = parts[2].split(':')[1]; // reguler atau sachet
+        let type = parts[2].split(':')[1]; 
         let total = hargaSatuan * jumlah;
         let finalPrice = total;
         let promoHtml = "";
         
         // LOGIKA 1: PROMO ABON REGULER (100gr)
         if (type === 'reguler') {
-            // A. Promo Spesial 3 Pcs = 100rb
             if (jumlah === 3) { 
                 finalPrice = PROMO_100K_HARGA; 
                 let hemat = total - finalPrice;
@@ -537,7 +533,6 @@
                              <p style="color:#16a34a; font-weight:bold;">✨ Promo Paket 3pcs: ${formatRupiah(finalPrice)}</p>
                              <p style="font-size:0.9rem; color:#ea580c;">(Anda Hemat: ${formatRupiah(hemat)})</p>`;
             } 
-            // B. Promo Grosir (Jumlah >= 6)
             else if (jumlah >= 6) {
                  for (let i = 0; i < PROMO_REGULER.length; i++) {
                     if (jumlah >= PROMO_REGULER[i].min) {
@@ -547,26 +542,69 @@
                         promoHtml = `<p>Harga Normal: ${formatRupiah(total)}</p>
                                      <p style="color:#16a34a; font-weight:bold;">Grosir Hemat ${(diskon*100).toFixed(1)}%: -${formatRupiah(potongan)}</p>
                                      <p style="font-size:0.9rem;">Total Bayar: ${formatRupiah(finalPrice)}</p>`;
-                        break; // Stop loop setelah ketemu diskon terbesar yang cocok
+                        break; 
                     }
                 }
             }
         }
         
-        // LOGIKA 2: PROMO ABON SACHET (10gr)
+        // LOGIKA 2: PROMO ABON SACHET (10gr) - DIPERBAIKI
         else if (type === 'sachet') { 
-            let packs = Math.floor(jumlah / 10); // Jumlah per 10 bungkus
-            let remainder = jumlah % 10;         // Sisa satuan
+            let packs = Math.floor(jumlah / 10); // Jumlah Pack (kelipatan 10)
+            let remainder = jumlah % 10;         // Sisa eceran
             
-            if (packs > 0) { 
+            // A. TIER GROSIR (>= 6 PACK / 60 Sachet)
+            // Mengikuti diskon tier persenan seperti regular
+            if (packs >= 6) {
+                let baseTotalPacks = packs * SACHET_PACK_PRICE;
+                let remainderTotal = remainder * hargaSatuan;
+                let grossTotal = baseTotalPacks + remainderTotal; // Harga sebelum diskon
+                
+                // Cari persentase diskon berdasarkan jumlah PACK
+                for (let i = 0; i < PROMO_REGULER.length; i++) {
+                    if (packs >= PROMO_REGULER[i].min) {
+                        let diskon = PROMO_REGULER[i].diskon;
+                        let potongan = grossTotal * diskon; // Diskon diterapkan ke total belanja sachet
+                        finalPrice = grossTotal - potongan;
+                        
+                        promoHtml = `<p>📦 Order Grosir: ${packs} Pack + ${remainder} Ecer</p>
+                                     <p>Harga Normal: ${formatRupiah(grossTotal)}</p>
+                                     <p style="color:#16a34a; font-weight:bold;">Diskon Tier ${(diskon*100).toFixed(1)}%: -${formatRupiah(potongan)}</p>`;
+                        break;
+                    }
+                }
+            }
+            // B. PROMO BUNDLE 3 PACK (30 - 59 Sachet)
+            // 3 Pack pertama harga 107rb. Sisanya harga pack normal.
+            else if (packs >= 3) {
+                let promoBundlePrice = SACHET_3PACK_PROMO; // 107.000
+                let extraPacks = packs - 3;
+                let extraPacksPrice = extraPacks * SACHET_PACK_PRICE;
+                let remainderPrice = remainder * hargaSatuan;
+                
+                // Hitung total dengan logika: (Harga Promo 3 Pack) + (Harga Pack Sisa) + (Harga Eceran)
+                finalPrice = promoBundlePrice + extraPacksPrice + remainderPrice;
+                
+                // Hitung perbandingan hematnya
+                let normalPrice = (packs * SACHET_PACK_PRICE) + remainderPrice;
+                let hemat = normalPrice - finalPrice;
+
+                promoHtml = `<p>📦 Rincian: ${packs} Pack (${jumlah} sachet)</p>
+                             <p style="color:#16a34a; font-weight:bold;">✨ Promo 3 Pack: Rp 107.000</p>
+                             ${extraPacks > 0 ? `<p style="font-size:0.9rem;">+ ${extraPacks} Pack Tambahan (Normal)</p>` : ''}
+                             <p style="font-size:0.9rem; color:#ea580c;">(Anda Hemat: ${formatRupiah(hemat)})</p>`;
+            }
+            // C. HARGA PACK NORMAL (1 - 2 PACK)
+            else if (packs > 0) { 
                 let packPriceTotal = packs * SACHET_PACK_PRICE;
                 let remainderPrice = remainder * hargaSatuan;
                 finalPrice = packPriceTotal + remainderPrice;
-                let hemat = total - finalPrice;
+                let normalTotal = (jumlah * hargaSatuan); // Jika beli eceran semua
+                let hemat = normalTotal - finalPrice;
                 
                 promoHtml = `<p>📦 Rincian: ${packs} Pack Hemat + ${remainder} Eceran</p>
                              <p style="color:#16a34a; font-weight:bold;">Total Harga Paket: ${formatRupiah(finalPrice)}</p>
-                             <p style="font-size:0.9rem; color:#ea580c;">(Anda Hemat: ${formatRupiah(hemat)})</p>`;
+                             <p style="font-size:0.9rem; color:#ea580c;">(Lebih hemat dibanding beli satuan)</p>`;
             } 
         }
         
@@ -577,13 +615,12 @@
             detail.innerHTML = promoHtml; 
             detail.classList.remove('hidden'); 
         } else { 
-            // Jika tidak ada promo (beli 1, 2, 4, 5 reguler)
-            detail.innerHTML = ""; // Kosongkan agar tidak terbawa ke WA
+            detail.innerHTML = ""; 
             detail.classList.add('hidden'); 
         }
     }
     
-    // FUNGSI KIRIM WHATSAPP
+    // FUNGSI KIRIM WHATSAPP (SAMA SEPERTI SEBELUMNYA)
     function kirimWhatsApp() {
         let nama = document.getElementById('nama').value;
         let alamat = document.getElementById('alamat').value;
@@ -592,7 +629,6 @@
         let jumlah = document.getElementById('jumlah').value;
         let total = document.getElementById('totalHarga').innerText;
         
-        // Ambil text promo (bersihkan enter dan tag HTML)
         let promoDetailEl = document.getElementById('promoDetail');
         let promoInfo = "";
         if (!promoDetailEl.classList.contains('hidden')) {
@@ -601,16 +637,13 @@
         
         let catatan = document.getElementById('catatan').value;
         
-        // Validasi Form
         if(nama == "" || alamat == "" || varian.value == "0") { 
             alert("Mohon lengkapi Nama, Alamat, dan Produk agar kami bisa memproses pesanan!"); 
             return; 
         }
 
-        // Facebook Pixel Event
         if(typeof fbq === 'function') fbq('track', 'Lead');
         
-        // Format Pesan WA (Menggunakan Template Literal yang rapi)
         let text = `*Halo Admin Barokah Food!* 👋%0A` +
                    `Saya mau pesan promo di website:%0A%0A` +
                    `👤 *Nama:* ${nama}%0A` +
@@ -619,7 +652,6 @@
                    `🔢 *Jumlah:* ${jumlah} pcs%0A` +
                    `💰 *Total:* ${total}%0A`;
 
-        // Hanya tambahkan rincian jika ada promo
         if(promoInfo !== "") {
             text += `🏷️ *Info Promo:* ${promoInfo}%0A`;
         }
@@ -632,9 +664,7 @@
 
         window.open(`https://wa.me/${WA_NUMBER}?text=${text}`, '_blank');
     }
-    
 </script>
-
     <a href="https://wa.me/6285725046201?text=Halo%20Admin%20Barokah%20Food,%20saya%20mau%20tanya%20produk%20Abon..." target="_blank" class="float-wa">
     <i class="fab fa-whatsapp my-float"></i>
 </a>
@@ -680,6 +710,7 @@
     
 </body>
 </html>
+
 
 
 
