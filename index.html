@@ -216,42 +216,44 @@
     <main>
         <section class="hero">
     <div class="container text-center">
-        <h1 class="font-extrabold">ABON SAPI TUMBUK BAROKAH:<br>BUKAN SEKADAR LAUK, TAPI INVESTASI OTAK CERDAS!</h1>
+        <h1 class="font-extrabold" style="margin-bottom: 0.5rem;">
+            ABON SAPI TUMBUK BAROKAH:<br>
+            BUKAN SEKADAR LAUK, TAPI <span style="color:var(--red-700);">INVESTASI OTAK CERDAS!</span>
+        </h1>
         
-        <p style="color:#374151;">
-            <span style="color:var(--red-800); font-weight:bold;">JANGAN LALAI!</span> Protein Daging Sapi Murni Adalah <strong>Perisai Utama</strong> Anak Anda.
+        <p style="font-size:1.1rem; color:#374151; line-height:1.4; margin-bottom: 1rem;">
+            <span style="color:var(--red-800); font-weight:bold; background:#fee2e2; padding:0 5px;">JANGAN LALAI!</span> 
+            Protein Daging Sapi Murni Adalah <strong>Perisai Utama</strong> Anak Anda. 
+            Bantu <strong>Mencegah Risiko Stunting</strong> dan Gizi Buruk Akibat Kurangnya Asupan Protein Hewani!
         </p>
         
         <div class="badges">
-            <span><i class="fas fa-check-circle"></i> 100% DAGING</span>
-            <span><i class="fas fa-check-circle"></i> NON MSG</span>
+            <span><i class="fas fa-check-circle"></i> 100% DAGING TANPA CAMPURAN</span>
             <span><i class="fas fa-check-circle"></i> TANPA PENGAWET</span>
+            <span><i class="fas fa-check-circle"></i> TANPA MSG</span>
         </div>
 
-        <div style="max-width:700px; margin:0 auto 1.5rem;">
-            <img src="abon-ditabur-di-atas-nasi1.webp" alt="Abon Sapi Barokah" 
-                 class="hero-img" 
-                 width="700" height="500" 
-                 style="border-radius:1rem; box-shadow:0 20px 40px rgba(0,0,0,0.2); width:100%; height:auto; max-height:350px; object-fit:cover;" 
-                 fetchpriority="high">
-        </div>
-
-        <div style="margin-top: -0.5rem; position: relative; z-index: 10;">
+        <div style="margin-bottom: 1.5rem; position: relative; z-index: 10;">
             <a href="katalog.html" class="cta-button pulse-button">
                 <i class="fas fa-shopping-cart"></i> LIHAT KATALOG & AMBIL PROMO
             </a>
             
-            <br>
-            <div class="trust-badge">
-                <p style="margin: 0; font-weight:600; color:#1f2937;">
-                    <i class="fas fa-list-ul" style="color: #dc2626; margin-right:4px;"></i> Daftar Harga
-                    <span style="margin: 0 6px; color:#cbd5e1;">|</span>
-                    <i class="fas fa-truck-fast" style="color: #ea580c; margin-right:4px;"></i> Cek Ongkir
-                </p>
-                <p style="margin: 4px 0 0 0; font-weight: 800; color: #15803d;">
-                    <i class="fas fa-hand-holding-dollar"></i> BISA COD (Bayar di Tempat)
-                </p>
+            <div style="margin-top: 1rem;">
+                <div class="trust-badge">
+                    <p style="margin: 0; font-weight:600; color:#1f2937;">
+                        <i class="fas fa-truck-fast" style="color: #ea580c;"></i> Cek Ongkir Otomatis
+                        <span style="margin: 0 5px; color:#cbd5e1;">|</span>
+                        <i class="fas fa-hand-holding-dollar" style="color: #15803d;"></i> <strong>BISA COD</strong>
+                    </p>
+                </div>
             </div>
+        </div>
+
+        <div style="max-width:700px; margin:0 auto;">
+            <img src="abon-ditabur-di-atas-nasi1.webp" alt="Abon Sapi Barokah Pencegah Stunting" 
+                 width="700" height="500" 
+                 style="border-radius:1rem; box-shadow:0 10px 25px rgba(0,0,0,0.15); width:100%; height:auto; object-fit:cover;" 
+                 fetchpriority="high">
         </div>
 
     </div>
@@ -630,8 +632,53 @@
     }
     
 </script>
+
+    <a href="https://wa.me/6285725046201?text=Halo%20Admin%20Barokah%20Food,%20saya%20mau%20tanya%20produk%20Abon..." target="_blank" class="float-wa">
+    <i class="fab fa-whatsapp my-float"></i>
+</a>
+
+<style>
+    /* Style Khusus Tombol Melayang */
+    .float-wa {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 25px;
+        right: 25px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 30px;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+        animation: float-pulse 3s infinite;
+    }
+
+    .float-wa:hover {
+        background-color: #128c7e;
+        transform: scale(1.1);
+    }
+
+    .my-float {
+        margin-top: 2px; /* Penyesuaian ikon agar pas tengah */
+    }
+    
+    /* Animasi Denyut Halus untuk WA */
+    @keyframes float-pulse {
+        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+        70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+</style>
+    
 </body>
 </html>
+
 
 
 
