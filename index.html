@@ -274,11 +274,24 @@
     .trust-badge i { color: var(--yellow-pop) !important; }
 
     /* SEPARATOR STYLES - EFEK ROBEKAN KERTAS DRAMATIS (Anti Kaku) */
+    /* Pemisah dari HERO (Hitam) ke Section Fitur (Hitam) - Tetap Datar untuk Kesinambungan */
     .separator-torn {
         width: 100%;
         height: 50px;
-        background: var(--texture-color); /* Warna section selanjutnya: Light Gray/Putih kotor */
+        background: var(--black); /* Warna section selanjutnya: Hitam */
         position: relative;
+    }
+    .separator-torn::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 50px;
+        top: -1px; 
+        left: 0;
+        background: var(--black); /* Warna Hero/section di atasnya */
+        z-index: 10;
+        /* Jika Hero dan Section Fitur sama-sama hitam, efek robekan kertas kurang terlihat. 
+           Saya hilangkan robekan kertas di sini dan fokus pada pemisah antara section yang berbeda warna. */
     }
         /* SEPARATOR STYLES - Pemisah Miring (Dari Section Fitur ke Problem Solver) */
     .separator-slant {
@@ -299,6 +312,26 @@
         clip-path: polygon(0 0, 100% 100%, 100% 0, 0 0);
         z-index: 1;
     }
+        /* SEPARATOR BARU: Pemisah Robekan Kertas dari Section Fitur (Hitam) ke Section Problem Solver (Putih) */
+    .separator-black-to-white {
+        width: 100%;
+        height: 80px;
+        background: var(--white); /* Warna section selanjutnya: Putih */
+        position: relative;
+        z-index: 10;
+    }
+    .separator-black-to-white::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 80px;
+        top: 0;
+        left: 0;
+        background: var(--black); /* Warna section di atasnya: Hitam */
+        /* Efek Robekan Kertas Putus-putus */
+        clip-path: polygon(0 0, 100% 0, 100% 70%, 98% 45%, 95% 75%, 92% 50%, 88% 75%, 85% 45%, 80% 80%, 75% 40%, 70% 70%, 65% 35%, 60% 75%, 55% 40%, 50% 80%, 45% 35%, 40% 75%, 35% 45%, 30% 70%, 25% 40%, 20% 75%, 15% 45%, 10% 70%, 5% 40%, 0 70%);
+        transform: translateY(-80px); /* Angkat agar terlihat menutupi section di atasnya */
+    }
     /* Menggunakan clip-path untuk membuat bentuk robekan kertas */
     .separator-torn::before {
         content: "";
@@ -313,20 +346,75 @@
         clip-path: polygon(0 0, 100% 0, 100% 10%, 98% 30%, 95% 10%, 92% 35%, 89% 5%, 85% 30%, 80% 0, 75% 30%, 70% 5%, 65% 35%, 60% 10%, 55% 30%, 50% 10%, 45% 35%, 40% 5%, 35% 30%, 30% 10%, 25% 35%, 20% 5%, 15% 30%, 10% 5%, 5% 30%, 0 5%);
     }
 
-    /* CONTENT SECTIONS - Penyesuaian Style untuk Section Problem Solver */
-    .section-white { 
-        padding: 5rem 0 3rem; 
-        background: var(--white); /* Latar belakang Putih Bersih */
+    /* CONTENT SECTIONS */
+    /* Section 2: Fitur Unggulan (Latar Belakang Hitam) */
+    .section-features { 
+        padding: 4rem 0 3rem; 
+        background: var(--black); /* Latar Belakang HITAM TEGAS */
         position: relative;
-        overflow: hidden; /* Penting untuk menghindari box-shadow keluar */
+        z-index: 5;
+        color: var(--white);
     }
-    .section-white .section-title { 
-        color: var(--black); /* Judul dibuat hitam tegas */
-        font-size: 2rem; 
-        margin-bottom: 1rem;
+    .section-features .section-title { 
+        color: var(--yellow-pop); /* Judul Kuning */
+        font-size: 2.5rem; 
+        margin-bottom: 3rem; 
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+    }
+    /* Styling Card Fitur agar tidak terlihat kotak kaku */
+    .features-grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+        gap: 2.5rem; 
+        text-align: left; 
+    }
+    .feature-card {
+        background: #1a1a1a; /* Hitam sedikit lebih terang */
+        padding: 2rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        border: 2px solid var(--red-600); /* Border merah tegas */
+        transition: 0.3s;
+        /* Kemiringan pada card agar tidak kaku */
+        transform: rotate(1deg); /* Sedikit putaran */
+        border-radius: 0 20px 0 20px; /* Bentuk asimetris */
+    }
+    .feature-card:hover {
+        transform: rotate(0deg) scale(1.03);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    }
+    .feature-card h3 { 
+        font-size: 1.4rem; 
+        font-weight: 800; 
+        margin-bottom: 1rem; 
+        color: var(--red-600); /* Judul card Merah */
+        display: flex;
+        align-items: center;
+    }
+    .feature-card i {
+        font-size: 2rem;
+        color: var(--yellow-pop); 
+        margin-right: 15px;
+        transform: rotate(-10deg); 
     }
     
-    /* Grid 3 - Layout */
+    /* Section 3: Problem Solver (Latar Belakang Putih) */
+    .section-white { 
+        padding: 5rem 0 3rem; 
+        background: var(--white); 
+        position: relative;
+        overflow: hidden; 
+        z-index: 1;
+    }
+    .section-white .section-title { 
+        color: var(--red-800); /* Judul Merah Gelap */
+        font-size: 2.2rem; 
+        margin-bottom: 1rem;
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+    }
+    
+    /* Grid 3 */
     .grid-3 { 
         display: grid; 
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
@@ -335,70 +423,73 @@
         margin-bottom: 3rem;
     }
     
-    /* Card Problem - Dibuat Jauh Lebih Stylish (Memiliki Kemiringan) */
+    /* Card Problem - Lebih Asimetris dan Dinamis */
     .card { 
-        background: var(--gray-50); /* Background light gray */
+        background: #fff8e1; /* Background Kuning Muda */
         padding: 1.5rem; 
-        border-radius: 0; 
+        border-radius: 15px 0 15px 0; /* Bentuk asimetris */
         box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
-        border-right: 5px solid var(--red-700); /* Border tegas di kanan */
+        border-bottom: 5px solid var(--red-700); /* Border tegas di bawah */
         display: flex; 
         flex-direction: column; 
         justify-content: space-between; 
         transition: 0.3s;
-        /* Kemiringan pada card agar tidak kaku */
-        transform: skewY(1deg); 
+        transform: rotate(-1deg); /* Sedikit miring ke kiri */
+    }
+    .card:nth-child(even) { /* Card genap dimiringkan ke kanan */
+        transform: rotate(1deg); 
     }
     .card:hover {
-        transform: skewY(1deg) translateY(-5px);
+        transform: scale(1.02);
         box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     }
 
     .card i { 
-        font-size: 2rem; 
-        color: var(--red-600); 
+        font-size: 2.2rem; 
+        color: var(--black); /* Ikon Hitam */
         margin-bottom: 0.5rem; 
-        transform: rotate(10deg); /* Ikon miring artistik */
+        transform: rotate(0); 
     }
     .card h3 { 
-        font-size: 1.3rem; 
+        font-size: 1.4rem; 
         font-weight: 900; 
         margin-bottom: 0.5rem; 
-        color: var(--gray-800);
+        color: var(--red-800);
     }
     .card-quote { 
         margin-top: 1.5rem; 
         padding-top: 1rem; 
-        border-top: 2px dashed #e5e7eb; /* Border putus-putus */
+        border-top: 2px dashed var(--red-600); 
         font-style: italic; 
         font-size: 0.9rem; 
-        color: #6b7280; 
-        font-weight: 500;
+        color: var(--gray-800); 
+        font-weight: 600;
         line-height: 1.4;
     }
 
-    /* Info Box - Lebih menonjol (Memiliki Kemiringan) */
+    /* Info Box - Stiker Kuning Pop-out */
     .info-box { 
-        background: #fef08a; /* Background Kuning Kontras */
-        border-left: 8px solid var(--red-700); 
-        padding: 2rem; 
+        background: var(--yellow-pop); /* Background Kuning Pop-out */
+        border: 4px dashed var(--red-700); /* Border Putus-putus Merah */
+        padding: 2.5rem; 
         margin: 2rem auto; 
         max-width: 900px; 
         text-align: left; 
-        border-radius: 0; 
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        transform: skewX(-1deg); /* Kemiringan ke samping agar tidak kaku */
+        border-radius: 5px; 
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transform: rotate(-2deg); /* Miring dramatis */
     }
     .info-box h3 { 
-        color: var(--red-800); 
+        color: var(--black); /* Judul Hitam */
         font-weight: 900; 
         margin-bottom: 1rem; 
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         display: flex; 
         align-items: center; 
         gap: 0.75rem; 
     }
     .info-box i { color: var(--red-800); font-size: 1.8rem; }
+        
     /* PRODUCTS */
     .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     @media(min-width: 768px){ .product-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -542,7 +633,10 @@
             </div>
         </div>
     </section>
-        <section class="section-white">
+
+    <div class="separator-black-to-white"></div> 
+
+    <section class="section-white">
         <div class="container text-center">
             <h2 class="section-title">ANDA YAKIN GIZI ANAK CUKUP? HATI-HATI, ANCAMAN GIZI BURUK MENGINTAI!</h2>
             <p style="font-size:1.5rem; margin-bottom:3rem; color:var(--red-700); font-weight:900; line-height:1.4;">
@@ -569,8 +663,8 @@
             
             <div class="info-box">
                 <h3><i class="fas fa-microscope"></i> FAKTA GIZI YANG WAJIB BUNDA TAHU:</h3>
-                <p>Penelitian global (termasuk anjuran Kemenkes) membuktikan bahwa asupan **Protein Hewani** dari Daging Sapi sangat krusial di 1000 Hari Pertama Kehidupan (Masa Emas).</p>
-                <p style="margin-top:1rem; color:var(--gray-800); font-weight:700;">Daging sapi kaya akan **Zat Besi** dan **Zinc** yang esensial untuk **mencegah anemia dan stunting**, serta **memaksimalkan koneksi sel otak (kecerdasan kognitif)**.</p>
+                <p style="color:var(--gray-800);">Penelitian global (termasuk anjuran Kemenkes) membuktikan bahwa asupan **Protein Hewani** dari Daging Sapi sangat krusial di 1000 Hari Pertama Kehidupan (Masa Emas).</p>
+                <p style="margin-top:1rem; color:var(--black); font-weight:900;">Daging sapi kaya akan **Zat Besi** dan **Zinc** yang esensial untuk **mencegah anemia dan stunting**, serta **memaksimalkan koneksi sel otak (kecerdasan kognitif)**.</p>
             </div>
             
             <p style="font-size:1.8rem; font-weight:900; color:var(--red-700); margin-top:3rem; text-transform:uppercase;">
@@ -1005,6 +1099,7 @@
     
 </body>
 </html>
+
 
 
 
