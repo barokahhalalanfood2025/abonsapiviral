@@ -71,6 +71,65 @@
     <link rel="apple-touch-icon" href="apple-icon-180x180.png">
 
    <style>
+    /* --- INTEGRASI FONT PREMIUM & STRIKING STYLES --- */
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@700;800&family=Poppins:wght@400;600;700&display=swap');
+
+/* Style Khusus untuk Headline */
+.hero-title-mencolok {
+    font-family: 'Eczar', serif; 
+    font-weight: 800; 
+    font-size: 2.8rem; 
+    line-height: 1.2;
+    color: white; 
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+    margin-bottom: 1rem;
+    animation: pulse-mencolok 2s infinite ease-in-out;
+}
+.highlight-yellow-bold {
+    background: var(--yellow-accent); 
+    color: black; 
+    padding: 2px 10px; 
+    border-radius: 4px;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.3);
+}
+.hero-bold-bg {
+    background: linear-gradient(135deg, #c2201a 0%, #7f1d1d 100%); /* Merah Gradasi Mencolok */
+    padding: 4rem 0; 
+    color: white;
+}
+.hero-desc-bold {
+    font-family: 'Poppins', sans-serif; 
+    font-size: 1.1rem; 
+    max-width: 600px; 
+    margin: 0 auto 2rem; 
+    color: #fde047; /* Teks kuning kontras */
+}
+
+/* Tombol Striking */
+.btn-striking {
+    display: inline-flex; align-items: center; gap: 8px; 
+    background: #fde047; /* Kuning */
+    color: #991b1b !important; 
+    padding: 1.2rem 3rem; border-radius: 50px;
+    font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.2rem;
+    box-shadow: 0 8px 0px #b45309, 0 15px 30px rgba(0,0,0,0.3); /* 3D effect */
+    transition: all 0.1s;
+}
+.btn-striking:hover { transform: translateY(-3px); box-shadow: 0 12px 0px #b45309, 0 20px 40px rgba(0,0,0,0.3); }
+.btn-striking:active { transform: translateY(5px); box-shadow: 0 3px 0px #b45309; }
+
+@keyframes pulse-mencolok { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+
+/* Trust Badge Style */
+.trust-badge-mencolok {
+    margin-top: 1rem; font-size: 0.9rem; background: white; padding: 10px 15px; border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: inline-block;
+}
+
+/* Responsif HP */
+@media (max-width: 768px) {
+    .hero-title-mencolok { font-size: 2rem; }
+}   
     /* 1. FONT IMPORTS & GLOBAL FONT SETTINGS (NEW) */
     @import url('https://fonts.googleapis.com/css2?family=Eczar:wght@700;800&family=Poppins:wght@400;600;700&display=swap');
     @font-face { font-family: 'Font Awesome 6 Free'; font-style: normal; font-weight: 900; font-display: swap; src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2) format('woff2'); }
@@ -296,44 +355,43 @@ header {
 </header>
 
     <main>
-        <section class="hero">
+        <section class="hero-bold-bg">
     <div class="container text-center">
-        <h1 class="font-extrabold" style="margin-bottom: 0.5rem;">
+        
+        <h1 class="hero-title-mencolok">
             ABON SAPI TUMBUK BAROKAH:<br>
-            BUKAN SEKADAR LAUK, TAPI <span style="color:var(--red-700);">INVESTASI OTAK CERDAS!</span>
+            BUKAN SEKADAR LAUK, TAPI <span class="highlight-yellow-bold">INVESTASI OTAK CERDAS!</span>
         </h1>
         
-        <p style="font-size:1.1rem; color:#374151; line-height:1.4; margin-bottom: 1rem;">
-            <span style="color:var(--red-800); font-weight:bold; background:#fee2e2; padding:0 5px;">JANGAN LALAI!</span> 
-            Protein Daging Sapi Murni Adalah <strong>Perisai Utama</strong> Anak Anda. 
+        <p class="hero-desc-bold">
+            <span style="color:#fde047; font-weight:bold;">JANGAN LALAI!</span> 
+            Protein Daging Sapi Murni Adalah Perisai Utama Anak Anda. 
             Bantu <strong>Mencegah Risiko Stunting</strong> dan Gizi Buruk Akibat Kurangnya Asupan Protein Hewani!
         </p>
         
-        <div class="badges">
-            <span><i class="fas fa-check-circle"></i> 100% DAGING TANPA CAMPURAN</span>
-            <span><i class="fas fa-check-circle"></i> TANPA MSG & PENGAWET</span>
-            <span><i class="fas fa-check-circle"></i> MINYAK KELAPA</span>
-            <span><i class="fas fa-check-circle"></i> GULA AREN ASLI</span>
+        <div class="badges" style="margin-bottom: 2rem;">
+            <span style="background:white; color:#991b1b; padding:4px 10px; border-radius:20px; font-weight:700;"><i class="fas fa-check-circle"></i> 100% DAGING</span>
+            <span style="background:white; color:#991b1b; padding:4px 10px; border-radius:20px; font-weight:700;"><i class="fas fa-check-circle"></i> TANPA MSG & PENGAWET</span>
+            <span style="background:white; color:#991b1b; padding:4px 10px; border-radius:20px; font-weight:700;"><i class="fas fa-check-circle"></i> MINYAK KELAPA</span>
         </div>
 
-        <div style="max-width:700px; margin:0 auto 1.5rem;">
+        <div class="hero-img-box-mencolok">
             <img src="abon-ditabur-di-atas-nasi1.webp" alt="Abon Sapi Barokah Pencegah Stunting" 
                  width="700" height="500" 
-                 style="border-radius:1rem; box-shadow:0 15px 35px rgba(0,0,0,0.15); width:100%; height:auto; max-height:350px; object-fit:cover;" 
-                 fetchpriority="high">
+                 class="hero-img-style">
         </div>
 
         <div style="margin-top: -0.5rem; position: relative; z-index: 10;">
-            <a href="katalog.html" class="cta-button pulse-button">
+            <a href="katalog.html" class="btn-striking pulse-button">
                 <i class="fas fa-shopping-cart"></i> LIHAT KATALOG & AMBIL PROMO
             </a>
             
             <br>
-            <div class="trust-badge">
+            <div class="trust-badge-mencolok">
                 <p style="margin: 0; font-weight:600; color:#1f2937;">
-                    <i class="fas fa-list-ul" style="color: #dc2626; margin-right:4px;"></i> Daftar Harga
-                    <span style="margin: 0 6px; color:#cbd5e1;">|</span>
-                    <i class="fas fa-truck-fast" style="color: #ea580c; margin-right:4px;"></i> Cek Ongkir
+                    <i class="fas fa-list-ul" style="color: #c2201a; margin-right:4px;"></i> Daftar Harga
+                    <span style="margin: 0 6px; color:#c2201a;">|</span>
+                    <i class="fas fa-truck-fast" style="color: #c2201a; margin-right:4px;"></i> Cek Ongkir
                 </p>
                 <p style="margin: 4px 0 0 0; font-weight: 800; color: #15803d;">
                     <i class="fas fa-hand-holding-dollar"></i> BISA COD (Bayar di Tempat)
@@ -792,6 +850,7 @@ header {
     
 </body>
 </html>
+
 
 
 
