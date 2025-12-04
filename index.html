@@ -71,67 +71,11 @@
     <link rel="apple-touch-icon" href="apple-icon-180x180.png">
 
    <style>
-    /* --- INTEGRASI FONT PREMIUM & STRIKING STYLES --- */
-@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@700;800&family=Poppins:wght@400;600;700&display=swap');
-
-/* Style Khusus untuk Headline */
-.hero-title-mencolok {
-    font-family: 'Eczar', serif; 
-    font-weight: 800; 
-    font-size: 2.8rem; 
-    line-height: 1.2;
-    color: white; 
-    text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
-    margin-bottom: 1rem;
-    animation: pulse-mencolok 2s infinite ease-in-out;
-}
-.highlight-yellow-bold {
-    background: var(--yellow-accent); 
-    color: black; 
-    padding: 2px 10px; 
-    border-radius: 4px;
-    box-shadow: 0 4px 0 rgba(0,0,0,0.3);
-}
-.hero-bold-bg {
-    background: linear-gradient(135deg, #c2201a 0%, #7f1d1d 100%); /* Merah Gradasi Mencolok */
-    padding: 4rem 0; 
-    color: white;
-}
-.hero-desc-bold {
-    font-family: 'Poppins', sans-serif; 
-    font-size: 1.1rem; 
-    max-width: 600px; 
-    margin: 0 auto 2rem; 
-    color: #fde047; /* Teks kuning kontras */
-}
-
-/* Tombol Striking */
-.btn-striking {
-    display: inline-flex; align-items: center; gap: 8px; 
-    background: #fde047; /* Kuning */
-    color: #991b1b !important; 
-    padding: 1.2rem 3rem; border-radius: 50px;
-    font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.2rem;
-    box-shadow: 0 8px 0px #b45309, 0 15px 30px rgba(0,0,0,0.3); /* 3D effect */
-    transition: all 0.1s;
-}
-.btn-striking:hover { transform: translateY(-3px); box-shadow: 0 12px 0px #b45309, 0 20px 40px rgba(0,0,0,0.3); }
-.btn-striking:active { transform: translateY(5px); box-shadow: 0 3px 0px #b45309; }
-
-@keyframes pulse-mencolok { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
-
-/* Trust Badge Style */
-.trust-badge-mencolok {
-    margin-top: 1rem; font-size: 0.9rem; background: white; padding: 10px 15px; border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: inline-block;
-}
-
-/* Responsif HP */
-@media (max-width: 768px) {
-    .hero-title-mencolok { font-size: 2rem; }
-}   
-    /* 1. FONT IMPORTS & GLOBAL FONT SETTINGS (NEW) */
+    /* =================================================================
+       0. FONT IMPORTS & GLOBAL SETUP (JANGAN DIUBAH)
+       ================================================================= */
     @import url('https://fonts.googleapis.com/css2?family=Eczar:wght@700;800&family=Poppins:wght@400;600;700&display=swap');
+    /* Font Awesome Manual Definitions (dibiarkan utuh) */
     @font-face { font-family: 'Font Awesome 6 Free'; font-style: normal; font-weight: 900; font-display: swap; src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2) format('woff2'); }
     @font-face { font-family: 'Font Awesome 6 Brands'; font-style: normal; font-weight: 400; font-display: swap; src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2) format('woff2'); }
     .fa, .fas, .fab { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; }
@@ -151,10 +95,10 @@
         --white: #ffffff;
         --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         --yellow-accent: #fde047; /* Kuning Stabilo */
-        --light-yellow-bg: #fffde7; /* Kuning Sangat Muda */
+        --light-yellow-bg: #fffde7; /* Kuning Sangat Muda (Untuk Wave) */
     }
 
-    /* RESET & GLOBAL */
+    /* RESET & GLOBAL FONT INHERITANCE */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: inherit; }
     body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--gray-800); line-height: 1.6; margin: 0; }
@@ -168,75 +112,37 @@
     .font-bold { font-weight: 700; } .font-extrabold { font-weight: 800; }
     .hidden { display: none !important; }
 
-    /* HEADER */
-    header { background: var(--white); padding: 1rem 0; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
+    /* ========================= 1. HEADER ================================= */
+    header { 
+        background: var(--white); padding: 0.75rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
     .header-flex { display: flex; justify-content: space-between; align-items: center; }
     .logo-area { display: flex; align-items: center; gap: 0.5rem; }
-    .logo-area h2 { color: var(--primary-red); font-size: 1.5rem; margin: 0; }
-    .btn-top { background: var(--primary-green); color: var(--white); padding: 0.5rem 1rem; border-radius: 99px; font-weight: 600; font-size: 0.875rem; }
-    
-    /* HEADER */
-header { 
-    background: var(--white); 
-    padding: 0.75rem 0; /* Padding sedikit dikurangi */
-    position: sticky; 
-    top: 0; 
-    z-index: 100; 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Shadow lebih halus */
-}
-.header-flex { 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-}
-.logo-area { 
-    display: flex; 
-    align-items: center; 
-    gap: 0.5rem; 
-}
-.logo-area img { 
-    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1)); /* Shadow halus di logo */
-}
-.logo-area h2 { 
-    font-size: 1.1rem; 
-    font-weight: 800; 
-    color: var(--text-dark); /* Teks gelap/hitam */
-    margin: 0; 
-    font-family: 'Poppins', sans-serif; /* Font Baru */
-}
-/* CTA Button Upgrade (Merah Mencolok) */
-.btn-top { 
-    background: var(--primary-red); 
-    color: var(--white); 
-    padding: 0.75rem 1.5rem; 
-    border-radius: 99px; 
-    font-weight: 700; 
-    font-size: 1rem; 
-    box-shadow: 0 5px 15px rgba(194, 32, 26, 0.3); /* Shadow Merah */
-    transition: 0.2s;
-    text-transform: uppercase;
-}
-.btn-top:hover { 
-    background: var(--dark-red); 
-    transform: translateY(-2px); 
-    box-shadow: 0 10px 20px rgba(194, 32, 26, 0.4); 
-}
+    .logo-area img { filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1)); }
+    .logo-area h2 { font-size: 1.1rem; font-weight: 800; color: var(--text-dark); margin: 0; font-family: 'Poppins', sans-serif; }
+    .btn-top { 
+        background: var(--primary-red); color: var(--white); padding: 0.75rem 1.5rem; border-radius: 99px; font-weight: 700; font-size: 1rem; box-shadow: 0 5px 15px rgba(194, 32, 26, 0.3); transition: 0.2s; text-transform: uppercase;
+    }
+    .btn-top:hover { 
+        background: var(--dark-red); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(194, 32, 26, 0.4); 
+    }
 
-    /* VALUES */
-    .values-section { padding: 4rem 0; background: var(--white); }
-    .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 3rem; text-align: center; color: var(--text-dark); }
-    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-    .value-card { text-align: center; padding: 2rem; border: 1px solid #e5e7eb; border-radius: 1rem; transition: 0.3s; }
-    .value-card:hover { border-color: var(--primary-green); box-shadow: var(--shadow); }
-    .value-icon { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 1rem; }
-    .value-card h3 { font-weight: 700; margin-bottom: 0.5rem; color: var(--text-dark); }
-    .value-card p { color: var(--text-gray); }
+    /* ========================= 2. HERO SECTION =========================== */
+    /* Ini adalah gaya Hero yang Anda deploy */
+    .hero { background: linear-gradient(to bottom right, #fff1f2, #f0fdf4); padding: 5rem 0; text-align: center; }
+    .hero h2 { font-size: 2.5rem; font-weight: 800; color: var(--text-dark); margin-bottom: 1rem; line-height: 1.2; }
+    .hero p { font-size: 1.25rem; color: var(--text-gray); max-width: 40rem; margin: 0 auto 2rem; }
+    .btn-main { display: inline-block; background: var(--primary-green); color: var(--white); padding: 0.75rem 2rem; border-radius: 99px; font-weight: 700; font-size: 1.1rem; }
+    .btn-main:hover { background: var(--dark-green); transform: translateY(-2px); }
+    /* Animasi (Asumsi sudah dipindahkan ke sini) */
+    @keyframes pulse-red { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); } 70% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); } }
+    .pulse-button { animation: pulse-red 2s infinite; }
 
-    /* --- SECTION 3: KATALOG PREMIUM (DENGAN WAVE DI BAWAH) --- */
+    /* ========================= 3. KATALOG PRODUK (RED GRADIENT + WAVE) ===== */
     .catalog-premium-section {
         position: relative;
-        background: linear-gradient(180deg, var(--red-800) 0%, var(--red-700) 100%); /* Merah Gradasi */
-        padding: 6rem 1.5rem 12rem; /* Padding bawah besar untuk gelombang */
+        background: linear-gradient(180deg, var(--red-800) 0%, var(--red-700) 100%);
+        padding: 6rem 1.5rem 12rem; /* Ruang besar untuk gelombang */
         text-align: center;
         color: white;
         z-index: 2;
@@ -277,7 +183,7 @@ header {
     .btn-red-p:hover, .btn-green-p:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
     .stock-info { margin-top: 12px; font-size: 0.85rem; font-weight: 700; color: var(--green-600); display: flex; align-items: center; gap: 6px; justify-content: center; background: #f0fdf4; padding: 5px; border-radius: 8px; }
 
-    /* --- SECTION 4: COD (GRADASI KUNING MUDA KE TUA) --- */
+    /* ========================= 4. COD/TRUST SECTION (KUNING GRADASI) ===== */
     .cod-fun-section {
         position: relative;
         /* Gradasi: Kuning Sangat Muda (Atas) -> Kuning Emas (Bawah) */
@@ -288,32 +194,21 @@ header {
         z-index: 1;
     }
 
-    /* Container COD */
+    /* Style COD */
     .cod-fun-grid {
-        display: flex; flex-direction: row; align-items: center;
-        justify-content: center; gap: 3rem; max-width: 1000px; margin: 0 auto;
+        display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 3rem; max-width: 1000px; margin: 0 auto;
     }
     .cod-fun-img-box { flex: 1; position: relative; }
     .cod-fun-img { width: 100%; max-width: 450px; transform: rotate(-3deg); filter: drop-shadow(10px 15px 0px rgba(0,0,0,0.05)); }
     .cod-fun-content { flex: 1; text-align: left; }
-
-    /* Teks COD */
     .fun-headline { font-family: 'Eczar', serif; font-size: 2.5rem; font-weight: 800; line-height: 1.2; color: var(--text-dark); margin-bottom: 1.5rem; }
     .fun-highlight { background: var(--primary-red); color: white; padding: 5px 15px; transform: rotate(-2deg); display: inline-block; box-shadow: 5px 5px 0px rgba(0,0,0,0.1); }
     .fun-highlight-2 { background: white; color: var(--primary-red); padding: 3px 12px; transform: rotate(2deg); display: inline-block; margin-top: 10px; border: 2px solid var(--primary-red); font-size: 0.7em; font-weight: 700; }
     .cod-fun-desc { font-family: 'Poppins', sans-serif; font-size: 1.1rem; color: var(--text-gray); margin-bottom: 1.5rem; }
-
-    /* List & Tombol COD */
     .fun-list { list-style: none; padding: 0; margin-bottom: 2rem; }
     .fun-list li { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; color: var(--text-gray); }
     .fun-list i { color: var(--primary-red); font-size: 1.5rem; }
-    .btn-fun {
-        display: inline-block; background: var(--primary-red); color: white;
-        font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 1.3rem;
-        padding: 1rem 3rem; border-radius: 15px; text-decoration: none;
-        box-shadow: 0 8px 0px var(--dark-red); transform: rotate(-1deg);
-        transition: 0.2s; animation: wiggle 3s infinite ease-in-out;
-    }
+    .btn-fun { display: inline-block; background: var(--primary-red); color: white; font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 1.3rem; padding: 1rem 3rem; border-radius: 15px; text-decoration: none; box-shadow: 0 8px 0px var(--dark-red); transform: rotate(-1deg); transition: 0.2s; animation: wiggle 3s infinite ease-in-out; }
     .btn-fun:hover { transform: translateY(4px); box-shadow: 0 4px 0px var(--dark-red); background: var(--dark-red); }
     .link-partner-small { display: block; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-gray); text-decoration: underline; font-weight: 600; }
 
@@ -355,30 +250,31 @@ header {
 </header>
 
     <main>
-        <section class="hero-bold-bg">
-    <div class="container text-center">
+        <section id="hero-premium-v3">
+    <div class="container hero-content-wrapper">
         
-        <h1 class="hero-title-mencolok">
+        <h1 class="hero-title-v3">
             ABON SAPI TUMBUK BAROKAH:<br>
-            BUKAN SEKADAR LAUK, TAPI <span class="highlight-yellow-bold">INVESTASI OTAK CERDAS!</span>
+            BUKAN SEKADAR LAUK, TAPI <span style="color:var(--yellow-accent);">INVESTASI OTAK CERDAS!</span>
         </h1>
         
-        <p class="hero-desc-bold">
-            <span style="color:#fde047; font-weight:bold;">JANGAN LALAI!</span> 
-            Protein Daging Sapi Murni Adalah Perisai Utama Anak Anda. 
+        <p class="hero-desc-v3">
+            <span style="color:var(--red-800); font-weight:bold; background:#fde047; padding:0 5px;">JANGAN LALAI!</span> 
+            Protein Daging Sapi Murni Adalah <strong>Perisai Utama</strong> Anak Anda. 
             Bantu <strong>Mencegah Risiko Stunting</strong> dan Gizi Buruk Akibat Kurangnya Asupan Protein Hewani!
         </p>
         
-        <div class="badges" style="margin-bottom: 2rem;">
-            <span style="background:white; color:#991b1b; padding:4px 10px; border-radius:20px; font-weight:700;"><i class="fas fa-check-circle"></i> 100% DAGING</span>
-            <span style="background:white; color:#991b1b; padding:4px 10px; border-radius:20px; font-weight:700;"><i class="fas fa-check-circle"></i> TANPA MSG & PENGAWET</span>
-            <span style="background:white; color:#991b1b; padding:4px 10px; border-radius:20px; font-weight:700;"><i class="fas fa-check-circle"></i> MINYAK KELAPA</span>
+        <div class="hero-badges-wrapper">
+            <span class="badge-irregular"><i class="fas fa-check-circle"></i> 100% DAGING</span>
+            <span class="badge-irregular"><i class="fas fa-check-circle"></i> TANPA MSG & PENGAWET</span>
+            <span class="badge-irregular"><i class="fas fa-check-circle"></i> MINYAK KELAPA</span>
+            <span class="badge-irregular"><i class="fas fa-check-circle"></i> GULA AREN ASLI</span>
         </div>
 
-        <div class="hero-img-box-mencolok">
+        <div style="max-width:700px; margin:0 auto 1.5rem;">
             <img src="abon-ditabur-di-atas-nasi1.webp" alt="Abon Sapi Barokah Pencegah Stunting" 
                  width="700" height="500" 
-                 class="hero-img-style">
+                 class="hero-img-style-v3">
         </div>
 
         <div style="margin-top: -0.5rem; position: relative; z-index: 10;">
@@ -389,12 +285,9 @@ header {
             <br>
             <div class="trust-badge-mencolok">
                 <p style="margin: 0; font-weight:600; color:#1f2937;">
-                    <i class="fas fa-list-ul" style="color: #c2201a; margin-right:4px;"></i> Daftar Harga
-                    <span style="margin: 0 6px; color:#c2201a;">|</span>
                     <i class="fas fa-truck-fast" style="color: #c2201a; margin-right:4px;"></i> Cek Ongkir
-                </p>
-                <p style="margin: 4px 0 0 0; font-weight: 800; color: #15803d;">
-                    <i class="fas fa-hand-holding-dollar"></i> BISA COD (Bayar di Tempat)
+                    <span style="margin: 0 6px; color:#c2201a;">|</span>
+                    <i class="fas fa-hand-holding-dollar" style="color: #15803d; margin-right:4px;"></i> BISA COD
                 </p>
             </div>
         </div>
@@ -850,6 +743,7 @@ header {
     
 </body>
 </html>
+
 
 
 
