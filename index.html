@@ -71,10 +71,10 @@
     <link rel="apple-touch-icon" href="apple-icon-180x180.png">
 
    <style>
-    /* =================================================================
-       0. FONT IMPORTS & GLOBAL SETUP (JANGAN DIUBAH)
-       ================================================================= */
+  <style>
+    /* ========================= 0. FONT & GLOBAL ========================= */
     @import url('https://fonts.googleapis.com/css2?family=Eczar:wght@700;800&family=Poppins:wght@400;600;700&display=swap');
+    
     /* Font Awesome Manual Definitions (dibiarkan utuh) */
     @font-face { font-family: 'Font Awesome 6 Free'; font-style: normal; font-weight: 900; font-display: swap; src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2) format('woff2'); }
     @font-face { font-family: 'Font Awesome 6 Brands'; font-style: normal; font-weight: 400; font-display: swap; src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2) format('woff2'); }
@@ -83,7 +83,7 @@
     .fa-check-circle:before{content:"\f058"} .fa-shopping-cart:before{content:"\f07a"} .fa-utensils:before{content:"\f2e7"} .fa-brain:before{content:"\f5dc"} .fa-leaf:before{content:"\f06c"} .fa-whatsapp:before{content:"\f232"} .fa-instagram:before{content:"\f16d"} .fa-facebook:before{content:"\f09a"} .fa-tiktok:before{content:"\e07b"} .fa-youtube:before{content:"\f167"} .fa-store:before{content:"\f54e"} .fa-file-invoice:before{content:"\f570"} .fa-map-marker-alt:before{content:"\f3c5"} .fa-exclamation-triangle:before{content:"\f071"} .fa-microscope:before{content:"\f610"} .fa-drumstick-bite:before{content:"\f6d7"} .fa-mortar-pestle:before{content:"\f5a7"} .fa-fire:before{content:"\f06d"} .fa-shipping-fast:before{content:"\f48b"} .fa-list-ul:before{content:"\f0ca"} .fa-truck-fast:before{content:"\f48b"} .fa-hand-holding-dollar:before{content:"\f4c0"}
     .fa-check:before { content: "\f00c"; } 
 
-    /* VARIABEL WARNA (DITAMBAH WARNA BARU) */
+    /* VARIABEL WARNA */
     :root { 
         --primary-red: #c2201a; 
         --dark-red: #991b1b;
@@ -95,7 +95,7 @@
         --white: #ffffff;
         --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         --yellow-accent: #fde047; /* Kuning Stabilo */
-        --light-yellow-bg: #fffde7; /* Kuning Sangat Muda (Untuk Wave) */
+        --light-yellow-bg: #fffde7; /* Kuning Sangat Muda */
     }
 
     /* RESET & GLOBAL FONT INHERITANCE */
@@ -112,9 +112,9 @@
     .font-bold { font-weight: 700; } .font-extrabold { font-weight: 800; }
     .hidden { display: none !important; }
 
-    /* ========================= 1. HEADER ================================= */
+    /* ========================= 1. HEADER (SUDAH DIKOREKSI) ================================= */
     header { 
-        background: var(--white); padding: 0.75rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        background: var(--white); padding: 0.75rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     .header-flex { display: flex; justify-content: space-between; align-items: center; }
     .logo-area { display: flex; align-items: center; gap: 0.5rem; }
@@ -127,17 +127,80 @@
         background: var(--dark-red); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(194, 32, 26, 0.4); 
     }
 
-    /* ========================= 2. HERO SECTION =========================== */
-    /* Ini adalah gaya Hero yang Anda deploy */
-    .hero { background: linear-gradient(to bottom right, #fff1f2, #f0fdf4); padding: 5rem 0; text-align: center; }
-    .hero h2 { font-size: 2.5rem; font-weight: 800; color: var(--text-dark); margin-bottom: 1rem; line-height: 1.2; }
-    .hero p { font-size: 1.25rem; color: var(--text-gray); max-width: 40rem; margin: 0 auto 2rem; }
-    .btn-main { display: inline-block; background: var(--primary-green); color: var(--white); padding: 0.75rem 2rem; border-radius: 99px; font-weight: 700; font-size: 1.1rem; }
-    .btn-main:hover { background: var(--dark-green); transform: translateY(-2px); }
-    /* Animasi (Asumsi sudah dipindahkan ke sini) */
-    @keyframes pulse-red { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); } 70% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); } }
-    .pulse-button { animation: pulse-red 2s infinite; }
+    /* ========================= 2. HERO SECTION (BOLD RED V3 - KOREKSI BUG) =========================== */
+    .hero-bold-bg {
+        background: linear-gradient(135deg, #c2201a 0%, #7f1d1d 100%); /* Merah Gradasi Mencolok */
+        padding: 4rem 0; 
+        color: white;
+        position: relative;
+        z-index: 2;
+        /* EFEK SOBEKAN KERTAS DI BAWAH */
+        clip-path: polygon(
+            0% 0%, 100% 0%, 100% 90%, 
+            98% calc(100% - 10px), 95% 100%, 92% calc(100% - 10px), 89% 100%, 
+            86% calc(100% - 10px), 83% 100%, 80% calc(100% - 10px), 77% 100%, 
+            74% calc(100% - 10px), 71% 100%, 68% calc(100% - 10px), 65% 100%, 
+            62% calc(100% - 10px), 59% 100%, 56% calc(100% - 10px), 53% 100%, 
+            50% calc(100% - 10px), 47% 100%, 44% calc(100% - 10px), 41% 100%, 
+            38% calc(100% - 10px), 35% 100%, 32% calc(100% - 10px), 29% 100%, 
+            26% calc(100% - 10px), 23% 100%, 20% calc(100% - 10px), 17% 100%, 
+            14% calc(100% - 10px), 11% 100%, 8% calc(100% - 10px), 5% 100%, 
+            2% calc(100% - 10px), 0% 100%
+        );
+        margin-bottom: -1px; /* Tempel ke section bawah */
+    }
 
+    /* FIX BUG 1: JUDUL DAN ANIMASI */
+    .hero-title-mencolok {
+        font-family: 'Eczar', serif; font-weight: 800; font-size: 2.8rem; line-height: 1.2;
+        color: white; text-shadow: 2px 2px 0 rgba(0,0,0,0.2); margin-bottom: 1rem !important;
+        animation: pulse-mencolok 2s infinite ease-in-out;
+    }
+    .highlight-yellow-bold {
+        background: var(--yellow-accent); color: black; padding: 2px 10px; border-radius: 4px;
+        box-shadow: 0 4px 0 rgba(0,0,0,0.3);
+    }
+
+    /* FIX BUG 2: ALIGNMENT & RESPONSIVE BADGES */
+    .hero-img-box-centered {
+        max-width: 500px;
+        margin: 0 auto 1.5rem;
+    }
+    .hero-img-style {
+        width: 100%; height: auto; border-radius:1rem; box-shadow:0 15px 35px rgba(0,0,0,0.4); border: 4px solid white;
+        display: block; /* Penting untuk centering */
+        margin: 0 auto; /* FIX BUG 1: Gambar rata tengah */
+    }
+    .hero-desc-bold { font-family: 'Poppins', sans-serif; font-size: 1.1rem; max-width: 600px; margin: 0 auto 2rem; color: #fde047; }
+    
+    /* FIX BUG 3: BADGE IRREGULAR (Layout + Shape) */
+    .hero-badges-wrapper {
+        display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 2.5rem;
+        padding: 0 1rem; /* Ruang di HP */
+    }
+    .badge-irregular {
+        background: white; color: var(--primary-red); padding: 8px 15px; font-size: 0.8rem; font-weight: 700;
+        border-radius: 40% 60% 70% 30% / 40% 40% 60% 60%; /* Bentuk tidak beraturan */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2); border: 2px solid var(--primary-red); transition: 0.3s;
+        display: flex; align-items: center; gap: 5px; /* Agar ikon sejajar */
+    }
+
+    /* Tombol Striking */
+    .btn-striking {
+        display: inline-flex; align-items: center; gap: 8px; background: #fde047; /* Kuning */
+        color: #991b1b !important; padding: 1.2rem 3rem; border-radius: 50px;
+        font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 1.2rem;
+        box-shadow: 0 8px 0px #b45309, 0 15px 30px rgba(0,0,0,0.3); transition: all 0.1s;
+        text-transform: uppercase; text-decoration: none !important;
+    }
+
+    /* Trust Badge Style */
+    .trust-badge-mencolok {
+        margin-top: 1rem; font-size: 0.9rem; background: white; padding: 10px 15px; border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: inline-block;
+    }
+
+    @keyframes pulse-mencolok { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
     /* ========================= 3. KATALOG PRODUK (RED GRADIENT + WAVE) ===== */
     .catalog-premium-section {
         position: relative;
@@ -743,6 +806,7 @@
     
 </body>
 </html>
+
 
 
 
