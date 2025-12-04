@@ -78,23 +78,26 @@
     .fas { font-family: 'Font Awesome 6 Free'; font-weight: 900; } .fab { font-family: 'Font Awesome 6 Brands'; font-weight: 400; }
     .fa-check-circle:before{content:"\f058"} .fa-shopping-cart:before{content:"\f07a"} .fa-utensils:before{content:"\f2e7"} .fa-brain:before{content:"\f5dc"} .fa-leaf:before{content:"\f06c"} .fa-whatsapp:before{content:"\f232"} .fa-instagram:before{content:"\f16d"} .fa-facebook:before{content:"\f09a"} .fa-tiktok:before{content:"\e07b"} .fa-youtube:before{content:"\f167"} .fa-store:before{content:"\f54e"} .fa-file-invoice:before{content:"\f570"} .fa-map-marker-alt:before{content:"\f3c5"} .fa-exclamation-triangle:before{content:"\f071"} .fa-microscope:before{content:"\f610"} .fa-drumstick-bite:before{content:"\f6d7"} .fa-mortar-pestle:before{content:"\f5a7"} .fa-fire:before{content:"\f06d"} .fa-shipping-fast:before{content:"\f48b"} .fa-list-ul:before{content:"\f0ca"} .fa-truck-fast:before{content:"\f48b"} .fa-hand-holding-dollar:before{content:"\f4c0"}
 
+    /* Ganti semua bagian /* GLOBAL */ dengan kode ini */
     /* GLOBAL */
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Oswald:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Oswald:wght@400;700;800&display=swap');
     :root { 
-        --red-600: #e73030; /* Merah yang lebih menyala */
+        --red-600: #e73030; 
         --red-700: #d61f1f; 
         --red-800: #c51414; 
-        --green-600: #38bdf8; /* Warna pelengkap (biru cerah) */
+        --green-600: #38bdf8; 
         --green-800: #1d4ed8; 
         --gray-50: #f9fafb; 
         --gray-800: #1f2937; 
-        --black: #0a0a0a; /* Hitam pekat */
+        --black: #0a0a0a; 
         --white: #ffffff; 
-        --yellow-pop: #ffc107; /* Kuning kontras */
+        --yellow-pop: #ffc107; 
+        --yellow-primary: #ffc933; 
+        --brown-dark: #3b2012; 
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { 
-        font-family: 'Poppins', sans-serif; /* Poppins untuk keterbacaan */
+        font-family: 'Poppins', sans-serif; 
         background: var(--gray-50); 
         color: var(--gray-800); 
         line-height: 1.6; 
@@ -108,21 +111,22 @@
     .font-bold { font-weight: 700; } .font-extrabold { font-weight: 800; }
     .hidden { display: none !important; }
 
-    /* HEADER - Sticky Bar yang Kontras */
+    /* Ganti semua bagian /* HEADER */ dengan kode ini */
+    /* HEADER - Sticky Bar yang Kontras dan Tegas */
     header { 
-        background: var(--black); /* Latar belakang hitam pekat */
+        background: var(--black); 
         padding: 0.8rem 0; 
         position: sticky; 
         top: 0; 
         z-index: 50; 
         box-shadow: 0 8px 15px -3px rgba(0,0,0,0.5); 
-        border-bottom: 2px solid var(--red-600); /* Garis kontras */
+        border-bottom: 2px solid var(--red-600); 
     }
     .header-flex { display: flex; justify-content: space-between; align-items: center; }
     .logo-area { display: flex; align-items: center; gap: 0.75rem; } 
     .logo-area h2 { 
-        color: var(--yellow-pop); /* Warna logo dibuat pop-out */
-        font-family: 'Oswald', sans-serif; /* Font tegas untuk logo */
+        color: var(--yellow-pop); 
+        font-family: 'Oswald', sans-serif; 
         font-size: 1.6rem; 
         margin: 0; 
         font-weight: 700;
@@ -130,7 +134,7 @@
     }
     .btn-top { 
         background: var(--red-600); 
-        color: var(--black); /* Teks hitam kontras */
+        color: var(--black); 
         padding: 0.5rem 1rem; 
         border-radius: 4px; 
         font-weight: 800; 
@@ -139,18 +143,19 @@
         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
     .btn-top:hover { background: var(--red-700); }
-    
-        /* HERO - Bertekstur dan Artistik */
+
+
+    /* Ganti semua bagian /* HERO */ dengan kode ini */
+    /* HERO - Bertekstur dan Artistik */
     .hero { 
-        /* Menggunakan gambar tekstur batu bata sebagai latar belakang. 
-           (Ganti URL ini dengan gambar batu bata/dinding terkelupas Anda) */
+        /* Menggunakan gambar tekstur batu bata/dinding terkelupas (Ganti URL ini dengan gambar Anda) */
         background: url('https://images.unsplash.com/photo-1549495763-71a53272993b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
         background-size: cover;
         position: relative;
-        padding: 5rem 0 3rem; /* Padding lebih besar */
-        overflow: hidden; /* Penting untuk efek terkelupas */
+        padding: 5rem 0 3rem; 
+        overflow: hidden; 
     } 
-    /* Overlay semi-transparan agar tulisan kontras dengan batu bata */
+    /* Overlay semi-transparan untuk kontras dengan tekstur batu bata */
     .hero::before {
         content: "";
         position: absolute;
@@ -158,36 +163,33 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.75); /* Overlay gelap */
+        background: rgba(0, 0, 0, 0.75); 
         z-index: 1;
     }
-
     .hero .container {
         position: relative;
-        z-index: 2; /* Konten di atas overlay */
+        z-index: 2; 
     }
-
     .hero h1 { 
-        font-family: 'Oswald', sans-serif; /* Font tegas untuk judul */
-        color: var(--white); /* Teks putih kontras */
-        font-size: 3rem; /* Font size sangat besar */
+        font-family: 'Oswald', sans-serif; 
+        color: var(--white); 
+        font-size: 3rem; 
         margin-bottom: 0.5rem; 
         line-height: 1.05;
         font-weight: 900; 
         text-transform: uppercase; 
-        text-shadow: 0 3px 5px rgba(0,0,0,0.8); /* Shadow tegas */
+        text-shadow: 0 3px 5px rgba(0,0,0,0.8); 
     }
     .hero h1 span {
-        color: var(--yellow-pop); /* Poin penting diwarnai kuning */
+        color: var(--yellow-pop); 
         padding: 0 5px;
         line-height: 1.2;
     }
-
     .hero p { 
         font-size: 1.25rem; 
         max-width: 700px; 
         margin: 0 auto 2rem; 
-        color: #fef08a; /* Kuning terang untuk sub-judul */
+        color: #fef08a; 
         font-weight: 600;
         line-height: 1.4;
         text-shadow: 0 1px 3px rgba(0,0,0,0.6);
@@ -196,9 +198,9 @@
         display: flex; flex-wrap: wrap; justify-content: center; 
         gap: 1.5rem; margin-bottom: 3rem; 
         font-weight: 700; 
-        color: var(--white); /* Badges putih */
+        color: var(--white); 
         font-size: 1rem; 
-        background: rgba(0,0,0,0.5); /* Latar belakang semi transparan di badges */
+        background: rgba(0,0,0,0.5); 
         padding: 10px 15px;
         border-radius: 8px;
         border: 1px solid var(--red-600);
@@ -209,23 +211,33 @@
     .hero-img-box {
         position: relative;
         margin: 0 auto 2.5rem;
-        max-width: 500px; /* Ukuran gambar diperkecil sedikit agar lebih fokus */
+        max-width: 500px; 
     }
     .hero-img-box img {
         border-radius:1rem; 
         box-shadow: 0 10px 30px rgba(0,0,0,0.8); 
-        border: 5px solid var(--red-600); /* Border merah tegas */
+        border: 5px solid var(--red-600); 
         width: 100%;
         height: auto;
         max-height: 400px;
         object-fit: cover;
         transition: 0.5s;
     }
-    .hero-img-box img:hover { transform: scale(1.05) rotate(1deg); } /* Efek hover artistik */
-    
+    .hero-img-box img:hover { transform: scale(1.05) rotate(1deg); } 
     .badge-premium {
-        /* ... (Badge Premium Style is unchanged, it works well here) ... */
+        position: absolute;
+        top: 0;
+        right: 0;
         background: var(--red-600);
+        color: white;
+        padding: 0.75rem 1.25rem;
+        border-radius: 0 1rem 0 1rem;
+        font-size: 1rem;
+        font-weight: 800;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        transform: translate(10px, -10px);
+        z-index: 20;
+        text-transform: uppercase;
     }
     
     /* CTA Button Style */
@@ -234,21 +246,21 @@
         align-items: center;
         justify-content: center;
         gap: 0.75rem;
-        background: var(--yellow-pop); /* Tombol utama kuning mencolok */
-        color: var(--black); /* Teks hitam */
+        background: var(--yellow-pop); 
+        color: var(--black); 
         padding: 1.5rem 2.5rem; 
-        border-radius: 50px; /* Kembali ke pill shape yang eye-catching */
+        border-radius: 50px; 
         font-weight: 900; 
         font-size: 1.4rem; 
-        box-shadow: 0 10px 25px -5px rgba(255, 193, 7, 0.8); /* Shadow kuning tegas */
+        box-shadow: 0 10px 25px -5px rgba(255, 193, 7, 0.8); 
         width: 100%; max-width: 500px; 
         text-transform: uppercase; letter-spacing: 1px; 
-        border: 4px solid var(--red-700); /* Border merah agar lebih menonjol */
+        border: 4px solid var(--red-700); 
         transition: 0.3s all;
     }
     .cta-button:hover { 
         background: #fdd835; 
-        transform: translateY(-5px) scale(1.05); /* Efek dramatis */
+        transform: translateY(-5px) scale(1.05); 
     }
     .pulse-button { animation: pulse-yellow 2s infinite; }
     @keyframes pulse-yellow {
@@ -257,14 +269,13 @@
         100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
     }
 
-
-    /* Trust Badge Style (diubah agar kontras dengan latar belakang gelap) */
+    /* Trust Badge Style */
     .trust-badge {
         margin-top: 1.5rem; 
         font-size: 1rem; 
         color: var(--white); 
         line-height: 1.4; 
-        background: rgba(0, 0, 0, 0.7); /* Background gelap transparan */
+        background: rgba(0, 0, 0, 0.7); 
         display: inline-block; 
         padding: 1.25rem 2rem; 
         border-radius: 12px; 
@@ -274,32 +285,64 @@
     .trust-badge p { margin: 0; }
     .trust-badge i { color: var(--yellow-pop) !important; }
 
-    /* PEMISAH SEKSI BARU (UNJUK RASA STYLISH) */
-    .section-separator-wave {
+    /* SEPARATOR STYLES - Gelombang & Robekan Kertas yang Artistik */
+    .separator-wave {
         width: 100%;
-        height: 100px; /* Ketinggian gelombang */
-        background-color: var(--white); /* Warna latar belakang section selanjutnya */
+        height: 80px;
+        background: var(--gray-50); /* Warna section selanjutnya: light gray */
         position: relative;
-        overflow: hidden;
     }
-    .section-separator-wave::before {
+    .separator-wave::before {
         content: "";
         position: absolute;
-        width: 300%;
+        width: 100%;
         height: 100%;
-        background: var(--gray-50); /* Warna latar belakang hero di bawahnya */
-        border-radius: 40% 60% 0% 0% / 100% 0% 0% 0%; /* Bentuk gelombang yang artistik */
-        top: -100px; /* Angkat gelombang ke atas */
-        left: -100%;
-        transform: rotate(180deg);
+        top: -80px; 
+        left: 0;
+        /* Gelombang yang kasar, background-color hitam dari Hero */
+        background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,100 C60,0 40,100 100,0 L100,100 L0,100 Z" fill="%230a0a0a"/></svg>') repeat-x; 
+        background-size: 100% 100%;
+        transform: scaleY(-1); 
     }
 
-    /* Responsif HP */
+    /* Separator Robekan Kertas (Digunakan untuk memisahkan section produk) */
+    .separator-tear {
+        width: 100%;
+        height: 50px;
+        background: var(--yellow-primary); /* Warna section selanjutnya: Kuning */
+        position: relative;
+    }
+    .separator-tear::before {
+        content: "";
+        position: absolute;
+        top: -10px; 
+        left: 0;
+        width: 100%;
+        height: 20px;
+        /* Efek robekan kertas (warna dari section di atasnya, misalnya Kuning) */
+        background: var(--gray-50); /* Asumsi section di atasnya (Fruit Chips) berwarna Light Gray */
+        clip-path: polygon(0 0, 100% 0, 100% 70%, 95% 45%, 90% 75%, 85% 45%, 80% 75%, 75% 45%, 70% 75%, 65% 45%, 60% 75%, 55% 45%, 50% 75%, 45% 45%, 40% 75%, 35% 45%, 30% 75%, 25% 45%, 20% 75%, 15% 45%, 10% 75%, 5% 45%, 0% 70%);
+    }
+
+    /* CONTENT SECTIONS */
+    .section-white { padding: 3rem 0; background: var(--white); }
+    .section-gray { padding: 3rem 0; background: var(--gray-50); }
+    .section-yellow-chips {
+        padding: 3rem 0;
+        background: var(--yellow-primary); 
+        position: relative;
+    }
+    .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 2rem; color: #1f2937; }
+    
+    /* ... (CSS bagian lain seperti grid, card, info-box, dll. ) ... */
+
+    /* --- OPTIMASI KHUSUS HP --- */
     @media (max-width: 768px) {
         .hero { padding: 3rem 0 2rem; }
         .hero h1 { font-size: 2rem; }
         .hero p { font-size: 1rem; }
         .cta-button { font-size: 1.2rem; padding: 1rem 1.5rem; }
+        .hero-img-box { max-width: 300px; }
     }
 
     /* CONTENT SECTIONS */
@@ -434,10 +477,10 @@
         </div>
     </section>
     
-    <div class="section-separator-wave"></div>
-    
-    <section class="section-white">
-        <div class="container text-center">
+    <div class="separator-wave"></div>
+
+    <section class="section-gray text-center">
+        <div class="container">
             </div>
     </section>
 
@@ -889,6 +932,7 @@
     
 </body>
 </html>
+
 
 
 
