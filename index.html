@@ -70,20 +70,39 @@
     <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
     <link rel="apple-touch-icon" href="apple-icon-180x180.png">
 
-    <style>
-    /* FONT AWESOME */
+   <style>
+    /* 1. FONT IMPORTS & GLOBAL FONT SETTINGS (NEW) */
+    @import url('https://fonts.googleapis.com/css2?family=Eczar:wght@700;800&family=Poppins:wght@400;600;700&display=swap');
     @font-face { font-family: 'Font Awesome 6 Free'; font-style: normal; font-weight: 900; font-display: swap; src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2) format('woff2'); }
     @font-face { font-family: 'Font Awesome 6 Brands'; font-style: normal; font-weight: 400; font-display: swap; src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2) format('woff2'); }
     .fa, .fas, .fab { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; }
     .fas { font-family: 'Font Awesome 6 Free'; font-weight: 900; } .fab { font-family: 'Font Awesome 6 Brands'; font-weight: 400; }
     .fa-check-circle:before{content:"\f058"} .fa-shopping-cart:before{content:"\f07a"} .fa-utensils:before{content:"\f2e7"} .fa-brain:before{content:"\f5dc"} .fa-leaf:before{content:"\f06c"} .fa-whatsapp:before{content:"\f232"} .fa-instagram:before{content:"\f16d"} .fa-facebook:before{content:"\f09a"} .fa-tiktok:before{content:"\e07b"} .fa-youtube:before{content:"\f167"} .fa-store:before{content:"\f54e"} .fa-file-invoice:before{content:"\f570"} .fa-map-marker-alt:before{content:"\f3c5"} .fa-exclamation-triangle:before{content:"\f071"} .fa-microscope:before{content:"\f610"} .fa-drumstick-bite:before{content:"\f6d7"} .fa-mortar-pestle:before{content:"\f5a7"} .fa-fire:before{content:"\f06d"} .fa-shipping-fast:before{content:"\f48b"} .fa-list-ul:before{content:"\f0ca"} .fa-truck-fast:before{content:"\f48b"} .fa-hand-holding-dollar:before{content:"\f4c0"}
+    .fa-check:before { content: "\f00c"; } 
 
-    /* GLOBAL */
-    :root { --red-600: #dc2626; --red-700: #b91c1c; --red-800: #991b1b; --green-600: #16a34a; --green-800: #14532d; --gray-50: #f9fafb; --gray-800: #1f2937; --white: #ffffff; }
+    /* VARIABEL WARNA (DITAMBAH WARNA BARU) */
+    :root { 
+        --primary-red: #c2201a; 
+        --dark-red: #991b1b;
+        --primary-green: #14532d; 
+        --dark-green: #0f3d20;
+        --text-dark: #111827; 
+        --text-gray: #374151;
+        --bg-light: #f9fafb; 
+        --white: #ffffff;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --yellow-accent: #fde047; /* Kuning Stabilo */
+        --light-yellow-bg: #fffde7; /* Kuning Sangat Muda */
+    }
+
+    /* RESET & GLOBAL */
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui, -apple-system, sans-serif; background: var(--gray-50); color: var(--gray-800); line-height: 1.6; margin: 0; }
+    h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: inherit; }
+    body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: var(--gray-800); line-height: 1.6; margin: 0; }
+    h1 { font-family: 'Eczar', serif; font-weight: 800; }
+    h2 { font-family: 'Eczar', serif; font-weight: 800; }
     img { max-width: 100%; height: auto; display: block; }
-    a { text-decoration: none; transition: 0.3s; }
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
     ul { list-style: none; padding: 0; margin: 0; }
     .container { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; }
     .text-center { text-align: center; }
@@ -91,104 +110,167 @@
     .hidden { display: none !important; }
 
     /* HEADER */
-    header { background: var(--white); padding: 1rem 0; position: sticky; top: 0; z-index: 50; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+    header { background: var(--white); padding: 1rem 0; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow); }
     .header-flex { display: flex; justify-content: space-between; align-items: center; }
     .logo-area { display: flex; align-items: center; gap: 0.5rem; }
-    .logo-area h2 { color: var(--red-600); font-size: 1.5rem; margin: 0; }
-    .btn-top { background: var(--green-800); color: white; padding: 0.5rem 1rem; border-radius: 99px; font-weight: 600; font-size: 0.875rem; }
-
-    /* HERO */
-    .hero { background: #fef2f2; padding: 3rem 0; } /* Padding dikurangi sedikit agar naik */
-    .hero h1 { color: var(--red-700); font-size: 2rem; margin-bottom: 0.5rem; line-height: 1.2; }
-    .hero p { font-size: 1.1rem; max-width: 600px; margin: 0 auto 1rem; color: #374151; }
-    .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin-bottom: 1.5rem; font-weight: 600; color: var(--green-800); font-size: 0.85rem; }
-    .cta-button { display: inline-block; background: var(--red-600); color: white; padding: 1rem 1.5rem; border-radius: 99px; font-weight: 700; font-size: 1.1rem; box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4); width: 100%; max-width: 400px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .cta-button:hover { background: var(--red-700); transform: translateY(-2px); }
-
-    /* ANIMASI PULSE (BARU) */
-    @keyframes pulse-red {
-        0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
-        70% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
-        100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
-    }
-    .pulse-button { animation: pulse-red 2s infinite; }
-
-    /* INFO ELEGAN DI BAWAH TOMBOL (BARU) */
-    .trust-badge {
-        margin-top: 1rem; 
-        font-size: 0.85rem; 
-        color: #4b5563; 
-        line-height: 1.5; 
-        background: rgba(255,255,255,0.9); 
-        display: inline-block; 
-        padding: 0.75rem 1rem; 
-        border-radius: 0.75rem; 
-        border: 1px dashed #cbd5e1;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-
-    /* CONTENT SECTIONS */
-    .section-white { padding: 3rem 0; background: white; }
-    .section-red { padding: 3rem 0; background: #fee2e2; }
-    .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 2rem; color: #1f2937; }
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; text-align: left; }
-    .card { background: #fef2f2; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #fecaca; display: flex; flex-direction: column; justify-content: space-between; }
-    .card i { font-size: 2rem; color: var(--red-600); margin-bottom: 1rem; }
-    .card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .card-quote { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #fca5a5; font-style: italic; font-size: 0.9rem; color: #4b5563; }
-
-    .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1.5rem; margin: 2rem auto; max-width: 800px; text-align: left; }
-    .info-box h3 { color: #1e40af; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
-
-    .comparison { display: flex; gap: 1rem; margin-bottom: 2rem; justify-content: center; }
-    .comp-item { flex: 1; max-width: 300px; text-align: center; background: white; padding: 0.5rem; border-radius: 0.5rem; }
-    .comp-label-red { color: var(--red-700); font-weight: bold; margin-top: 0.5rem; } 
-    .comp-label-green { color: var(--green-800); font-weight: bold; margin-top: 0.5rem; } 
-    .feature-list li { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: start; text-align: left; }
-    .feature-list i { font-size: 1.5rem; color: var(--red-600); margin-top: 0.2rem; }
-
-    /* PRODUCTS */
-    .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    @media(min-width: 768px){ .product-grid { grid-template-columns: repeat(4, 1fr); } }
-    .p-card { background: white; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1rem; cursor: pointer; transition: 0.3s; display:flex; flex-direction:column; justify-content:space-between; text-align: left; }
-    .p-card:hover { transform: scale(1.03); border-color: var(--red-600); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-    .badge-best { background: var(--red-800); color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: bold; display: inline-block; margin-bottom: 0.5rem; }
-    .badge-try { background: #b45309; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: bold; display: inline-block; margin-bottom: 0.5rem; }
-    .badge-save { background: var(--green-800); color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: bold; display: inline-block; margin-bottom: 0.5rem; }
-
-    /* ORDER FORM */
-    .order-section { background: var(--red-600); color: white; padding: 4rem 0; }
-    .form-box { background: white; color: #1f2937; padding: 2rem; border-radius: 1rem; max-width: 600px; margin: 0 auto; text-align: left; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
-    label.form-label { display: block; font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; color: #1f2937; }
-    input.form-input, select.form-select, textarea.form-textarea { display: block; width: 100%; padding: 0.75rem; border: 1px solid #9ca3af; border-radius: 0.5rem; margin-bottom: 1.2rem; font-size: 1rem; font-family: inherit; box-sizing: border-box; color: #1f2937; }
-    .btn-wa { background: #16a34a; color: white; width: 100%; padding: 1rem; border-radius: 99px; font-weight: 700; font-size: 1.2rem; text-align: center; cursor: pointer; transition: 0.3s; border: none; }
-    .btn-wa:hover { background: #15803d; }
+    .logo-area h2 { color: var(--primary-red); font-size: 1.5rem; margin: 0; }
+    .btn-top { background: var(--primary-green); color: var(--white); padding: 0.5rem 1rem; border-radius: 99px; font-weight: 600; font-size: 0.875rem; }
     
-    /* PRICING */
-    .pricing-box { background: #fff1f2; color: var(--red-800); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem; border: 1px solid #fecaca; }
-    .pricing-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-    .pricing-table th, .pricing-table td { padding: 0.75rem; border-bottom: 1px solid #fecaca; text-align: left; }
+    /* HEADER */
+header { 
+    background: var(--white); 
+    padding: 0.75rem 0; /* Padding sedikit dikurangi */
+    position: sticky; 
+    top: 0; 
+    z-index: 100; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Shadow lebih halus */
+}
+.header-flex { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+.logo-area { 
+    display: flex; 
+    align-items: center; 
+    gap: 0.5rem; 
+}
+.logo-area img { 
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1)); /* Shadow halus di logo */
+}
+.logo-area h2 { 
+    font-size: 1.1rem; 
+    font-weight: 800; 
+    color: var(--text-dark); /* Teks gelap/hitam */
+    margin: 0; 
+    font-family: 'Poppins', sans-serif; /* Font Baru */
+}
+/* CTA Button Upgrade (Merah Mencolok) */
+.btn-top { 
+    background: var(--primary-red); 
+    color: var(--white); 
+    padding: 0.75rem 1.5rem; 
+    border-radius: 99px; 
+    font-weight: 700; 
+    font-size: 1rem; 
+    box-shadow: 0 5px 15px rgba(194, 32, 26, 0.3); /* Shadow Merah */
+    transition: 0.2s;
+    text-transform: uppercase;
+}
+.btn-top:hover { 
+    background: var(--dark-red); 
+    transform: translateY(-2px); 
+    box-shadow: 0 10px 20px rgba(194, 32, 26, 0.4); 
+}
 
-    /* FOOTER */
-    footer { background: #111827; color: #d1d5db; padding: 4rem 0 2rem; text-align: left; }
-    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
-    @media (min-width: 768px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; align-items: start; } }
-    .footer-title { color: #ffffff; font-weight: 800; font-size: 1.2rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    .footer-links li { margin-bottom: 1rem; }
-    .footer-links a { display: flex; align-items: center; gap: 0.75rem; color: #d1d5db; text-decoration: none; transition: 0.3s; }
-    .footer-links a:hover { color: white; transform: translateX(5px); }
-    .social-icons { display: flex; justify-content: flex-start; gap: 1.5rem; font-size: 1.5rem; }
-    .footer-bottom { border-top: 1px solid #374151; margin-top: 3rem; padding-top: 1.5rem; display: flex; flex-direction: column; align-items: center; font-size: 0.85rem; text-align: center; }
-    @media (min-width: 768px) { .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; } }
+    /* VALUES */
+    .values-section { padding: 4rem 0; background: var(--white); }
+    .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 3rem; text-align: center; color: var(--text-dark); }
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .value-card { text-align: center; padding: 2rem; border: 1px solid #e5e7eb; border-radius: 1rem; transition: 0.3s; }
+    .value-card:hover { border-color: var(--primary-green); box-shadow: var(--shadow); }
+    .value-icon { font-size: 2.5rem; color: var(--primary-green); margin-bottom: 1rem; }
+    .value-card h3 { font-weight: 700; margin-bottom: 0.5rem; color: var(--text-dark); }
+    .value-card p { color: var(--text-gray); }
 
-    /* --- OPTIMASI KHUSUS HP (AGAR TOMBOL TERLIHAT DI LAYAR AWAL) --- */
+    /* --- SECTION 3: KATALOG PREMIUM (DENGAN WAVE DI BAWAH) --- */
+    .catalog-premium-section {
+        position: relative;
+        background: linear-gradient(180deg, var(--red-800) 0%, var(--red-700) 100%); /* Merah Gradasi */
+        padding: 6rem 1.5rem 12rem; /* Padding bawah besar untuk gelombang */
+        text-align: center;
+        color: white;
+        z-index: 2;
+    }
+    /* Gelombang Kuning Penutup Bawah */
+    .catalog-premium-section::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        /* Warna SVG KUNING SANGAT MUDA (#fffde7) */
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23fffde7' fill-opacity='1' d='M0,128L48,138.7C96,149,192,171,288,176C384,181,480,171,576,144C672,117,768,75,864,80C960,85,1056,139,1152,160C1248,181,1344,171,1392,165.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        z-index: 5;
+    }
+    
+    /* Style Produk di Section 3 */
+    .cat-title-premium { font-family: 'Eczar', serif; font-size: 2.5rem; font-weight: 800; color: #ffffff; margin-bottom: 3rem; text-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+    .cat-title-premium span { color: var(--yellow-accent); font-style: italic; border-bottom: 3px solid var(--yellow-accent); }
+    .cat-grid-premium { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+    .prod-card-premium { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); border: 4px solid rgba(255,255,255,0.1); transition: all 0.3s ease; display: flex; flex-direction: column; }
+    .prod-card-premium:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 30px 60px rgba(0,0,0,0.4); border-color: var(--yellow-accent); }
+    .prod-img-box { height: 250px; overflow: hidden; position: relative; background: #f3f4f6; }
+    .prod-img-premium { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .prod-card-premium:hover .prod-img-premium { transform: scale(1.1); }
+    .cat-badge { position: absolute; top: 15px; left: 15px; background: var(--primary-red); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; box-shadow: 0 4px 10px rgba(0,0,0,0.2); border: 2px solid white; }
+    .badge-green { background: #15803d !important; }
+    .prod-info-premium { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; text-align: left; }
+    .prod-title-premium { font-family: 'Eczar', serif; font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--text-dark); }
+    .prod-desc-premium { font-family: 'Poppins', sans-serif; font-size: 0.95rem; color: var(--text-gray); margin-bottom: 1.5rem; flex-grow: 1; line-height: 1.5; }
+    .btn-cat-premium { display: block; width: 100%; padding: 14px; border-radius: 50px; text-align: center; font-weight: 800; font-size: 1rem; text-decoration: none; color: white !important; transition: 0.2s; border: none; text-transform: uppercase; letter-spacing: 0.5px; }
+    .btn-red-p { background: linear-gradient(90deg, var(--primary-red) 0%, var(--red-600) 100%); }
+    .btn-green-p { background: linear-gradient(90deg, var(--primary-green) 0%, var(--green-600) 100%); }
+    .btn-gray-p { background: #e5e7eb; color: #9ca3af !important; cursor: not-allowed; }
+    .btn-red-p:hover, .btn-green-p:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+    .stock-info { margin-top: 12px; font-size: 0.85rem; font-weight: 700; color: var(--green-600); display: flex; align-items: center; gap: 6px; justify-content: center; background: #f0fdf4; padding: 5px; border-radius: 8px; }
+
+    /* --- SECTION 4: COD (GRADASI KUNING MUDA KE TUA) --- */
+    .cod-fun-section {
+        position: relative;
+        /* Gradasi: Kuning Sangat Muda (Atas) -> Kuning Emas (Bawah) */
+        background: linear-gradient(180deg, var(--light-yellow-bg) 0%, var(--yellow-accent) 100%);
+        padding: 0 1.5rem 6rem; /* Padding atas 0 agar nempel dengan gelombang */
+        text-align: center;
+        color: var(--text-dark);
+        z-index: 1;
+    }
+
+    /* Container COD */
+    .cod-fun-grid {
+        display: flex; flex-direction: row; align-items: center;
+        justify-content: center; gap: 3rem; max-width: 1000px; margin: 0 auto;
+    }
+    .cod-fun-img-box { flex: 1; position: relative; }
+    .cod-fun-img { width: 100%; max-width: 450px; transform: rotate(-3deg); filter: drop-shadow(10px 15px 0px rgba(0,0,0,0.05)); }
+    .cod-fun-content { flex: 1; text-align: left; }
+
+    /* Teks COD */
+    .fun-headline { font-family: 'Eczar', serif; font-size: 2.5rem; font-weight: 800; line-height: 1.2; color: var(--text-dark); margin-bottom: 1.5rem; }
+    .fun-highlight { background: var(--primary-red); color: white; padding: 5px 15px; transform: rotate(-2deg); display: inline-block; box-shadow: 5px 5px 0px rgba(0,0,0,0.1); }
+    .fun-highlight-2 { background: white; color: var(--primary-red); padding: 3px 12px; transform: rotate(2deg); display: inline-block; margin-top: 10px; border: 2px solid var(--primary-red); font-size: 0.7em; font-weight: 700; }
+    .cod-fun-desc { font-family: 'Poppins', sans-serif; font-size: 1.1rem; color: var(--text-gray); margin-bottom: 1.5rem; }
+
+    /* List & Tombol COD */
+    .fun-list { list-style: none; padding: 0; margin-bottom: 2rem; }
+    .fun-list li { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; color: var(--text-gray); }
+    .fun-list i { color: var(--primary-red); font-size: 1.5rem; }
+    .btn-fun {
+        display: inline-block; background: var(--primary-red); color: white;
+        font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 1.3rem;
+        padding: 1rem 3rem; border-radius: 15px; text-decoration: none;
+        box-shadow: 0 8px 0px var(--dark-red); transform: rotate(-1deg);
+        transition: 0.2s; animation: wiggle 3s infinite ease-in-out;
+    }
+    .btn-fun:hover { transform: translateY(4px); box-shadow: 0 4px 0px var(--dark-red); background: var(--dark-red); }
+    .link-partner-small { display: block; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-gray); text-decoration: underline; font-weight: 600; }
+
+    /* Animasi */
+    @keyframes wiggle { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+
+    /* Responsif HP */
     @media (max-width: 768px) {
-        .hero { padding: 1.5rem 0 3rem; } /* Kurangi padding atas */
-        .hero h1 { font-size: 1.4rem; margin-bottom: 0.3rem; } /* Font judul diperkecil sedikit */
-        .hero p { font-size: 0.95rem; line-height: 1.4; }
-        .hero-img { height: 200px !important; object-fit: contain; margin-bottom: 1rem !important; } /* Batasi tinggi gambar di HP */
-        .badges { font-size: 0.7rem; gap: 0.5rem; margin-bottom: 1rem; }
-        .cta-button { font-size: 1rem; padding: 0.8rem 1rem; width: 90%; }
+        .catalog-premium-section { padding: 5rem 1rem 10rem; }
+        .cat-title-premium { font-size: 2rem; }
+        .cod-fun-section { padding-bottom: 4rem; }
+        .cod-fun-grid { flex-direction: column-reverse; gap: 2rem; }
+        .cod-fun-content { text-align: center; }
+        .cod-fun-img { max-width: 280px; margin: 0 auto; display: block; }
+        .fun-list { text-align: left; display: inline-block; }
+        .btn-fun { width: 100%; font-size: 1.1rem; }
     }
 </style>
     
@@ -204,14 +286,14 @@
 
 <body>
     <header>
-        <div class="container header-flex">
-            <div class="logo-area">
-                <img src="Logo-Barokah.webp" alt="Logo" width="32" height="32">
-                <h2 class="font-extrabold">BAROKAH HALALAN FOOD</h2>
-            </div>
-            <a href="#order-form" class="btn-top"><i class="fas fa-shopping-cart"></i> Pesan Promo</a>
+    <div class="container header-flex">
+        <div class="logo-area">
+            <img src="Logo-Barokah.webp" alt="Logo" width="32" height="32" class="header-logo-img">
+            <h2 class="font-extrabold">BAROKAH HALALAN FOOD</h2>
         </div>
-    </header>
+        <a href="#order-form" class="btn-top"><i class="fas fa-shopping-cart"></i> PESAN PROMO</a>
+    </div>
+</header>
 
     <main>
         <section class="hero">
@@ -710,6 +792,7 @@
     
 </body>
 </html>
+
 
 
 
