@@ -354,6 +354,8 @@
         position: relative;
         z-index: 5;
         color: var(--white);
+        /* Tambahkan efek grunge/noise halus pada background agar tidak kotak polos */
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
     }
     .section-features .section-title { 
         color: var(--yellow-pop); /* Judul Kuning */
@@ -370,18 +372,17 @@
         text-align: left; 
     }
     .feature-card {
-        background: #1a1a1a; /* Hitam sedikit lebih terang */
+        background: #1a1a1a; 
         padding: 2rem;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-        border: 2px solid var(--red-600); /* Border merah tegas */
+        box-shadow: 10px 10px 0 var(--red-600); /* Box Shadow digeser keluar, bukan di bawah */
+        border: 2px solid var(--red-600); 
         transition: 0.3s;
-        /* Kemiringan pada card agar tidak kaku */
-        transform: rotate(1deg); /* Sedikit putaran */
-        border-radius: 0 20px 0 20px; /* Bentuk asimetris */
+        transform: rotate(1deg); 
+        border-radius: 0 20px 0 20px; 
     }
     .feature-card:hover {
         transform: rotate(0deg) scale(1.03);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        box-shadow: 15px 15px 0 var(--red-700); /* Shadow makin tegas saat hover */
     }
     .feature-card h3 { 
         font-size: 1.4rem; 
@@ -405,6 +406,8 @@
         position: relative;
         overflow: hidden; 
         z-index: 1;
+        /* Tambahkan bayangan di bawah Section Putih untuk memisahkan dari background body */
+        box-shadow: inset 0 10px 20px -10px rgba(0, 0, 0, 0.1);
     }
     .section-white .section-title { 
         color: var(--red-800); /* Judul Merah Gelap */
@@ -423,25 +426,22 @@
         margin-bottom: 3rem;
     }
     
-    /* Card Problem - Lebih Asimetris dan Dinamis */
+    /* Card Problem */
     .card { 
-        background: #fff8e1; /* Background Kuning Muda */
+        background: #fff8e1; 
         padding: 1.5rem; 
-        border-radius: 15px 0 15px 0; /* Bentuk asimetris */
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
-        border-bottom: 5px solid var(--red-700); /* Border tegas di bawah */
-        display: flex; 
-        flex-direction: column; 
-        justify-content: space-between; 
+        border-radius: 15px 0 15px 0; 
+        box-shadow: 5px 5px 0 var(--red-700); /* Box shadow digeser ke samping */
+        border-bottom: 5px solid var(--red-700); 
         transition: 0.3s;
-        transform: rotate(-1deg); /* Sedikit miring ke kiri */
+        transform: rotate(-1deg); 
     }
-    .card:nth-child(even) { /* Card genap dimiringkan ke kanan */
+    .card:nth-child(even) { 
         transform: rotate(1deg); 
     }
     .card:hover {
         transform: scale(1.02);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        box-shadow: 8px 8px 0 var(--red-800);
     }
 
     .card i { 
@@ -467,17 +467,17 @@
         line-height: 1.4;
     }
 
-    /* Info Box - Stiker Kuning Pop-out */
+    /* Info Box */
     .info-box { 
-        background: var(--yellow-pop); /* Background Kuning Pop-out */
-        border: 4px dashed var(--red-700); /* Border Putus-putus Merah */
+        background: var(--yellow-pop); 
+        border: 4px dashed var(--red-700); 
         padding: 2.5rem; 
         margin: 2rem auto; 
         max-width: 900px; 
         text-align: left; 
         border-radius: 5px; 
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        transform: rotate(-2deg); /* Miring dramatis */
+        box-shadow: 8px 8px 0 var(--black); /* Box shadow hitam, memberi kesan stiker tempelan */
+        transform: rotate(-2deg); 
     }
     .info-box h3 { 
         color: var(--black); /* Judul Hitam */
@@ -1099,6 +1099,7 @@
     
 </body>
 </html>
+
 
 
 
