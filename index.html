@@ -350,12 +350,15 @@
     /* Section 2: Fitur Unggulan (Latar Belakang Hitam) */
     .section-features { 
         padding: 4rem 0 3rem; 
-        background: var(--black); /* Latar Belakang HITAM TEGAS */
+        background: var(--black); 
         position: relative;
         z-index: 5;
         color: var(--white);
-        /* Tambahkan efek grunge/noise halus pada background agar tidak kotak polos */
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        
+        /* SOLUSI PERTAMA: Tambahkan padding horizontal agar bayangan tidak terpotong */
+        padding-left: 20px; 
+        padding-right: 20px; 
     }
     .section-features .section-title { 
         color: var(--yellow-pop); /* Judul Kuning */
@@ -364,21 +367,29 @@
         font-family: 'Oswald', sans-serif;
         text-transform: uppercase;
     }
-    /* Styling Card Fitur agar tidak terlihat kotak kaku */
+   /* Styling Card Fitur agar tidak terlihat kotak kaku */
     .features-grid { 
         display: grid; 
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
         gap: 2.5rem; 
         text-align: left; 
+        
+        /* SOLUSI KEDUA: Beri sedikit margin agar card yang dirotasi tidak menyentuh container */
+        margin: 0 auto; 
+        max-width: 1100px; 
     }
     .feature-card {
         background: #1a1a1a; 
         padding: 2rem;
-        box-shadow: 10px 10px 0 var(--red-600); /* Box Shadow digeser keluar, bukan di bawah */
+        box-shadow: 10px 10px 0 var(--red-600); /* Box Shadow digeser keluar */
         border: 2px solid var(--red-600); 
         transition: 0.3s;
         transform: rotate(1deg); 
         border-radius: 0 20px 0 20px; 
+        
+        /* SOLUSI KETIGA: Batasi Lebar Maksimal per Card */
+        max-width: 350px; 
+        justify-self: center; /* Posisikan di tengah grid item */
     }
     .feature-card:hover {
         transform: rotate(0deg) scale(1.03);
@@ -1099,6 +1110,7 @@
     
 </body>
 </html>
+
 
 
 
