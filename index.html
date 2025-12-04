@@ -78,22 +78,19 @@
     .fas { font-family: 'Font Awesome 6 Free'; font-weight: 900; } .fab { font-family: 'Font Awesome 6 Brands'; font-weight: 400; }
     .fa-check-circle:before{content:"\f058"} .fa-shopping-cart:before{content:"\f07a"} .fa-utensils:before{content:"\f2e7"} .fa-brain:before{content:"\f5dc"} .fa-leaf:before{content:"\f06c"} .fa-whatsapp:before{content:"\f232"} .fa-instagram:before{content:"\f16d"} .fa-facebook:before{content:"\f09a"} .fa-tiktok:before{content:"\e07b"} .fa-youtube:before{content:"\f167"} .fa-store:before{content:"\f54e"} .fa-file-invoice:before{content:"\f570"} .fa-map-marker-alt:before{content:"\f3c5"} .fa-exclamation-triangle:before{content:"\f071"} .fa-microscope:before{content:"\f610"} .fa-drumstick-bite:before{content:"\f6d7"} .fa-mortar-pestle:before{content:"\f5a7"} .fa-fire:before{content:"\f06d"} .fa-shipping-fast:before{content:"\f48b"} .fa-list-ul:before{content:"\f0ca"} .fa-truck-fast:before{content:"\f48b"} .fa-hand-holding-dollar:before{content:"\f4c0"}
 
-    /* Ganti semua bagian /* GLOBAL */ dengan kode ini */
     /* GLOBAL */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Oswald:wght@400;700;800&display=swap');
     :root { 
-        --red-600: #e73030; 
+        --red-600: #e73030; /* Merah menyala */
         --red-700: #d61f1f; 
         --red-800: #c51414; 
         --green-600: #38bdf8; 
         --green-800: #1d4ed8; 
-        --gray-50: #f9fafb; 
+        --gray-50: #f9fafb; /* Light Gray (background section bawah) */
         --gray-800: #1f2937; 
-        --black: #0a0a0a; 
+        --black: #0a0a0a; /* Hitam pekat (background header dan hero overlay) */
         --white: #ffffff; 
-        --yellow-pop: #ffc107; 
-        --yellow-primary: #ffc933; 
-        --brown-dark: #3b2012; 
+        --yellow-pop: #ffc107; /* Kuning kontras (CTA) */
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { 
@@ -111,7 +108,6 @@
     .font-bold { font-weight: 700; } .font-extrabold { font-weight: 800; }
     .hidden { display: none !important; }
 
-    /* Ganti semua bagian /* HEADER */ dengan kode ini */
     /* HEADER - Sticky Bar yang Kontras dan Tegas */
     header { 
         background: var(--black); 
@@ -145,8 +141,7 @@
     .btn-top:hover { background: var(--red-700); }
 
 
-    /* Ganti semua bagian /* HERO */ dengan kode ini */
-    /* HERO - Bertekstur dan Artistik */
+    /* HERO - Bertekstur dan Artistik (Abon Sapi) */
     .hero { 
         /* Menggunakan gambar tekstur batu bata/dinding terkelupas (Ganti URL ini dengan gambar Anda) */
         background: url('https://images.unsplash.com/photo-1549495763-71a53272993b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
@@ -163,7 +158,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.75); 
+        background: rgba(0, 0, 0, 0.75); /* Overlay Hitam */
         z-index: 1;
     }
     .hero .container {
@@ -285,7 +280,7 @@
     .trust-badge p { margin: 0; }
     .trust-badge i { color: var(--yellow-pop) !important; }
 
-    /* SEPARATOR STYLES - Gelombang & Robekan Kertas yang Artistik */
+    /* SEPARATOR STYLES - Gelombang (Dari Hero Gelap ke Section Bawah Terang) */
     .separator-wave {
         width: 100%;
         height: 80px;
@@ -299,43 +294,16 @@
         height: 100%;
         top: -80px; 
         left: 0;
-        /* Gelombang yang kasar, background-color hitam dari Hero */
+        /* Gelombang yang kasar */
         background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,100 C60,0 40,100 100,0 L100,100 L0,100 Z" fill="%230a0a0a"/></svg>') repeat-x; 
         background-size: 100% 100%;
         transform: scaleY(-1); 
     }
 
-    /* Separator Robekan Kertas (Digunakan untuk memisahkan section produk) */
-    .separator-tear {
-        width: 100%;
-        height: 50px;
-        background: var(--yellow-primary); /* Warna section selanjutnya: Kuning */
-        position: relative;
-    }
-    .separator-tear::before {
-        content: "";
-        position: absolute;
-        top: -10px; 
-        left: 0;
-        width: 100%;
-        height: 20px;
-        /* Efek robekan kertas (warna dari section di atasnya, misalnya Kuning) */
-        background: var(--gray-50); /* Asumsi section di atasnya (Fruit Chips) berwarna Light Gray */
-        clip-path: polygon(0 0, 100% 0, 100% 70%, 95% 45%, 90% 75%, 85% 45%, 80% 75%, 75% 45%, 70% 75%, 65% 45%, 60% 75%, 55% 45%, 50% 75%, 45% 45%, 40% 75%, 35% 45%, 30% 75%, 25% 45%, 20% 75%, 15% 45%, 10% 75%, 5% 45%, 0% 70%);
-    }
-
     /* CONTENT SECTIONS */
-    .section-white { padding: 3rem 0; background: var(--white); }
     .section-gray { padding: 3rem 0; background: var(--gray-50); }
-    .section-yellow-chips {
-        padding: 3rem 0;
-        background: var(--yellow-primary); 
-        position: relative;
-    }
     .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 2rem; color: #1f2937; }
     
-    /* ... (CSS bagian lain seperti grid, card, info-box, dll. ) ... */
-
     /* --- OPTIMASI KHUSUS HP --- */
     @media (max-width: 768px) {
         .hero { padding: 3rem 0 2rem; }
@@ -344,26 +312,6 @@
         .cta-button { font-size: 1.2rem; padding: 1rem 1.5rem; }
         .hero-img-box { max-width: 300px; }
     }
-
-    /* CONTENT SECTIONS */
-    .section-white { padding: 3rem 0; background: white; }
-    .section-red { padding: 3rem 0; background: #fee2e2; }
-    .section-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 2rem; color: #1f2937; }
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; text-align: left; }
-    .card { background: #fef2f2; padding: 1.5rem; border-radius: 0.5rem; border: 1px solid #fecaca; display: flex; flex-direction: column; justify-content: space-between; }
-    .card i { font-size: 2rem; color: var(--red-600); margin-bottom: 1rem; }
-    .card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .card-quote { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #fca5a5; font-style: italic; font-size: 0.9rem; color: #4b5563; }
-
-    .info-box { background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1.5rem; margin: 2rem auto; max-width: 800px; text-align: left; }
-    .info-box h3 { color: #1e40af; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
-
-    .comparison { display: flex; gap: 1rem; margin-bottom: 2rem; justify-content: center; }
-    .comp-item { flex: 1; max-width: 300px; text-align: center; background: white; padding: 0.5rem; border-radius: 0.5rem; }
-    .comp-label-red { color: var(--red-700); font-weight: bold; margin-top: 0.5rem; } 
-    .comp-label-green { color: var(--green-800); font-weight: bold; margin-top: 0.5rem; } 
-    .feature-list li { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: start; text-align: left; }
-    .feature-list i { font-size: 1.5rem; color: var(--red-600); margin-top: 0.2rem; }
 
     /* PRODUCTS */
     .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
@@ -477,13 +425,13 @@
         </div>
     </section>
     
-    <div class="separator-wave"></div>
+    <div class="separator-wave"></div> 
 
     <section class="section-gray text-center">
         <div class="container">
+            <h2 class="section-title font-extrabold">KENAPA ABON SAPI BAROKAH ADALAH JAWABAN GIZI TERBAIK?</h2>
             </div>
     </section>
-
         <section class="section-white">
             <div class="container text-center">
                 <h2 class="section-title">Anda Sudah Yakin Gizi Anak Cukup? Hati-Hati, Ancaman Gizi Buruk Mengintai!</h2>
@@ -932,6 +880,7 @@
     
 </body>
 </html>
+
 
 
 
