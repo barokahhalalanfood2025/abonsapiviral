@@ -246,8 +246,16 @@
     .feature-card i { color: var(--black); margin-right: 10px; font-size: 1.5rem; }
 
     /* SECTION 3: PROBLEM (Black) */
-    .section-white { background: var(--black); position: relative; overflow: hidden; z-index: 1; color: var(--white); background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E"); }
-    .section-white .section-title { color: var(--yellow-pop); }
+    .section-white { 
+        background: var(--black); 
+        position: relative; /* Wajib ada untuk posisi wave */
+        overflow: hidden; 
+        z-index: 1; 
+        color: var(--white); 
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        padding: 5rem 0 10rem; 
+           }
+        .section-white .section-title { color: var(--yellow-pop); }
     .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; text-align: left; margin-bottom: 2rem; }
     .card { background: #1a1a1a; color: var(--white); padding: 1.5rem; border-radius: 15px 0 15px 0; box-shadow: 5px 5px 0 var(--red-700); border-bottom: 5px solid var(--red-700); transform: rotate(-1deg); }
     .card h3 { color: var(--red-600); font-weight: 800; margin-bottom: 0.5rem; } 
@@ -326,6 +334,9 @@
     @media (max-width: 768px) {
         .wave-bottom {
             height: 80px; 
+        }
+        .section-white {
+            padding: 3rem 0 6rem; /* Lebih kecil di HP */
         }
         /* HEADER FIX */
         header { padding: 0.5rem 0; } /* Header Tipis */
@@ -457,50 +468,52 @@
             </div>
         </section>
 
-        <div class="separator-white-to-black"></div> 
-
-        <section class="section-white">
-            <div class="container text-center">
-                <h2 class="section-title">ANDA YAKIN GIZI ANAK CUKUP? HATI-HATI, ANCAMAN GIZI BURUK MENGINTAI!</h2>
-                <p style="font-size:1.5rem; margin-bottom:3rem; color:var(--red-700); font-weight:900; line-height:1.4;">
-                    Mencegah Stunting JAUH Lebih Mudah Daripada Mengobati.<br> 
-                    **Jangan Tunda Asupan Protein Hewani Terbaik!**
-                </p>
-                
-                <div class="grid-3">
-                    <div class="card">
-                        <div><i class="fas fa-utensils"></i><h3 class="font-bold">Anak Susah Makan & Sering Menolak Lauk?</h3><p>Ini bisa jadi tanda bosan lauk. Jangan biarkan ia kekurangan **protein vital** di masa emasnya!</p></div>
-                        <div class="card-quote">"Pemberian makanan yang monoton dan tidak bervariasi adalah salah satu penyebab utama kesulitan makan (GTM) pada anak." <br>— IDAI</div>
-                    </div>
-                    
-                    <div class="card">
-                        <div><i class="fas fa-brain"></i><h3 class="font-bold">Sulit Fokus Belajar? Perkembangan Bicara Lambat?</h3><p>Otak butuh nutrisi premium (Zinc & Zat Besi) dari daging sapi murni. Kurangi risiko pertumbuhan kognitif terhambat!</p></div>
-                        <div class="card-quote">"Kekurangan Zat Besi (Iron Deficiency) pada masa balita dapat menyebabkan gangguan perkembangan kognitif permanen." <br>— Kemenkes RI</div>
-                    </div>
-                    
-                    <div class="card">
-                        <div><i class="fas fa-exclamation-triangle"></i><h3 class="font-bold">Khawatir Lauk Instan Mengandung "Racun" MSG?</h3><p>BAROKAH menjamin Tanpa MSG. Hindari potensi bahan kimia yang mengganggu perkembangan sel otak anak.</p></div>
-                        <div class="card-quote">"Konsumen cerdas kini memilih produk Clean Label (bebas aditif) untuk gizi alami terbaik."</div>
-                    </div>
+      <section class="section-white">
+        <div class="container text-center">
+            <h2 class="section-title">ANDA YAKIN GIZI ANAK CUKUP? HATI-HATI, ANCAMAN GIZI BURUK MENGINTAI!</h2>
+            <p style="font-size:1.5rem; margin-bottom:3rem; color:var(--red-700); font-weight:900; line-height:1.4;">
+                Mencegah Stunting JAUH Lebih Mudah Daripada Mengobati.<br> 
+                **Jangan Tunda Asupan Protein Hewani Terbaik!**
+            </p>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div><i class="fas fa-utensils"></i><h3 class="font-bold">Anak Susah Makan & Sering Menolak Lauk?</h3><p>Ini bisa jadi tanda bosan lauk. Jangan biarkan ia kekurangan **protein vital** di masa emasnya!</p></div>
+                    <div class="card-quote">"Pemberian makanan yang monoton dan tidak bervariasi adalah salah satu penyebab utama kesulitan makan (GTM) pada anak." <br>— IDAI</div>
                 </div>
                 
-                <div class="info-box">
-                    <h3><i class="fas fa-microscope"></i> FAKTA GIZI YANG WAJIB BUNDA TAHU:</h3>
-                    <p style="color:var(--gray-800);">Penelitian global (termasuk anjuran Kemenkes) membuktikan bahwa asupan **Protein Hewani** dari Daging Sapi sangat krusial di 1000 Hari Pertama Kehidupan (Masa Emas).</p>
-                    <p style="margin-top:1rem; color:var(--black); font-weight:900;">Daging sapi kaya akan **Zat Besi** dan **Zinc** yang esensial untuk **mencegah anemia dan stunting**, serta **memaksimalkan koneksi sel otak (kecerdasan kognitif)**.</p>
+                <div class="card">
+                    <div><i class="fas fa-brain"></i><h3 class="font-bold">Sulit Fokus Belajar? Perkembangan Bicara Lambat?</h3><p>Otak butuh nutrisi premium (Zinc & Zat Besi) dari daging sapi murni. Kurangi risiko pertumbuhan kognitif terhambat!</p></div>
+                    <div class="card-quote">"Kekurangan Zat Besi (Iron Deficiency) pada masa balita dapat menyebabkan gangguan perkembangan kognitif permanen." <br>— Kemenkes RI</div>
                 </div>
                 
-                <p style="font-size:1.8rem; font-weight:900; color:var(--red-700); margin-top:3rem; text-transform:uppercase;">
-                    CUKUP SUDAH! Jadikan Abon BAROKAH Solusi 5 Detik Protein Terlengkap Anda.
-                </p>
-
-                <a href="katalog.html" class="cta-button pulse-button" style="margin-top: 1rem; font-size: 1.2rem; max-width: 450px;">
-                    <i class="fas fa-shopping-cart"></i> SAYA SIAP AMANKAN GIZI ANAK!
-                </a>
+                <div class="card">
+                    <div><i class="fas fa-exclamation-triangle"></i><h3 class="font-bold">Khawatir Lauk Instan Mengandung "Racun" MSG?</h3><p>BAROKAH menjamin Tanpa MSG. Hindari potensi bahan kimia yang mengganggu perkembangan sel otak anak.</p></div>
+                    <div class="card-quote">"Konsumen cerdas kini memilih produk Clean Label (bebas aditif) untuk gizi alami terbaik."</div>
+                </div>
             </div>
-        </section>
-        
-        <div class="separator-black-to-white-3"></div>
+            
+            <div class="info-box">
+                <h3><i class="fas fa-microscope"></i> FAKTA GIZI YANG WAJIB BUNDA TAHU:</h3>
+                <p style="color:var(--gray-800);">Penelitian global (termasuk anjuran Kemenkes) membuktikan bahwa asupan **Protein Hewani** dari Daging Sapi sangat krusial di 1000 Hari Pertama Kehidupan (Masa Emas).</p>
+                <p style="margin-top:1rem; color:var(--black); font-weight:900;">Daging sapi kaya akan **Zat Besi** dan **Zinc** yang esensial untuk **mencegah anemia dan stunting**, serta **memaksimalkan koneksi sel otak (kecerdasan kognitif)**.</p>
+            </div>
+            
+            <p style="font-size:1.8rem; font-weight:900; color:var(--red-700); margin-top:3rem; text-transform:uppercase;">
+                CUKUP SUDAH! Jadikan Abon BAROKAH Solusi 5 Detik Protein Terlengkap Anda.
+            </p>
+
+            <a href="katalog.html" class="cta-button pulse-button" style="margin-top: 1rem; font-size: 1.2rem; max-width: 450px;">
+                <i class="fas fa-shopping-cart"></i> SAYA SIAP AMANKAN GIZI ANAK!
+            </a>
+        </div>
+
+        <div class="wave-bottom">
+            <svg viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path fill="#ffffff" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,197.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
 
         <section class="section-red">
             <div class="container">
@@ -1035,6 +1048,7 @@
     
 </body>
 </html>
+
 
 
 
