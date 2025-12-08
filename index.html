@@ -484,6 +484,155 @@
         .feature-card { max-width: 100%; }
         .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     }
+        /* =========================================
+       SECTION 6: TESTIMONI (LATAR BELAKANG PUTIH)
+       ========================================= */
+    
+    /* Separator dari Varian (Hitam) ke Testimoni (Putih) */
+    .separator-black-to-white-4 {
+        width: 100%;
+        height: 80px;
+        background: var(--white); /* Warna section ini (Putih) */
+        position: relative;
+        z-index: 10;
+    }
+    .separator-black-to-white-4::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 80px;
+        top: 0;
+        left: 0;
+        background: var(--black); /* Warna section sebelumnya (Hitam) */
+        /* Efek Robekan Kertas Acak */
+        clip-path: polygon(0 0, 100% 0, 100% 20%, 98% 90%, 95% 25%, 92% 95%, 88% 20%, 85% 90%, 80% 25%, 75% 95%, 70% 20%, 65% 95%, 60% 20%, 55% 95%, 50% 20%, 45% 95%, 40% 20%, 35% 95%, 30% 20%, 25% 95%, 20% 20%, 15% 95%, 10% 20%, 5% 95%, 0 20%);
+        transform: translateY(-79px); /* Naikkan sedikit agar nutup */
+    }
+
+    .section-testimonials {
+        padding: 4rem 0 6rem;
+        background: var(--white);
+        position: relative;
+        z-index: 1;
+    }
+    .section-testimonials .section-title {
+        color: var(--black);
+    }
+
+    /* Grid Testimoni */
+    .testi-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2.5rem;
+        margin-bottom: 4rem;
+    }
+
+    /* Card Polaroid Style */
+    .testi-card {
+        background: #ffffff;
+        padding: 15px 15px 40px 15px; /* Padding bawah besar untuk teks ala Polaroid */
+        box-shadow: 5px 5px 15px rgba(0,0,0,0.15);
+        border: 1px solid #e5e7eb;
+        transform: rotate(2deg); /* Miring ke kanan */
+        transition: 0.3s;
+        text-align: center;
+        position: relative;
+    }
+    .testi-card:nth-child(even) {
+        transform: rotate(-1.5deg); /* Miring ke kiri (selang-seling) */
+        z-index: 2;
+    }
+    .testi-card:nth-child(3n) {
+        transform: rotate(1deg) translateY(-10px);
+    }
+    .testi-card:hover {
+        transform: scale(1.05) rotate(0deg);
+        box-shadow: 10px 10px 25px rgba(0,0,0,0.25);
+        z-index: 10;
+    }
+    .testi-card img {
+        width: 100%;
+        height: auto;
+        border: 1px solid #eee;
+        filter: grayscale(20%); /* Sedikit hitam putih biar artistik */
+        transition: 0.3s;
+    }
+    .testi-card:hover img {
+        filter: grayscale(0%);
+    }
+    .testi-name {
+        font-family: 'Courier New', Courier, monospace; /* Font ala mesin tik/tulisan tangan */
+        font-weight: 700;
+        color: var(--gray-800);
+        margin-top: 15px;
+        font-size: 0.95rem;
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+    }
+    /* Efek Solasi/Tape di atas foto */
+    .testi-card::before {
+        content: "";
+        position: absolute;
+        width: 100px;
+        height: 30px;
+        background: rgba(255, 255, 255, 0.4);
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 1px dashed rgba(0,0,0,0.1);
+        border-right: 1px dashed rgba(0,0,0,0.1);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Guarantee Box (High Impact) */
+    .guarantee-box {
+        background: #ecfdf5; /* Hijau muda segar */
+        border: 3px dashed #10b981; /* Garis putus-putus tegas */
+        padding: 3rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        transform: rotate(-1deg); /* Miring sedikit */
+        box-shadow: 10px 10px 0 #047857; /* Shadow solid hijau tua */
+        position: relative;
+    }
+    .guarantee-box h3 {
+        color: #047857;
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    .guarantee-box i {
+        font-size: 2rem;
+    }
+    /* Stempel Garansi */
+    .guarantee-box::after {
+        content: "100% AMAN";
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        background: var(--red-600);
+        color: white;
+        padding: 10px;
+        border-radius: 50%;
+        font-weight: 900;
+        font-size: 0.8rem;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transform: rotate(15deg);
+        border: 2px solid white;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    }
     /* PRODUCTS */
     .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     @media(min-width: 768px){ .product-grid { grid-template-columns: repeat(4, 1fr); } }
@@ -728,23 +877,49 @@
         </div>
     </section>
 
-        <section class="section-white">
-            <div class="container text-center">
-                <h2 class="section-title">Ribuan Keluarga Sudah Merasakan Manfaatnya!</h2>
-                <div class="grid-3">
-                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-1.webp" width="300" height="400" loading="lazy" alt="Testimoni 1"><p style="text-align:right; font-size:0.8rem;">— Indah, Rantau Prapat</p></div>
-                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-2.webp" width="300" height="400" loading="lazy" alt="Testimoni 2"><p style="text-align:right; font-size:0.8rem;">— Agustinus, Jakarta</p></div>
-                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-3.webp" width="300" height="400" loading="lazy" alt="Testimoni 3"><p style="text-align:right; font-size:0.8rem;">— Pipiet, Surabaya</p></div>
-                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-4.webp" width="300" height="400" loading="lazy" alt="Testimoni 4"><p style="text-align:right; font-size:0.8rem;">— Julie Afia, Malang</p></div>
-                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-5.webp" width="300" height="400" loading="lazy" alt="Testimoni 5"><p style="text-align:right; font-size:0.8rem;">— dr Ayu, Malang</p></div>
-                    <div class="card" style="border:0; background:#fefce8;"><img src="Testi-6.webp" width="300" height="400" loading="lazy" alt="Testimoni 6"><p style="text-align:right; font-size:0.8rem;">— Sugeng Hendro, Malang</p></div>
+        <div class="separator-black-to-white-4"></div>
+
+    <section class="section-testimonials">
+        <div class="container text-center">
+            
+            <h2 class="section-title">RIBUAN KELUARGA SUDAH MERASAKAN MANFAATNYA!</h2>
+            
+            <div class="testi-grid">
+                <div class="testi-card">
+                    <img src="Testi-1.webp" width="300" height="400" loading="lazy" alt="Testimoni Indah">
+                    <p class="testi-name">Indah, Rantau Prapat</p>
                 </div>
-                <div class="info-box" style="background:#ecfdf5; border-color:#10b981; margin-top:2rem;">
-                    <h3 style="color:#047857;"><i class="fas fa-check-circle"></i> 100% Bebas Risiko! GARANSI GANTI BARU atau UANG KEMBALI!</h3>
-                    <p>Kami sangat yakin dengan kualitas Abon Sapi Tumbuk BAROKAH. Jika Anda tidak puas dengan kualitas rasa, atau menerima produk dalam kondisi rusak/apek, kami akan <strong>Ganti Baru Tanpa Ribet,</strong> atau <strong>Uang Anda Kami Kembalikan Utuh 100%</strong>.</p>
+                <div class="testi-card">
+                    <img src="Testi-2.webp" width="300" height="400" loading="lazy" alt="Testimoni Agustinus">
+                    <p class="testi-name">Agustinus, Jakarta</p>
+                </div>
+                <div class="testi-card">
+                    <img src="Testi-3.webp" width="300" height="400" loading="lazy" alt="Testimoni Pipiet">
+                    <p class="testi-name">Pipiet, Surabaya</p>
+                </div>
+                <div class="testi-card">
+                    <img src="Testi-4.webp" width="300" height="400" loading="lazy" alt="Testimoni Julie">
+                    <p class="testi-name">Julie Afia, Malang</p>
+                </div>
+                <div class="testi-card">
+                    <img src="Testi-5.webp" width="300" height="400" loading="lazy" alt="Testimoni dr Ayu">
+                    <p class="testi-name">dr Ayu, Malang</p>
+                </div>
+                <div class="testi-card">
+                    <img src="Testi-6.webp" width="300" height="400" loading="lazy" alt="Testimoni Sugeng">
+                    <p class="testi-name">Sugeng Hendro, Malang</p>
                 </div>
             </div>
-        </section>
+
+            <div class="guarantee-box">
+                <h3><i class="fas fa-check-circle"></i> GARANSI GANTI BARU / UANG KEMBALI!</h3>
+                <p style="font-size: 1.1rem; color: #064e3b;">
+                    Kami sangat yakin dengan kualitas Abon Sapi Tumbuk BAROKAH. Jika Anda tidak puas dengan kualitas rasa, atau menerima produk dalam kondisi rusak/apek, kami akan <strong>Ganti Baru Tanpa Ribet,</strong> atau <strong>Uang Anda Kami Kembalikan Utuh 100%</strong>.
+                </p>
+            </div>
+
+        </div>
+    </section>
 
         <section id="order-form" class="order-section">
             <div class="container text-center">
@@ -1108,6 +1283,7 @@
     
 </body>
 </html>
+
 
 
 
