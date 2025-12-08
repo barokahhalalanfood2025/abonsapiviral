@@ -502,36 +502,78 @@
         border: 2px solid white; box-shadow: 0 5px 10px rgba(0,0,0,0.2); 
     }
 
-    /* ORDER FORM & FOOTER (Basic) */
-    .order-section { background: var(--red-600); color: white; padding: 4rem 0; }
-    .form-box { background: white; color: #1f2937; padding: 2rem; border-radius: 1rem; max-width: 600px; margin: 0 auto; text-align: left; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
-    label.form-label { display: block; font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; color: #1f2937; }
-    input.form-input, select.form-select, textarea.form-textarea { display: block; width: 100%; padding: 0.75rem; border: 1px solid #9ca3af; border-radius: 0.5rem; margin-bottom: 1.2rem; font-size: 1rem; font-family: inherit; box-sizing: border-box; color: #1f2937; }
-    .btn-wa { background: #16a34a; color: white; width: 100%; padding: 1rem; border-radius: 99px; font-weight: 700; font-size: 1.2rem; text-align: center; cursor: pointer; transition: 0.3s; border: none; }
-    .btn-wa:hover { background: #15803d; }
+    /* =========================================
+       SECTION 7: ORDER FORM & FOOTER (HITAM & MERAH)
+       ========================================= */
+    
+    /* Separator dari Testimoni (Putih) ke Order Form (Hitam) */
+    .separator-white-to-black-final {
+        width: 100%; height: 80px; background: var(--red-800); /* Warna background Order Section */
+        position: relative; z-index: 10;
+    }
+    .separator-white-to-black-final::before {
+        content: ""; position: absolute; width: 100%; height: 80px; top: 0; left: 0; 
+        background: var(--white); /* Warna section sebelumnya */
+        clip-path: polygon(0 0, 100% 0, 100% 70%, 98% 45%, 95% 75%, 92% 50%, 88% 75%, 85% 45%, 80% 80%, 75% 40%, 70% 70%, 65% 35%, 60% 75%, 55% 40%, 50% 80%, 45% 35%, 40% 75%, 35% 45%, 30% 70%, 25% 40%, 20% 75%, 15% 45%, 10% 70%, 5% 40%, 0 70%);
+        transform: translateY(-80px); 
+    }
 
-    footer { background: #111827; color: #d1d5db; padding: 4rem 0 2rem; text-align: left; }
+    .order-section { 
+        background: var(--red-800); /* Merah Gelap Elegan */
+        color: white; padding: 4rem 0 6rem; position: relative; 
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+    }
+    
+    .pricing-box { 
+        background: #7f1d1d; /* Merah Lebih Gelap */
+        color: var(--white); padding: 2rem; border-radius: 10px; margin-bottom: 3rem; 
+        border: 2px dashed var(--yellow-pop); max-width: 800px; margin: 0 auto 3rem;
+        transform: rotate(1deg); /* Miring Artistik */
+        box-shadow: 10px 10px 0 rgba(0,0,0,0.3);
+    }
+    .pricing-table { width: 100%; border-collapse: collapse; font-size: 1rem; color: var(--white); }
+    .pricing-table th { background: rgba(0,0,0,0.3); padding: 1rem; text-align: left; color: var(--yellow-pop); border-bottom: 2px solid var(--yellow-pop); }
+    .pricing-table td { padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .pricing-table tr:last-child td { border-bottom: none; }
+
+    .form-box { 
+        background: var(--white); color: #1f2937; padding: 3rem; 
+        border-radius: 5px; max-width: 700px; margin: 0 auto; text-align: left; 
+        box-shadow: 15px 15px 0 var(--black); /* Shadow Hitam Tegas */
+        border: 4px solid var(--black);
+        transform: rotate(-0.5deg); /* Sedikit miring */
+    }
+    .form-label { display: block; font-weight: 800; margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--black); text-transform: uppercase; letter-spacing: 0.5px; }
+    .form-input, .form-select, .form-textarea { 
+        display: block; width: 100%; padding: 1rem; border: 2px solid #d1d5db; 
+        border-radius: 8px; margin-bottom: 1.5rem; font-size: 1rem; font-family: inherit; 
+        color: #1f2937; background: #f9fafb; transition: 0.3s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+        border-color: var(--red-600); outline: none; background: #fff; box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+    }
+    
+    .btn-wa { 
+        background: #25D366; color: white; width: 100%; padding: 1.2rem; border-radius: 50px; 
+        font-weight: 800; font-size: 1.3rem; text-align: center; cursor: pointer; 
+        transition: 0.3s; border: none; text-transform: uppercase; letter-spacing: 1px;
+        box-shadow: 0 10px 20px -5px rgba(37, 211, 102, 0.5);
+    }
+    .btn-wa:hover { background: #128C7E; transform: translateY(-3px); }
+
+    /* FOOTER */
+    footer { background: var(--black); color: #9ca3af; padding: 5rem 0 2rem; text-align: left; border-top: 5px solid var(--red-600); }
     .footer-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
     @media (min-width: 768px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; align-items: start; } }
-    .footer-title { color: #ffffff; font-weight: 800; font-size: 1.2rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .footer-title { color: var(--white); font-weight: 800; font-size: 1.4rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px; font-family: 'Oswald', sans-serif; }
     .footer-links li { margin-bottom: 1rem; }
-    .footer-links a { display: flex; align-items: center; gap: 0.75rem; color: #d1d5db; text-decoration: none; transition: 0.3s; }
-    .footer-links a:hover { color: white; transform: translateX(5px); }
+    .footer-links a { display: flex; align-items: center; gap: 0.75rem; color: #d1d5db; text-decoration: none; transition: 0.3s; font-weight: 500; }
+    .footer-links a:hover { color: var(--yellow-pop); transform: translateX(5px); }
     .social-icons { display: flex; justify-content: flex-start; gap: 1.5rem; font-size: 1.5rem; }
+    .social-icons a { color: var(--white); transition: 0.3s; }
+    .social-icons a:hover { color: var(--red-600); transform: scale(1.2); }
     .footer-bottom { border-top: 1px solid #374151; margin-top: 3rem; padding-top: 1.5rem; display: flex; flex-direction: column; align-items: center; font-size: 0.85rem; text-align: center; }
     @media (min-width: 768px) { .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; } }
-
-    /* --- OPTIMASI KHUSUS HP --- */
-    @media (max-width: 768px) {
-        .hero { padding: 3rem 0 2rem; }
-        .hero h1 { font-size: 2rem; }
-        .hero p { font-size: 1rem; }
-        .cta-button { font-size: 1.2rem; padding: 1rem 1.5rem; }
-        .hero-img-box { max-width: 300px; }
-        .features-grid { padding: 0 10px 30px; }
-        .feature-card { max-width: 100%; }
-        .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    }
 </style>
     
     <script>
@@ -772,65 +814,70 @@
             </div>
         </section>
 
-        <section id="order-form" class="order-section">
-            <div class="container text-center">
-                <h2 class="font-extrabold" style="font-size:2.5rem; margin-bottom:1rem;">🛒 KLAIM PROMO GROSIR HARI INI!</h2>
-                <p style="font-size:1.2rem; margin-bottom:2rem;">Pesan promo spesial di bawah, atau cek harga grosir (Reseller) kami.</p>
-                
-                <div id="grosir" class="pricing-box">
-                    <h3 class="font-bold" style="font-size:1.5rem; margin-bottom:1rem;">Daftar Harga Grosir (Reseller)</h3>
-                    <p style="font-size:0.9rem; color:#4b5563; margin-bottom:1rem;">(Berlaku untuk Pack 100gr ATAU kelipatan 10 Sachet)</p>
-                    <table class="pricing-table">
-                        <thead><tr><th>Tier Reseller</th><th>Jumlah Pembelian (Pack)</th><th>Diskon</th></tr></thead>
-                        <tbody>
-                            <tr><td>Tier Bronze</td><td>6 Pack</td><td>8.1%</td></tr>
-                            <tr><td>Tier Silver</td><td>10 Pack</td><td>10%</td></tr>
-                            <tr><td>Tier Gold</td><td>25 Pack</td><td>15%</td></tr>
-                            <tr><td>Tier Platinum</td><td>50 Pack</td><td>22%</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+        <div class="separator-white-to-black-final"></div>
 
-                <div class="form-box">
-                    <form id="mainOrderForm">
-                        <label class="form-label">Nama Pemesan <span style="color:red">*</span></label>
-                        <input type="text" id="nama" class="form-input" placeholder="Contoh: Budi Santoso" required aria-label="Nama Lengkap">
-                        
-                        <label class="form-label">Alamat Lengkap (Untuk Pengiriman) <span style="color:red">*</span></label>
-                        <textarea id="alamat" class="form-textarea" rows="3" placeholder="Jalan/Blok, No. Rumah, RT/RW, Kelurahan, Kecamatan, Kota/Kabupaten, Kode Pos" required aria-label="Alamat Lengkap"></textarea>
-                        
-                        <label class="form-label">Pilih Varian Produk <span style="color:red">*</span></label>
-                        <select id="varian" class="form-select" aria-label="Pilih Produk" onchange="hitungTotal()">
-                            <option value="0">-- Pilih Varian --</option>
-                            <option value="35999|Abon Sapi 100gr (Original)|type:reguler">Abon Sapi 100gr (Original) - Rp 35.999</option>
-                            <option value="35999|Abon Sapi 100gr (Pedas)|type:reguler">Abon Sapi 100gr (Pedas) - Rp 35.999</option>
-                            <option value="4990|Abon Sapi 10gr Sachet (Original)|type:sachet">Abon Sapi 10gr Sachet (Original) - Rp 4.990 (Satuan)</option>
-                            <option value="4990|Abon Sapi 10gr Sachet (Pedas)|type:sachet">Abon Sapi 10gr Sachet (Pedas) - Rp 4.990 (Satuan)</option>
-                        </select>
-                        <p style="font-size:0.85rem; color:#4b5563; margin-top:-1rem; margin-bottom:1rem;">*Pembelian sachet kelipatan 10 akan otomatis mendapatkan harga Pack (Rp 37.900/10 sachet).</p>
-
-                        <label class="form-label">Jumlah Pesanan <span style="color:red">*</span></label>
-                        <input type="number" id="jumlah" class="form-input" value="1" min="1" aria-label="Jumlah Pesanan" oninput="hitungTotal()">
-
-                        <div id="promoDetail" style="background:#fee2e2; color:#b91c1c; padding:1rem; margin-bottom:1rem; border-radius:0.5rem; text-align:left; border:1px solid #fecaca;" class="hidden"></div>
-                        
-                        <div style="border-top:2px solid #fecaca; padding-top:1rem; margin-bottom:1rem;">
-                            <p style="font-size:1.3rem; font-weight:bold; color:#1f2937;">Total Harga: <span id="totalHarga" style="color:#dc2626; font-size:2rem;">Rp 0</span></p>
-                        </div>
-
-                        <label class="form-label">Catatan (Opsional)</label>
-                        <textarea id="catatan" rows="2" class="form-textarea" placeholder="Contoh: Kirim ke alamat kantor / Mohon dikemas aman"></textarea>
-
-                        <div style="background:#f0fdf4; border-left:4px solid #16a34a; padding:1rem; margin-bottom:1.5rem; text-align:left; border-radius:0.5rem;">
-                            <p style="color:#15803d; font-weight:bold; display:flex; align-items:center; gap:0.5rem;"><i class="fas fa-shipping-fast"></i> 100% AMAN! BISA COD (Bayar di Tempat)</p>
-                            <p style="font-size:0.9rem; color:#166534; margin-top:0.3rem;">*Total harga produk akan dihitung otomatis. Biaya Ongkir & Admin COD akan dikonfirmasi oleh Admin kami di WhatsApp.</p>
-                        </div>
-
-                        <div onclick="kirimWhatsApp()" class="btn-wa">Kirim Pesanan ke WhatsApp Sekarang! 🚀</div>
-                    </form>
-                </div>
+    <section id="order-form" class="order-section">
+        <div class="container text-center">
+            
+            <h2 class="font-extrabold" style="font-size:2.5rem; margin-bottom:1rem; font-family: 'Oswald', sans-serif; text-transform: uppercase; text-shadow: 2px 2px 0 rgba(0,0,0,0.5);">
+                🛒 KLAIM PROMO GROSIR HARI INI!
+            </h2>
+            <p style="font-size:1.2rem; margin-bottom:3rem; color: #fca5a5;">Pesan promo spesial di bawah, atau cek harga grosir (Reseller) kami.</p>
+            
+            <div id="grosir" class="pricing-box">
+                <h3 class="font-bold" style="font-size:1.5rem; margin-bottom:1rem; color: var(--yellow-pop);">Daftar Harga Grosir (Reseller)</h3>
+                <p style="font-size:0.9rem; color:#e5e7eb; margin-bottom:1rem;">(Berlaku untuk Pack 100gr ATAU kelipatan 10 Sachet)</p>
+                <table class="pricing-table">
+                    <thead><tr><th>Tier Reseller</th><th>Jumlah Pembelian (Pack)</th><th>Diskon</th></tr></thead>
+                    <tbody>
+                        <tr><td>Tier Bronze</td><td>6 Pack</td><td>8.1%</td></tr>
+                        <tr><td>Tier Silver</td><td>10 Pack</td><td>10%</td></tr>
+                        <tr><td>Tier Gold</td><td>25 Pack</td><td>15%</td></tr>
+                        <tr><td>Tier Platinum</td><td>50 Pack</td><td>22%</td></tr>
+                    </tbody>
+                </table>
             </div>
-        </section>
+
+            <div class="form-box">
+                <form id="mainOrderForm">
+                    <label class="form-label">Nama Pemesan <span style="color:red">*</span></label>
+                    <input type="text" id="nama" class="form-input" placeholder="Contoh: Budi Santoso" required aria-label="Nama Lengkap">
+                    
+                    <label class="form-label">Alamat Lengkap <span style="color:red">*</span></label>
+                    <textarea id="alamat" class="form-textarea" rows="3" placeholder="Jalan/Blok, No. Rumah, RT/RW, Kelurahan, Kecamatan, Kota/Kabupaten, Kode Pos" required aria-label="Alamat Lengkap"></textarea>
+                    
+                    <label class="form-label">Pilih Varian Produk <span style="color:red">*</span></label>
+                    <select id="varian" class="form-select" aria-label="Pilih Produk" onchange="hitungTotal()">
+                        <option value="0">-- Pilih Varian --</option>
+                        <option value="35999|Abon Sapi 100gr (Original)|type:reguler">Abon Sapi 100gr (Original) - Rp 35.999</option>
+                        <option value="35999|Abon Sapi 100gr (Pedas)|type:reguler">Abon Sapi 100gr (Pedas) - Rp 35.999</option>
+                        <option value="4990|Abon Sapi 10gr Sachet (Original)|type:sachet">Abon Sapi 10gr Sachet (Original) - Rp 4.990 (Satuan)</option>
+                        <option value="4990|Abon Sapi 10gr Sachet (Pedas)|type:sachet">Abon Sapi 10gr Sachet (Pedas) - Rp 4.990 (Satuan)</option>
+                    </select>
+                    <p style="font-size:0.85rem; color:#6b7280; margin-top:-1rem; margin-bottom:1.5rem; font-style: italic;">*Pembelian sachet kelipatan 10 otomatis dapat harga Pack (Rp 37.900/10 sachet).</p>
+
+                    <label class="form-label">Jumlah Pesanan <span style="color:red">*</span></label>
+                    <input type="number" id="jumlah" class="form-input" value="1" min="1" aria-label="Jumlah Pesanan" oninput="hitungTotal()">
+
+                    <div id="promoDetail" style="background:#fee2e2; color:#b91c1c; padding:1rem; margin-bottom:1rem; border-radius:0.5rem; text-align:left; border:1px solid #fecaca; display: none;"></div>
+                    
+                    <div style="border-top:2px dashed #d1d5db; padding-top:1rem; margin-bottom:1rem;">
+                        <p style="font-size:1.3rem; font-weight:800; color:#1f2937;">Total Harga: <span id="totalHarga" style="color:var(--red-600); font-size:2.2rem;">Rp 0</span></p>
+                    </div>
+
+                    <label class="form-label">Catatan (Opsional)</label>
+                    <textarea id="catatan" rows="2" class="form-textarea" placeholder="Contoh: Kirim ke alamat kantor / Mohon dikemas aman"></textarea>
+
+                    <div style="background:#f0fdf4; border-left:5px solid #16a34a; padding:1rem; margin-bottom:2rem; text-align:left; border-radius:0.5rem;">
+                        <p style="color:#15803d; font-weight:bold; display:flex; align-items:center; gap:0.5rem; font-size: 1.1rem;"><i class="fas fa-check-circle"></i> 100% AMAN! BISA COD</p>
+                        <p style="font-size:0.9rem; color:#166534; margin-top:0.3rem;">*Total harga produk dihitung otomatis. Ongkir & Admin COD dikonfirmasi di WhatsApp.</p>
+                    </div>
+
+                    <div onclick="kirimWhatsApp()" class="btn-wa"><i class="fab fa-whatsapp"></i> KIRIM PESANAN SEKARANG!</div>
+                </form>
+            </div>
+        </div>
+    </section>
     </main>
 
     <footer>
@@ -1134,6 +1181,7 @@
     
 </body>
 </html>
+
 
 
 
