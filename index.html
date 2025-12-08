@@ -326,6 +326,16 @@
         transform: translateY(-80px);
     }
 
+    /* Varian (Hitam) -> Testimoni (Putih) */
+    .separator-black-to-white-4 {
+        width: 100%; height: 80px; background: var(--white); position: relative; z-index: 10;
+    }
+    .separator-black-to-white-4::before {
+        content: ""; position: absolute; width: 100%; height: 80px; top: 0; left: 0; background: var(--black); 
+        clip-path: polygon(0 0, 100% 0, 100% 20%, 98% 90%, 95% 25%, 92% 95%, 88% 20%, 85% 90%, 80% 25%, 75% 95%, 70% 20%, 65% 95%, 60% 20%, 55% 95%, 50% 20%, 45% 95%, 40% 20%, 35% 95%, 30% 20%, 25% 95%, 20% 20%, 15% 95%, 10% 20%, 5% 95%, 0 20%);
+        transform: translateY(-79px); 
+    }
+
     /* =========================================
        6. CONTENT SECTIONS
        ========================================= */
@@ -454,6 +464,44 @@
     .p-card div:last-child { border-top: 2px dashed var(--red-600) !important; margin-top:1rem; padding-top:1rem; }
     .p-card div:last-child p { color: var(--yellow-pop); font-weight: 900 !important; }
 
+    /* SECTION 6: Testimoni & Garansi (WHITE) */
+    .section-testimonials { padding: 4rem 0 6rem; background: var(--white); position: relative; z-index: 1; }
+    .section-testimonials .section-title { color: var(--black); }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2.5rem; margin-bottom: 4rem; }
+    .testi-card { 
+        background: #ffffff; padding: 15px 15px 40px 15px; box-shadow: 5px 5px 15px rgba(0,0,0,0.15); 
+        border: 1px solid #e5e7eb; transform: rotate(2deg); transition: 0.3s; text-align: center; position: relative; 
+    }
+    .testi-card:nth-child(even) { transform: rotate(-1.5deg); z-index: 2; }
+    .testi-card:nth-child(3n) { transform: rotate(1deg) translateY(-10px); }
+    .testi-card:hover { transform: scale(1.05) rotate(0deg); box-shadow: 10px 10px 25px rgba(0,0,0,0.25); z-index: 10; }
+    .testi-card img { width: 100%; height: auto; border: 1px solid #eee; filter: grayscale(20%); transition: 0.3s; }
+    .testi-card:hover img { filter: grayscale(0%); }
+    .testi-name { 
+        font-family: 'Courier New', Courier, monospace; font-weight: 700; color: var(--gray-800); 
+        margin-top: 15px; font-size: 0.95rem; position: absolute; bottom: 10px; left: 0; right: 0; 
+    }
+    .testi-card::before { 
+        content: ""; position: absolute; width: 100px; height: 30px; background: rgba(255, 255, 255, 0.4); 
+        top: -10px; left: 50%; transform: translateX(-50%); border-left: 1px dashed rgba(0,0,0,0.1); 
+        border-right: 1px dashed rgba(0,0,0,0.1); box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+    }
+    .guarantee-box { 
+        background: #ecfdf5; border: 3px dashed #10b981; padding: 3rem 2rem; max-width: 800px; 
+        margin: 0 auto; transform: rotate(-1deg); box-shadow: 10px 10px 0 #047857; position: relative; 
+    }
+    .guarantee-box h3 { 
+        color: #047857; font-family: 'Oswald', sans-serif; font-size: 1.8rem; margin-bottom: 1rem; 
+        text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 10px; 
+    }
+    .guarantee-box i { font-size: 2rem; }
+    .guarantee-box::after { 
+        content: "100% AMAN"; position: absolute; top: -20px; right: -20px; background: var(--red-600); 
+        color: white; padding: 10px; border-radius: 50%; font-weight: 900; font-size: 0.8rem; width: 80px; height: 80px; 
+        display: flex; align-items: center; justify-content: center; text-align: center; transform: rotate(15deg); 
+        border: 2px solid white; box-shadow: 0 5px 10px rgba(0,0,0,0.2); 
+    }
+
     /* ORDER FORM & FOOTER (Basic) */
     .order-section { background: var(--red-600); color: white; padding: 4rem 0; }
     .form-box { background: white; color: #1f2937; padding: 2rem; border-radius: 1rem; max-width: 600px; margin: 0 auto; text-align: left; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
@@ -484,198 +532,6 @@
         .feature-card { max-width: 100%; }
         .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     }
-        /* =========================================
-       SECTION 6: TESTIMONI (LATAR BELAKANG PUTIH)
-       ========================================= */
-    
-    /* Separator dari Varian (Hitam) ke Testimoni (Putih) */
-    .separator-black-to-white-4 {
-        width: 100%;
-        height: 80px;
-        background: var(--white); /* Warna section ini (Putih) */
-        position: relative;
-        z-index: 10;
-    }
-    .separator-black-to-white-4::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 80px;
-        top: 0;
-        left: 0;
-        background: var(--black); /* Warna section sebelumnya (Hitam) */
-        /* Efek Robekan Kertas Acak */
-        clip-path: polygon(0 0, 100% 0, 100% 20%, 98% 90%, 95% 25%, 92% 95%, 88% 20%, 85% 90%, 80% 25%, 75% 95%, 70% 20%, 65% 95%, 60% 20%, 55% 95%, 50% 20%, 45% 95%, 40% 20%, 35% 95%, 30% 20%, 25% 95%, 20% 20%, 15% 95%, 10% 20%, 5% 95%, 0 20%);
-        transform: translateY(-79px); /* Naikkan sedikit agar nutup */
-    }
-
-    .section-testimonials {
-        padding: 4rem 0 6rem;
-        background: var(--white);
-        position: relative;
-        z-index: 1;
-    }
-    .section-testimonials .section-title {
-        color: var(--black);
-    }
-
-    /* Grid Testimoni */
-    .testi-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2.5rem;
-        margin-bottom: 4rem;
-    }
-
-    /* Card Polaroid Style */
-    .testi-card {
-        background: #ffffff;
-        padding: 15px 15px 40px 15px; /* Padding bawah besar untuk teks ala Polaroid */
-        box-shadow: 5px 5px 15px rgba(0,0,0,0.15);
-        border: 1px solid #e5e7eb;
-        transform: rotate(2deg); /* Miring ke kanan */
-        transition: 0.3s;
-        text-align: center;
-        position: relative;
-    }
-    .testi-card:nth-child(even) {
-        transform: rotate(-1.5deg); /* Miring ke kiri (selang-seling) */
-        z-index: 2;
-    }
-    .testi-card:nth-child(3n) {
-        transform: rotate(1deg) translateY(-10px);
-    }
-    .testi-card:hover {
-        transform: scale(1.05) rotate(0deg);
-        box-shadow: 10px 10px 25px rgba(0,0,0,0.25);
-        z-index: 10;
-    }
-    .testi-card img {
-        width: 100%;
-        height: auto;
-        border: 1px solid #eee;
-        filter: grayscale(20%); /* Sedikit hitam putih biar artistik */
-        transition: 0.3s;
-    }
-    .testi-card:hover img {
-        filter: grayscale(0%);
-    }
-    .testi-name {
-        font-family: 'Courier New', Courier, monospace; /* Font ala mesin tik/tulisan tangan */
-        font-weight: 700;
-        color: var(--gray-800);
-        margin-top: 15px;
-        font-size: 0.95rem;
-        position: absolute;
-        bottom: 10px;
-        left: 0;
-        right: 0;
-    }
-    /* Efek Solasi/Tape di atas foto */
-    .testi-card::before {
-        content: "";
-        position: absolute;
-        width: 100px;
-        height: 30px;
-        background: rgba(255, 255, 255, 0.4);
-        top: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-left: 1px dashed rgba(0,0,0,0.1);
-        border-right: 1px dashed rgba(0,0,0,0.1);
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    /* Guarantee Box (High Impact) */
-    .guarantee-box {
-        background: #ecfdf5; /* Hijau muda segar */
-        border: 3px dashed #10b981; /* Garis putus-putus tegas */
-        padding: 3rem 2rem;
-        max-width: 800px;
-        margin: 0 auto;
-        transform: rotate(-1deg); /* Miring sedikit */
-        box-shadow: 10px 10px 0 #047857; /* Shadow solid hijau tua */
-        position: relative;
-    }
-    .guarantee-box h3 {
-        color: #047857;
-        font-family: 'Oswald', sans-serif;
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-        text-transform: uppercase;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-    }
-    .guarantee-box i {
-        font-size: 2rem;
-    }
-    /* Stempel Garansi */
-    .guarantee-box::after {
-        content: "100% AMAN";
-        position: absolute;
-        top: -20px;
-        right: -20px;
-        background: var(--red-600);
-        color: white;
-        padding: 10px;
-        border-radius: 50%;
-        font-weight: 900;
-        font-size: 0.8rem;
-        width: 80px;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        transform: rotate(15deg);
-        border: 2px solid white;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    }
-    /* PRODUCTS */
-    .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    @media(min-width: 768px){ .product-grid { grid-template-columns: repeat(4, 1fr); } }
-    .p-card { background: white; border: 1px solid #e5e7eb; border-radius: 0.75rem; padding: 1rem; cursor: pointer; transition: 0.3s; display:flex; flex-direction:column; justify-content:space-between; text-align: left; }
-    .p-card:hover { transform: scale(1.03); border-color: var(--red-600); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
-    .badge-best { background: var(--red-800); color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: bold; display: inline-block; margin-bottom: 0.5rem; }
-    .badge-try { background: #b45309; color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: bold; display: inline-block; margin-bottom: 0.5rem; }
-    .badge-save { background: var(--green-800); color: white; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.7rem; font-weight: bold; display: inline-block; margin-bottom: 0.5rem; }
-
-    /* ORDER FORM */
-    .order-section { background: var(--red-600); color: white; padding: 4rem 0; }
-    .form-box { background: white; color: #1f2937; padding: 2rem; border-radius: 1rem; max-width: 600px; margin: 0 auto; text-align: left; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
-    label.form-label { display: block; font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; color: #1f2937; }
-    input.form-input, select.form-select, textarea.form-textarea { display: block; width: 100%; padding: 0.75rem; border: 1px solid #9ca3af; border-radius: 0.5rem; margin-bottom: 1.2rem; font-size: 1rem; font-family: inherit; box-sizing: border-box; color: #1f2937; }
-    .btn-wa { background: #16a34a; color: white; width: 100%; padding: 1rem; border-radius: 99px; font-weight: 700; font-size: 1.2rem; text-align: center; cursor: pointer; transition: 0.3s; border: none; }
-    .btn-wa:hover { background: #15803d; }
-    
-    /* PRICING */
-    .pricing-box { background: #fff1f2; color: var(--red-800); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem; border: 1px solid #fecaca; }
-    .pricing-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-    .pricing-table th, .pricing-table td { padding: 0.75rem; border-bottom: 1px solid #fecaca; text-align: left; }
-
-    /* FOOTER */
-    footer { background: #111827; color: #d1d5db; padding: 4rem 0 2rem; text-align: left; }
-    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
-    @media (min-width: 768px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; align-items: start; } }
-    .footer-title { color: #ffffff; font-weight: 800; font-size: 1.2rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    .footer-links li { margin-bottom: 1rem; }
-    .footer-links a { display: flex; align-items: center; gap: 0.75rem; color: #d1d5db; text-decoration: none; transition: 0.3s; }
-    .footer-links a:hover { color: white; transform: translateX(5px); }
-    .social-icons { display: flex; justify-content: flex-start; gap: 1.5rem; font-size: 1.5rem; }
-    .footer-bottom { border-top: 1px solid #374151; margin-top: 3rem; padding-top: 1.5rem; display: flex; flex-direction: column; align-items: center; font-size: 0.85rem; text-align: center; }
-    @media (min-width: 768px) { .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; } }
-
-    /* --- OPTIMASI KHUSUS HP (AGAR TOMBOL TERLIHAT DI LAYAR AWAL) --- */
-    @media (max-width: 768px) {
-        .hero { padding: 1.5rem 0 3rem; } /* Kurangi padding atas */
-        .hero h1 { font-size: 1.4rem; margin-bottom: 0.3rem; } /* Font judul diperkecil sedikit */
-        .hero p { font-size: 0.95rem; line-height: 1.4; }
-        .hero-img { height: 200px !important; object-fit: contain; margin-bottom: 1rem !important; } /* Batasi tinggi gambar di HP */
-        .badges { font-size: 0.7rem; gap: 0.5rem; margin-bottom: 1rem; }
-        .cta-button { font-size: 1rem; padding: 0.8rem 1rem; width: 90%; }
-    }
 </style>
     
     <script>
@@ -690,236 +546,231 @@
 
 <body>
     <header>
-    <div class="container header-flex">
-        <div class="logo-area">
-            <img src="Logo-Barokah.webp" alt="Logo" width="40" height="40"> 
-            <h2 class="font-extrabold">BAROKAH HALALAN FOOD</h2>
+        <div class="container header-flex">
+            <div class="logo-area">
+                <img src="Logo-Barokah.webp" alt="Logo" width="40" height="40"> 
+                <h2 class="font-extrabold">BAROKAH HALALAN FOOD</h2>
+            </div>
+            <a href="#order-form" class="btn-top"><i class="fas fa-shopping-cart"></i> PESAN PROMO</a>
         </div>
-        <a href="#order-form" class="btn-top"><i class="fas fa-shopping-cart"></i> PESAN PROMO</a>
-    </div>
-</header>
+    </header>
 
-<main>
-    <section class="hero">
-        <div class="container text-center">
-            <h1 class="font-extrabold">
-                <span style="display:block;">STOP! ANCAMAN STUNTING!</span>
-                ABON SAPI MURNI: <span class="font-bold">INVESTASI OTAK CERDAS</span>
-            </h1>
-            
-            <p>
-                100% Daging Sapi Pilihan. Jaminan Kebutuhan Protein Hewani Harian Anak Anda. 
-                <span style="color:var(--yellow-pop); font-style:italic;">Bantu Tumbuh Kembang Maksimal!</span>
-            </p>
-            
-            <div class="badges">
-                <span><i class="fas fa-drumstick-bite"></i> DAGING MURNI</span>
-                <span><i class="fas fa-microscope"></i> NON MSG & PENGAWET</span>
-                <span><i class="fas fa-mortar-pestle"></i> GULA AREN</span>
-                <span><i class="fas fa-brain"></i> TINGGI PROTEIN</span>
+    <main>
+        <section class="hero">
+            <div class="container text-center">
+                <h1 class="font-extrabold">
+                    <span style="display:block;">STOP! ANCAMAN STUNTING!</span>
+                    ABON SAPI MURNI: <span class="font-bold">INVESTASI OTAK CERDAS</span>
+                </h1>
+                
+                <p>
+                    100% Daging Sapi Pilihan. Jaminan Kebutuhan Protein Hewani Harian Anak Anda. 
+                    <span style="color:var(--yellow-pop); font-style:italic;">Bantu Tumbuh Kembang Maksimal!</span>
+                </p>
+                
+                <div class="badges">
+                    <span><i class="fas fa-drumstick-bite"></i> DAGING MURNI</span>
+                    <span><i class="fas fa-microscope"></i> NON MSG & PENGAWET</span>
+                    <span><i class="fas fa-mortar-pestle"></i> GULA AREN</span>
+                    <span><i class="fas fa-brain"></i> TINGGI PROTEIN</span>
+                </div>
+
+                <div class="hero-img-box">
+                    <div class="badge-premium">LIMITED STOCK!</div>
+                    <img src="abon-ditabur-di-atas-nasi1.webp" alt="Abon Sapi Barokah Pencegah Stunting" 
+                        width="700" height="500" class="hero-img" 
+                        fetchpriority="high">
+                </div>
+
+                <div style="margin-top: 1rem; position: relative; z-index: 10;">
+                    <a href="katalog.html" class="cta-button pulse-button">
+                        <i class="fas fa-shopping-cart"></i> AMBIL PROMO SUPER HEMAT HARI INI
+                    </a>
+                    
+                    <div class="trust-badge">
+                        <p style="font-weight:700; display:flex; align-items:center; justify-content:center; gap:10px;">
+                            <span style="display:flex; align-items:center;"><i class="fas fa-list-ul"></i> Cek Harga</span>
+                            <span style="color:#d1d5db;">|</span>
+                            <span style="display:flex; align-items:center;"><i class="fas fa-truck-fast"></i> Estimasi Ongkir</span>
+                        </p>
+                        <p style="margin: 8px 0 0 0; font-weight: 900; color: var(--yellow-pop); font-size: 1.1rem;">
+                            <i class="fas fa-hand-holding-dollar"></i> **100% AMAN: BISA COD!**
+                        </p>
+                    </div>
+                </div>
             </div>
+        </section>
+        
+        <div class="separator-wave"></div> 
 
-            <div class="hero-img-box">
-                <div class="badge-premium">LIMITED STOCK!</div>
-                <img src="abon-ditabur-di-atas-nasi1.webp" alt="Abon Sapi Barokah Pencegah Stunting" 
-                    width="700" height="500" class="hero-img" 
-                    fetchpriority="high">
+        <section class="section-features text-center">
+            <div class="container">
+                <h2 class="section-title font-extrabold">JANGAN AMBIL RISIKO! 4 ALASAN UTAMA ABON KAMI JADI PILIHAN ORANG TUA CERDAS:</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3><i class="fas fa-exclamation-triangle"></i> LAWAN RISIKO STUNTING!</h3>
+                        <p>Kandungan protein hewani yang sangat tinggi (dari daging sapi murni) adalah nutrisi emas yang terbukti mencegah stunting dan gizi buruk.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3><i class="fas fa-leaf"></i> 100% DAGING SAPI MURNI</h3>
+                        <p>Kami hanya menggunakan 100% Daging Sapi Pilihan. Tanpa campuran kentang, singkong, atau tepung. Memberikan nutrisi murni tanpa filler.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3><i class="fas fa-microscope"></i> BEBAS MSG & PENGAWET</h3>
+                        <p>Diproses alami, hanya menggunakan bumbu tradisional, Gula Aren, dan Minyak Kelapa. Aman dikonsumsi setiap hari untuk keluarga.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <h3><i class="fas fa-utensils"></i> SOLUSI LAUK CEPAT</h3>
+                        <p>Hanya 5 detik! Cukup taburkan di atas nasi hangat. Ideal untuk bekal, traveling, atau saat anak susah makan lauk yang ribet.</p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div style="margin-top: 1rem; position: relative; z-index: 10;">
-                <a href="katalog.html" class="cta-button pulse-button">
-                    <i class="fas fa-shopping-cart"></i> AMBIL PROMO SUPER HEMAT HARI INI
+        <div class="separator-white-to-black"></div> 
+
+        <section class="section-white">
+            <div class="container text-center">
+                <h2 class="section-title">ANDA YAKIN GIZI ANAK CUKUP? HATI-HATI, ANCAMAN GIZI BURUK MENGINTAI!</h2>
+                <p style="font-size:1.5rem; margin-bottom:3rem; color:var(--red-700); font-weight:900; line-height:1.4;">
+                    Mencegah Stunting JAUH Lebih Mudah Daripada Mengobati.<br> 
+                    **Jangan Tunda Asupan Protein Hewani Terbaik!**
+                </p>
+                
+                <div class="grid-3">
+                    <div class="card">
+                        <div><i class="fas fa-utensils"></i><h3 class="font-bold">Anak Susah Makan & Sering Menolak Lauk?</h3><p>Ini bisa jadi tanda bosan lauk. Jangan biarkan ia kekurangan **protein vital** di masa emasnya!</p></div>
+                        <div class="card-quote">"Pemberian makanan yang monoton dan tidak bervariasi adalah salah satu penyebab utama kesulitan makan (GTM) pada anak." <br>— IDAI</div>
+                    </div>
+                    
+                    <div class="card">
+                        <div><i class="fas fa-brain"></i><h3 class="font-bold">Sulit Fokus Belajar? Perkembangan Bicara Lambat?</h3><p>Otak butuh nutrisi premium (Zinc & Zat Besi) dari daging sapi murni. Kurangi risiko pertumbuhan kognitif terhambat!</p></div>
+                        <div class="card-quote">"Kekurangan Zat Besi (Iron Deficiency) pada masa balita dapat menyebabkan gangguan perkembangan kognitif permanen." <br>— Kemenkes RI</div>
+                    </div>
+                    
+                    <div class="card">
+                        <div><i class="fas fa-exclamation-triangle"></i><h3 class="font-bold">Khawatir Lauk Instan Mengandung "Racun" MSG?</h3><p>BAROKAH menjamin Tanpa MSG. Hindari potensi bahan kimia yang mengganggu perkembangan sel otak anak.</p></div>
+                        <div class="card-quote">"Konsumen cerdas kini memilih produk Clean Label (bebas aditif) untuk gizi alami terbaik."</div>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <h3><i class="fas fa-microscope"></i> FAKTA GIZI YANG WAJIB BUNDA TAHU:</h3>
+                    <p style="color:var(--gray-800);">Penelitian global (termasuk anjuran Kemenkes) membuktikan bahwa asupan **Protein Hewani** dari Daging Sapi sangat krusial di 1000 Hari Pertama Kehidupan (Masa Emas).</p>
+                    <p style="margin-top:1rem; color:var(--black); font-weight:900;">Daging sapi kaya akan **Zat Besi** dan **Zinc** yang esensial untuk **mencegah anemia dan stunting**, serta **memaksimalkan koneksi sel otak (kecerdasan kognitif)**.</p>
+                </div>
+                
+                <p style="font-size:1.8rem; font-weight:900; color:var(--red-700); margin-top:3rem; text-transform:uppercase;">
+                    CUKUP SUDAH! Jadikan Abon BAROKAH Solusi 5 Detik Protein Terlengkap Anda.
+                </p>
+
+                <a href="katalog.html" class="cta-button pulse-button" style="margin-top: 1rem; font-size: 1.2rem; max-width: 450px;">
+                    <i class="fas fa-shopping-cart"></i> SAYA SIAP AMANKAN GIZI ANAK!
                 </a>
-                
-                <div class="trust-badge">
-                    <p style="font-weight:700; display:flex; align-items:center; justify-content:center; gap:10px;">
-                        <span style="display:flex; align-items:center;"><i class="fas fa-list-ul"></i> Cek Harga</span>
-                        <span style="color:#d1d5db;">|</span>
-                        <span style="display:flex; align-items:center;"><i class="fas fa-truck-fast"></i> Estimasi Ongkir</span>
-                    </p>
-                    <p style="margin: 8px 0 0 0; font-weight: 900; color: var(--yellow-pop); font-size: 1.1rem;">
-                        <i class="fas fa-hand-holding-dollar"></i> **100% AMAN: BISA COD!**
-                    </p>
-                </div>
             </div>
-        </div>
-    </section>
-    
-    <div class="separator-wave"></div> 
-
-    <section class="section-features text-center">
-        <div class="container">
-            <h2 class="section-title font-extrabold">JANGAN AMBIL RISIKO! 4 ALASAN UTAMA ABON KAMI JADI PILIHAN ORANG TUA CERDAS:</h2>
-            
-            <div class="features-grid">
-                
-                <div class="feature-card">
-                    <h3><i class="fas fa-exclamation-triangle"></i> LAWAN RISIKO STUNTING!</h3>
-                    <p>Kandungan protein hewani yang sangat tinggi (dari daging sapi murni) adalah nutrisi emas yang terbukti mencegah stunting dan gizi buruk.</p>
-                </div>
-
-                <div class="feature-card">
-                    <h3><i class="fas fa-leaf"></i> 100% DAGING SAPI MURNI</h3>
-                    <p>Kami hanya menggunakan 100% Daging Sapi Pilihan. Tanpa campuran kentang, singkong, atau tepung. Memberikan nutrisi murni tanpa filler.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <h3><i class="fas fa-microscope"></i> BEBAS MSG & PENGAWET</h3>
-                    <p>Diproses alami, hanya menggunakan bumbu tradisional, Gula Aren, dan Minyak Kelapa. Aman dikonsumsi setiap hari untuk keluarga.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <h3><i class="fas fa-utensils"></i> SOLUSI LAUK CEPAT</h3>
-                    <p>Hanya 5 detik! Cukup taburkan di atas nasi hangat. Ideal untuk bekal, traveling, atau saat anak susah makan lauk yang ribet.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <div class="separator-white-to-black"></div> 
-
-    <section class="section-white">
-        <div class="container text-center">
-            <h2 class="section-title">ANDA YAKIN GIZI ANAK CUKUP? HATI-HATI, ANCAMAN GIZI BURUK MENGINTAI!</h2>
-            <p style="font-size:1.5rem; margin-bottom:3rem; color:var(--red-700); font-weight:900; line-height:1.4;">
-                Mencegah Stunting JAUH Lebih Mudah Daripada Mengobati.<br> 
-                **Jangan Tunda Asupan Protein Hewani Terbaik!**
-            </p>
-            
-            <div class="grid-3">
-                <div class="card">
-                    <div><i class="fas fa-utensils"></i><h3 class="font-bold">Anak Susah Makan & Sering Menolak Lauk?</h3><p>Ini bisa jadi tanda bosan lauk. Jangan biarkan ia kekurangan **protein vital** di masa emasnya!</p></div>
-                    <div class="card-quote">"Pemberian makanan yang monoton dan tidak bervariasi adalah salah satu penyebab utama kesulitan makan (GTM) pada anak." <br>— IDAI</div>
-                </div>
-                
-                <div class="card">
-                    <div><i class="fas fa-brain"></i><h3 class="font-bold">Sulit Fokus Belajar? Perkembangan Bicara Lambat?</h3><p>Otak butuh nutrisi premium (Zinc & Zat Besi) dari daging sapi murni. Kurangi risiko pertumbuhan kognitif terhambat!</p></div>
-                    <div class="card-quote">"Kekurangan Zat Besi (Iron Deficiency) pada masa balita dapat menyebabkan gangguan perkembangan kognitif permanen." <br>— Kemenkes RI</div>
-                </div>
-                
-                <div class="card">
-                    <div><i class="fas fa-exclamation-triangle"></i><h3 class="font-bold">Khawatir Lauk Instan Mengandung "Racun" MSG?</h3><p>BAROKAH menjamin Tanpa MSG. Hindari potensi bahan kimia yang mengganggu perkembangan sel otak anak.</p></div>
-                    <div class="card-quote">"Konsumen cerdas kini memilih produk Clean Label (bebas aditif) untuk gizi alami terbaik."</div>
-                </div>
-            </div>
-            
-            <div class="info-box">
-                <h3><i class="fas fa-microscope"></i> FAKTA GIZI YANG WAJIB BUNDA TAHU:</h3>
-                <p style="color:var(--gray-800);">Penelitian global (termasuk anjuran Kemenkes) membuktikan bahwa asupan **Protein Hewani** dari Daging Sapi sangat krusial di 1000 Hari Pertama Kehidupan (Masa Emas).</p>
-                <p style="margin-top:1rem; color:var(--black); font-weight:900;">Daging sapi kaya akan **Zat Besi** dan **Zinc** yang esensial untuk **mencegah anemia dan stunting**, serta **memaksimalkan koneksi sel otak (kecerdasan kognitif)**.</p>
-            </div>
-            
-            <p style="font-size:1.8rem; font-weight:900; color:var(--red-700); margin-top:3rem; text-transform:uppercase;">
-                CUKUP SUDAH! Jadikan Abon BAROKAH Solusi 5 Detik Protein Terlengkap Anda.
-            </p>
-
-            <a href="katalog.html" class="cta-button pulse-button" style="margin-top: 1rem; font-size: 1.2rem; max-width: 450px;">
-                <i class="fas fa-shopping-cart"></i> SAYA SIAP AMANKAN GIZI ANAK!
-            </a>
-
-        </div>
-    </section>
-    
-    <div class="separator-black-to-white-2"></div>
+        </section>
+        
+        <div class="separator-black-to-white-3"></div>
 
         <section class="section-red">
-        <div class="container">
-            <h2 class="section-title text-center">Berikan 'Bahan Bakar' Terbaik untuk Otak Juara Si Kecil!</h2>
-            <div class="comparison">
-                <div class="comp-item">
-                    <img src="anak-cemberut-lauk-hambar.webp" alt="Sebelum" width="300" height="400" loading="lazy">
-                    <div class="comp-label-red">SEBELUM</div>
+            <div class="container">
+                <h2 class="section-title text-center">Berikan 'Bahan Bakar' Terbaik untuk Otak Juara Si Kecil!</h2>
+                <div class="comparison">
+                    <div class="comp-item">
+                        <img src="anak-cemberut-lauk-hambar.webp" alt="Sebelum" width="300" height="400" loading="lazy">
+                        <div class="comp-label-red">SEBELUM</div>
+                    </div>
+                    <div class="comp-item">
+                        <img src="anak-ceria-karena-abon.webp" alt="Sesudah" width="300" height="400" loading="lazy">
+                        <div class="comp-label-green">SESUDAH</div>
+                    </div>
                 </div>
-                <div class="comp-item">
-                    <img src="anak-ceria-karena-abon.webp" alt="Sesudah" width="300" height="400" loading="lazy">
-                    <div class="comp-label-green">SESUDAH</div>
-                </div>
+                <ul class="feature-list">
+                    <li><i class="fas fa-drumstick-bite"></i><div><strong>BERHENTI MAKAN ABON 'OPLOSAN'!</strong><p>Banyak abon murah dicampur kacang, bawang, atau ampas agar berat. Abon BAROKAH menjamin <strong>100% DAGING SAPI MURNI</strong> tanpa filler. Ya, kami sedikit lebih mahal, karena Anda membayar untuk <strong>GIZI PROTEIN OTAK</strong>.</p></div></li>
+                    <li><i class="fas fa-mortar-pestle"></i><div><strong>RASAKAN BEDANYA: DITUMBUK, BUKAN DIGILING!</strong><p>Mesin giling modern menghancurkan sari dan tekstur asli daging. Kami setia pada proses tradisional <strong>DITUMBUK</strong>—menjaga cita rasa umami alami dan serat daging tetap utuh.</p></div></li>
+                    <li><i class="fas fa-leaf"></i><div><strong>DIGORENG MINYAK KELAPA BARU (VCO)</strong><p>Kami tidak berkompromi dengan kesehatan. Abon BAROKAH digoreng bersih menggunakan <strong>Minyak Kelapa Murni (VCO)</strong>, bukan minyak bekas/jelantah.</p></div></li>
+                </ul>
             </div>
-            <ul class="feature-list">
-                <li><i class="fas fa-drumstick-bite"></i><div><strong>BERHENTI MAKAN ABON 'OPLOSAN'!</strong><p>Banyak abon murah dicampur kacang, bawang, atau ampas agar berat. Abon BAROKAH menjamin <strong>100% DAGING SAPI MURNI</strong> tanpa filler. Ya, kami sedikit lebih mahal, karena Anda membayar untuk <strong>GIZI PROTEIN OTAK</strong>.</p></div></li>
-                <li><i class="fas fa-mortar-pestle"></i><div><strong>RASAKAN BEDANYA: DITUMBUK, BUKAN DIGILING!</strong><p>Mesin giling modern menghancurkan sari dan tekstur asli daging. Kami setia pada proses tradisional <strong>DITUMBUK</strong>—menjaga cita rasa umami alami dan serat daging tetap utuh.</p></div></li>
-                <li><i class="fas fa-leaf"></i><div><strong>DIGORENG MINYAK KELAPA BARU (VCO)</strong><p>Kami tidak berkompromi dengan kesehatan. Abon BAROKAH digoreng bersih menggunakan <strong>Minyak Kelapa Murni (VCO)</strong>, bukan minyak bekas/jelantah.</p></div></li>
-            </ul>
-        </div>
-    </section>
+        </section>
 
-       <div class="separator-white-to-black-2"></div>
-    
-    <section class="section-variants">
-        <div class="container text-center">
-            <h2 class="section-title">PILIH VARIAN ABON SAPI BAROKAH FAVORIT ANDA!</h2>
-            <p style="margin-bottom:2rem; color: #d1d5db;">Tersedia dalam kemasan praktis yang siap menemani setiap momen makan Anda.</p>
-            <div class="product-grid">
+        <div class="separator-white-to-black-2"></div>
+        
+        <section class="section-variants">
+            <div class="container text-center">
+                <h2 class="section-title">PILIH VARIAN ABON SAPI BAROKAH FAVORIT ANDA!</h2>
+                <p style="margin-bottom:2rem; color: #d1d5db;">Tersedia dalam kemasan praktis yang siap menemani setiap momen makan Anda.</p>
                 
-                <div class="p-card" onclick="selectVariant('4990|Abon Sapi 10gr Sachet (Original)|type:sachet')">
-                    <div><span class="badge-best">BEST SELLER!</span><img src="kemasan-abon-10gr-tas.webp" alt="Sachet Ori" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">10gr Sachet - Original</h3><p style="font-size:0.9rem; color: #a1a1a1;">Porsi Pas untuk Lauk Anak Sekali Makan.</p></div>
-                    <div><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 4.990</p><p style="font-size:0.8rem; color:#16a34a;">Pack (10pcs): Rp 37.900</p></div>
+                <div class="product-grid">
+                    <div class="p-card" onclick="selectVariant('4990|Abon Sapi 10gr Sachet (Original)|type:sachet')">
+                        <div><span class="badge-best">BEST SELLER!</span><img src="kemasan-abon-10gr-tas.webp" alt="Sachet Ori" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">10gr Sachet - Original</h3><p style="font-size:0.9rem; color: #a1a1a1;">Porsi Pas untuk Lauk Anak Sekali Makan.</p></div>
+                        <div><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 4.990</p><p style="font-size:0.8rem; color:#16a34a;">Pack (10pcs): Rp 37.900</p></div>
+                    </div>
+                    
+                    <div class="p-card" onclick="selectVariant('4990|Abon Sapi 10gr Sachet (Pedas)|type:sachet')">
+                        <div><span class="badge-try">COBAIN!</span><img src="kemasan-abon-10gr-mie.webp" alt="Sachet Pedas" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">10gr Sachet - Pedas</h3><p style="font-size:0.9rem; color: #a1a1a1;">Booster Pedas Instan, Bikin Mie Kuah Auto Juara!</p></div>
+                        <div><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 4.990</p><p style="font-size:0.8rem; color:#16a34a;">Pack (10pcs): Rp 37.900</p></div>
+                    </div>
+                    
+                    <div class="p-card" onclick="selectVariant('35999|Abon Sapi 100gr (Original)|type:reguler')">
+                        <div><span class="badge-save">PILIHAN HEMAT!</span><img src="kemasan-abon-100gr-sblh.webp" alt="100gr Ori" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">100gr - Original</h3><p style="font-size:0.9rem; color: #a1a1a1;">Stok Aman Dapur! Porsi besar untuk keluarga.</p></div>
+                        <div><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 35.999</p><p style="font-size:0.8rem; color:#16a34a;">Promo: 3 pcs Rp 100rb!</p></div>
+                    </div>
+                    
+                    <div class="p-card" onclick="selectVariant('35999|Abon Sapi 100gr (Pedas)|type:reguler')">
+                        <div><span class="badge-save">KOMPLIT!</span><img src="kemasan-abon-100gr-dapur.webp" alt="100gr Pedas" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">100gr - Pedas</h3><p style="font-size:0.9rem; color: #a1a1a1;">Level Up Masakan. Gurih Pedasnya Menggugah Selera.</p></div>
+                        <div><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 35.999</p><p style="font-size:0.8rem; color:#16a34a;">Promo: 3 pcs Rp 100rb!</p></div>
+                    </div>
                 </div>
                 
-                <div class="p-card" onclick="selectVariant('4990|Abon Sapi 10gr Sachet (Pedas)|type:sachet')">
-                    <div><span class="badge-try">COBAIN!</span><img src="kemasan-abon-10gr-mie.webp" alt="Sachet Pedas" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">10gr Sachet - Pedas</h3><p style="font-size:0.9rem; color: #a1a1a1;">Booster Pedas Instan, Bikin Mie Kuah Auto Juara!</p></div>
-                    <div><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 4.990</p><p style="font-size:0.8rem; color:#16a34a;">Pack (10pcs): Rp 37.900</p></div>
-                </div>
-                
-                <div class="p-card" onclick="selectVariant('35999|Abon Sapi 100gr (Original)|type:reguler')">
-                    <div><span class="badge-save">PILIHAN HEMAT!</span><img src="kemasan-abon-100gr-sblh.webp" alt="100gr Ori" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">100gr - Original</h3><p style="font-size:0.9rem; color: #a1a1a1;">Stok Aman Dapur! Porsi besar untuk keluarga.</p></div>
-                    <div><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 35.999</p><p style="font-size:0.8rem; color:#16a34a;">Promo: 3 pcs Rp 100rb!</p></div>
-                </div>
-                
-                <div class="p-card" onclick="selectVariant('35999|Abon Sapi 100gr (Pedas)|type:reguler')">
-                    <div><span class="badge-save">KOMPLIT!</span><img src="kemasan-abon-100gr-dapur.webp" alt="100gr Pedas" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">100gr - Pedas</h3><p style="font-size:0.9rem; color: #a1a1a1;">Level Up Masakan. Gurih Pedasnya Menggugah Selera.</p></div>
-                    <div><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 35.999</p><p style="font-size:0.8rem; color:#16a34a;">Promo: 3 pcs Rp 100rb!</p></div>
-                </div>
-                
+                <p style="font-size:1.5rem; font-weight:bold; color:var(--red-600); margin-top:3rem;">Pilih Eceran, Pack, atau langsung <span style="text-decoration:underline; color: var(--yellow-pop);">KLAIM PROMO SPESIAL 100RB</span> Anda Sebelum Kehabisan!</p>
             </div>
-            <p style="font-size:1.5rem; font-weight:bold; color:var(--red-600); margin-top:3rem;">Pilih Eceran, Pack, atau langsung <span style="text-decoration:underline; color: var(--yellow-pop);">KLAIM PROMO SPESIAL 100RB</span> Anda Sebelum Kehabisan!</p>
-        </div>
-    </section>
+        </section>
 
         <div class="separator-black-to-white-4"></div>
 
-    <section class="section-testimonials">
-        <div class="container text-center">
-            
-            <h2 class="section-title">RIBUAN KELUARGA SUDAH MERASAKAN MANFAATNYA!</h2>
-            
-            <div class="testi-grid">
-                <div class="testi-card">
-                    <img src="Testi-1.webp" width="300" height="400" loading="lazy" alt="Testimoni Indah">
-                    <p class="testi-name">Indah, Rantau Prapat</p>
+        <section class="section-testimonials">
+            <div class="container text-center">
+                <h2 class="section-title">RIBUAN KELUARGA SUDAH MERASAKAN MANFAATNYA!</h2>
+                
+                <div class="testi-grid">
+                    <div class="testi-card">
+                        <img src="Testi-1.webp" width="300" height="400" loading="lazy" alt="Testimoni Indah">
+                        <p class="testi-name">Indah, Rantau Prapat</p>
+                    </div>
+                    <div class="testi-card">
+                        <img src="Testi-2.webp" width="300" height="400" loading="lazy" alt="Testimoni Agustinus">
+                        <p class="testi-name">Agustinus, Jakarta</p>
+                    </div>
+                    <div class="testi-card">
+                        <img src="Testi-3.webp" width="300" height="400" loading="lazy" alt="Testimoni Pipiet">
+                        <p class="testi-name">Pipiet, Surabaya</p>
+                    </div>
+                    <div class="testi-card">
+                        <img src="Testi-4.webp" width="300" height="400" loading="lazy" alt="Testimoni Julie">
+                        <p class="testi-name">Julie Afia, Malang</p>
+                    </div>
+                    <div class="testi-card">
+                        <img src="Testi-5.webp" width="300" height="400" loading="lazy" alt="Testimoni dr Ayu">
+                        <p class="testi-name">dr Ayu, Malang</p>
+                    </div>
+                    <div class="testi-card">
+                        <img src="Testi-6.webp" width="300" height="400" loading="lazy" alt="Testimoni Sugeng">
+                        <p class="testi-name">Sugeng Hendro, Malang</p>
+                    </div>
                 </div>
-                <div class="testi-card">
-                    <img src="Testi-2.webp" width="300" height="400" loading="lazy" alt="Testimoni Agustinus">
-                    <p class="testi-name">Agustinus, Jakarta</p>
-                </div>
-                <div class="testi-card">
-                    <img src="Testi-3.webp" width="300" height="400" loading="lazy" alt="Testimoni Pipiet">
-                    <p class="testi-name">Pipiet, Surabaya</p>
-                </div>
-                <div class="testi-card">
-                    <img src="Testi-4.webp" width="300" height="400" loading="lazy" alt="Testimoni Julie">
-                    <p class="testi-name">Julie Afia, Malang</p>
-                </div>
-                <div class="testi-card">
-                    <img src="Testi-5.webp" width="300" height="400" loading="lazy" alt="Testimoni dr Ayu">
-                    <p class="testi-name">dr Ayu, Malang</p>
-                </div>
-                <div class="testi-card">
-                    <img src="Testi-6.webp" width="300" height="400" loading="lazy" alt="Testimoni Sugeng">
-                    <p class="testi-name">Sugeng Hendro, Malang</p>
+
+                <div class="guarantee-box">
+                    <h3><i class="fas fa-check-circle"></i> GARANSI GANTI BARU / UANG KEMBALI!</h3>
+                    <p style="font-size: 1.1rem; color: #064e3b;">
+                        Kami sangat yakin dengan kualitas Abon Sapi Tumbuk BAROKAH. Jika Anda tidak puas dengan kualitas rasa, atau menerima produk dalam kondisi rusak/apek, kami akan <strong>Ganti Baru Tanpa Ribet,</strong> atau <strong>Uang Anda Kami Kembalikan Utuh 100%</strong>.
+                    </p>
                 </div>
             </div>
-
-            <div class="guarantee-box">
-                <h3><i class="fas fa-check-circle"></i> GARANSI GANTI BARU / UANG KEMBALI!</h3>
-                <p style="font-size: 1.1rem; color: #064e3b;">
-                    Kami sangat yakin dengan kualitas Abon Sapi Tumbuk BAROKAH. Jika Anda tidak puas dengan kualitas rasa, atau menerima produk dalam kondisi rusak/apek, kami akan <strong>Ganti Baru Tanpa Ribet,</strong> atau <strong>Uang Anda Kami Kembalikan Utuh 100%</strong>.
-                </p>
-            </div>
-
-        </div>
-    </section>
+        </section>
 
         <section id="order-form" class="order-section">
             <div class="container text-center">
@@ -1283,6 +1134,7 @@
     
 </body>
 </html>
+
 
 
 
