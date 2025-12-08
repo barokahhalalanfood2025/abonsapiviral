@@ -139,15 +139,16 @@
     /* =========================================
        5. SPECIFIC SECTIONS
        ========================================= */
-  /* HERO (Updated dengan Wave) */
+ /* 4. HERO SECTION (Dengan Background Gambar & Wave) */
     .hero { 
         background: url('https://images.unsplash.com/photo-1549495763-71a53272993b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center; 
         background-size: cover; 
         position: relative; 
-        /* Padding bawah diperbesar (12rem) agar konten tidak tertutup gelombang */
-        padding: 5rem 0 12rem; 
+        /* Padding Bawah diperbesar (16rem) supaya tulisan tidak ketutup gelombang */
+        padding: 5rem 0 16rem; 
         overflow: hidden; 
-    } 
+        border: none; /* Pastikan tidak ada garis batas */
+    }
     .hero::before { 
         content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
         background: rgba(0, 0, 0, 0.75); z-index: 1; 
@@ -176,25 +177,33 @@
     .trust-badge { margin-top: 1.5rem; font-size: 0.9rem; color: var(--white); background: rgba(0, 0, 0, 0.7); display: inline-block; padding: 1rem 1.5rem; border-radius: 12px; border: 2px solid var(--red-600); }
     .trust-badge i { color: var(--yellow-pop) !important; }
 
-    /* STYLE KHUSUS WAVE (GELOMBANG) */
+   /* STYLE KHUSUS WAVE (GELOMBANG) */
     .wave-bottom {
         position: absolute;
-        bottom: -1px; /* Tempel di paling bawah */
+        bottom: -1px; /* Tempel ketat di bawah (minus 1px biar aman) */
         left: 0;
         width: 100%;
         line-height: 0;
-        z-index: 5; /* Di atas overlay */
-        pointer-events: none; /* Agar tidak menghalangi klik */
+        z-index: 5; /* Di atas overlay background */
+        pointer-events: none;
     }
     .wave-bottom svg {
         display: block;
-        width: calc(100% + 1.3px);
+        width: calc(100% + 1.3px); /* Sedikit lebih lebar untuk hindari celah samping */
         height: auto;
-        min-height: 100px; /* Minimal tinggi gelombang */
+        min-height: 100px;
     }
-
-    /* SECTION 2: FITUR (White) */
-    .section-features { background: var(--white); position: relative; z-index: 5; color: var(--gray-800); padding-left: 20px; padding-right: 20px; }
+    /* 5. SECTION FEATURES (Menempel Rapat ke Wave) */
+    .section-features { 
+        background: var(--white); /* Warna HARUS SAMA dengan fill SVG */
+        position: relative; 
+        z-index: 6; /* Layer di atas Hero */
+        color: var(--gray-800); 
+        padding: 2rem 20px 4rem; /* Padding atas disesuaikan */
+        
+        /* INI KUNCINYA: Tarik sedikit ke atas untuk menutup celah */
+        margin-top: -5px; 
+    }
     .section-features .section-title { color: var(--black); }
     .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; text-align: left; margin: 0 auto; max-width: 1100px; padding-bottom: 20px; }
     .feature-card { background: var(--gray-50); padding: 1.5rem; box-shadow: 8px 8px 0 var(--red-600); border: 2px solid var(--red-600); transform: rotate(1deg); border-radius: 0 20px 0 20px; max-width: 350px; justify-self: center; padding-bottom: 2rem; }
@@ -380,11 +389,9 @@
             </svg>
         </div>
     </section>
-        
-        <div class="separator-wave"></div> 
 
-        <section class="section-features text-center">
-            <div class="container">
+    <section class="section-features text-center">
+        <div class="container">
                 <h2 class="section-title font-extrabold">JANGAN AMBIL RISIKO! 4 ALASAN UTAMA ABON KAMI JADI PILIHAN ORANG TUA CERDAS:</h2>
                 
                 <div class="features-grid">
@@ -989,6 +996,7 @@
     
 </body>
 </html>
+
 
 
 
