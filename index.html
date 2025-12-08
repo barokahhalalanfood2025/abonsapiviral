@@ -457,6 +457,136 @@
         z-index: 1;
         box-shadow: inset 0 10px 20px -10px rgba(0, 0, 0, 0.1);
     }
+        /* SEPARATOR STYLES */
+    
+    /* Pemisah Robekan Kertas dari Section Problem (Hitam) ke Section Perbandingan (Putih) */
+    .separator-black-to-white-3 {
+        width: 100%;
+        height: 80px;
+        background: var(--white); /* Warna section selanjutnya: Putih */
+        position: relative;
+        z-index: 10;
+    }
+    .separator-black-to-white-3::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 80px;
+        top: 0;
+        left: 0;
+        background: var(--black); /* Warna section di atasnya: Hitam */
+        /* Efek Robekan Kertas Putus-putus Dibalik */
+        clip-path: polygon(0 30%, 5% 60%, 10% 30%, 15% 65%, 20% 30%, 25% 65%, 30% 30%, 35% 65%, 40% 30%, 45% 65%, 50% 30%, 55% 65%, 60% 30%, 65% 65%, 70% 30%, 75% 65%, 80% 30%, 85% 65%, 90% 30%, 95% 65%, 100% 30%, 100% 100%, 0 100%);
+        transform: translateY(-80px);
+    }
+    
+
+    /* Section 4: Perbandingan dan Detail (LATAR BELAKANG PUTIH) */
+    .section-red { 
+        padding: 5rem 0 3rem; 
+        background: var(--white); /* Diubah dari RED menjadi WHITE */
+        position: relative;
+        z-index: 1;
+    }
+    .section-red .section-title {
+        color: var(--red-700);
+        font-size: 2.2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    /* Comparison Box - Dibuat Jauh Lebih Stylish */
+    .comparison { 
+        display: flex; 
+        gap: 2rem; 
+        margin-bottom: 4rem; 
+        justify-content: center; 
+        align-items: flex-start;
+    }
+    .comp-item { 
+        flex: 1; 
+        max-width: 350px; 
+        text-align: center; 
+        background: var(--gray-50); 
+        padding: 1rem; 
+        border-radius: 0;
+        border: 3px solid var(--gray-800); 
+        box-shadow: 8px 8px 0 var(--yellow-pop); /* Shadow Geser Kuning */
+        transform: rotate(-1deg); /* Miring Artistik */
+    }
+    .comp-item:nth-child(even) {
+        transform: rotate(1deg); /* Yang kedua miring ke kanan */
+    }
+    .comp-item img {
+        border-radius: 0;
+        margin: 0 auto 0.5rem;
+    }
+    .comp-label-red { 
+        color: var(--red-700); 
+        font-weight: 900; 
+        margin-top: 0.5rem; 
+        font-size: 1.2rem;
+        background: var(--yellow-pop); 
+        padding: 5px 10px;
+        display: inline-block;
+        transform: skewX(-5deg); /* Label Miring */
+    }
+    .comp-label-green { 
+        color: var(--black); 
+        font-weight: 900; 
+        margin-top: 0.5rem; 
+        font-size: 1.2rem;
+        background: var(--red-600); 
+        color: var(--white);
+        padding: 5px 10px;
+        display: inline-block;
+        transform: skewX(5deg); /* Label Miring Kontras */
+    }
+
+    /* Feature List - Dibuat Lebih Visual dan Asimetris */
+    .feature-list {
+        margin: 0 auto;
+        max-width: 900px;
+    }
+    .feature-list li { 
+        display: flex; 
+        gap: 1.5rem; 
+        margin-bottom: 2rem; 
+        align-items: start; 
+        text-align: left; 
+        background: var(--gray-50);
+        padding: 1.5rem;
+        border-right: 5px solid var(--red-700); /* Garis tegas di kanan */
+        box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
+        transform: skewY(-0.5deg); /* Miring sedikit */
+    }
+    .feature-list li:nth-child(even) {
+        border-left: 5px solid var(--yellow-pop);
+        border-right: none;
+        box-shadow: -5px 5px 0 rgba(0,0,0,0.1);
+        transform: skewY(0.5deg); /* Miring ke arah berlawanan */
+    }
+
+    .feature-list i { 
+        font-size: 2rem; 
+        color: var(--yellow-pop); 
+        margin-top: 0.2rem;
+        flex-shrink: 0; /* Penting agar ikon tidak mengecil */
+        transform: rotate(-10deg);
+    }
+    .feature-list li:nth-child(even) i {
+        color: var(--red-600);
+    }
+    .feature-list strong {
+        color: var(--red-800);
+        font-weight: 900;
+        font-size: 1.1rem;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+    .feature-list p {
+        font-size: 1rem;
+        color: var(--gray-800);
+    }
 
     /* --- OPTIMASI KHUSUS HP --- */
     @media (max-width: 768px) {
@@ -660,19 +790,25 @@
     <div class="separator-black-to-white-2"></div>
 
         <section class="section-red">
-            <div class="container">
-                <h2 class="section-title text-center" style="color:#b91c1c;">Berikan 'Bahan Bakar' Terbaik untuk Otak Juara Si Kecil!</h2>
-                <div class="comparison">
-                    <div class="comp-item"><img src="anak-cemberut-lauk-hambar.webp" alt="Sebelum" width="300" height="400" loading="lazy"><div class="comp-label-red">SEBELUM</div></div>
-                    <div class="comp-item"><img src="anak-ceria-karena-abon.webp" alt="Sesudah" width="300" height="400" loading="lazy"><div class="comp-label-green">SESUDAH</div></div>
+        <div class="container">
+            <h2 class="section-title text-center">Berikan 'Bahan Bakar' Terbaik untuk Otak Juara Si Kecil!</h2>
+            <div class="comparison">
+                <div class="comp-item">
+                    <img src="anak-cemberut-lauk-hambar.webp" alt="Sebelum" width="300" height="400" loading="lazy">
+                    <div class="comp-label-red">SEBELUM</div>
                 </div>
-                <ul class="feature-list">
-                    <li><i class="fas fa-drumstick-bite"></i><div><strong>BERHENTI MAKAN ABON 'OPLOSAN'!</strong><p>Banyak abon murah dicampur kacang, bawang, atau ampas agar berat. Abon BAROKAH menjamin <strong>100% DAGING SAPI MURNI</strong> tanpa filler. Ya, kami sedikit lebih mahal, karena Anda membayar untuk <strong>GIZI PROTEIN OTAK</strong>.</p></div></li>
-                    <li><i class="fas fa-mortar-pestle"></i><div><strong>RASAKAN BEDANYA: DITUMBUK, BUKAN DIGILING!</strong><p>Mesin giling modern menghancurkan sari dan tekstur asli daging. Kami setia pada proses tradisional <strong>DITUMBUK</strong>—menjaga cita rasa umami alami dan serat daging tetap utuh.</p></div></li>
-                    <li><i class="fas fa-leaf"></i><div><strong>DIGORENG MINYAK KELAPA BARU (VCO)</strong><p>Kami tidak berkompromi dengan kesehatan. Abon BAROKAH digoreng bersih menggunakan <strong>Minyak Kelapa Murni (VCO)</strong>, bukan minyak bekas/jelantah.</p></div></li>
-                </ul>
+                <div class="comp-item">
+                    <img src="anak-ceria-karena-abon.webp" alt="Sesudah" width="300" height="400" loading="lazy">
+                    <div class="comp-label-green">SESUDAH</div>
+                </div>
             </div>
-        </section>
+            <ul class="feature-list">
+                <li><i class="fas fa-drumstick-bite"></i><div><strong>BERHENTI MAKAN ABON 'OPLOSAN'!</strong><p>Banyak abon murah dicampur kacang, bawang, atau ampas agar berat. Abon BAROKAH menjamin <strong>100% DAGING SAPI MURNI</strong> tanpa filler. Ya, kami sedikit lebih mahal, karena Anda membayar untuk <strong>GIZI PROTEIN OTAK</strong>.</p></div></li>
+                <li><i class="fas fa-mortar-pestle"></i><div><strong>RASAKAN BEDANYA: DITUMBUK, BUKAN DIGILING!</strong><p>Mesin giling modern menghancurkan sari dan tekstur asli daging. Kami setia pada proses tradisional <strong>DITUMBUK</strong>—menjaga cita rasa umami alami dan serat daging tetap utuh.</p></div></li>
+                <li><i class="fas fa-leaf"></i><div><strong>DIGORENG MINYAK KELAPA BARU (VCO)</strong><p>Kami tidak berkompromi dengan kesehatan. Abon BAROKAH digoreng bersih menggunakan <strong>Minyak Kelapa Murni (VCO)</strong>, bukan minyak bekas/jelantah.</p></div></li>
+            </ul>
+        </div>
+    </section>
 
         <section class="section-white" style="background:#f9fafb;">
             <div class="container text-center">
@@ -1080,6 +1216,7 @@
     
 </body>
 </html>
+
 
 
 
