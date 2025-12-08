@@ -70,16 +70,23 @@
     <link rel="icon" type="image/png" sizes="192x192" href="android-icon-192x192.png">
     <link rel="apple-touch-icon" href="apple-icon-180x180.png">
 
-    <style>
-    /* FONT AWESOME */
+    /* =========================================
+       1. FONT AWESOME & IMPORT FONT
+       ========================================= */
     @font-face { font-family: 'Font Awesome 6 Free'; font-style: normal; font-weight: 900; font-display: swap; src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2) format('woff2'); }
     @font-face { font-family: 'Font Awesome 6 Brands'; font-style: normal; font-weight: 400; font-display: swap; src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2) format('woff2'); }
     .fa, .fas, .fab { display: inline-block; font: normal normal normal 14px/1 FontAwesome; font-size: inherit; text-rendering: auto; -webkit-font-smoothing: antialiased; }
     .fas { font-family: 'Font Awesome 6 Free'; font-weight: 900; } .fab { font-family: 'Font Awesome 6 Brands'; font-weight: 400; }
+    
+    /* Icons Fix */
     .fa-check-circle:before{content:"\f058"} .fa-shopping-cart:before{content:"\f07a"} .fa-utensils:before{content:"\f2e7"} .fa-brain:before{content:"\f5dc"} .fa-leaf:before{content:"\f06c"} .fa-whatsapp:before{content:"\f232"} .fa-instagram:before{content:"\f16d"} .fa-facebook:before{content:"\f09a"} .fa-tiktok:before{content:"\e07b"} .fa-youtube:before{content:"\f167"} .fa-store:before{content:"\f54e"} .fa-file-invoice:before{content:"\f570"} .fa-map-marker-alt:before{content:"\f3c5"} .fa-exclamation-triangle:before{content:"\f071"} .fa-microscope:before{content:"\f610"} .fa-drumstick-bite:before{content:"\f6d7"} .fa-mortar-pestle:before{content:"\f5a7"} .fa-fire:before{content:"\f06d"} .fa-shipping-fast:before{content:"\f48b"} .fa-list-ul:before{content:"\f0ca"} .fa-truck-fast:before{content:"\f48b"} .fa-hand-holding-dollar:before{content:"\f4c0"}
 
-    /* GLOBAL */
+    /* Import Font Keren (Oswald & Poppins) */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Oswald:wght@400;700;800&display=swap');
+
+    /* =========================================
+       2. GLOBAL VARIABLES & RESET
+       ========================================= */
     :root { 
         --red-600: #e73030; 
         --red-700: #d61f1f; 
@@ -107,7 +114,9 @@
     .font-bold { font-weight: 700; } .font-extrabold { font-weight: 800; }
     .hidden { display: none !important; }
 
-    /* HEADER */
+    /* =========================================
+       3. HEADER (Black Theme)
+       ========================================= */
     header { 
         background: var(--black); 
         padding: 0.8rem 0; 
@@ -139,8 +148,9 @@
     }
     .btn-top:hover { background: var(--red-700); }
 
-
-    /* HERO */
+    /* =========================================
+       4. HERO SECTION (Dark/Texture Theme)
+       ========================================= */
     .hero { 
         background: url('https://images.unsplash.com/photo-1549495763-71a53272993b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
         background-size: cover;
@@ -158,10 +168,7 @@
         background: rgba(0, 0, 0, 0.75); 
         z-index: 1;
     }
-    .hero .container {
-        position: relative;
-        z-index: 2; 
-    }
+    .hero .container { position: relative; z-index: 2; }
     .hero h1 { 
         font-family: 'Oswald', sans-serif; 
         color: var(--white); 
@@ -198,6 +205,8 @@
         border: 1px solid var(--red-600);
     }
     .badges i { color: var(--red-600); margin-right: 5px; }
+    
+    /* Hero Image */
     .hero-img-box {
         position: relative;
         margin: 0 auto 2.5rem;
@@ -229,6 +238,8 @@
         z-index: 20;
         text-transform: uppercase;
     }
+
+    /* CTA Buttons */
     .cta-button { 
         display: inline-flex; 
         align-items: center;
@@ -271,322 +282,195 @@
     .trust-badge p { margin: 0; }
     .trust-badge i { color: var(--yellow-pop) !important; }
 
-    /* SEPARATOR STYLES */
-    
-    /* Pemisah dari HERO (Gelap) ke Section Fitur (Putih) */
+    /* =========================================
+       5. SEPARATOR STYLES (Artistic Transitions)
+       ========================================= */
+    /* Hero (Gelap) -> Fitur (Putih) */
     .separator-wave {
-        width: 100%;
-        height: 80px;
-        background: var(--white); 
-        position: relative;
+        width: 100%; height: 80px; background: var(--white); position: relative;
     }
     .separator-wave::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: -80px; 
-        left: 0;
+        content: ""; position: absolute; width: 100%; height: 100%; top: -80px; left: 0;
         background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,100 C60,0 40,100 100,0 L100,100 L0,100 Z" fill="%230a0a0a"/></svg>') repeat-x; 
-        background-size: 100% 100%;
-        transform: scaleY(-1); 
+        background-size: 100% 100%; transform: scaleY(-1); 
     }
 
-    /* Pemisah Robekan Kertas dari Section Fitur (Putih) ke Section Problem Solver (Hitam) */
+    /* Fitur (Putih) -> Problem (Hitam) */
     .separator-white-to-black {
-        width: 100%;
-        height: 80px;
-        background: var(--black); 
-        position: relative;
-        z-index: 10;
+        width: 100%; height: 80px; background: var(--black); position: relative; z-index: 10;
     }
     .separator-white-to-black::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 80px;
-        top: 0;
-        left: 0;
-        background: var(--white); 
+        content: ""; position: absolute; width: 100%; height: 80px; top: 0; left: 0; background: var(--white); 
         clip-path: polygon(0 0, 100% 0, 100% 70%, 98% 45%, 95% 75%, 92% 50%, 88% 75%, 85% 45%, 80% 80%, 75% 40%, 70% 70%, 65% 35%, 60% 75%, 55% 40%, 50% 80%, 45% 35%, 40% 75%, 35% 45%, 30% 70%, 25% 40%, 20% 75%, 15% 45%, 10% 70%, 5% 40%, 0 70%);
         transform: translateY(-80px); 
     }
     
-    /* Pemisah Robekan Kertas dari Section Problem (Hitam) ke Section Price List (Putih) */
-    .separator-black-to-white-2 {
-        width: 100%;
-        height: 80px;
-        background: var(--white); 
-        position: relative;
-        z-index: 10;
-    }
-    .separator-black-to-white-2::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 80px;
-        top: 0;
-        left: 0;
-        background: var(--black); 
-        /* Efek Robekan Kertas Putus-putus Dibalik */
-        clip-path: polygon(0 30%, 5% 60%, 10% 30%, 15% 65%, 20% 30%, 25% 65%, 30% 30%, 35% 65%, 40% 30%, 45% 65%, 50% 30%, 55% 65%, 60% 30%, 65% 65%, 70% 30%, 75% 65%, 80% 30%, 85% 65%, 90% 30%, 95% 65%, 100% 30%, 100% 100%, 0 100%);
-        transform: translateY(-80px);
-    }
-
-
-    /* CONTENT SECTIONS */
-    
-    .section-title { 
-        font-size: 2.2rem; 
-        font-weight: 800; 
-        margin-bottom: 3rem; 
-        font-family: 'Oswald', sans-serif;
-        text-transform: uppercase;
-    }
-    
-    /* Section 2: Fitur Unggulan (LATAR BELAKANG PUTIH) */
-    .section-features { 
-        padding: 4rem 0 3rem; 
-        background: var(--white); 
-        position: relative;
-        z-index: 5;
-        color: var(--gray-800); 
-        /* Tambahkan padding horizontal untuk menghindari bayangan terpotong */
-        padding-left: 20px; 
-        padding-right: 20px; 
-    }
-    .section-features .section-title { 
-        color: var(--black); 
-    }
-    .features-grid { 
-        display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-        gap: 2.5rem; 
-        text-align: left; 
-        margin: 0 auto; 
-        max-width: 1100px; 
-        /* FIX POTONGAN BAWAH: Tambahkan padding ke container grid */
-        padding-bottom: 30px; 
-    }
-    .feature-card {
-        background: var(--gray-50); 
-        padding: 2rem;
-        box-shadow: 10px 10px 0 var(--red-600); 
-        border: 2px solid var(--red-600); 
-        transition: 0.3s;
-        transform: rotate(1deg); 
-        border-radius: 0 20px 0 20px; 
-        max-width: 350px; 
-        justify-self: center;
-        /* FIX POTONGAN BAWAH: Tambahkan padding-bottom ekstra */
-        padding-bottom: 2.5rem; 
-    }
-    .feature-card:hover {
-        transform: rotate(0deg) scale(1.03);
-        box-shadow: 15px 15px 0 var(--red-700); 
-    }
-    .feature-card h3 { 
-        color: var(--red-600); 
-    }
-    .feature-card i {
-        color: var(--black); 
-    }
-    
-    /* Section 3: Problem Solver (LATAR BELAKANG HITAM) */
-    .section-white { /* Nama class dipertahankan, tapi style-nya dibuat gelap */
-        padding: 5rem 0 3rem; 
-        background: var(--black); 
-        position: relative;
-        overflow: hidden; 
-        z-index: 1;
-        color: var(--white); 
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-    }
-    .section-white .section-title { 
-        color: var(--yellow-pop); 
-    }
-    .grid-3 { 
-        display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-        gap: 2rem; 
-        text-align: left; 
-        margin-bottom: 3rem;
-    }
-    .card { 
-        background: #1a1a1a; 
-        color: var(--white); 
-        padding: 1.5rem; 
-        border-radius: 15px 0 15px 0; 
-        box-shadow: 5px 5px 0 var(--red-700); 
-        border-bottom: 5px solid var(--red-700); 
-        transition: 0.3s;
-        transform: rotate(-1deg); 
-    }
-    .card:nth-child(even) { 
-        transform: rotate(1deg); 
-    }
-    .card h3 { 
-        color: var(--red-600); 
-    }
-    .card p {
-        color: #d1d5db;
-    }
-    .card-quote { 
-        border-top: 2px dashed var(--red-600); 
-        color: #fef08a; 
-        font-weight: 500;
-    }
-    .info-box { 
-        background: var(--yellow-pop); 
-        border: 4px dashed var(--red-700); 
-        box-shadow: 8px 8px 0 var(--white); 
-        transform: rotate(-2deg); 
-        color: var(--gray-800);
-    }
-    .info-box h3 { 
-        color: var(--black); 
-    }
-    .info-box i { color: var(--red-800); }
-    
-    /* Section 4: Price List (LATAR BELAKANG PUTIH) - Placeholder untuk nanti */
-    .section-pricing {
-        padding: 5rem 0; 
-        background: var(--white);
-        position: relative;
-        overflow: hidden; 
-        z-index: 1;
-        box-shadow: inset 0 10px 20px -10px rgba(0, 0, 0, 0.1);
-    }
-        /* SEPARATOR STYLES */
-    
-    /* Pemisah Robekan Kertas dari Section Problem (Hitam) ke Section Perbandingan (Putih) */
+    /* Problem (Hitam) -> Perbandingan (Putih) */
     .separator-black-to-white-3 {
-        width: 100%;
-        height: 80px;
-        background: var(--white); /* Warna section selanjutnya: Putih */
-        position: relative;
-        z-index: 10;
+        width: 100%; height: 80px; background: var(--white); position: relative; z-index: 10;
     }
     .separator-black-to-white-3::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 80px;
-        top: 0;
-        left: 0;
-        background: var(--black); /* Warna section di atasnya: Hitam */
-        /* Efek Robekan Kertas Putus-putus Dibalik */
+        content: ""; position: absolute; width: 100%; height: 80px; top: 0; left: 0; background: var(--black); 
         clip-path: polygon(0 30%, 5% 60%, 10% 30%, 15% 65%, 20% 30%, 25% 65%, 30% 30%, 35% 65%, 40% 30%, 45% 65%, 50% 30%, 55% 65%, 60% 30%, 65% 65%, 70% 30%, 75% 65%, 80% 30%, 85% 65%, 90% 30%, 95% 65%, 100% 30%, 100% 100%, 0 100%);
         transform: translateY(-80px);
     }
     
+    /* Perbandingan (Putih) -> Varian (Hitam) */
+    .separator-white-to-black-2 {
+        width: 100%; height: 80px; background: var(--black); position: relative; z-index: 10;
+    }
+    .separator-white-to-black-2::before {
+        content: ""; position: absolute; width: 100%; height: 80px; top: 0; left: 0; background: var(--white); 
+        clip-path: polygon(0 0, 100% 0, 100% 70%, 98% 45%, 95% 75%, 92% 50%, 88% 75%, 85% 45%, 80% 80%, 75% 40%, 70% 70%, 65% 35%, 60% 75%, 55% 40%, 50% 80%, 45% 35%, 40% 75%, 35% 45%, 30% 70%, 25% 40%, 20% 75%, 15% 45%, 10% 70%, 5% 40%, 0 70%);
+        transform: translateY(-80px);
+    }
 
-    /* Section 4: Perbandingan dan Detail (LATAR BELAKANG PUTIH) */
+    /* =========================================
+       6. CONTENT SECTIONS
+       ========================================= */
+    .section-title { 
+        font-size: 2.2rem; font-weight: 800; margin-bottom: 3rem; 
+        font-family: 'Oswald', sans-serif; text-transform: uppercase;
+    }
+    
+    /* SECTION 2: Fitur Unggulan (WHITE) */
+    .section-features { 
+        padding: 4rem 0 3rem; background: var(--white); 
+        position: relative; z-index: 5; color: var(--gray-800); 
+        padding-left: 20px; padding-right: 20px; 
+    }
+    .section-features .section-title { color: var(--black); }
+    .features-grid { 
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+        gap: 2.5rem; text-align: left; margin: 0 auto; max-width: 1100px; 
+        padding-bottom: 30px; /* FIX: Card crop */
+    }
+    .feature-card {
+        background: var(--gray-50); padding: 2rem;
+        box-shadow: 10px 10px 0 var(--red-600); border: 2px solid var(--red-600); 
+        transition: 0.3s; transform: rotate(1deg); border-radius: 0 20px 0 20px; 
+        max-width: 350px; justify-self: center; padding-bottom: 2.5rem; 
+    }
+    .feature-card:hover { transform: rotate(0deg) scale(1.03); box-shadow: 15px 15px 0 var(--red-700); }
+    .feature-card h3 { color: var(--red-600); }
+    .feature-card i { color: var(--black); }
+    
+    /* SECTION 3: Problem Solver (BLACK) */
+    .section-white { 
+        padding: 5rem 0 3rem; background: var(--black); 
+        position: relative; overflow: hidden; z-index: 1; color: var(--white); 
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    }
+    .section-white .section-title { color: var(--yellow-pop); }
+    .grid-3 { 
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+        gap: 2rem; text-align: left; margin-bottom: 3rem;
+    }
+    .card { 
+        background: #1a1a1a; color: var(--white); padding: 1.5rem; 
+        border-radius: 15px 0 15px 0; box-shadow: 5px 5px 0 var(--red-700); 
+        border-bottom: 5px solid var(--red-700); transition: 0.3s; transform: rotate(-1deg); 
+    }
+    .card:nth-child(even) { transform: rotate(1deg); }
+    .card h3 { color: var(--red-600); }
+    .card p { color: #d1d5db; }
+    .card-quote { border-top: 2px dashed var(--red-600); color: #fef08a; font-weight: 500; }
+    .info-box { 
+        background: var(--yellow-pop); border: 4px dashed var(--red-700); 
+        box-shadow: 8px 8px 0 var(--white); transform: rotate(-2deg); color: var(--gray-800);
+    }
+    .info-box h3 { color: var(--black); }
+    .info-box i { color: var(--red-800); }
+
+    /* SECTION 4: Perbandingan (WHITE) */
     .section-red { 
-        padding: 5rem 0 3rem; 
-        background: var(--white); /* Diubah dari RED menjadi WHITE */
-        position: relative;
-        z-index: 1;
+        padding: 5rem 0 3rem; background: var(--white); position: relative; z-index: 1;
     }
-    .section-red .section-title {
-        color: var(--red-700);
-        font-size: 2.2rem;
-        margin-bottom: 2.5rem;
-    }
-
-    /* Comparison Box - Dibuat Jauh Lebih Stylish */
+    .section-red .section-title { color: var(--red-700); font-size: 2.2rem; margin-bottom: 2.5rem; }
     .comparison { 
-        display: flex; 
-        gap: 2rem; 
-        margin-bottom: 4rem; 
-        justify-content: center; 
-        align-items: flex-start;
+        display: flex; gap: 2rem; margin-bottom: 4rem; justify-content: center; align-items: flex-start;
     }
     .comp-item { 
-        flex: 1; 
-        max-width: 350px; 
-        text-align: center; 
-        background: var(--gray-50); 
-        padding: 1rem; 
-        border-radius: 0;
-        border: 3px solid var(--gray-800); 
-        box-shadow: 8px 8px 0 var(--yellow-pop); /* Shadow Geser Kuning */
-        transform: rotate(-1deg); /* Miring Artistik */
+        flex: 1; max-width: 350px; text-align: center; background: var(--gray-50); 
+        padding: 1rem; border-radius: 0; border: 3px solid var(--gray-800); 
+        box-shadow: 8px 8px 0 var(--yellow-pop); transform: rotate(-1deg); 
     }
-    .comp-item:nth-child(even) {
-        transform: rotate(1deg); /* Yang kedua miring ke kanan */
-    }
-    .comp-item img {
-        border-radius: 0;
-        margin: 0 auto 0.5rem;
-    }
+    .comp-item:nth-child(even) { transform: rotate(1deg); }
+    .comp-item img { border-radius: 0; margin: 0 auto 0.5rem; }
     .comp-label-red { 
-        color: var(--red-700); 
-        font-weight: 900; 
-        margin-top: 0.5rem; 
-        font-size: 1.2rem;
-        background: var(--yellow-pop); 
-        padding: 5px 10px;
-        display: inline-block;
-        transform: skewX(-5deg); /* Label Miring */
+        color: var(--red-700); font-weight: 900; margin-top: 0.5rem; font-size: 1.2rem; 
+        background: var(--yellow-pop); padding: 5px 10px; display: inline-block; transform: skewX(-5deg); 
     }
     .comp-label-green { 
-        color: var(--black); 
-        font-weight: 900; 
-        margin-top: 0.5rem; 
-        font-size: 1.2rem;
-        background: var(--red-600); 
-        color: var(--white);
-        padding: 5px 10px;
-        display: inline-block;
-        transform: skewX(5deg); /* Label Miring Kontras */
+        color: var(--black); font-weight: 900; margin-top: 0.5rem; font-size: 1.2rem; 
+        background: var(--red-600); color: var(--white); padding: 5px 10px; display: inline-block; transform: skewX(5deg); 
     }
-
-    /* Feature List - Dibuat Lebih Visual dan Asimetris */
-    .feature-list {
-        margin: 0 auto;
-        max-width: 900px;
-    }
+    .feature-list { margin: 0 auto; max-width: 900px; }
     .feature-list li { 
-        display: flex; 
-        gap: 1.5rem; 
-        margin-bottom: 2rem; 
-        align-items: start; 
-        text-align: left; 
-        background: var(--gray-50);
-        padding: 1.5rem;
-        border-right: 5px solid var(--red-700); /* Garis tegas di kanan */
-        box-shadow: 5px 5px 0 rgba(0,0,0,0.1);
-        transform: skewY(-0.5deg); /* Miring sedikit */
+        display: flex; gap: 1.5rem; margin-bottom: 2rem; align-items: start; text-align: left; 
+        background: var(--gray-50); padding: 1.5rem; border-right: 5px solid var(--red-700); 
+        box-shadow: 5px 5px 0 rgba(0,0,0,0.1); transform: skewY(-0.5deg); 
     }
-    .feature-list li:nth-child(even) {
-        border-left: 5px solid var(--yellow-pop);
-        border-right: none;
-        box-shadow: -5px 5px 0 rgba(0,0,0,0.1);
-        transform: skewY(0.5deg); /* Miring ke arah berlawanan */
+    .feature-list li:nth-child(even) { 
+        border-left: 5px solid var(--yellow-pop); border-right: none; 
+        box-shadow: -5px 5px 0 rgba(0,0,0,0.1); transform: skewY(0.5deg); 
     }
-
     .feature-list i { 
-        font-size: 2rem; 
-        color: var(--yellow-pop); 
-        margin-top: 0.2rem;
-        flex-shrink: 0; /* Penting agar ikon tidak mengecil */
-        transform: rotate(-10deg);
+        font-size: 2rem; color: var(--yellow-pop); margin-top: 0.2rem; flex-shrink: 0; transform: rotate(-10deg);
     }
-    .feature-list li:nth-child(even) i {
-        color: var(--red-600);
+    .feature-list li:nth-child(even) i { color: var(--red-600); }
+    .feature-list strong { color: var(--red-800); font-weight: 900; font-size: 1.1rem; display: block; margin-bottom: 0.5rem; }
+    .feature-list p { font-size: 1rem; color: var(--gray-800); }
+    
+    /* SECTION 5: Varian Produk (BLACK) */
+    .section-variants { 
+        padding: 5rem 0 3rem; background: var(--black); position: relative; z-index: 1; color: var(--white); 
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
     }
-    .feature-list strong {
-        color: var(--red-800);
-        font-weight: 900;
-        font-size: 1.1rem;
-        display: block;
-        margin-bottom: 0.5rem;
+    .section-variants .section-title { color: var(--yellow-pop); margin-bottom: 1rem; }
+    .product-grid { 
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+        gap: 2rem; margin-top: 2rem;
     }
-    .feature-list p {
-        font-size: 1rem;
-        color: var(--gray-800);
+    .p-card { 
+        background: #1a1a1a; border: 3px solid var(--red-600); border-radius: 0; padding: 1rem; 
+        cursor: pointer; transition: 0.3s; display:flex; flex-direction:column; justify-content:space-between; 
+        text-align: center; box-shadow: 8px 8px 0 var(--yellow-pop); transform: rotate(-1deg);
     }
+    .p-card:nth-child(even) { transform: rotate(1deg); }
+    .p-card:hover { 
+        transform: scale(1.03) rotate(0deg); border-color: var(--yellow-pop); box-shadow: 12px 12px 0 var(--red-600); 
+    }
+    .p-card img { margin: 0 auto; border: 2px solid #333; }
+    .p-card h3 { color: var(--white); }
+    .badge-best, .badge-try, .badge-save { 
+        padding: 0.3rem 0.8rem; border-radius: 3px; font-size: 0.75rem; font-weight: 800; display: inline-block; 
+        margin-bottom: 0.5rem; text-transform: uppercase; transform: skewX(-5deg); 
+    }
+    .badge-best { background: var(--red-600); color: var(--white); }
+    .badge-try { background: var(--yellow-pop); color: var(--black); }
+    .badge-save { background: var(--black); color: var(--yellow-pop); border: 1px solid var(--yellow-pop); }
+    .p-card div:last-child { border-top: 2px dashed var(--red-600) !important; margin-top:1rem; padding-top:1rem; }
+    .p-card div:last-child p { color: var(--yellow-pop); font-weight: 900 !important; }
+
+    /* ORDER FORM & FOOTER (Basic) */
+    .order-section { background: var(--red-600); color: white; padding: 4rem 0; }
+    .form-box { background: white; color: #1f2937; padding: 2rem; border-radius: 1rem; max-width: 600px; margin: 0 auto; text-align: left; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); }
+    label.form-label { display: block; font-weight: 700; margin-bottom: 0.5rem; font-size: 1rem; color: #1f2937; }
+    input.form-input, select.form-select, textarea.form-textarea { display: block; width: 100%; padding: 0.75rem; border: 1px solid #9ca3af; border-radius: 0.5rem; margin-bottom: 1.2rem; font-size: 1rem; font-family: inherit; box-sizing: border-box; color: #1f2937; }
+    .btn-wa { background: #16a34a; color: white; width: 100%; padding: 1rem; border-radius: 99px; font-weight: 700; font-size: 1.2rem; text-align: center; cursor: pointer; transition: 0.3s; border: none; }
+    .btn-wa:hover { background: #15803d; }
+
+    footer { background: #111827; color: #d1d5db; padding: 4rem 0 2rem; text-align: left; }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+    @media (min-width: 768px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; align-items: start; } }
+    .footer-title { color: #ffffff; font-weight: 800; font-size: 1.2rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .footer-links li { margin-bottom: 1rem; }
+    .footer-links a { display: flex; align-items: center; gap: 0.75rem; color: #d1d5db; text-decoration: none; transition: 0.3s; }
+    .footer-links a:hover { color: white; transform: translateX(5px); }
+    .social-icons { display: flex; justify-content: flex-start; gap: 1.5rem; font-size: 1.5rem; }
+    .footer-bottom { border-top: 1px solid #374151; margin-top: 3rem; padding-top: 1.5rem; display: flex; flex-direction: column; align-items: center; font-size: 0.85rem; text-align: center; }
+    @media (min-width: 768px) { .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; } }
 
     /* --- OPTIMASI KHUSUS HP --- */
     @media (max-width: 768px) {
@@ -595,9 +479,9 @@
         .hero p { font-size: 1rem; }
         .cta-button { font-size: 1.2rem; padding: 1rem 1.5rem; }
         .hero-img-box { max-width: 300px; }
-        /* Pastikan card di HP tidak overflow */
         .features-grid { padding: 0 10px 30px; }
         .feature-card { max-width: 100%; }
+        .product-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     }
     /* PRODUCTS */
     .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
@@ -810,31 +694,38 @@
         </div>
     </section>
 
-        <section class="section-white" style="background:#f9fafb;">
-            <div class="container text-center">
-                <h2 class="section-title">Pilih Varian Abon Sapi BAROKAH Favorit Anda!</h2>
-                <p style="margin-bottom:2rem;">Tersedia dalam kemasan praktis yang siap menemani setiap momen makan Anda.</p>
-                <div class="product-grid">
-                    <div class="p-card" onclick="selectVariant('4990|Abon Sapi 10gr Sachet (Original)|type:sachet')">
-                        <div><span class="badge-best">BEST SELLER!</span><img src="kemasan-abon-10gr-tas.webp" alt="Sachet Ori" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">10gr Sachet - Original</h3><p style="font-size:0.9rem;">Porsi Pas untuk Lauk Anak Sekali Makan.</p></div>
-                        <div style="border-top:1px solid #e5e7eb; margin-top:1rem; padding-top:1rem;"><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 4.990</p><p style="font-size:0.8rem; color:#166534;">Pack (10pcs): Rp 37.900</p></div>
-                    </div>
-                    <div class="p-card" onclick="selectVariant('4990|Abon Sapi 10gr Sachet (Pedas)|type:sachet')">
-                        <div><span class="badge-try">COBAIN!</span><img src="kemasan-abon-10gr-mie.webp" alt="Sachet Pedas" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">10gr Sachet - Pedas</h3><p style="font-size:0.9rem;">Booster Pedas Instan, Bikin Mie Kuah Auto Juara!</p></div>
-                        <div style="border-top:1px solid #e5e7eb; margin-top:1rem; padding-top:1rem;"><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 4.990</p><p style="font-size:0.8rem; color:#166534;">Pack (10pcs): Rp 37.900</p></div>
-                    </div>
-                     <div class="p-card" onclick="selectVariant('35999|Abon Sapi 100gr (Original)|type:reguler')">
-                        <div><span class="badge-save">PILIHAN HEMAT!</span><img src="kemasan-abon-100gr-sblh.webp" alt="100gr Ori" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">100gr - Original</h3><p style="font-size:0.9rem;">Stok Aman Dapur! Porsi besar untuk keluarga.</p></div>
-                        <div style="border-top:1px solid #e5e7eb; margin-top:1rem; padding-top:1rem;"><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 35.999</p><p style="font-size:0.8rem; color:#166534;">Promo: 3 pcs Rp 100rb!</p></div>
-                    </div>
-                     <div class="p-card" onclick="selectVariant('35999|Abon Sapi 100gr (Pedas)|type:reguler')">
-                        <div><span class="badge-save">KOMPLIT!</span><img src="kemasan-abon-100gr-dapur.webp" alt="100gr Pedas" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">100gr - Pedas</h3><p style="font-size:0.9rem;">Level Up Masakan. Gurih Pedasnya Menggugah Selera.</p></div>
-                        <div style="border-top:1px solid #e5e7eb; margin-top:1rem; padding-top:1rem;"><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 35.999</p><p style="font-size:0.8rem; color:#166534;">Promo: 3 pcs Rp 100rb!</p></div>
-                    </div>
+       <div class="separator-white-to-black-2"></div>
+    
+    <section class="section-variants">
+        <div class="container text-center">
+            <h2 class="section-title">PILIH VARIAN ABON SAPI BAROKAH FAVORIT ANDA!</h2>
+            <p style="margin-bottom:2rem; color: #d1d5db;">Tersedia dalam kemasan praktis yang siap menemani setiap momen makan Anda.</p>
+            <div class="product-grid">
+                
+                <div class="p-card" onclick="selectVariant('4990|Abon Sapi 10gr Sachet (Original)|type:sachet')">
+                    <div><span class="badge-best">BEST SELLER!</span><img src="kemasan-abon-10gr-tas.webp" alt="Sachet Ori" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">10gr Sachet - Original</h3><p style="font-size:0.9rem; color: #a1a1a1;">Porsi Pas untuk Lauk Anak Sekali Makan.</p></div>
+                    <div><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 4.990</p><p style="font-size:0.8rem; color:#16a34a;">Pack (10pcs): Rp 37.900</p></div>
                 </div>
-                <p style="font-size:1.5rem; font-weight:bold; color:#dc2626; margin-top:3rem;">Pilih Eceran, Pack, atau langsung <span style="text-decoration:underline;">KLAIM PROMO SPESIAL 100RB</span> Anda Sebelum Kehabisan!</p>
+                
+                <div class="p-card" onclick="selectVariant('4990|Abon Sapi 10gr Sachet (Pedas)|type:sachet')">
+                    <div><span class="badge-try">COBAIN!</span><img src="kemasan-abon-10gr-mie.webp" alt="Sachet Pedas" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">10gr Sachet - Pedas</h3><p style="font-size:0.9rem; color: #a1a1a1;">Booster Pedas Instan, Bikin Mie Kuah Auto Juara!</p></div>
+                    <div><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 4.990</p><p style="font-size:0.8rem; color:#16a34a;">Pack (10pcs): Rp 37.900</p></div>
+                </div>
+                
+                <div class="p-card" onclick="selectVariant('35999|Abon Sapi 100gr (Original)|type:reguler')">
+                    <div><span class="badge-save">PILIHAN HEMAT!</span><img src="kemasan-abon-100gr-sblh.webp" alt="100gr Ori" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">100gr - Original</h3><p style="font-size:0.9rem; color: #a1a1a1;">Stok Aman Dapur! Porsi besar untuk keluarga.</p></div>
+                    <div><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 35.999</p><p style="font-size:0.8rem; color:#16a34a;">Promo: 3 pcs Rp 100rb!</p></div>
+                </div>
+                
+                <div class="p-card" onclick="selectVariant('35999|Abon Sapi 100gr (Pedas)|type:reguler')">
+                    <div><span class="badge-save">KOMPLIT!</span><img src="kemasan-abon-100gr-dapur.webp" alt="100gr Pedas" width="300" height="300" loading="lazy"><h3 class="font-bold" style="margin-top:0.5rem;">100gr - Pedas</h3><p style="font-size:0.9rem; color: #a1a1a1;">Level Up Masakan. Gurih Pedasnya Menggugah Selera.</p></div>
+                    <div><p style="color:#dc2626; font-weight:bold;">Ecer: Rp 35.999</p><p style="font-size:0.8rem; color:#16a34a;">Promo: 3 pcs Rp 100rb!</p></div>
+                </div>
+                
             </div>
-        </section>
+            <p style="font-size:1.5rem; font-weight:bold; color:var(--red-600); margin-top:3rem;">Pilih Eceran, Pack, atau langsung <span style="text-decoration:underline; color: var(--yellow-pop);">KLAIM PROMO SPESIAL 100RB</span> Anda Sebelum Kehabisan!</p>
+        </div>
+    </section>
 
         <section class="section-white">
             <div class="container text-center">
@@ -1216,6 +1107,7 @@
     
 </body>
 </html>
+
 
 
 
