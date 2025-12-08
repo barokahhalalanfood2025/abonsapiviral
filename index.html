@@ -341,6 +341,42 @@
     footer a:hover {
         color: var(--yellow-pop) !important;
     }
+        /* =========================================
+       ACCESSIBILITY & CONTRAST FIX (WAJIB)
+       ========================================= */
+    
+    /* 1. Fix Tombol Header "PESAN PROMO" */
+    .btn-top {
+        background: #991b1b !important; /* Merah lebih gelap agar teks putih terbaca */
+        color: #ffffff !important;
+    }
+
+    /* 2. Fix Card di Section Hitam (Problem Solver) */
+    /* Judul di background gelap harus terang, jangan merah gelap */
+    .section-white .card h3 {
+        color: var(--yellow-pop) !important; /* Ganti merah jadi Kuning agar kontras di hitam */
+    }
+    .section-white .card p {
+        color: #e5e7eb !important; /* Abu-abu sangat terang */
+    }
+
+    /* 3. Fix Harga & Judul di Section Putih (Varian) */
+    /* Override warna merah di HTML agar lebih gelap di background putih */
+    .p-card p[style*="color:#dc2626"], 
+    .p-card p[style*="color: #dc2626"] {
+        color: #b91c1c !important; /* Merah Tua (High Contrast) */
+    }
+    
+    /* 4. Fix Teks Deskripsi Produk (Abu-abu) */
+    .p-card p {
+        color: #374151 !important; /* Abu-abu gelap agar terbaca jelas */
+    }
+    
+    /* 5. Fix Badge Best Seller */
+    .badge-best {
+        background: #991b1b !important; /* Merah Tua */
+        color: #ffffff !important;
+    }
 </style>
     
     <script>
@@ -994,6 +1030,7 @@
     
 </body>
 </html>
+
 
 
 
