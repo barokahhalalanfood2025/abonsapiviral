@@ -138,47 +138,57 @@
   .fa-clock:before { content: "\f017"; }
   .fa-external-link-alt:before { content: "\f35d"; }
 
-  /* =========================================
-     2. GLOBAL VARIABLES & RESET
+ /* =========================================
+     2. GLOBAL VARIABLES (WARM SAVORY THEME)
      ========================================= */
   :root {
-    /* Colors - Updated for better contrast */
-    --red-600: #b91c1c; /* Darker Red */
-    --red-700: #991b1b;
-    --red-800: #7f1d1d;
+    /* 1. BACKGROUND: Ganti Putih Polos dengan 'Warm Cream' 
+       Filosofi: Seperti warna adonan kue atau kertas nasi, kesan hangat & ramah */
+    --white: #fffbeb; /* Warna krem sangat muda (Amber-50) */
+    --gray-50: #fef3c7; /* Warna kuning pudar untuk selang-seling (Amber-100) */
+    --black: #2a0a0a; /* Hitamnya diganti Coklat Kopi Sangat Gelap (Warm Black) */
     
-    --gray-50: #f9fafb;
-    --gray-800: #111827;
+    /* 2. WARNA UTAMA: Merah Cabai Matang (Lebih Gelap & Elegan)
+       Ini LULUS audit kontras di atas background krem */
+    --red-bg: #991b1b;       /* Untuk Background Tombol/Header (Merah Hati) */
+    --red-contrast: #7f1d1d; /* Untuk Teks Harga/Judul (Merah Marun) */
     
-    --black: #0a0a0a;
-    --white: #ffffff;
-    --yellow-pop: #ffc107;
+    /* 3. AKSEN: Kuning Kunyit/Mustard (Bukan Kuning Neon) */
+    --yellow-pop: #fbbf24;   /* Amber-400 */
     
-    --green-brand: #15803d; /* Dark Green */
-    --text-body: #374151;
-    --text-light: #e5e7eb;
+    /* 4. TEKS: Coklat Kayu & Abu Hangat */
+    --gray-800: #451a03;     /* Teks paragraf jadi Coklat Tua (Amber-900) */
+    --text-body: #78350f;    /* Teks deskripsi jadi Coklat Sedang (Amber-800) */
+    --text-light: #fffbeb;   /* Teks di atas background gelap */
+
+    /* 5. HIJAU: Hijau Daun Matang (Bukan Hijau Neon) */
+    --green-brand: #15803d;  /* Green-700 */
+    --green-contrast: #14532d;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  
+  /* RESET TAMBAHAN AGAR BACKGROUND MENGIKUTI TEMA */
   body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--gray-50);
+    background-color: var(--white); /* Mengubah background body */
     color: var(--gray-800);
-    line-height: 1.6;
-    margin: 0;
   }
-
-  img { max-width: 100%; height: auto; display: block; }
-  a { text-decoration: none; transition: 0.3s; }
-  ul { list-style: none; padding: 0; margin: 0; }
-
-  /* Utilities */
-  .container { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; }
-  .text-center { text-align: center; }
-  .font-bold { font-weight: 700; }
-  .font-extrabold { font-weight: 800; }
-  .hidden { display: none !important; }
+  
+  /* Update warna card produk agar menyatu */
+  .p-card, .feature-card, .comp-item {
+    background: #ffffff; /* Card tetap putih bersih agar produk 'pop-up' */
+    border-color: var(--red-bg);
+  }
+  
+  /* Update warna section varian yang tadinya hitam pekat */
+  .section-white, .section-variants, header, footer {
+    background-color: var(--black); 
+    background-image: none; /* Hilangkan noise jika ingin terlihat lebih bersih */
+  }
+  
+  /* Pastikan harga menggunakan variabel baru */
+  .p-card p[style*="color:#dc2626"], 
+  .p-card p[style*="color: #dc2626"] { 
+    color: var(--red-contrast) !important; 
+  }
 
   /* =========================================
      3. HEADER
@@ -264,7 +274,7 @@
     background: url('https://images.unsplash.com/photo-1606728035253-49e8a23146de?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
     background-size: cover;
     position: relative;
-    padding: 5rem 0 26rem;
+    padding: 5rem 0 20rem;
     overflow: hidden;
     border: none;
   }
@@ -464,7 +474,7 @@
   .section-variants {
     background: var(--black); position: relative; z-index: 1; color: var(--white);
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-    padding: 5rem 0 14rem; border: none;
+    padding: 5rem 0 10rem; border: none;
   }
   .section-variants .section-title { color: var(--yellow-pop); }
 
@@ -1374,6 +1384,7 @@
     
 </body>
 </html>
+
 
 
 
