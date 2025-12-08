@@ -90,18 +90,19 @@
 
     /* 2. GLOBAL RESET */
     :root { 
-        /* Merah digelapkan (dari dc2626 ke b91c1c) agar tulisan terbaca jelas */
+        /* Red changed from #dc2626 to #b91c1c (Darker) */
         --red-600: #b91c1c; 
         --red-700: #991b1b; 
         --red-800: #7f1d1d; 
         
         --gray-50: #f9fafb; 
-        --gray-800: #1f2937; 
+        /* Gray text darkened from #1f2937 to #111827 for better readability */
+        --gray-800: #111827; 
         --black: #0a0a0a; 
         --white: #ffffff; 
         --yellow-pop: #ffc107; 
         
-        /* Hijau digelapkan (dari 16a34a ke 15803d) agar teks putih di atasnya jelas */
+        /* Green changed from #16a34a to #15803d (Darker) */
         --green-brand: #15803d; 
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -377,6 +378,35 @@
         background: #991b1b !important; /* Merah Tua */
         color: #ffffff !important;
     }
+        /* =========================================
+       ACCESSIBILITY CONTRAST FIXES
+       ========================================= */
+    
+    /* Fix Gray Text Description (Was #a1a1a1 -> Now Dark Gray) */
+    .p-card p[style*="color: #a1a1a1"], 
+    .p-card p[style*="color:#a1a1a1"] {
+        color: #4b5563 !important; /* Darker Gray */
+    }
+
+    /* Fix Red Price Text (Was #dc2626 -> Now Dark Red) */
+    .p-card p[style*="color:#dc2626"] {
+        color: #b91c1c !important; /* Dark Red */
+    }
+
+    /* Fix Green Promo Price (Was #16a34a -> Now Dark Green) */
+    .p-card p[style*="color:#16a34a"],
+    .p-card p[style*="color:#166534"] {
+        color: #15803d !important; /* Dark Green */
+    }
+
+    /* Fix Badges (Best Seller, Cobain, etc) to have white text on dark background */
+    .badge-best { background: #991b1b !important; color: #fff !important; }
+    .badge-try { background: #b45309 !important; color: #fff !important; }
+    .badge-save { background: #15803d !important; color: #fff !important; }
+
+    /* Fix Footer Links (Light Gray on Black Background) */
+    footer p, footer a { color: #e5e7eb !important; }
+    footer a:hover { color: var(--yellow-pop) !important; }
 </style>
     
     <script>
@@ -1030,6 +1060,7 @@
     
 </body>
 </html>
+
 
 
 
