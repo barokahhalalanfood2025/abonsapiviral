@@ -139,24 +139,80 @@
     /* =========================================
        5. SPECIFIC SECTIONS
        ========================================= */
-    /* HERO */
-    .hero { background: url('https://images.unsplash.com/photo-1549495763-71a53272993b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center; background-size: cover; position: relative; padding: 4rem 0 2rem; overflow: hidden; } 
-    .hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.75); z-index: 1; }
-    .hero .container { position: relative; z-index: 2; }
-    .hero h1 { font-family: 'Oswald', sans-serif; color: var(--white); font-size: 2.8rem; margin-bottom: 0.5rem; line-height: 1.1; font-weight: 900; text-transform: uppercase; text-shadow: 0 3px 5px rgba(0,0,0,0.8); }
-    .hero h1 span { color: var(--yellow-pop); padding: 0 5px; }
-    .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 1.5rem; color: #fef08a; font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
-    .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem; font-weight: 700; color: var(--white); font-size: 0.9rem; background: rgba(0,0,0,0.5); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--red-600); }
-    .badges i { color: var(--red-600); margin-right: 5px; }
+   /* 4. HERO (Gradient & Wave) */
+    .hero { 
+        /* Gradient Latar Belakang (Sesuai request Clean Style) */
+        background: linear-gradient(to bottom right, #fff1f2, #f0fdf4); 
+        padding: 4rem 0 10rem; /* Padding bawah dibesarkan (10rem) agar konten tidak ketutup wave */
+        text-align: center; 
+        position: relative; /* Wajib untuk posisi wave */
+        /* border-bottom dihapus agar wave menyatu */
+    }
+    .hero h1 { 
+        font-family: 'Oswald', sans-serif; 
+        font-size: 2.5rem; 
+        font-weight: 800; 
+        color: var(--dark); /* Text Gelap di atas background terang */
+        margin-bottom: 1rem; 
+        line-height: 1.2; 
+    }
+    .hero h1 span { 
+        color: var(--red-brand); /* Aksen Merah */
+    }
+    .hero p { 
+        font-size: 1.1rem; 
+        color: #4b5563; 
+        max-width: 700px; 
+        margin: 0 auto 1.5rem; 
+    }
+    .badges { 
+        display: flex; flex-wrap: wrap; justify-content: center; 
+        gap: 0.8rem; margin-bottom: 2rem; font-weight: 600; 
+        color: var(--green); font-size: 0.85rem; 
+    }
+    .badges span { 
+        background: white; padding: 5px 10px; border-radius: 20px; border: 1px solid #e5e7eb; 
+    }
     .hero-img-box { position: relative; margin: 0 auto 2rem; max-width: 500px; }
-    .hero-img-box img { border-radius:1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.8); border: 5px solid var(--red-600); width: 100%; height: auto; max-height: 400px; object-fit: cover; }
-    .badge-premium { position: absolute; top: 0; right: 0; background: var(--red-600); color: white; padding: 0.5rem 1rem; border-radius: 0 1rem 0 1rem; font-size: 0.9rem; font-weight: 800; transform: translate(10px, -10px); z-index: 20; }
-    .cta-button { display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; background: var(--yellow-pop); color: var(--black); padding: 1.2rem 2rem; border-radius: 50px; font-weight: 900; font-size: 1.2rem; box-shadow: 0 10px 25px -5px rgba(255, 193, 7, 0.8); width: 100%; max-width: 500px; text-transform: uppercase; border: 4px solid var(--red-700); transition: 0.3s all; }
-    .cta-button:hover { background: #fdd835; transform: translateY(-5px) scale(1.05); }
-    .pulse-button { animation: pulse-yellow 2s infinite; }
-    @keyframes pulse-yellow { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); } 70% { transform: scale(1.04); box-shadow: 0 0 0 15px rgba(255, 193, 7, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); } }
-    .trust-badge { margin-top: 1.5rem; font-size: 0.9rem; color: var(--white); background: rgba(0, 0, 0, 0.7); display: inline-block; padding: 1rem 1.5rem; border-radius: 12px; border: 2px solid var(--red-600); }
-    .trust-badge i { color: var(--yellow-pop) !important; }
+    .hero-img-box img { 
+        border-radius: 1rem; 
+        box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); 
+        width: 100%; 
+    }
+    .badge-premium { 
+        position: absolute; top: 10px; right: -10px; 
+        background: var(--red-brand); color: white; 
+        padding: 5px 10px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; 
+        transform: rotate(5deg); 
+    }
+    .cta-button { 
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px; 
+        background: var(--red-brand); color: white; padding: 1rem 2rem; 
+        border-radius: 50px; font-weight: 700; font-size: 1.1rem; 
+        box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3); transition: 0.3s; 
+    }
+    .cta-button:hover { background: #b91c1c; transform: translateY(-3px); }
+    .pulse-button { animation: pulse-red 2s infinite; }
+    @keyframes pulse-red { 
+        0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); } 
+        70% { box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); } 
+        100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); } 
+    }
+    .trust-badge { 
+        margin-top: 1.5rem; font-size: 0.9rem; padding: 10px 20px; 
+        background: white; border: 1px solid #e5e7eb; border-radius: 10px; 
+        display: inline-block; 
+    }
+    
+    /* Gelombang Bawah */
+    .wave-bottom {
+        position: absolute;
+        bottom: -2px; /* Minus sedikit agar tidak ada celah garis putih */
+        left: 0;
+        width: 100%;
+        line-height: 0;
+        z-index: 5; /* Pastikan di atas background */
+    }
 
     /* SECTION 2: FITUR (White) */
     .section-features { background: var(--white); position: relative; z-index: 5; color: var(--gray-800); padding-left: 20px; padding-right: 20px; }
@@ -296,49 +352,55 @@
 
     <main>
         <section class="hero">
-            <div class="container text-center">
-                <h1 class="font-extrabold">
-                    <span style="display:block;">STOP! ANCAMAN STUNTING!</span>
-                    ABON SAPI MURNI: <span class="font-bold">INVESTASI OTAK CERDAS</span>
-                </h1>
-                
-                <p>
-                    100% Daging Sapi Pilihan. Jaminan Kebutuhan Protein Hewani Harian Anak Anda. 
-                    <span style="color:var(--yellow-pop); font-style:italic;">Bantu Tumbuh Kembang Maksimal!</span>
+    <div class="container text-center">
+        <h1 class="font-extrabold">
+            <span style="display:block;">STOP! ANCAMAN STUNTING!</span>
+            ABON SAPI MURNI: <span style="color:var(--red-brand);">INVESTASI OTAK CERDAS</span>
+        </h1>
+        
+        <p>
+            100% Daging Sapi Pilihan. Jaminan Kebutuhan Protein Hewani Harian Anak Anda. 
+            <span style="color:var(--green); font-style:italic; font-weight:bold;">Bantu Tumbuh Kembang Maksimal!</span>
+        </p>
+        
+        <div class="badges">
+            <span><i class="fas fa-drumstick-bite"></i> DAGING MURNI</span>
+            <span><i class="fas fa-microscope"></i> NON MSG & PENGAWET</span>
+            <span><i class="fas fa-mortar-pestle"></i> GULA AREN</span>
+            <span><i class="fas fa-brain"></i> TINGGI PROTEIN</span>
+        </div>
+
+        <div class="hero-img-box">
+            <div class="badge-premium">LIMITED STOCK!</div>
+            <img src="abon-ditabur-di-atas-nasi1.webp" alt="Abon Sapi Barokah Pencegah Stunting" 
+                width="700" height="500" 
+                fetchpriority="high">
+        </div>
+
+        <div style="margin-top: 1rem; position: relative; z-index: 10;">
+            <a href="#order-form" class="cta-button pulse-button">
+                <i class="fas fa-shopping-cart"></i> AMBIL PROMO SUPER HEMAT HARI INI
+            </a>
+            <br>
+            <div class="trust-badge">
+                <p style="font-weight:700; display:flex; align-items:center; justify-content:center; gap:10px; margin:0;">
+                    <span style="display:flex; align-items:center;"><i class="fas fa-list-ul" style="margin-right:5px; color:var(--red-brand);"></i> Cek Harga</span>
+                    <span style="color:#d1d5db;">|</span>
+                    <span style="display:flex; align-items:center;"><i class="fas fa-truck-fast" style="margin-right:5px; color:orange;"></i> Estimasi Ongkir</span>
                 </p>
-                
-                <div class="badges">
-                    <span><i class="fas fa-drumstick-bite"></i> DAGING MURNI</span>
-                    <span><i class="fas fa-microscope"></i> NON MSG & PENGAWET</span>
-                    <span><i class="fas fa-mortar-pestle"></i> GULA AREN</span>
-                    <span><i class="fas fa-brain"></i> TINGGI PROTEIN</span>
-                </div>
-
-                <div class="hero-img-box">
-                    <div class="badge-premium">LIMITED STOCK!</div>
-                    <img src="abon-ditabur-di-atas-nasi1.webp" alt="Abon Sapi Barokah Pencegah Stunting" 
-                        width="700" height="500" class="hero-img" 
-                        fetchpriority="high">
-                </div>
-
-                <div style="margin-top: 1rem; position: relative; z-index: 10;">
-                    <a href="katalog.html" class="cta-button pulse-button">
-                        <i class="fas fa-shopping-cart"></i> AMBIL PROMO SUPER HEMAT HARI INI
-                    </a>
-                    
-                    <div class="trust-badge">
-                        <p style="font-weight:700; display:flex; align-items:center; justify-content:center; gap:10px;">
-                            <span style="display:flex; align-items:center;"><i class="fas fa-list-ul"></i> Cek Harga</span>
-                            <span style="color:#d1d5db;">|</span>
-                            <span style="display:flex; align-items:center;"><i class="fas fa-truck-fast"></i> Estimasi Ongkir</span>
-                        </p>
-                        <p style="margin: 8px 0 0 0; font-weight: 900; color: var(--yellow-pop); font-size: 1.1rem;">
-                            <i class="fas fa-hand-holding-dollar"></i> **100% AMAN: BISA COD!**
-                        </p>
-                    </div>
-                </div>
+                <p style="margin: 5px 0 0 0; font-weight: 900; color: var(--green); font-size: 1rem;">
+                    <i class="fas fa-hand-holding-dollar"></i> 100% AMAN: BISA COD!
+                </p>
             </div>
-        </section>
+        </div>
+    </div>
+
+    <div class="wave-bottom">
+        <svg viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#ffffff" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,197.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </div>
+</section>
         
         <div class="separator-wave"></div> 
 
@@ -948,6 +1010,7 @@
     
 </body>
 </html>
+
 
 
 
