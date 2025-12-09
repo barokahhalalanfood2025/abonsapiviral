@@ -80,7 +80,7 @@
   /* =========================================
      1. FONTS & ICONS
      ========================================= */
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Oswald:wght@400;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Oswald:wght@400;700;800&display=swap');
 
   @font-face {
     font-family: 'Font Awesome 6 Free'; font-style: normal; font-weight: 900; font-display: swap;
@@ -94,35 +94,35 @@
   .fas { font-family: 'Font Awesome 6 Free'; font-weight: 900; } 
   .fab { font-family: 'Font Awesome 6 Brands'; font-weight: 400; }
 
-  /* Icon Mappings */
+  /* Icon Mappings (Tetap Sama) */
   .fa-check-circle:before{content:"\f058"} .fa-shopping-cart:before{content:"\f07a"} .fa-utensils:before{content:"\f2e7"} .fa-brain:before{content:"\f5dc"} .fa-leaf:before{content:"\f06c"} .fa-whatsapp:before{content:"\f232"} .fa-instagram:before{content:"\f16d"} .fa-facebook:before{content:"\f09a"} .fa-tiktok:before{content:"\e07b"} .fa-youtube:before{content:"\f167"} .fa-store:before{content:"\f54e"} .fa-file-invoice:before{content:"\f570"} .fa-map-marker-alt:before{content:"\f3c5"} .fa-exclamation-triangle:before{content:"\f071"} .fa-microscope:before{content:"\f610"} .fa-drumstick-bite:before{content:"\f6d7"} .fa-mortar-pestle:before{content:"\f5a7"} .fa-fire:before{content:"\f06d"} .fa-shipping-fast:before{content:"\f48b"} .fa-list-ul:before{content:"\f0ca"} .fa-truck-fast:before{content:"\f48b"} .fa-hand-holding-dollar:before{content:"\f4c0"} .fa-chevron-left:before{content:"\f053"} .fa-chevron-right:before{content:"\f054"} .fa-envelope:before{content:"\f0e0"} .fa-clock:before{content:"\f017"} .fa-external-link-alt:before{content:"\f35d"}
 
   /* =========================================
      2. GLOBAL VARIABLES (WARM SAVORY THEME)
      ========================================= */
   :root {
-    /* BACKGROUND: Krem Hangat (Dapur Nenek) - Enak di mata & Bikin Lapar */
+    /* BACKGROUND: Krem Hangat (Amber-50) */
     --bg-cream: #fffbeb;      
     --bg-cream-dark: #fef3c7; 
     
-    /* WARNA DASAR */
+    /* WARNA UTAMA */
     --black: #271c19;       /* Black Coffee (Hitam Kecoklatan) */
     --white: #ffffff;       /* Putih Murni */
     
     /* MERAH (High Contrast) */
-    --red-bg: #991b1b;      /* Background Tombol (Merah Hati) */
-    --red-text: #7f1d1d;    /* Teks Harga (Merah Bata Gelap) */
+    --red-bg: #991b1b;      /* Merah Hati (Untuk Tombol/Header) */
+    --red-text: #b91c1c;    /* Merah Bata Cerah (Untuk Harga) */
     
     /* AKSEN */
     --yellow-pop: #fbbf24;  /* Kuning Kunyit */
     --green-brand: #15803d; /* Hijau Daun Matang */
     
-    /* TYPOGRAPHY (JANGAN PAKAI ABU MUDA) */
-    --text-main: #271c19;   /* Judul Utama */
-    --text-body: #451a03;   /* Deskripsi (Coklat Tua) - PENGGANTI ABU-ABU */
-    --text-light: #fffbeb;  /* Teks Terang di Background Gelap */
+    /* TYPOGRAPHY */
+    --text-main: #271c19;   /* Judul (Hampir Hitam) */
+    --text-body: #451a03;   /* Deskripsi (Coklat Tua) -> Pengganti Abu-abu */
+    --text-light: #fffbeb;  /* Teks Terang */
 
-    /* MAPPING UNTUK MENCEGAH ERROR KODE LAMA */
+    /* Mapping Variabel Lama (Supaya tidak error) */
     --red-600: var(--red-bg);
     --red-700: var(--red-text);
     --red-800: #450a0a;
@@ -145,7 +145,7 @@
   /* Utilities */
   .container { max-width: 1152px; margin: 0 auto; padding: 0 1.5rem; }
   .text-center { text-align: center; }
-  .font-bold { font-weight: 700; } .font-extrabold { font-weight: 800; }
+  .font-bold { font-weight: 700; } 
   .hidden { display: none !important; }
 
   /* =========================================
@@ -162,10 +162,10 @@
     background: var(--red-bg); color: #ffffff; padding: 0.5rem 1rem; border-radius: 4px;
     font-weight: 800; font-size: 0.875rem; text-transform: uppercase; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
-  .btn-top:hover { background: var(--red-text); }
+  .btn-top:hover { background: #7f1d1d; }
 
   /* =========================================
-     4. SECTIONS GENERAL
+     4. GENERAL SECTIONS
      ========================================= */
   section { padding: 3rem 0 2rem; }
   .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 2rem; font-family: 'Oswald', sans-serif; text-transform: uppercase; line-height: 1.2; }
@@ -173,6 +173,7 @@
   .wave-bottom { position: absolute; bottom: -1px; left: 0; width: 100%; height: 120px; z-index: 5; pointer-events: none; overflow: hidden; }
   .wave-bottom svg { display: block; width: 100%; height: 100%; transform: scaleX(1.02); }
 
+  /* Separators */
   .separator-white-to-black-2 { width: 100%; height: 60px; position: relative; z-index: 10; background: var(--black); }
   .separator-white-to-black-2::before {
     content: ""; position: absolute; width: 100%; height: 60px; top: 0; left: 0; background: var(--bg-cream);
@@ -202,7 +203,7 @@
   .badge-premium { position: absolute; top: 0; right: 0; background: var(--red-bg); color: white; padding: 0.5rem 1rem; border-radius: 0 1rem 0 1rem; font-size: 0.9rem; font-weight: 800; transform: translate(10px, -10px); z-index: 20; text-transform: uppercase; }
 
   .hero-cta-container { margin-top: 2rem; position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
-  .cta-button { display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; background: var(--yellow-pop); color: var(--black); padding: 1.2rem 2.5rem; border-radius: 50px; font-weight: 900; font-size: 1.3rem; box-shadow: 0 10px 25px -5px rgba(255, 193, 7, 0.8); width: 100%; max-width: 550px; text-transform: uppercase; border: 4px solid var(--red-text); transition: 0.3s all; }
+  .cta-button { display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; background: var(--yellow-pop); color: var(--black); padding: 1.2rem 2.5rem; border-radius: 50px; font-weight: 900; font-size: 1.3rem; box-shadow: 0 10px 25px -5px rgba(255, 193, 7, 0.8); width: 100%; max-width: 550px; text-transform: uppercase; border: 4px solid #b45309; transition: 0.3s all; }
   .cta-button:hover { background: #fdd835; transform: translateY(-5px) scale(1.05); }
   .pulse-button { animation: pulse-yellow 2s infinite; }
   @keyframes pulse-yellow { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); } 70% { transform: scale(1.04); box-shadow: 0 0 0 15px rgba(255, 193, 7, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); } }
@@ -211,7 +212,7 @@
   .trust-badge p { margin: 0; line-height: 1.5; }
 
   /* =========================================
-     6. FEATURES (CREAM BG)
+     6. FEATURES
      ========================================= */
   .section-features { background: var(--bg-cream); position: relative; z-index: 6; color: var(--text-main); padding: 2rem 20px 4rem; margin-top: -5px; }
   .section-features .section-title { color: var(--black); }
@@ -230,8 +231,9 @@
   .section-white .section-title, .section-variants .section-title { color: var(--yellow-pop); }
   
   .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
-  .card { background: #1a1a1a; color: #ffffff; padding: 1.5rem; border-radius: 15px 0 15px 0; box-shadow: 5px 5px 0 var(--red-text); border-bottom: 5px solid var(--red-text); transform: rotate(-1deg); }
-  .section-white .card h3 { color: var(--yellow-pop) !important; font-weight: 800; margin-bottom: 0.5rem; }
+  .card { background: #1a1a1a; color: #ffffff; padding: 1.5rem; border-radius: 15px 0 15px 0; box-shadow: 5px 5px 0 #7f1d1d; border-bottom: 5px solid #7f1d1d; transform: rotate(-1deg); }
+  .section-white .card h3 { color: var(--yellow-pop); font-weight: 800; margin-bottom: 0.5rem; }
+  .section-white .card p { color: #e5e7eb; } /* Teks abu terang di background hitam */
 
   .card-quote { border-top: 2px dashed var(--red-bg); color: #fef08a; font-weight: 500; margin-top: 1rem; padding-top: 0.5rem; font-size: 0.9rem; font-style: italic; }
   .info-box { background: var(--yellow-pop); border: 4px dashed var(--red-text); box-shadow: 8px 8px 0 #ffffff; transform: rotate(-2deg); color: var(--black); padding: 1.5rem; margin-top: 2rem; }
@@ -254,16 +256,49 @@
   .feature-list strong { color: var(--red-text); font-weight: 800; display: block; }
 
   /* =========================================
-     9. PRODUCT GRID
+     9. PRODUCT GRID (BAGIAN PENTING)
      ========================================= */
   .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-  .p-card { background: var(--white); border: 3px solid var(--red-bg); padding: 1rem; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between; text-align: center; box-shadow: 8px 8px 0 var(--yellow-pop); transform: rotate(-1deg); transition: 0.3s; }
-  .p-card:hover { transform: scale(1.03) rotate(0deg); border-color: var(--yellow-pop); }
-  .p-card h3 { color: var(--black); font-weight: 800; font-size: 1.1rem; margin-top: 0.5rem; }
   
-  .badge-best { background: var(--red-text) !important; color: white !important; padding: 2px 6px; font-weight: 800; font-size: 0.7rem; transform: skewX(-10deg); display: inline-block; }
-  .badge-try { background: #b45309 !important; color: white !important; padding: 2px 6px; font-weight: 800; font-size: 0.7rem; transform: skewX(-10deg); display: inline-block; }
-  .badge-save { background: var(--green-brand) !important; color: white !important; border: 1px solid var(--yellow-pop); padding: 2px 6px; font-weight: 800; font-size: 0.7rem; transform: skewX(-10deg); display: inline-block; }
+  .p-card { 
+    background: var(--white); 
+    border: 3px solid var(--red-bg); 
+    padding: 1rem; 
+    cursor: pointer; 
+    display: flex; flex-direction: column; justify-content: space-between; 
+    text-align: center; 
+    box-shadow: 8px 8px 0 var(--yellow-pop); 
+    transform: rotate(-1deg); transition: 0.3s; 
+    color: var(--text-body); /* Default teks jadi coklat tua */
+  }
+  .p-card:hover { transform: scale(1.03) rotate(0deg); border-color: var(--yellow-pop); }
+  
+  .p-card h3 { 
+    color: var(--black); 
+    font-weight: 800; 
+    font-size: 1.1rem; 
+    margin-top: 0.5rem; 
+  }
+
+  /* Deskripsi Produk (Otomatis Coklat Tua) */
+  .p-card p {
+    color: var(--text-body);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Harga (Cari teks yg bold) - Otomatis Merah */
+  .p-card p[style*="font-weight:bold"], 
+  .p-card strong, 
+  .p-card b {
+    color: var(--red-text) !important;
+    font-size: 1.1rem;
+  }
+
+  /* Badges */
+  .badge-best { background: var(--red-text); color: white; padding: 2px 6px; font-weight: 800; font-size: 0.7rem; transform: skewX(-10deg); display: inline-block; }
+  .badge-try { background: #b45309; color: white; padding: 2px 6px; font-weight: 800; font-size: 0.7rem; transform: skewX(-10deg); display: inline-block; }
+  .badge-save { background: var(--green-brand); color: white; border: 1px solid var(--yellow-pop); padding: 2px 6px; font-weight: 800; font-size: 0.7rem; transform: skewX(-10deg); display: inline-block; }
 
   /* =========================================
      10. TESTIMONIALS & GARANSI
@@ -303,13 +338,13 @@
   .form-label { font-weight: 800; font-size: 1rem; color: var(--black); text-transform: uppercase; margin-bottom: 5px; display: block; }
   .form-input, .form-select, .form-textarea { display: block; width: 100%; padding: 0.8rem; border: 2px solid #d1d5db; border-radius: 8px; margin-bottom: 1.2rem; font-size: 1rem; color: #1f2937; background: #f9fafb; }
 
-  .btn-wa { background: var(--green-brand) !important; color: white !important; width: 100%; padding: 1rem; border-radius: 50px; font-weight: 800; font-size: 1.2rem; text-align: center; cursor: pointer; text-transform: uppercase; box-shadow: 0 10px 20px -5px rgba(37, 211, 102, 0.5); }
-  .btn-wa:hover { background: #14532d !important; }
+  .btn-wa { background: var(--green-brand); color: white; width: 100%; padding: 1rem; border-radius: 50px; font-weight: 800; font-size: 1.2rem; text-align: center; cursor: pointer; text-transform: uppercase; box-shadow: 0 10px 20px -5px rgba(37, 211, 102, 0.5); }
+  .btn-wa:hover { background: #14532d; }
 
   /* =========================================
      12. FOOTER (TOUCH TARGET FIX)
      ========================================= */
-  footer { background: var(--black); color: var(--text-light) !important; padding: 4rem 0 2rem; border-top: 5px solid var(--red-bg); }
+  footer { background: var(--black); color: var(--text-light); padding: 4rem 0 2rem; border-top: 5px solid var(--red-bg); }
   .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
   .footer-title { color: #ffffff; font-weight: 800; font-size: 1.2rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px; font-family: 'Oswald', sans-serif; }
   .footer-links li { margin-bottom: 0.8rem; }
@@ -317,20 +352,20 @@
   /* Area sentuh diperluas untuk Mobile Audit */
   .footer-links a, .footer-bottom a, footer p, footer a {
     display: inline-block; width: 100%; padding: 12px 0; 
-    color: var(--text-light) !important; text-decoration: none;
+    color: var(--text-light); text-decoration: none;
   }
-  .footer-links a:hover, footer a:hover { color: var(--yellow-pop) !important; }
+  .footer-links a:hover, footer a:hover { color: var(--yellow-pop); }
 
   .social-icons { display: flex; gap: 1rem; font-size: 1.5rem; justify-content: center; }
-  .social-icons a { color: #ffffff !important; padding: 15px; display: flex; align-items: center; }
+  .social-icons a { color: #ffffff; padding: 15px; display: flex; align-items: center; }
   
   .footer-bottom { border-top: 1px solid #374151; margin-top: 3rem; padding-top: 1.5rem; display: flex; flex-direction: column; align-items: center; font-size: 0.85rem; text-align: center; }
 
   /* =========================================
      13. FLOATING WA
      ========================================= */
-  .float-wa { position: fixed; bottom: 30px; right: 30px; z-index: 9999; background-color: var(--green-brand) !important; color: white !important; text-decoration: none; padding: 12px 25px; border-radius: 50px; display: flex; align-items: center; gap: 10px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); transition: all 0.3s ease; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem; border: 2px solid white; animation: pulse-wa 3s infinite; }
-  .float-wa:hover { background-color: #14532d !important; transform: translateY(-5px) scale(1.05); }
+  .float-wa { position: fixed; bottom: 30px; right: 30px; z-index: 9999; background-color: var(--green-brand); color: white; text-decoration: none; padding: 12px 25px; border-radius: 50px; display: flex; align-items: center; gap: 10px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); transition: all 0.3s ease; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem; border: 2px solid white; animation: pulse-wa 3s infinite; }
+  .float-wa:hover { background-color: #14532d; transform: translateY(-5px) scale(1.05); }
   @keyframes pulse-wa { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 
   /* =========================================
@@ -365,40 +400,6 @@
     .footer-links a { justify-content: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
     .social-icons { justify-content: center; margin-top: 1rem; }
     .float-wa { bottom: 20px; right: 20px; padding: 10px 20px; font-size: 0.9rem; }
-  }
-
-  /* #######################################################
-     ### SAPU JAGAT (FORCED OVERRIDES) - SOLUSI FINAL ###
-     ####################################################### */
-  
-  /* 1. MENGHAPUS WARNA ABU-ABU (#a1a1a1) YANG SAMAR
-     Menggantinya dengan Coklat Tua agar terbaca jelas di card putih */
-  [style*="#a1a1a1"], [style*="color: #a1a1a1"] {
-      color: var(--text-body) !important; /* Jadi Coklat Tua */
-  }
-
-  /* 2. MEMPERBAIKI WARNA MERAH (#dc2626) YANG SILAU/PUDAR
-     Menggantinya dengan Merah Bata Gelap agar kontras & elegan */
-  [style*="#dc2626"], [style*="red-600"], [style*="red-700"] {
-      color: var(--red-text) !important;
-  }
-  
-  /* 3. MEMPERBAIKI WARNA HIJAU (#16a34a) YANG TERLALU MUDA
-     Menggantinya dengan Hijau Hutan Gelap */
-  [style*="#16a34a"], [style*="green-600"] {
-      color: var(--green-brand) !important;
-  }
-
-  /* 4. PERBAIKAN KHUSUS UNTUK BACKGROUND GELAP (Section Variants & White)
-     Agar teks tidak 'mati' di atas background hitam */
-  .section-white p, .section-variants p {
-      color: #e5e7eb !important; /* Paksa jadi Abu Terang */
-  }
-  
-  /* 5. KHUSUS HARGA DI SECTION GELAP JADI KUNING (Agar menonjol) */
-  .section-white [style*="#dc2626"], 
-  .section-variants [style*="#dc2626"] {
-      color: var(--yellow-pop) !important;
   }
 </style>
     
@@ -1088,6 +1089,7 @@
     
 </body>
 </html>
+
 
 
 
