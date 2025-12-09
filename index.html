@@ -185,9 +185,29 @@
   /* =========================================
      5. HERO
      ========================================= */
-  .hero { background: url('https://images.unsplash.com/photo-1606728035253-49e8a23146de?q=80&w=2070&auto=format&fit=crop') no-repeat center center; background-size: cover; position: relative; padding: 5rem 0 20rem; overflow: hidden; border: none; }
+  .hero {
+    /* HAPUS background: url(...) yang lama */
+    background: #2a0a0a; /* Warna cadangan jika gambar gagal load */
+    position: relative; /* Penting agar gambar absolute di dalamnya terkunci */
+    padding: 5rem 0 20rem; 
+    overflow: hidden; 
+    border: none;
+}
+        .hero-bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agar gambar memenuhi layar tanpa gepeng */
+    z-index: 0; /* Paling belakang */
+    filter: brightness(0.4); /* Opsional: Gelapkan gambar agar teks terbaca (pengganti overlay hitam) */
+}
   .hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.75); z-index: 1; }
-  .hero .container { position: relative; z-index: 2; }
+  .hero .container {
+    position: relative;
+    z-index: 2; /* Di atas gambar */
+}
   .hero h1 { font-family: 'Oswald', sans-serif; color: #ffffff; font-size: 2.8rem; margin-bottom: 0.5rem; line-height: 1.1; font-weight: 900; text-transform: uppercase; text-shadow: 0 3px 5px rgba(0,0,0,0.8); }
   .hero h1 span { color: var(--yellow-pop); padding: 0 5px; }
   .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 1.5rem; color: #fef08a; font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,0.6); }
@@ -463,14 +483,15 @@
 
             <div class="hero-img-box">
                 <div class="badge-premium">LIMITED STOCK!</div>
-                <img src="abon-ditabur-di-atas-nasi1.webp" 
-                        alt="Abon Sapi Barokah Pencegah Stunting" 
-                        width="700" 
-                        height="500" 
-                        fetchpriority="high" 
-                        loading="eager"
-                        class="hero-img"
-                        style="width: 100%; height: auto; max-width: 500px; display: block; margin: 0 auto;">
+                <img 
+        src="abon-ditabur-di-atas-nasi1.webp" 
+        alt="Background Abon Sapi Barokah" 
+        width="1440" 
+        height="800"
+        fetchpriority="high"
+        decoding="async"
+        class="hero-bg-image"
+    >
                 </div>
 
             <div class="hero-cta-container">
@@ -1164,4 +1185,5 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBFQQ3LK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </body>
 </html>
+
 
