@@ -195,8 +195,27 @@
   .badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem; font-weight: 700; color: #ffffff; font-size: 0.9rem; background: rgba(0,0,0,0.5); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--red-bg); }
   .badges i { color: var(--red-bg); margin-right: 5px; }
 
-  .hero-img-box { position: relative; margin: 0 auto 2rem; max-width: 500px; }
-  .hero-img-box img { border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.8); border: 5px solid var(--red-bg); width: 100%; height: auto; }
+  .hero-img-box { 
+    position: relative; 
+    margin: 0 auto 2rem; 
+    max-width: 500px; 
+    /* FIX LAYOUT SHIFT 1: Kunci rasio container */
+    aspect-ratio: 700 / 500; 
+    width: 100%;
+}
+
+.hero-img-box img { 
+    border-radius: 1rem; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8); 
+    border: 5px solid var(--red-bg); 
+    width: 100%; 
+    height: auto; 
+    
+    /* FIX LAYOUT SHIFT 2: Pastikan gambar mengisi container yang sudah dipesan */
+    aspect-ratio: 700 / 500; 
+    object-fit: cover; 
+    display: block;
+}
   .badge-premium { position: absolute; top: 0; right: 0; background: var(--red-bg); color: white; padding: 0.5rem 1rem; border-radius: 0 1rem 0 1rem; font-size: 0.9rem; font-weight: 800; transform: translate(10px, -10px); z-index: 20; text-transform: uppercase; }
 
   .hero-cta-container {
@@ -1145,3 +1164,4 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TBFQQ3LK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </body>
 </html>
+
