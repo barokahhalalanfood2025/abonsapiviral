@@ -98,33 +98,31 @@
   .fa-check-circle:before{content:"\f058"} .fa-shopping-cart:before{content:"\f07a"} .fa-utensils:before{content:"\f2e7"} .fa-brain:before{content:"\f5dc"} .fa-leaf:before{content:"\f06c"} .fa-whatsapp:before{content:"\f232"} .fa-instagram:before{content:"\f16d"} .fa-facebook:before{content:"\f09a"} .fa-tiktok:before{content:"\e07b"} .fa-youtube:before{content:"\f167"} .fa-store:before{content:"\f54e"} .fa-file-invoice:before{content:"\f570"} .fa-map-marker-alt:before{content:"\f3c5"} .fa-exclamation-triangle:before{content:"\f071"} .fa-microscope:before{content:"\f610"} .fa-drumstick-bite:before{content:"\f6d7"} .fa-mortar-pestle:before{content:"\f5a7"} .fa-fire:before{content:"\f06d"} .fa-shipping-fast:before{content:"\f48b"} .fa-list-ul:before{content:"\f0ca"} .fa-truck-fast:before{content:"\f48b"} .fa-hand-holding-dollar:before{content:"\f4c0"} .fa-chevron-left:before{content:"\f053"} .fa-chevron-right:before{content:"\f054"} .fa-envelope:before{content:"\f0e0"} .fa-clock:before{content:"\f017"} .fa-external-link-alt:before{content:"\f35d"}
 
   /* =========================================
-     2. GLOBAL VARIABLES (WARM SAVORY THEME - FINAL)
+     2. GLOBAL VARIABLES (WARM SAVORY THEME)
      ========================================= */
   :root {
-    /* BACKGROUND: Krem Hangat (Dapur Nenek) */
-    --bg-cream: #fffbeb;      /* Amber-50 */
-    --bg-cream-dark: #fef3c7; /* Amber-100 */
+    /* BACKGROUND: Krem Hangat (Dapur Nenek) - Enak di mata & Bikin Lapar */
+    --bg-cream: #fffbeb;      
+    --bg-cream-dark: #fef3c7; 
     
-    /* WARNA UTAMA: Coffee & Red Brick */
-    /* Kita gelapkan sedikit lagi agar Lighthouse 100% Happy */
-    --black: #271c19;       /* Black Coffee (Hampir hitam, tapi ada nuansa coklat) */
+    /* WARNA DASAR */
+    --black: #271c19;       /* Black Coffee (Hitam Kecoklatan) */
     --white: #ffffff;       /* Putih Murni */
     
-    /* MERAH: Merah Bata Gelap (High Contrast) */
-    --red-bg: #991b1b;      /* Untuk Tombol/Header */
-    --red-text: #7f1d1d;    /* Untuk Teks Harga (Lebih gelap dari bg) */
+    /* MERAH (High Contrast) */
+    --red-bg: #991b1b;      /* Background Tombol (Merah Hati) */
+    --red-text: #7f1d1d;    /* Teks Harga (Merah Bata Gelap) */
     
     /* AKSEN */
     --yellow-pop: #fbbf24;  /* Kuning Kunyit */
     --green-brand: #15803d; /* Hijau Daun Matang */
     
-    /* TYPOGRAPHY */
-    --text-main: #271c19;   /* Coklat Kopi Gelap (Pengganti Hitam) */
-    --text-body: #451a03;   /* Coklat Tua (Pengganti Abu) */
-    --text-light: #fffbeb;  /* Teks Terang */
+    /* TYPOGRAPHY (JANGAN PAKAI ABU MUDA) */
+    --text-main: #271c19;   /* Judul Utama */
+    --text-body: #451a03;   /* Deskripsi (Coklat Tua) - PENGGANTI ABU-ABU */
+    --text-light: #fffbeb;  /* Teks Terang di Background Gelap */
 
-    /* --- MAPPING VARIABEL LAMA (JANGAN DIHAPUS) --- */
-    /* Ini untuk menangkap kode lama yang memanggil variabel ini */
+    /* MAPPING UNTUK MENCEGAH ERROR KODE LAMA */
     --red-600: var(--red-bg);
     --red-700: var(--red-text);
     --red-800: #450a0a;
@@ -370,40 +368,37 @@
   }
 
   /* #######################################################
-     ### FINAL CONTRAST FIXES (BOM PENIMPA INLINE STYLE) ###
+     ### SAPU JAGAT (FORCED OVERRIDES) - SOLUSI FINAL ###
      ####################################################### */
   
-  /* 1. Paksa Teks Paragraf di Card Produk Jadi Gelap (Abaikan inline style abu-abu) */
-  .p-card p {
-      color: var(--text-body) !important;
+  /* 1. MENGHAPUS WARNA ABU-ABU (#a1a1a1) YANG SAMAR
+     Menggantinya dengan Coklat Tua agar terbaca jelas di card putih */
+  [style*="#a1a1a1"], [style*="color: #a1a1a1"] {
+      color: var(--text-body) !important; /* Jadi Coklat Tua */
   }
 
-  /* 2. Tangkap Teks Harga (Inline Style Merah) & Ubah jadi Merah Bata Gelap */
-  /* Selector ini mencari elemen apapun yang punya style color:#dc2626 */
+  /* 2. MEMPERBAIKI WARNA MERAH (#dc2626) YANG SILAU/PUDAR
+     Menggantinya dengan Merah Bata Gelap agar kontras & elegan */
   [style*="#dc2626"], [style*="red-600"], [style*="red-700"] {
       color: var(--red-text) !important;
   }
   
-  /* 3. Tangkap Teks Promo (Inline Style Hijau) & Ubah jadi Hijau Tua */
+  /* 3. MEMPERBAIKI WARNA HIJAU (#16a34a) YANG TERLALU MUDA
+     Menggantinya dengan Hijau Hutan Gelap */
   [style*="#16a34a"], [style*="green-600"] {
       color: var(--green-brand) !important;
   }
 
-  /* 4. Perbaikan Khusus di Section Gelap (Background Hitam) */
-  /* Jangan sampai ada teks merah/hitam di atas background hitam */
+  /* 4. PERBAIKAN KHUSUS UNTUK BACKGROUND GELAP (Section Variants & White)
+     Agar teks tidak 'mati' di atas background hitam */
   .section-white p, .section-variants p {
       color: #e5e7eb !important; /* Paksa jadi Abu Terang */
   }
-  /* Kecuali harga/judul yang mau ditonjolkan, jadikan Kuning */
+  
+  /* 5. KHUSUS HARGA DI SECTION GELAP JADI KUNING (Agar menonjol) */
   .section-white [style*="#dc2626"], 
   .section-variants [style*="#dc2626"] {
       color: var(--yellow-pop) !important;
-  }
-  
-  /* 5. Perbaikan Info Box (Background Kuning) */
-  /* Teks di dalam kotak kuning harus hitam pekat agar kontras */
-  .info-box p, .info-box h3, .info-box {
-      color: #000000 !important;
   }
 </style>
     
@@ -1058,6 +1053,7 @@
     
 </body>
 </html>
+
 
 
 
