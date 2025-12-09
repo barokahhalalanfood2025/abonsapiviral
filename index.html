@@ -7,6 +7,12 @@
     <meta name="theme-color" content="#991b1b"> <title>ABON SAPI TUMBUK BAROKAH | Abon Sapi Premium Tinggi Protein</title>
     <meta name="description" content="Abon Sapi Tumbuk Premium Dengan Minyak Kelapa, Gula Aren Asli, Non MSG & Pengawet. Halal & Barokah. Solusi sehat & praktis untuk anak susah makan.">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1606728035253-49e8a23146de?q=80&w=2070&auto=format&fit=crop">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <meta name="facebook-domain-verification" content="di94yzdinnazm60ywer87215y3dhpf" />
     <meta name="google-site-verification" content="y2WJu_a-wV_4TpY8tEklitrXmL9IKvaJqnGfuvNUgeQ" />
     
@@ -65,8 +71,6 @@
   /* =========================================
      1. FONTS & ICONS
      ========================================= */
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Oswald:wght@400;700;800&display=swap');
-
   @font-face {
     font-family: 'Font Awesome 6 Free'; font-style: normal; font-weight: 900; font-display: swap;
     src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2) format('woff2');
@@ -187,7 +191,16 @@
   .hero-img-box img { border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.8); border: 5px solid var(--red-bg); width: 100%; height: auto; }
   .badge-premium { position: absolute; top: 0; right: 0; background: var(--red-bg); color: white; padding: 0.5rem 1rem; border-radius: 0 1rem 0 1rem; font-size: 0.9rem; font-weight: 800; transform: translate(10px, -10px); z-index: 20; text-transform: uppercase; }
 
-  .hero-cta-container { margin-top: 2rem; position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+  .hero-cta-container {
+    margin-top: 2rem;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 120px; /* MENAMBAHKAN INI: Reservasi tinggi agar tidak 'kaget' saat tombol muncul */
+}
   .cta-button { display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem; background: var(--yellow-pop); color: var(--black); padding: 1.2rem 2.5rem; border-radius: 50px; font-weight: 900; font-size: 1.3rem; box-shadow: 0 10px 25px -5px rgba(255, 193, 7, 0.8); width: 100%; max-width: 550px; text-transform: uppercase; border: 4px solid #b45309; transition: 0.3s all; }
   .cta-button:hover { background: #fdd835; transform: translateY(-5px) scale(1.05); }
   .pulse-button { animation: pulse-yellow 2s infinite; }
@@ -1120,6 +1133,7 @@
     
 </body>
 </html>
+
 
 
 
