@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="description" content="Abon Sapi Tumbuk Premium Dengan Minyak Kelapa, Gula Aren Asli, Non MSG & Pengawet. Halal & Barokah. Solusi sehat & praktis untuk anak susah makan.">
 
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700;800&family=Poppins:wght@400;600;700;800;900&display=optional" rel="stylesheet">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
 
@@ -189,12 +190,19 @@
      5. HERO
      ========================================= */
   .hero {
-    /* HAPUS background: url(...) yang lama */
-    background: linear-gradient(to bottom right, #fff1f2, #f0fdf4); /* Warna cadangan jika gambar gagal load */
-    position: relative; /* Penting agar gambar absolute di dalamnya terkunci */
-    padding: 5rem 0 20rem; 
-    overflow: hidden; 
+    background: #2a0a0a; /* Warna cadangan */
+    position: relative;
+    /* PENTING: Kunci tinggi minimal agar tidak 'kaget' saat konten dimuat */
+    min-height: 600px; 
+    /* Gunakan Flexbox untuk memusatkan konten secara stabil */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0 10rem; /* Sesuaikan padding jika perlu */
+    overflow: hidden;
     border: none;
+    /* Isolasi agar elemen di dalam tidak menggeser elemen luar */
+    contain: layout paint; 
 }
         .hero-bg-image {
     position: absolute;
@@ -202,14 +210,18 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Agar gambar memenuhi layar tanpa gepeng */
-    z-index: 0; /* Paling belakang */
-    filter: brightness(0.4); /* Opsional: Gelapkan gambar agar teks terbaca (pengganti overlay hitam) */
+    object-fit: cover;
+    z-index: 0;
+    /* PENTING: Pastikan dianggap blok, bukan inline */
+    display: block; 
+    /* Opsional: Gelapkan gambar di sini daripada pakai overlay div terpisah */
+    filter: brightness(0.4); 
 }
   .hero::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.75); z-index: 1; }
   .hero .container {
     position: relative;
-    z-index: 2; /* Di atas gambar */
+    z-index: 2;
+    width: 100%; /* Pastikan lebar penuh */
 }
   .hero h1 { font-family: 'Oswald', sans-serif; color: #ffffff; font-size: 2.8rem; margin-bottom: 0.5rem; line-height: 1.1; font-weight: 900; text-transform: uppercase; text-shadow: 0 3px 5px rgba(0,0,0,0.8); }
   .hero h1 span { color: var(--yellow-pop); padding: 0 5px; }
@@ -1189,6 +1201,7 @@
     
 </body>
 </html>
+
 
 
 
